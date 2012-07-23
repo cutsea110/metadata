@@ -15,18 +15,18 @@ import SchemaOrg
 main :: IO ()
 main = do
   mj <- allJson
-  let (ts, ps) = ( types ts ps $ (mj .> "types") >+< ("datatypes" <. mj), 
-                   props ts ps $ "properties" <~ mj
-                 )
+  let (Just jt, Just jp) 
+        = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
+  let (ts, ps) = ( types ts ps jt, props ts jp)
   return ()
 
 (>+<) :: Maybe Value -> Maybe Value -> Maybe Object
 x >+< y = liftA2 H.union (fmap toObject x) (fmap toObject y)
 
-types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
-types = liftA3 types'
-types' :: DataTypes -> Properties -> Object -> DataTypes
-types' t p o = H.map fromValue o
+-- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
+-- types = liftA3 types'
+types :: DataTypes -> Properties -> Object -> DataTypes
+types t p o = H.map fromValue o
   where
     fromValue :: Value -> DataType
     fromValue v = DataType { d_label = v $> "label"
@@ -43,10 +43,10 @@ types' t p o = H.map fromValue o
     toP = V.map (fromJust . flip H.lookup p . toText)
     toT = V.map (fromJust . flip H.lookup t . toText)
 
-props :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe Properties
-props = liftA3 props'
-props' :: DataTypes -> Properties -> Object -> Properties
-props' t _ o = H.map fromValue o
+-- props :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe Properties
+-- props = liftA3 props'
+props :: DataTypes -> Object -> Properties
+props t o = H.map fromValue o
   where
     fromValue :: Value -> Property
     fromValue v = Property { p_label = v $> "label"
