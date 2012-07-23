@@ -15,7 +15,7 @@ import SchemaOrg
 main :: IO ()
 main = do
   mj <- allJson
-  let (Just jt, Just jp) 
+  let (Just jt, Just jp)
         = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
   let (ts, ps) = ( types ts ps jt, props ts jp)
   return ()
