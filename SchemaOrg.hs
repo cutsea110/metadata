@@ -7,11 +7,11 @@ module SchemaOrg ( allJson
 
 import Data.Aeson
 import Data.Attoparsec
-import Data.ByteString
+import Data.ByteString hiding (unpack)
 import Data.HashMap.Strict
 import Data.Maybe
 import Data.Text
-import Data.Vector
+import Data.Vector hiding ((++))
 import Network.HTTP
 import Network.URI
 
@@ -38,7 +38,9 @@ data DataType = DataType { d_label :: Text
                          , url :: Text
                          , supertypes :: Vector DataType
                          }
-              deriving Show
+
+instance Show DataType where
+  show x = "#<" ++ unpack (d_id x) ++ ">"
 
 type Properties = HashMap Text Property
 data Property = Property { p_label :: Text
@@ -48,7 +50,9 @@ data Property = Property { p_label :: Text
                          , p_id :: Text
                          , ranges :: Vector DataType
                          }
-              deriving Show
+
+instance Show Property where
+  show x = "#<" ++ unpack (p_id x) ++ ">"
 
 class Meta a where
   label :: a -> Text
