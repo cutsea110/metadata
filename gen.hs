@@ -2,15 +2,22 @@
 {-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
 module Main where
 
-import Control.Applicative
+import Control.Applicative (liftA2)
 import Data.Aeson
 import qualified Data.HashMap.Strict as H
 import qualified Data.Vector as V
 import Data.Maybe
 import Data.Text
 import Data.Attoparsec.Number
+import qualified Text.PrettyPrint.Leijen.Text as P
 
 import SchemaOrg
+
+{--
+mj <- allJson
+let (Just jt, Just jp) = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
+let (ts, ps) = (types ts ps jt, props ts jp)
+--}
 
 main :: IO ()
 main = do
@@ -57,6 +64,13 @@ props t o = H.map fromValue o
                            , ranges = toT $ v %> "ranges"
                            }
     toT = V.map (fromJust . flip H.lookup t . toText)
+
+class ToDoc a where
+  toDoc :: a -> P.Doc
+instance ToDoc DataType where
+  toDoc d = P.empty
+instance ToDoc Property where
+  toDoc p = P.empty
 
 toObject :: Value -> Object
 toObject (Object o) = o
