@@ -17,7 +17,7 @@ main = do
   mj <- allJson
   let (Just jt, Just jp)
         = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
-  let (ts, ps) = ( types ts ps jt, props ts jp)
+  let (ts, ps) = (types ts ps jt, props ts jp)
   return ()
 
 (>+<) :: Maybe Value -> Maybe Value -> Maybe Object
@@ -60,16 +60,12 @@ props t o = H.map fromValue o
 
 toObject :: Value -> Object
 toObject (Object o) = o
-
 toArray :: Value -> Array
 toArray (Array a) = a
-
 toText :: Value -> Text
 toText (String t) = t
-
 toNumber :: Value -> Number
 toNumber (Number n) = n
-
 toBool :: Value -> Bool
 toBool (Bool b) = b
 
