@@ -1,109 +1,96 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DisambiguateRecordFields #-}
-module Gen where
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
+module Main where
 
-import Control.Applicative ((<$>),(<*>))
-import qualified Data.Aeson as J
-import Data.Aeson.Types
+import Control.Applicative
+import Data.Aeson
 import qualified Data.HashMap.Strict as H
 import qualified Data.Vector as V
-import qualified Data.Attoparsec as P
-import qualified Data.Attoparsec.Number as P
-import Data.ByteString (ByteString)
-import Data.Text (Text)
 import Data.Maybe
-import Network.HTTP
-import Network.URI
+import Data.Text
+import Data.Attoparsec.Number
 
-import MetaData
+import SchemaOrg
 
+main :: IO ()
 main = do
-  o <- allObject
-  let (ps, ts) = (props ts ps $ o .> "properties",
-                  types ts ps $ (o .> "types") `H.union` (o .> "datatypes")
-                 )
+  mj <- allJson
+  let (Just jt, Just jp)
+        = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
+  let (ts, ps) = ( types ts ps jt, props ts jp)
   return ()
 
-allJsonURL :: String
-allJsonURL = "http://schema.rdfs.org/all.json"
-allJsonURI :: URI
-allJsonURI = fromJust $ parseURI allJsonURL
+(>+<) :: Maybe Value -> Maybe Value -> Maybe Object
+x >+< y = liftA2 H.union (fmap toObject x) (fmap toObject y)
 
-openURI :: URI -> IO ByteString
-openURI uri = getResponseBody =<< simpleHTTP (mkRequest GET uri)
-
-allJson :: IO Value
-allJson = do
- res <- return . P.parse J.json =<< openURI allJsonURI
- case res of
-   P.Done _ r -> return r
-   _ -> error $ "failed to read " ++ allJsonURL
-
-allObject :: IO Object
-allObject = allJson >>= return . toObject
-
+-- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
+-- types = liftA3 types'
 types :: DataTypes -> Properties -> Object -> DataTypes
-types ts ps = H.map f
+types t p o = H.map fromValue o
   where
-    f :: Value -> DataType
-    f = toDataType . toObject
-    toDataType :: Object -> DataType
-    toDataType o = DataType { dt_label = o $> "label"
-                            , dt_comment_plain = o $> "comment_plain"
-                            , properties = toP $ o %> "properties"
-                            , ancestors = toT $ o %> "ancestors"
-                            , dt_comment = o $> "comment"
-                            , dt_id = o $> "id"
-                            , subtypes = toT $ o %> "subtypes"
-                            , specific_properties = toP $ o %> "specific_properties"
-                            , url = o $> "url"
-                            , supertypes = toT $ o %> "supertypes"
-                            }
-    toP = V.map (fromJust . flip H.lookup ps . toText)
-    toT = V.map (fromJust . flip H.lookup ts . toText)
+    fromValue :: Value -> DataType
+    fromValue v = DataType { d_label = v $> "label"
+                           , d_comment_plain = v $> "comment_plain"
+                           , properties = toP $ v %> "properties"
+                           , ancestors = toT $ v %> "ancestors"
+                           , d_comment = v $> "comment"
+                           , d_id = v $> "id"
+                           , subtypes = toT $ v %> "subtypes"
+                           , specific_properties = toP $ v %> "specific_properties"
+                           , url = v $> "url"
+                           , supertypes = toT $ v %> "supertypes"
+                           }
+    toP = V.map (fromJust . flip H.lookup p . toText)
+    toT = V.map (fromJust . flip H.lookup t . toText)
 
-props :: DataTypes -> Properties -> Object -> Properties
-props ts ps = H.map f
+-- props :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe Properties
+-- props = liftA3 props'
+props :: DataTypes -> Object -> Properties
+props t o = H.map fromValue o
   where
-    f :: Value -> Property
-    f = toProperty . toObject
-    toProperty :: Object -> Property
-    toProperty o = Property { pr_label = o $> "label"
-                            , pr_comment_plain = o $> "comment_plain"
-                            , domains = toT $ o %> "domains"
-                            , pr_comment = o $> "comment"
-                            , pr_id = o $> "id"
-                            , ranges = toT $ o %> "ranges"
-                            }
-    toT = V.map (fromJust . flip H.lookup ts . toText)
+    fromValue :: Value -> Property
+    fromValue v = Property { p_label = v $> "label"
+                           , p_comment_plain = v $> "comment_plain"
+                           , domains = toT $ v %> "domains"
+                           , p_comment = v $> "comment"
+                           , p_id = v $> "id"
+                           , ranges = toT $ v %> "ranges"
+                           }
+    toT = V.map (fromJust . flip H.lookup t . toText)
 
 toObject :: Value -> Object
-toObject v = let Object o = v in o
-toArray :: Value -> Array
-toArray v = let Array a = v in a
-toText :: Value -> Text
-toText v = let String t = v in t
-toNumber :: Value -> P.Number
-toNumber v = let Number n = v in n
-toBool :: Value -> Bool
-toBool v = let Bool b = v in b
+toObject (Object o) = o
 
-(.>) :: Object -> Text -> Object
-o .> p = toObject $ fromJust $ H.lookup p o
+toArray :: Value -> Array
+toArray (Array a) = a
+
+toText :: Value -> Text
+toText (String t) = t
+
+toNumber :: Value -> Number
+toNumber (Number n) = n
+
+toBool :: Value -> Bool
+toBool (Bool b) = b
+
+(.>) :: Maybe Value -> Text -> Maybe Value
+mv .> p = H.lookup p . toObject =<< mv
 infixl 5 .>
 
-(%>) :: Object -> Text -> Array
-o %> p = toArray $ fromJust $ H.lookup p o
-infixl 5 %>
+(<.) :: Text -> Maybe Value -> Maybe Value
+(<.) = flip (.>)
+infixr 5 <.
 
-($>) :: Object -> Text -> Text
-o $> p = toText $ fromJust $ H.lookup p o
-infixl 5 $>
+(~>) :: Maybe Value -> Text -> Maybe Object
+(~>) = (fmap toObject.).(.>)
+infixl 5 ~>
 
-(#>) :: Object -> Text -> P.Number
-o #> p = toNumber $ fromJust $ H.lookup p o
-infixl 4 #>
+(<~) :: Text -> Maybe Value -> Maybe Object
+(<~) = flip (~>)
+infixr 5 <~
 
-(&>) :: Object -> Text -> Bool
-o &> p = toBool $ fromJust $ H.lookup p o
-infixl 5 &>
+($>) :: Value -> Text -> Text
+v $> p = fromJust $ fmap toText $ H.lookup p (toObject v)
+
+(%>) :: Value -> Text -> Array
+v %> p = fromJust $ fmap toArray $ H.lookup p (toObject v)
