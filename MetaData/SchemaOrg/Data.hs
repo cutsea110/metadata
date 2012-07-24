@@ -1,9 +1,10 @@
-module SchemaOrg.Data ( allJson
-                      , DataType(..)
-                      , DataTypes(..)
-                      , Property(..)
-                      , Properties(..)
-                      ) where
+{-# LANGUAGE OverloadedStrings #-}
+module MetaData.SchemaOrg.Data ( allJson
+                               , DataType(..)
+                               , DataTypes(..)
+                               , Property(..)
+                               , Properties(..)
+                               ) where
 
 import Data.Aeson
 import Data.Attoparsec

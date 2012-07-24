@@ -1,11 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
-module SchemaOrg ( getSchema
-                 , DataType(..)
-                 , DataTypes
-                 , Property(..)
-                 , Properties
-                 ) where
+module MetaData.SchemaOrg ( getSchema
+                          , DataType(..)
+                          , DataTypes
+                          , Property(..)
+                          , Properties
+                          ) where
 
 import Control.Applicative (liftA2)
 import Data.Aeson
@@ -16,7 +16,7 @@ import Data.Text
 import Data.Attoparsec.Number
 import qualified Text.PrettyPrint.Leijen.Text as P
 
-import SchemaOrg.Data
+import MetaData.SchemaOrg.Data
 
 getSchema :: IO (DataTypes, Properties)
 getSchema = do

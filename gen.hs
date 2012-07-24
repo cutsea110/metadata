@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import SchemaOrg
+import MetaData.SchemaOrg
 
 main :: IO ()
 main = do
