@@ -1,3 +1,4 @@
 module MetaData.SchemaOrg where
 
-import MetaData.SchemaOrg.Data
+import MetaData.SchemaOrg.Doc
+
