@@ -1,72 +1,105 @@
-module SchemaOrg ( allJson
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
+module SchemaOrg ( getSchema
                  , DataType(..)
-                 , DataTypes(..)
+                 , DataTypes
                  , Property(..)
-                 , Properties(..)
+                 , Properties
                  ) where
 
+import Control.Applicative (liftA2)
 import Data.Aeson
-import Data.Attoparsec
-import Data.ByteString hiding (unpack)
-import Data.HashMap.Strict
+import qualified Data.HashMap.Strict as H
+import qualified Data.Vector as V
 import Data.Maybe
 import Data.Text
-import Data.Vector hiding ((++))
-import Network.HTTP
-import Network.URI
+import Data.Attoparsec.Number
+import qualified Text.PrettyPrint.Leijen.Text as P
 
-allJsonURI :: URI
-allJsonURI = fromJust $ parseURI allJsonURL
+import SchemaOrg.Data
+
+getSchema :: IO (DataTypes, Properties)
+getSchema = do
+  mj <- allJson
+  let (Just jt, Just jp)
+        = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
+  let (ts, ps) = (types' ts ps jt, props' ts jp)
+  return (ts, ps)
+
+(>+<) :: Maybe Value -> Maybe Value -> Maybe Object
+x >+< y = liftA2 H.union (fmap toObject x) (fmap toObject y)
+
+-- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
+-- types = liftA3 types'
+types' :: DataTypes -> Properties -> Object -> DataTypes
+types' t p o = H.map fromValue o
   where
-    allJsonURL = "http://schema.rdfs.org/all.json"
+    fromValue :: Value -> DataType
+    fromValue v = DataType { d_label = v $> "label"
+                           , d_comment_plain = v $> "comment_plain"
+                           , properties = toP $ v %> "properties"
+                           , ancestors = toT $ v %> "ancestors"
+                           , d_comment = v $> "comment"
+                           , d_id = v $> "id"
+                           , subtypes = toT $ v %> "subtypes"
+                           , specific_properties = toP $ v %> "specific_properties"
+                           , url = v $> "url"
+                           , supertypes = toT $ v %> "supertypes"
+                           }
+    toP = V.map (fromJust . flip H.lookup p . toText)
+    toT = V.map (fromJust . flip H.lookup t . toText)
 
-resAllJson :: IO ByteString
-resAllJson = getResponseBody =<< simpleHTTP (mkRequest GET allJsonURI)
+-- props :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe Properties
+-- props = liftA3 props'
+props' :: DataTypes -> Object -> Properties
+props' t o = H.map fromValue o
+  where
+    fromValue :: Value -> Property
+    fromValue v = Property { p_label = v $> "label"
+                           , p_comment_plain = v $> "comment_plain"
+                           , domains = toT $ v %> "domains"
+                           , p_comment = v $> "comment"
+                           , p_id = v $> "id"
+                           , ranges = toT $ v %> "ranges"
+                           }
+    toT = V.map (fromJust . flip H.lookup t . toText)
 
-allJson :: IO (Maybe Value)
-allJson = return . maybeResult . parse json =<< resAllJson
+class ToDoc a where
+  toDoc :: a -> P.Doc
+instance ToDoc DataType where
+  toDoc d = P.empty
+instance ToDoc Property where
+  toDoc p = P.empty
 
-type DataTypes = HashMap Text DataType
-data DataType = DataType { d_label :: Text
-                         , d_comment_plain :: Text
-                         , properties :: Vector Property
-                         , ancestors :: Vector DataType
-                         , d_comment :: Text
-                         , d_id :: Text
-                         , subtypes :: Vector DataType
-                         , specific_properties :: Vector Property
-                         , url :: Text
-                         , supertypes :: Vector DataType
-                         }
+toObject :: Value -> Object
+toObject (Object o) = o
+toArray :: Value -> Array
+toArray (Array a) = a
+toText :: Value -> Text
+toText (String t) = t
+toNumber :: Value -> Number
+toNumber (Number n) = n
+toBool :: Value -> Bool
+toBool (Bool b) = b
 
-instance Show DataType where
-  show x = "#<" ++ unpack (d_id x) ++ ">"
+(.>) :: Maybe Value -> Text -> Maybe Value
+mv .> p = H.lookup p . toObject =<< mv
+infixl 5 .>
 
-type Properties = HashMap Text Property
-data Property = Property { p_label :: Text
-                         , p_comment_plain :: Text
-                         , domains :: Vector DataType
-                         , p_comment :: Text
-                         , p_id :: Text
-                         , ranges :: Vector DataType
-                         }
+(<.) :: Text -> Maybe Value -> Maybe Value
+(<.) = flip (.>)
+infixr 5 <.
 
-instance Show Property where
-  show x = "#<" ++ unpack (p_id x) ++ ">"
+(~>) :: Maybe Value -> Text -> Maybe Object
+(~>) = (fmap toObject.).(.>)
+infixl 5 ~>
 
-class Meta a where
-  label :: a -> Text
-  comment_plain :: a -> Text
-  comment :: a -> Text
-  id :: a -> Text
+(<~) :: Text -> Maybe Value -> Maybe Object
+(<~) = flip (~>)
+infixr 5 <~
 
-instance Meta DataType where
-  label = d_label
-  comment_plain = d_comment_plain
-  comment = d_comment
-  id = d_id
-instance Meta Property where
-  label = p_label
-  comment_plain = p_comment_plain
-  comment = p_comment
-  id = p_id
+($>) :: Value -> Text -> Text
+v $> p = fromJust $ fmap toText $ H.lookup p (toObject v)
+
+(%>) :: Value -> Text -> Array
+v %> p = fromJust $ fmap toArray $ H.lookup p (toObject v)
