@@ -44,6 +44,8 @@ data DataType = DataType { d_label :: Text
 
 instance Show DataType where
   show x = "#<" ++ unpack (d_id x) ++ ">"
+instance Eq DataType where
+  x == y = d_id x == d_id y
 
 type Properties = HashMap Text Property
 data Property = Property { p_label :: Text
@@ -56,6 +58,8 @@ data Property = Property { p_label :: Text
 
 instance Show Property where
   show x = "#<" ++ unpack (p_id x) ++ ">"
+instance Eq Property where
+  x == y = p_id x == p_id y
 
 class Meta a where
   label :: a -> Text

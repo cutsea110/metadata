@@ -7,16 +7,21 @@ module MetaData.SchemaOrg.Data
        , Property(..)
        , Properties
        , SchemaMeta(..)
+       , topOf
+       , descendantOfThing
+       , descendantOfDataType
        ) where
 
+import Prelude hiding (id, head, tail)
 import Control.Applicative (liftA2)
 import Data.Aeson
+import Data.Char (toUpper)
 import qualified Data.HashMap.Strict as H
 import qualified Data.Vector as V
 import Data.Maybe
-import Data.Text
+import Data.List (nub)
+import Data.Text hiding (toUpper, concatMap, map)
 import Data.Attoparsec.Number
-import qualified Text.PrettyPrint.Leijen.Text as P
 
 import MetaData.SchemaOrg.Data.Internal
 
@@ -36,16 +41,22 @@ class SchemaMeta a where
   comment_plain :: a -> Text
   comment :: a -> Text
   id :: a -> Text
+  symbol :: a -> Text
 instance SchemaMeta DataType where
   label = d_label
   comment_plain = d_comment_plain
   comment = d_comment
   id = d_id
+  symbol = sym . d_id
 instance SchemaMeta Property where
   label = p_label
   comment_plain = p_comment_plain
   comment = p_comment
   id = p_id
+  symbol = sym . p_id
+
+sym :: Text -> Text
+sym s = let (x, xs) = (head s, tail s) in cons (toUpper x) xs
 
 -- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
 -- types = liftA3 types'
@@ -118,3 +129,13 @@ v %> p = fromJust $ fmap toArray $ H.lookup p (toObject v)
 
 (%>?) :: Value -> Text -> Array
 v %>? p = maybe V.empty toArray $ H.lookup p (toObject v)
+
+topOf :: DataType -> [DataType]
+topOf x@DataType { supertypes = ds } | V.null ds = return x
+                                     | otherwise = nub $ concatMap topOf $ V.toList ds
+
+descendantOfThing :: DataType -> Bool
+descendantOfThing = elem "Thing" . map id . topOf
+
+descendantOfDataType :: DataType -> Bool
+descendantOfDataType = elem "DataType" . map id . topOf
