@@ -6,6 +6,7 @@ module MetaData.SchemaOrg.Data
        , DataTypes
        , Property(..)
        , Properties
+       , SchemaMeta(..)
        ) where
 
 import Control.Applicative (liftA2)
@@ -29,6 +30,22 @@ getSchema = do
 
 (>+<) :: Maybe Value -> Maybe Value -> Maybe Object
 x >+< y = liftA2 H.union (fmap toObject x) (fmap toObject y)
+
+class SchemaMeta a where
+  label :: a -> Text
+  comment_plain :: a -> Text
+  comment :: a -> Text
+  id :: a -> Text
+instance SchemaMeta DataType where
+  label = d_label
+  comment_plain = d_comment_plain
+  comment = d_comment
+  id = d_id
+instance SchemaMeta Property where
+  label = p_label
+  comment_plain = p_comment_plain
+  comment = p_comment
+  id = p_id
 
 -- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
 -- types = liftA3 types'
