@@ -39,6 +39,7 @@ data DataType = DataType { d_label :: Text
                          , specific_properties :: Vector Property
                          , url :: Text
                          , supertypes :: Vector DataType
+                         , instances :: Vector Text
                          }
 
 instance Show DataType where

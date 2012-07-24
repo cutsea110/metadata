@@ -63,6 +63,7 @@ types' t p o = H.map fromValue o
                            , specific_properties = toP $ v %> "specific_properties"
                            , url = v $> "url"
                            , supertypes = toT $ v %> "supertypes"
+                           , instances = V.map toText $ v %>? "instances"
                            }
     toP = V.map (fromJust . flip H.lookup p . toText)
     toT = V.map (fromJust . flip H.lookup t . toText)
@@ -114,3 +115,6 @@ v $> p = fromJust $ fmap toText $ H.lookup p (toObject v)
 
 (%>) :: Value -> Text -> Array
 v %> p = fromJust $ fmap toArray $ H.lookup p (toObject v)
+
+(%>?) :: Value -> Text -> Array
+v %>? p = maybe V.empty toArray $ H.lookup p (toObject v)
