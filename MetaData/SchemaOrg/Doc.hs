@@ -123,11 +123,17 @@ typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
     import_schema_modules = vsep $ map (impdecl.(T.unpack schemaModuleName'++)) schema_modules
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
-        modules = map (T.unpack schemaModuleName'++) schema_modules
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    special_declares = vcat $ map sp_decl special_types
+    special_declares = vcat $ class_decl:map sp_decl special_types
       where
-        sp_decl (_, Nothing) = empty
+        class_decl = nest 2 (cls_decl <$> fields)
+        cls_decl = hsep $ map text ["class","MetaData", "a", "where"]
+        fields = align $ vcat $ map fld fs
+          where
+            flen = foldl max 0 $ map T.length fs
+            fld f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "Text"])
+            fs = ["_label","_comment_plain","_comment","_url"]
+        sp_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
         sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
 

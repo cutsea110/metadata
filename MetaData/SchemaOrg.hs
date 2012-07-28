@@ -4,7 +4,6 @@ module MetaData.SchemaOrg
 
 import Prelude hiding (id)
 import Control.Monad
-import qualified Data.Vector as V hiding ((++))
 import qualified Data.HashMap.Strict as H
 import qualified Data.Text as T
 import System.IO
