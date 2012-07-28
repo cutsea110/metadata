@@ -22,6 +22,8 @@ schemaModuleName' :: T.Text
 schemaModuleName' = "Text.HTML5.MetaData.Schema."
 typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
+typeModuleName' :: T.Text
+typeModuleName' = "Text.HTML5.MetaData.Type."
 
 text' :: T.Text -> Doc
 text' = text . T.unpack
@@ -54,7 +56,7 @@ fromProperty p = case lookup (symbol p) special_types of
     com = hsep $ map text' ["-- |", comment p]
 
 fromDataType :: DataType -> Doc
-fromDataType d = vcat [com, data_decl]
+fromDataType d = com <$> vcat' [data_decl, instance_decl]
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
@@ -74,6 +76,20 @@ fromDataType d = vcat [com, data_decl]
     derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
       where
         tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+    instance_decl = nest 2 (ins_decl <$> fields)
+      where
+        ins_decl = hsep $ map text ["instance", T.unpack typeModuleName'++"MetaData", T.unpack $ symbol d, "where"]
+        fields = align $ vcat $ map fld fs
+          where
+            flen = foldl max 0 $ map (T.length.fst) fs
+            fld (f, acc) = fillBreak flen (text' f) 
+                           <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
+            fs :: [(T.Text, DataType -> T.Text)]
+            fs = [ ("_label",label)
+                 , ("_comment_plain", comment_plain)
+                 , ("_comment", comment)
+                 , ("_url", url)
+                 ]
 
 fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com , data_decl]
@@ -108,9 +124,9 @@ schemaBootDoc d = vcat' [module_header, declares, instance_declares]
       where
         name = T.unpack (symbol d)
     declares = fromDataType' d
-    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq"]
+    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", T.unpack typeModuleName'++"MetaData"]
       where
-        instance_decl cls = hsep $ map text' ["instance", cls, symbol d]
+        instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
 typeDoc :: Properties -> Doc
 typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
@@ -127,7 +143,7 @@ typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
     special_declares = vcat $ class_decl:map sp_decl special_types
       where
         class_decl = nest 2 (cls_decl <$> fields)
-        cls_decl = hsep $ map text ["class","MetaData", "a", "where"]
+        cls_decl = hsep $ map text ["class", "MetaData", "a", "where"]
         fields = align $ vcat $ map fld fs
           where
             flen = foldl max 0 $ map T.length fs
