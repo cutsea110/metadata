@@ -14,6 +14,15 @@ import Text.PrettyPrint.Leijen
 
 import MetaData.SchemaOrg.Data
 
+metadataModuleName :: T.Text
+metadataModuleName = "Text.HTML5.MetaData"
+schemaModuleName :: T.Text
+schemaModuleName = "Text.HTML5.MetaData.Schema"
+schemaModuleName' :: T.Text
+schemaModuleName' = "Text.HTML5.MetaData.Schema."
+typeModuleName :: T.Text
+typeModuleName = "Text.HTML5.MetaData.Type"
+
 text' :: T.Text -> Doc
 text' = text . T.unpack
 
@@ -40,7 +49,7 @@ fromProperty p = case lookup (symbol p) special_types of
     single_type_decl = hsep $ map text' ["type", symbol p, "=", qnT1]
     either_type_decl = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
     qualified_name s = case lookup s special_types of 
-      Nothing -> foldl1 T.append ["MetaData.Schema.", s, "." ,s]
+      Nothing -> foldl1 T.append [schemaModuleName', s, "." ,s]
       Just _ -> s
     com = hsep $ map text' ["-- |", comment p]
 
@@ -76,26 +85,26 @@ schemaDoc :: DataType -> Doc
 schemaDoc d = pragmas <$> vcat' [module_header, import_list, declares]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
-    module_header = hsep $ map text ["module", "MetaData.Schema." ++ name, "where"]
+    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
       where
         name = T.unpack $ symbol d
     import_list = vcat' [import_type_module, import_external_modules]
       where
         import_type_module = case recursive of
-          Just _ -> impdecl "MetaData.Type" <+> hide (symbol d)
-          Nothing -> impdecl "MetaData.Type"
+          Just _ -> impdecl typeModuleName <+> hide (symbol d)
+          Nothing -> impdecl typeModuleName
           where
             props = properties d
             recursive = V.find ((==(symbol d)).symbol) props
         import_external_modules = vsep $ map impdecl ["Data.Text"]
-        impdecl m = text "import" <+> text m
+        impdecl m = text "import" <+> text' m
         hide t = hsep [text "hiding", lparen, text' t, rparen]
     declares = fromDataType d
 
 schemaBootDoc :: DataType -> Doc
 schemaBootDoc d = vcat' [module_header, declares, instance_declares]
   where
-    module_header = hsep $ map text ["module", "MetaData.Schema." ++ name, "where"]
+    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
       where
         name = T.unpack (symbol d)
     declares = fromDataType' d
@@ -106,15 +115,15 @@ schemaBootDoc d = vcat' [module_header, declares, instance_declares]
 typeDoc :: Properties -> Doc
 typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
   where
-    module_header = hsep $ map text ["module", "MetaData.Type", "where"]
+    module_header = hsep $ map text' ["module", typeModuleName, "where"]
     import_list = vcat' [import_external_modules, import_schema_modules]
     import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Time"]
       where 
         impdecl m = text "import" <+> text m
-    import_schema_modules = vsep $ map (impdecl.("MetaData.Schema."++)) schema_modules
+    import_schema_modules = vsep $ map (impdecl.(T.unpack schemaModuleName'++)) schema_modules
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
-        modules = map ("MetaData.Schema."++) schema_modules
+        modules = map (T.unpack schemaModuleName'++) schema_modules
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
     special_declares = vcat $ map sp_decl special_types
       where

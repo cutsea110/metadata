@@ -16,7 +16,7 @@ import MetaData.SchemaOrg.Doc
 createSchema :: IO ()
 createSchema = do
   (ts, ps) <- getSchema
-  h <- openFile "gen/MetaData/Type.hs" WriteMode
+  h <- openFile (genMetaDataDir ++ "Type.hs") WriteMode
   hPutDoc h $ typeDoc ps
   hClose h
 
@@ -30,5 +30,7 @@ createSchema = do
             hClose h''
            )
   where
-    bootPath x = "gen/MetaData/Schema/" ++ T.unpack (symbol x) ++ ".hs-boot"
-    path x = "gen/MetaData/Schema/" ++ T.unpack (symbol x) ++ ".hs"
+    genMetaDataDir = "gen/Text/HTML5/MetaData/"
+    genSchemaDir = genMetaDataDir ++ "Schema/"
+    bootPath x = genSchemaDir ++ T.unpack (symbol x) ++ ".hs-boot"
+    path x = genSchemaDir ++ T.unpack (symbol x) ++ ".hs"
