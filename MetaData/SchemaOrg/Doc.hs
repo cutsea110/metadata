@@ -68,7 +68,7 @@ fromDataType' d = vcat' [com , data_decl]
     com = hsep $ map text' ["-- |", comment d]
 
 schemaDoc :: DataType -> Doc
-schemaDoc d = vcat' [pragmas, module_header, import_list, declares]
+schemaDoc d = pragmas <> vcat' [module_header, import_list, declares]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
     module_header = hsep $ map text ["module", "MetaData.Schema." ++ name, "where"]
@@ -86,11 +86,11 @@ schemaBootDoc d = vcat' [module_header, declares]
     declares = fromDataType' d
 
 typeDoc :: Properties -> Doc
-typeDoc ps = vcat' [module_header, import_list, declares]
+typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
   where
     module_header = hsep $ map text ["module", "MetaData.Type", "where"]
     import_list = vcat' [import_external_modules, import_schema_modules]
-    import_external_modules = vsep $ map impdecl ["Data.Text"]
+    import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Time"]
       where 
         impdecl m = text "import" <+> text m
     import_schema_modules = vsep $ map (impdecl.("MetaData.Schema."++)) schema_modules
@@ -98,7 +98,18 @@ typeDoc ps = vcat' [module_header, import_list, declares]
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         modules = map ("MetaData.Schema."++) schema_modules
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
+    special_declares = vcat $ map sp_decl special_types
+      where
+        sp_decl (_, Nothing) = empty
+        sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
+
+special_types :: [(T.Text, Maybe Doc)]
+special_types = [ ("Text", Nothing)
+                , ("URL", Just $ text "Text")
+                , ("Date", Just $ text "Day")
+                , ("Number", Just $ hsep $ map text ["Either", "Integer", "Float"])
+                ]
 
 referedThings :: Properties -> V.Vector DataType
 referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
