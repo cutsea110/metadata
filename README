@@ -1,0 +1,10 @@
+This project can generate Text.HTML5.MetaData library.
+The library is all representations mapped from Schema.org's metadata.
+
+gen.hs is Main program and the execution generate metadata library(without cabal).
+
+$ cabal configure --user
+$ cabal build
+$ cp dist/build/gen-metadata/gen-metadata .
+$ ./gen-metadata
+
