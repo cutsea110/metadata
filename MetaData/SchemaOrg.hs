@@ -15,18 +15,22 @@ import MetaData.SchemaOrg.Doc
 createSchema :: IO ()
 createSchema = do
   (ts, ps) <- getSchema
-  h <- openFile (genMetaDataDir ++ "Type.hs") WriteMode
-  hPutDoc h $ typeDoc ps
-  hClose h
+  ht <- openFile (genMetaDataDir ++ "Type.hs") WriteMode
+  hPutDoc ht $ typeDoc ps
+  hClose ht
+  
+  hc <- openFile (genMetaDataDir ++ "Class.hs") WriteMode
+  hPutDoc hc classDoc
+  hClose hc
 
   forM_ (H.toList $ H.filter descendantOfThing ts) (\(_, d) -> do
-            h' <- openFile (bootPath d) WriteMode
-            hPutDoc h' $ schemaBootDoc d
-            hClose h'
+            hsb <- openFile (bootPath d) WriteMode
+            hPutDoc hsb $ schemaBootDoc d
+            hClose hsb
             
-            h'' <- openFile (path d) WriteMode
-            hPutDoc h'' $ schemaDoc d
-            hClose h''
+            hs <- openFile (path d) WriteMode
+            hPutDoc hs $ schemaDoc ps d
+            hClose hs
            )
   where
     genMetaDataDir = "gen/Text/HTML5/MetaData/"

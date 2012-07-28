@@ -3,10 +3,12 @@ module MetaData.SchemaOrg.Doc ( getSchema
                               , schemaBootDoc
                               , schemaDoc
                               , typeDoc
+                              , classDoc
                               ) where
 
 import Prelude hiding (id)
-import Data.List (nub, sort, intersperse)
+import Data.List (nub, sort, intersperse, find)
+import Data.Maybe (isJust)
 import qualified Data.Text as T hiding (intersperse)
 import qualified Data.HashMap.Strict as H
 import qualified Data.Vector as V
@@ -24,6 +26,10 @@ typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
 typeModuleName' :: T.Text
 typeModuleName' = "Text.HTML5.MetaData.Type."
+classModuleName :: T.Text
+classModuleName = "Text.HTML5.MetaData.Class"
+classModuleName' :: T.Text
+classModuleName' = "Text.HTML5.MetaData.Class."
 
 text' :: T.Text -> Doc
 text' = text . T.unpack
@@ -56,7 +62,7 @@ fromProperty p = case lookup (symbol p) special_types of
     com = hsep $ map text' ["-- |", comment p]
 
 fromDataType :: DataType -> Doc
-fromDataType d = com <$> vcat' [data_decl, instance_decl]
+fromDataType d = com <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
@@ -76,9 +82,37 @@ fromDataType d = com <$> vcat' [data_decl, instance_decl]
     derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
       where
         tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+
+fromDataType' :: DataType -> Doc
+fromDataType' d = vcat' [com , data_decl]
+  where
+    data_decl = hsep $ map text' ["data", symbol d]
+    com = hsep $ map text' ["-- |", comment d]
+
+schemaDoc :: Properties -> DataType -> Doc
+schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instance_decl]
+  where
+    pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
+    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
+      where
+        name = T.unpack $ symbol d
+    import_list = vcat [import_class_module, import_type_module, import_external_modules]
+      where
+        import_class_module = hsep $ map text' ["import", classModuleName]
+        import_type_module = if recursive || export_from_type_module
+                             then impdecl typeModuleName <+> hide (symbol d)
+                             else impdecl typeModuleName
+          where
+            props = properties d
+            recursive = isJust $ V.find ((==(symbol d)).symbol) props
+            export_from_type_module = isJust $ find (==symbol d) $ map symbol $ H.elems ps
+        import_external_modules = vsep $ map impdecl ["Data.Text"]
+        impdecl m = text "import" <+> text' m
+        hide t = hsep [text "hiding", lparen, text' t, rparen]
+    declares = fromDataType d
     instance_decl = nest 2 (ins_decl <$> fields)
       where
-        ins_decl = hsep $ map text ["instance", T.unpack typeModuleName'++"MetaData", T.unpack $ symbol d, "where"]
+        ins_decl = hsep $ map text ["instance", "MetaData", T.unpack $ symbol d, "where"]
         fields = align $ vcat $ map fld fs
           where
             flen = foldl max 0 $ map (T.length.fst) fs
@@ -91,40 +125,17 @@ fromDataType d = com <$> vcat' [data_decl, instance_decl]
                  , ("_url", url)
                  ]
 
-fromDataType' :: DataType -> Doc
-fromDataType' d = vcat' [com , data_decl]
-  where
-    data_decl = hsep $ map text' ["data", symbol d]
-    com = hsep $ map text' ["-- |", comment d]
-
-schemaDoc :: DataType -> Doc
-schemaDoc d = pragmas <$> vcat' [module_header, import_list, declares]
-  where
-    pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
-    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
-      where
-        name = T.unpack $ symbol d
-    import_list = vcat' [import_type_module, import_external_modules]
-      where
-        import_type_module = case recursive of
-          Just _ -> impdecl typeModuleName <+> hide (symbol d)
-          Nothing -> impdecl typeModuleName
-          where
-            props = properties d
-            recursive = V.find ((==(symbol d)).symbol) props
-        import_external_modules = vsep $ map impdecl ["Data.Text"]
-        impdecl m = text "import" <+> text' m
-        hide t = hsep [text "hiding", lparen, text' t, rparen]
-    declares = fromDataType d
-
 schemaBootDoc :: DataType -> Doc
-schemaBootDoc d = vcat' [module_header, declares, instance_declares]
+schemaBootDoc d = vcat' [module_header, import_list, declares, instance_declares]
   where
     module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
       where
         name = T.unpack (symbol d)
+    import_list = vsep $ map impdecl [classModuleName]
+      where
+        impdecl m = hsep $ map text' ["import", m]
     declares = fromDataType' d
-    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", T.unpack typeModuleName'++"MetaData"]
+    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", "MetaData"]
       where
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
@@ -140,15 +151,8 @@ typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    special_declares = vcat $ class_decl:map sp_decl special_types
+    special_declares = vcat $ map sp_decl special_types
       where
-        class_decl = nest 2 (cls_decl <$> fields)
-        cls_decl = hsep $ map text ["class", "MetaData", "a", "where"]
-        fields = align $ vcat $ map fld fs
-          where
-            flen = foldl max 0 $ map T.length fs
-            fld f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "Text"])
-            fs = ["_label","_comment_plain","_comment","_url"]
         sp_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
         sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
@@ -162,6 +166,22 @@ special_types = [ ("Text", Nothing)
                 , ("Float", Nothing)
                 , ("Boolean", Just $ text "Bool")
                 ]
+
+classDoc :: Doc
+classDoc = vcat' [module_header, import_list, class_declares]
+  where
+    module_header = hsep $ map text' ["module", classModuleName, "where"]
+    import_list = vsep $ map impdecl ["Data.Text"]
+      where
+        impdecl m = hsep $ map text ["import", m]
+    class_declares = nest 2 (cls_decl <$> fields)
+      where
+        cls_decl = hsep $ map text ["class", "MetaData", "a", "where"]
+        fields = align $ vcat $ map fld fs
+          where
+            flen = foldl max 0 $ map T.length fs
+            fld f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "Text"])
+            fs = ["_label","_comment_plain","_comment","_url"]
 
 referedThings :: Properties -> V.Vector DataType
 referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
