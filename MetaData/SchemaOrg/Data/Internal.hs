@@ -2,9 +2,9 @@
 module MetaData.SchemaOrg.Data.Internal 
        ( allJson
        , DataType(..)
-       , DataTypes(..)
+       , DataTypes
        , Property(..)
-       , Properties(..)
+       , Properties
        ) where
 
 import Data.Aeson

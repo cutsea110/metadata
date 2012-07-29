@@ -58,8 +58,6 @@ instance SchemaMeta Property where
 sym :: Text -> Text
 sym s = let (x, xs) = (head s, tail s) in cons (toUpper x) xs
 
--- types :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe DataTypes
--- types = liftA3 types'
 types' :: DataTypes -> Properties -> Object -> DataTypes
 types' t p o = H.map fromValue o
   where
@@ -79,8 +77,6 @@ types' t p o = H.map fromValue o
     toP = V.map (fromJust . flip H.lookup p . toText)
     toT = V.map (fromJust . flip H.lookup t . toText)
 
--- props :: Maybe DataTypes -> Maybe Properties -> Maybe Object -> Maybe Properties
--- props = liftA3 props'
 props' :: DataTypes -> Object -> Properties
 props' t o = H.map fromValue o
   where
