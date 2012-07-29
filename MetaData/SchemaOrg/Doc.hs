@@ -41,8 +41,8 @@ fromProperty p = case lookup (symbol p) special_types of
   where
     (rng, rlen, t1, t2) = (ranges p, V.length rng, rng V.! 0, rng V.! 1)
     (qnT1, qnT2) = (qualified_name (id t1), qualified_name (id t2))
-    type_decl True  = vcat [com, type_decl']
-    type_decl False = vcat [com, hsep [text "--", type_decl']]
+    type_decl True  = vcat [comms, type_decl']
+    type_decl False = vcat [comms, hsep [text "--", type_decl']]
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | otherwise = error "Found a property which has more than 3 types."
@@ -51,7 +51,19 @@ fromProperty p = case lookup (symbol p) special_types of
     qualified_name s = case lookup s special_types of 
       Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
       Just _ -> s
-    com = hsep $ map text' ["-- |", comment p]
+    comms = vcat [c_id, c_label, c_comment_plain, c_comment, c_domains, c_ranges]
+      where
+        c_id = hsep $ map text' ["-- |", "[@id@]", id p]
+        c_label = hsep $ map text' ["--  ", "[@label@]", label p]
+        c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain p]
+        c_comment = hsep $ map text' ["--  ", "[@comment@]", comment p]
+        c_domains = hsep (map text' ["--  ", "[@domains@]", "This used in"]) 
+                    <+> (char '@' <> hcat (intersperse comma $ map link doms) <> char '@')
+        c_ranges = hsep (map text' ["--  ", "[@ranges@]"])
+                   <+> (char '@' <> hcat (intersperse comma $ map link rngs) <> char '@')
+        link t = char '\'' <> text' t <> char '\''
+        doms = map symbol $ V.toList $ domains p
+        rngs = map symbol $ V.toList $ ranges p
 
 fromDataType :: DataType -> Doc
 fromDataType d = com <$> data_decl
