@@ -51,26 +51,20 @@ fromProperty p = case lookup (symbol p) special_types of
     qualified_name s = case lookup s special_types of 
       Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
       Just _ -> s
-    comms = vcat [c_id, c_label, c_comment_plain, c_comment, c_domains, c_ranges]
+    comms = vcat [common_comms p, c_domains, c_ranges]
       where
-        c_id = hsep $ map text' ["-- |", "[@id@]", id p]
-        c_label = hsep $ map text' ["--  ", "[@label@]", label p]
-        c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain p]
-        c_comment = hsep $ map text' ["--  ", "[@comment@]", comment p]
-        c_domains = hsep (map text' ["--  ", "[@domains@]", "This used in"]) 
-                    <+> (char '@' <> hcat (intersperse comma $ map link doms) <> char '@')
+        c_domains = hsep (map text' ["--  ", "[@domains@]"]) 
+                    <+> (char '@' <> hcat (intersperse comma $ map link $ syms domains) <> char '@')
         c_ranges = hsep (map text' ["--  ", "[@ranges@]"])
-                   <+> (char '@' <> hcat (intersperse comma $ map link rngs) <> char '@')
+                   <+> (char '@' <> hcat (intersperse comma $ map link $ syms ranges) <> char '@')
         link t = char '\'' <> text' t <> char '\''
-        doms = map symbol $ V.toList $ domains p
-        rngs = map symbol $ V.toList $ ranges p
+        syms f = map symbol $ V.toList $ f p
 
 fromDataType :: DataType -> Doc
-fromDataType d = com <$> data_decl
+fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    com = hsep $ map text' ["-- |", comment d]
     data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derive]]
       where
         props = properties d
@@ -86,6 +80,25 @@ fromDataType d = com <$> data_decl
     derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
       where
         tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+    comms = vcat [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
+      where
+        c_ancestors = li "ancestors" ancestors
+        c_subtypes = li "subtypes" subtypes
+        c_supertypes = li "supertypes" supertypes
+        c_url = hsep (map text ["--  ", "[@url@]"])
+                <+> (char '<' <> text' (url d) <> char '>')
+        li c f = hsep (map text ["--  ", "[@"++c++"@]"])
+                 <+> (char '@' <> hcat (intersperse comma $ map link $ syms f) <> char '@')
+        link t = char '\'' <> text' t <> char '\''
+        syms f = map symbol $ V.toList $ f d
+
+common_comms :: SchemaMeta a => a -> Doc
+common_comms md = vcat [c_id, c_label, c_comment_plain, c_comment]
+  where
+    c_id = hsep $ map text' ["-- |", "[@id@]", id md]
+    c_label = hsep $ map text' ["--  ", "[@label@]", label md]
+    c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain md]
+    c_comment = hsep $ map text' ["--  ", "[@comment@]", comment md]
 
 fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
