@@ -51,8 +51,9 @@ fromProperty p = case lookup (symbol p) special_types of
     qualified_name s = case lookup s special_types of 
       Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
       Just _ -> s
-    comms = vcat [common_comms p, c_domains, c_ranges]
+    comms = vcat $ intersperse nulline [common_comms p, c_domains, c_ranges]
       where
+        nulline = hsep $ map text ["--"]
         c_domains = hsep (map text' ["--  ", "[@domains@]"]) 
                     <+> (char '@' <> hcat (intersperse comma $ map link $ syms domains) <> char '@')
         c_ranges = hsep (map text' ["--  ", "[@ranges@]"])
@@ -80,8 +81,9 @@ fromDataType d = comms <$> data_decl
     derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
       where
         tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
-    comms = vcat [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
+    comms = vcat $ intersperse nulline [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
       where
+        nulline = hsep $ map text ["--"]
         c_ancestors = li "ancestors" ancestors
         c_subtypes = li "subtypes" subtypes
         c_supertypes = li "supertypes" supertypes
@@ -93,11 +95,12 @@ fromDataType d = comms <$> data_decl
         syms f = map symbol $ V.toList $ f d
 
 common_comms :: SchemaMeta a => a -> Doc
-common_comms md = vcat [c_id, c_label, c_comment_plain, c_comment]
+common_comms md = vcat $ intersperse nulline [c_comment_plain, c_id, c_label, c_comment]
   where
-    c_id = hsep $ map text' ["-- |", "[@id@]", id md]
+    nulline = hsep $ map text ["--"]
+    c_comment_plain = hsep $ map text' ["-- |", comment_plain md]
+    c_id = hsep $ map text' ["--  ", "[@id@]", id md]
     c_label = hsep $ map text' ["--  ", "[@label@]", label md]
-    c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain md]
     c_comment = hsep $ map text' ["--  ", "[@comment@]", comment md]
 
 valid_comment :: T.Text -> Doc
