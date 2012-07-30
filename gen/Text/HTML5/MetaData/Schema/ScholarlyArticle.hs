@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ScholarlyArticle where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A scholarly article.
+-- | [@id@] ScholarlyArticle
+--   [@label@] Scholarly Article
+--   [@comment_plain@] A scholarly article.
+--   [@comment@] A scholarly article.
+--   [@ancestors@] @'Thing','CreativeWork','Article'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Article'@
+--   [@url@] <http://schema.org/ScholarlyArticle>
 data ScholarlyArticle = ScholarlyArticle { description :: Description
                                          , image :: Image
                                          , name :: Name

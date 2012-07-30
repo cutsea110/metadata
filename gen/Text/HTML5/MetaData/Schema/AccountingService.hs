@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AccountingService where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Accountancy business.
+-- | [@id@] AccountingService
+--   [@label@] Accounting Service
+--   [@comment_plain@] Accountancy business.
+--   [@comment@] Accountancy business.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'ProfessionalService','FinancialService'@
+--   [@url@] <http://schema.org/AccountingService>
 data AccountingService = AccountingService { description :: Description
                                            , image :: Image
                                            , name :: Name

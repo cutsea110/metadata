@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MobileApplication where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | None
+-- | [@id@] MobileApplication
+--   [@label@] Mobile Application
+--   [@comment_plain@] None
+--   [@comment@] None
+--   [@ancestors@] @'Thing','CreativeWork','SoftwareApplication'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'SoftwareApplication'@
+--   [@url@] <http://schema.org/MobileApplication>
 data MobileApplication = MobileApplication { description :: Description
                                            , image :: Image
                                            , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ChildrensEvent where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Children's event.
+-- | [@id@] ChildrensEvent
+--   [@label@] Childrens Event
+--   [@comment_plain@] Event type: Children's event.
+--   [@comment@] Event type: Children's event.
+--   [@ancestors@] @'Thing','Event'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Event'@
+--   [@url@] <http://schema.org/ChildrensEvent>
 data ChildrensEvent = ChildrensEvent { description :: Description
                                      , image :: Image
                                      , name :: Name

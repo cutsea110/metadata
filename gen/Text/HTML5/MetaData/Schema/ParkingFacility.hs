@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ParkingFacility where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A parking lot or other parking facility.
+-- | [@id@] ParkingFacility
+--   [@label@] Parking Facility
+--   [@comment_plain@] A parking lot or other parking facility.
+--   [@comment@] A parking lot or other parking facility.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/ParkingFacility>
 data ParkingFacility = ParkingFacility { description :: Description
                                        , image :: Image
                                        , name :: Name

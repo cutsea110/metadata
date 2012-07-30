@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DanceEvent where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: A social dance.
+-- | [@id@] DanceEvent
+--   [@label@] Dance Event
+--   [@comment_plain@] Event type: A social dance.
+--   [@comment@] Event type: A social dance.
+--   [@ancestors@] @'Thing','Event'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Event'@
+--   [@url@] <http://schema.org/DanceEvent>
 data DanceEvent = DanceEvent { description :: Description
                              , image :: Image
                              , name :: Name

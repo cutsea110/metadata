@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.VeterinaryCare where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A vet's office.
+-- | [@id@] VeterinaryCare
+--   [@label@] Veterinary Care
+--   [@comment_plain@] A vet's office.
+--   [@comment@] A vet's office.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'MedicalOrganization'@
+--   [@url@] <http://schema.org/VeterinaryCare>
 data VeterinaryCare = VeterinaryCare { description :: Description
                                      , image :: Image
                                      , name :: Name

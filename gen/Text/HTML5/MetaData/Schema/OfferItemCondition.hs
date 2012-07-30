@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.OfferItemCondition where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A list of possible conditions for the item for sale.
+-- | [@id@] OfferItemCondition
+--   [@label@] Offer Item Condition
+--   [@comment_plain@] A list of possible conditions for the item for sale.
+--   [@comment@] A list of possible conditions for the item for sale.
+--   [@ancestors@] @'Thing','Intangible','Enumeration'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Enumeration'@
+--   [@url@] <http://schema.org/OfferItemCondition>
 data OfferItemCondition = DamagedCondition
                         | NewCondition
                         | RefurbishedCondition

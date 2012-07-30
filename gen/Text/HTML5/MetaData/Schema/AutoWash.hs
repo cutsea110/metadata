@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AutoWash where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A car wash business.
+-- | [@id@] AutoWash
+--   [@label@] Auto Wash
+--   [@comment_plain@] A car wash business.
+--   [@comment@] A car wash business.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','AutomotiveBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'AutomotiveBusiness'@
+--   [@url@] <http://schema.org/AutoWash>
 data AutoWash = AutoWash { description :: Description
                          , image :: Image
                          , name :: Name

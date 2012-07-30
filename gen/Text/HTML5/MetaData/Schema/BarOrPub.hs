@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BarOrPub where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bar or pub.
+-- | [@id@] BarOrPub
+--   [@label@] Bar or Pub
+--   [@comment_plain@] A bar or pub.
+--   [@comment@] A bar or pub.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FoodEstablishment'@
+--   [@url@] <http://schema.org/BarOrPub>
 data BarOrPub = BarOrPub { description :: Description
                          , image :: Image
                          , name :: Name

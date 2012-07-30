@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GeoCoordinates where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The geographic coordinates of a place or event.
+-- | [@id@] GeoCoordinates
+--   [@label@] Geo Coordinates
+--   [@comment_plain@] The geographic coordinates of a place or event.
+--   [@comment@] The geographic coordinates of a place or event.
+--   [@ancestors@] @'Thing','Intangible','StructuredValue'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'StructuredValue'@
+--   [@url@] <http://schema.org/GeoCoordinates>
 data GeoCoordinates = GeoCoordinates { description :: Description
                                      , image :: Image
                                      , name :: Name

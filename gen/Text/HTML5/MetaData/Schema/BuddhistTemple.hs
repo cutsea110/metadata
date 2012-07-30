@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BuddhistTemple where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Buddhist temple.
+-- | [@id@] BuddhistTemple
+--   [@label@] Buddhist Temple
+--   [@comment_plain@] A Buddhist temple.
+--   [@comment@] A Buddhist temple.
+--   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'PlaceOfWorship'@
+--   [@url@] <http://schema.org/BuddhistTemple>
 data BuddhistTemple = BuddhistTemple { description :: Description
                                      , image :: Image
                                      , name :: Name

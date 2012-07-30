@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AboutPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: About page.
+-- | [@id@] AboutPage
+--   [@label@] About Page
+--   [@comment_plain@] Web page type: About page.
+--   [@comment@] Web page type: About page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/AboutPage>
 data AboutPage = AboutPage { description :: Description
                            , image :: Image
                            , name :: Name

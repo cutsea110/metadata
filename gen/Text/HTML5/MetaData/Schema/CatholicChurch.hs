@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CatholicChurch where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Catholic church.
+-- | [@id@] CatholicChurch
+--   [@label@] Catholic Church
+--   [@comment_plain@] A Catholic church.
+--   [@comment@] A Catholic church.
+--   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'PlaceOfWorship'@
+--   [@url@] <http://schema.org/CatholicChurch>
 data CatholicChurch = CatholicChurch { description :: Description
                                      , image :: Image
                                      , name :: Name

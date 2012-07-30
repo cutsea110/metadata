@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.State where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A state or province.
+-- | [@id@] State
+--   [@label@] State
+--   [@comment_plain@] A state or province.
+--   [@comment@] A state or province.
+--   [@ancestors@] @'Thing','Place','AdministrativeArea'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'AdministrativeArea'@
+--   [@url@] <http://schema.org/State>
 data State = State { description :: Description
                    , image :: Image
                    , name :: Name

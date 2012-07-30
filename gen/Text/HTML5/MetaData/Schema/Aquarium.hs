@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Aquarium where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Aquarium.
+-- | [@id@] Aquarium
+--   [@label@] Aquarium
+--   [@comment_plain@] Aquarium.
+--   [@comment@] Aquarium.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Aquarium>
 data Aquarium = Aquarium { description :: Description
                          , image :: Image
                          , name :: Name

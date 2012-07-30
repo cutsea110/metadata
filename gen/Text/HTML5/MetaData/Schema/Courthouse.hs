@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Courthouse where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A courthouse.
+-- | [@id@] Courthouse
+--   [@label@] Courthouse
+--   [@comment_plain@] A courthouse.
+--   [@comment@] A courthouse.
+--   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'GovernmentBuilding'@
+--   [@url@] <http://schema.org/Courthouse>
 data Courthouse = Courthouse { description :: Description
                              , image :: Image
                              , name :: Name

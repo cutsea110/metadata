@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SportsTeam where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Organization: Sports team.
+-- | [@id@] SportsTeam
+--   [@label@] Sports Team
+--   [@comment_plain@] Organization: Sports team.
+--   [@comment@] Organization: Sports team.
+--   [@ancestors@] @'Thing','Organization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Organization'@
+--   [@url@] <http://schema.org/SportsTeam>
 data SportsTeam = SportsTeam { description :: Description
                              , image :: Image
                              , name :: Name

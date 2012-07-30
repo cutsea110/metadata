@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPAdBlock where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An advertising section of the page.
+-- | [@id@] WPAdBlock
+--   [@label@] WP Ad Block
+--   [@comment_plain@] An advertising section of the page.
+--   [@comment@] An advertising section of the page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPageElement'@
+--   [@url@] <http://schema.org/WPAdBlock>
 data WPAdBlock = WPAdBlock { description :: Description
                            , image :: Image
                            , name :: Name

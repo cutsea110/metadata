@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CollegeOrUniversity where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A college, university, or other third-level educational institution.
+-- | [@id@] CollegeOrUniversity
+--   [@label@] College or University
+--   [@comment_plain@] A college, university, or other third-level educational institution.
+--   [@comment@] A college, university, or other third-level educational institution.
+--   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EducationalOrganization'@
+--   [@url@] <http://schema.org/CollegeOrUniversity>
 data CollegeOrUniversity = CollegeOrUniversity { description :: Description
                                                , image :: Image
                                                , name :: Name

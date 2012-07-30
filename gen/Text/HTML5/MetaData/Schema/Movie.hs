@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Movie where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A movie.
+-- | [@id@] Movie
+--   [@label@] Movie
+--   [@comment_plain@] A movie.
+--   [@comment@] A movie.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/Movie>
 data Movie = Movie { description :: Description
                    , image :: Image
                    , name :: Name

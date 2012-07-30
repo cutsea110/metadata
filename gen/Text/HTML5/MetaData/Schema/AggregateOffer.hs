@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AggregateOffer where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | When a single product that has different offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
+-- | [@id@] AggregateOffer
+--   [@label@] Aggregate Offer
+--   [@comment_plain@] When a single product that has different offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
+--   [@comment@] When a single product that has different offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
+--   [@ancestors@] @'Thing','Intangible','Offer'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Offer'@
+--   [@url@] <http://schema.org/AggregateOffer>
 data AggregateOffer = AggregateOffer { description :: Description
                                      , image :: Image
                                      , name :: Name

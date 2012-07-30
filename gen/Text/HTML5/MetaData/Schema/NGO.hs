@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NGO where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Organization: Non-governmental Organization.
+-- | [@id@] NGO
+--   [@label@] NGO
+--   [@comment_plain@] Organization: Non-governmental Organization.
+--   [@comment@] Organization: Non-governmental Organization.
+--   [@ancestors@] @'Thing','Organization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Organization'@
+--   [@url@] <http://schema.org/NGO>
 data NGO = NGO { description :: Description
                , image :: Image
                , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GeneralContractor where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A general contractor.
+-- | [@id@] GeneralContractor
+--   [@label@] General Contractor
+--   [@comment_plain@] A general contractor.
+--   [@comment@] A general contractor.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HomeAndConstructionBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'HomeAndConstructionBusiness','ProfessionalService'@
+--   [@url@] <http://schema.org/GeneralContractor>
 data GeneralContractor = GeneralContractor { description :: Description
                                            , image :: Image
                                            , name :: Name

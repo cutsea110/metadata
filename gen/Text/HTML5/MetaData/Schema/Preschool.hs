@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Preschool where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A preschool.
+-- | [@id@] Preschool
+--   [@label@] Preschool
+--   [@comment_plain@] A preschool.
+--   [@comment@] A preschool.
+--   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EducationalOrganization'@
+--   [@url@] <http://schema.org/Preschool>
 data Preschool = Preschool { description :: Description
                            , image :: Image
                            , name :: Name

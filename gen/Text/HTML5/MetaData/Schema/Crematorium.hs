@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Crematorium where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A crematorium.
+-- | [@id@] Crematorium
+--   [@label@] Crematorium
+--   [@comment_plain@] A crematorium.
+--   [@comment@] A crematorium.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Crematorium>
 data Crematorium = Crematorium { description :: Description
                                , image :: Image
                                , name :: Name

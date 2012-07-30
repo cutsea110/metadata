@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.InsuranceAgency where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Insurance agency.
+-- | [@id@] InsuranceAgency
+--   [@label@] Insurance Agency
+--   [@comment_plain@] Insurance agency.
+--   [@comment@] Insurance agency.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FinancialService'@
+--   [@url@] <http://schema.org/InsuranceAgency>
 data InsuranceAgency = InsuranceAgency { description :: Description
                                        , image :: Image
                                        , name :: Name

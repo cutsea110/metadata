@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AmusementPark where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An amusement park.
+-- | [@id@] AmusementPark
+--   [@label@] Amusement Park
+--   [@comment_plain@] An amusement park.
+--   [@comment@] An amusement park.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EntertainmentBusiness'@
+--   [@url@] <http://schema.org/AmusementPark>
 data AmusementPark = AmusementPark { description :: Description
                                    , image :: Image
                                    , name :: Name

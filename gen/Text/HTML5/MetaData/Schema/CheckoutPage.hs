@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CheckoutPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Checkout page.
+-- | [@id@] CheckoutPage
+--   [@label@] Checkout Page
+--   [@comment_plain@] Web page type: Checkout page.
+--   [@comment@] Web page type: Checkout page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/CheckoutPage>
 data CheckoutPage = CheckoutPage { description :: Description
                                  , image :: Image
                                  , name :: Name

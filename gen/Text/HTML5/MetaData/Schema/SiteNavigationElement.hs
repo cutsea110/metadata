@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SiteNavigationElement where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A navigation element of the page.
+-- | [@id@] SiteNavigationElement
+--   [@label@] Site Navigation Element
+--   [@comment_plain@] A navigation element of the page.
+--   [@comment@] A navigation element of the page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPageElement'@
+--   [@url@] <http://schema.org/SiteNavigationElement>
 data SiteNavigationElement = SiteNavigationElement { description :: Description
                                                    , image :: Image
                                                    , name :: Name

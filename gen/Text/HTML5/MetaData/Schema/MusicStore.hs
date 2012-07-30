@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicStore where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A music store.
+-- | [@id@] MusicStore
+--   [@label@] Music Store
+--   [@comment_plain@] A music store.
+--   [@comment@] A music store.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/MusicStore>
 data MusicStore = MusicStore { description :: Description
                              , image :: Image
                              , name :: Name

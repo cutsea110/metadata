@@ -1,5 +1,7 @@
 module Text.HTML5.MetaData.Class where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Data.Text
 
 class MetaData a where

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PlaceOfWorship where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Place of worship, such as a church, synagogue, or mosque.
+-- | [@id@] PlaceOfWorship
+--   [@label@] Place of Worship
+--   [@comment_plain@] Place of worship, such as a church, synagogue, or mosque.
+--   [@comment@] Place of worship, such as a church, synagogue, or mosque.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @'BuddhistTemple','CatholicChurch','Church','HinduTemple','Mosque','Synagogue'@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/PlaceOfWorship>
 data PlaceOfWorship = PlaceOfWorship { description :: Description
                                      , image :: Image
                                      , name :: Name

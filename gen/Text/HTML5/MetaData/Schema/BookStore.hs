@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BookStore where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bookstore.
+-- | [@id@] BookStore
+--   [@label@] Book Store
+--   [@comment_plain@] A bookstore.
+--   [@comment@] A bookstore.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/BookStore>
 data BookStore = BookStore { description :: Description
                            , image :: Image
                            , name :: Name

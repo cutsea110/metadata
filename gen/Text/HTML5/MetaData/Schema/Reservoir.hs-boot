@@ -1,5 +1,7 @@
 module Text.HTML5.MetaData.Schema.Reservoir where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 
 -- | A reservoir, like the Lake Kariba reservoir.

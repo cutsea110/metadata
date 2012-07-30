@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Thing where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The most generic type of item.
+-- | [@id@] Thing
+--   [@label@] Thing
+--   [@comment_plain@] The most generic type of item.
+--   [@comment@] The most generic type of item.
+--   [@ancestors@] @@
+--   [@subtypes@] @'CreativeWork','Event','Intangible','Organization','Person','Place','Product'@
+--   [@supertypes@] @@
+--   [@url@] <http://schema.org/Thing>
 data Thing = Thing { description :: Description
                    , image :: Image
                    , name :: Name

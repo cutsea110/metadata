@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Bakery where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bakery.
+-- | [@id@] Bakery
+--   [@label@] Bakery
+--   [@comment_plain@] A bakery.
+--   [@comment@] A bakery.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FoodEstablishment'@
+--   [@url@] <http://schema.org/Bakery>
 data Bakery = Bakery { description :: Description
                      , image :: Image
                      , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AnimalShelter where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Animal shelter.
+-- | [@id@] AnimalShelter
+--   [@label@] Animal Shelter
+--   [@comment_plain@] Animal shelter.
+--   [@comment@] Animal shelter.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/AnimalShelter>
 data AnimalShelter = AnimalShelter { description :: Description
                                    , image :: Image
                                    , name :: Name

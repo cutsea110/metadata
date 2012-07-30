@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TheaterGroup where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A theater group or company—for example, the Royal Shakespeare Company or Druid Theatre.
+-- | [@id@] TheaterGroup
+--   [@label@] Theater Group
+--   [@comment_plain@] A theater group or company—for example, the Royal Shakespeare Company or Druid Theatre.
+--   [@comment@] A theater group or company—for example, the Royal Shakespeare Company or Druid Theatre.
+--   [@ancestors@] @'Thing','Organization','PerformingGroup'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'PerformingGroup'@
+--   [@url@] <http://schema.org/TheaterGroup>
 data TheaterGroup = TheaterGroup { description :: Description
                                  , image :: Image
                                  , name :: Name

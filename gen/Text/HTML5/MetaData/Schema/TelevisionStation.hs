@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TelevisionStation where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A television station.
+-- | [@id@] TelevisionStation
+--   [@label@] Television Station
+--   [@comment_plain@] A television station.
+--   [@comment@] A television station.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/TelevisionStation>
 data TelevisionStation = TelevisionStation { description :: Description
                                            , image :: Image
                                            , name :: Name

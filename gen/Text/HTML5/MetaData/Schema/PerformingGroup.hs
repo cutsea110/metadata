@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PerformingGroup where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A performance group, such as a band, an orchestra, or a circus.
+-- | [@id@] PerformingGroup
+--   [@label@] Performing Group
+--   [@comment_plain@] A performance group, such as a band, an orchestra, or a circus.
+--   [@comment@] A performance group, such as a band, an orchestra, or a circus.
+--   [@ancestors@] @'Thing','Organization'@
+--   [@subtypes@] @'DanceGroup','MusicGroup','TheaterGroup'@
+--   [@supertypes@] @'Organization'@
+--   [@url@] <http://schema.org/PerformingGroup>
 data PerformingGroup = PerformingGroup { description :: Description
                                        , image :: Image
                                        , name :: Name

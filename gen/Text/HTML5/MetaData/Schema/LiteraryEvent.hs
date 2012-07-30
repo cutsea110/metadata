@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LiteraryEvent where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Literary event.
+-- | [@id@] LiteraryEvent
+--   [@label@] Literary Event
+--   [@comment_plain@] Event type: Literary event.
+--   [@comment@] Event type: Literary event.
+--   [@ancestors@] @'Thing','Event'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Event'@
+--   [@url@] <http://schema.org/LiteraryEvent>
 data LiteraryEvent = LiteraryEvent { description :: Description
                                    , image :: Image
                                    , name :: Name

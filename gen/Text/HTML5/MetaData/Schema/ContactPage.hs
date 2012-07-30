@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ContactPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Contact page.
+-- | [@id@] ContactPage
+--   [@label@] Contact Page
+--   [@comment_plain@] Web page type: Contact page.
+--   [@comment@] Web page type: Contact page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/ContactPage>
 data ContactPage = ContactPage { description :: Description
                                , image :: Image
                                , name :: Name

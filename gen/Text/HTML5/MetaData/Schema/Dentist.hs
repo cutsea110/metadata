@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Dentist where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dentist.
+-- | [@id@] Dentist
+--   [@label@] Dentist
+--   [@comment_plain@] A dentist.
+--   [@comment@] A dentist.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'MedicalOrganization','ProfessionalService'@
+--   [@url@] <http://schema.org/Dentist>
 data Dentist = Dentist { description :: Description
                        , image :: Image
                        , name :: Name

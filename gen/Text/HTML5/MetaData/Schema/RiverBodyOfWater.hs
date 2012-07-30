@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.RiverBodyOfWater where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A river (for example, the broad majestic Shannon).
+-- | [@id@] RiverBodyOfWater
+--   [@label@] River Body of Water
+--   [@comment_plain@] A river (for example, the broad majestic Shannon).
+--   [@comment@] A river (for example, the broad majestic Shannon).
+--   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'BodyOfWater'@
+--   [@url@] <http://schema.org/RiverBodyOfWater>
 data RiverBodyOfWater = RiverBodyOfWater { description :: Description
                                          , image :: Image
                                          , name :: Name

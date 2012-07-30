@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.StructuredValue where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Structured values are strings—for example, addresses—that have certain constraints on their structure.
+-- | [@id@] StructuredValue
+--   [@label@] Structured Value
+--   [@comment_plain@] Structured values are strings—for example, addresses—that have certain constraints on their structure.
+--   [@comment@] Structured values are strings—for example, addresses—that have certain constraints on their structure.
+--   [@ancestors@] @'Thing','Intangible'@
+--   [@subtypes@] @'ContactPoint','GeoCoordinates','GeoShape','NutritionInformation'@
+--   [@supertypes@] @'Intangible'@
+--   [@url@] <http://schema.org/StructuredValue>
 data StructuredValue = StructuredValue { description :: Description
                                        , image :: Image
                                        , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TravelAgency where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A travel agency.
+-- | [@id@] TravelAgency
+--   [@label@] Travel Agency
+--   [@comment_plain@] A travel agency.
+--   [@comment@] A travel agency.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/TravelAgency>
 data TravelAgency = TravelAgency { description :: Description
                                  , image :: Image
                                  , name :: Name

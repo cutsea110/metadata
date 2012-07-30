@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.City where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A city or town.
+-- | [@id@] City
+--   [@label@] City
+--   [@comment_plain@] A city or town.
+--   [@comment@] A city or town.
+--   [@ancestors@] @'Thing','Place','AdministrativeArea'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'AdministrativeArea'@
+--   [@url@] <http://schema.org/City>
 data City = City { description :: Description
                  , image :: Image
                  , name :: Name

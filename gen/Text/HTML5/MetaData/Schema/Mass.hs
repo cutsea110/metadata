@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Mass where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+-- | [@id@] Mass
+--   [@label@] Mass
+--   [@comment_plain@] Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+--   [@comment@] Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+--   [@ancestors@] @'Thing','Intangible','Quantity'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Quantity'@
+--   [@url@] <http://schema.org/Mass>
 data Mass = Mass { description :: Description
                  , image :: Image
                  , name :: Name

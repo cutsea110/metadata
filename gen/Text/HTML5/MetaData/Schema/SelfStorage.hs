@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SelfStorage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Self-storage facility.
+-- | [@id@] SelfStorage
+--   [@label@] Self Storage
+--   [@comment_plain@] Self-storage facility.
+--   [@comment@] Self-storage facility.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/SelfStorage>
 data SelfStorage = SelfStorage { description :: Description
                                , image :: Image
                                , name :: Name

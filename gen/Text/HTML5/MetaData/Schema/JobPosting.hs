@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.JobPosting where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A listing that describes a job opening in a certain organization.
+-- | [@id@] JobPosting
+--   [@label@] Job Posting
+--   [@comment_plain@] A listing that describes a job opening in a certain organization.
+--   [@comment@] A listing that describes a job opening in a certain organization.
+--   [@ancestors@] @'Thing','Intangible'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Intangible'@
+--   [@url@] <http://schema.org/JobPosting>
 data JobPosting = JobPosting { description :: Description
                              , image :: Image
                              , name :: Name

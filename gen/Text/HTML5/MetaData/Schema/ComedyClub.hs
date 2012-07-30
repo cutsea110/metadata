@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ComedyClub where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A comedy club.
+-- | [@id@] ComedyClub
+--   [@label@] Comedy Club
+--   [@comment_plain@] A comedy club.
+--   [@comment@] A comedy club.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EntertainmentBusiness'@
+--   [@url@] <http://schema.org/ComedyClub>
 data ComedyClub = ComedyClub { description :: Description
                              , image :: Image
                              , name :: Name

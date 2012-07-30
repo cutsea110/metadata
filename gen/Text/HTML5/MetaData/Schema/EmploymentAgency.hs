@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.EmploymentAgency where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An employment agency.
+-- | [@id@] EmploymentAgency
+--   [@label@] Employment Agency
+--   [@comment_plain@] An employment agency.
+--   [@comment@] An employment agency.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/EmploymentAgency>
 data EmploymentAgency = EmploymentAgency { description :: Description
                                          , image :: Image
                                          , name :: Name

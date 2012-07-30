@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MovieRentalStore where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A movie rental store.
+-- | [@id@] MovieRentalStore
+--   [@label@] Movie Rental Store
+--   [@comment_plain@] A movie rental store.
+--   [@comment@] A movie rental store.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/MovieRentalStore>
 data MovieRentalStore = MovieRentalStore { description :: Description
                                          , image :: Image
                                          , name :: Name

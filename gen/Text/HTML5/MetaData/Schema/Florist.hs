@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Florist where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A florist.
+-- | [@id@] Florist
+--   [@label@] Florist
+--   [@comment_plain@] A florist.
+--   [@comment@] A florist.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/Florist>
 data Florist = Florist { description :: Description
                        , image :: Image
                        , name :: Name

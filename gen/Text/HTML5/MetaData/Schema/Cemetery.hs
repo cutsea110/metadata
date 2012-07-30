@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Cemetery where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A graveyard.
+-- | [@id@] Cemetery
+--   [@label@] Cemetery
+--   [@comment_plain@] A graveyard.
+--   [@comment@] A graveyard.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Cemetery>
 data Cemetery = Cemetery { description :: Description
                          , image :: Image
                          , name :: Name

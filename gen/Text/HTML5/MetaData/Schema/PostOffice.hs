@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PostOffice where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A post office.
+-- | [@id@] PostOffice
+--   [@label@] Post Office
+--   [@comment_plain@] A post office.
+--   [@comment@] A post office.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','GovernmentOffice'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'GovernmentOffice'@
+--   [@url@] <http://schema.org/PostOffice>
 data PostOffice = PostOffice { description :: Description
                              , image :: Image
                              , name :: Name

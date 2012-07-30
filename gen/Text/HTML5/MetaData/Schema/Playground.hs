@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Playground where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A playground.
+-- | [@id@] Playground
+--   [@label@] Playground
+--   [@comment_plain@] A playground.
+--   [@comment@] A playground.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Playground>
 data Playground = Playground { description :: Description
                              , image :: Image
                              , name :: Name

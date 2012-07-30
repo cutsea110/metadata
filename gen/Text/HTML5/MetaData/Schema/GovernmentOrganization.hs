@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GovernmentOrganization where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A governmental organization or agency.
+-- | [@id@] GovernmentOrganization
+--   [@label@] Government Organization
+--   [@comment_plain@] A governmental organization or agency.
+--   [@comment@] A governmental organization or agency.
+--   [@ancestors@] @'Thing','Organization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Organization'@
+--   [@url@] <http://schema.org/GovernmentOrganization>
 data GovernmentOrganization = GovernmentOrganization { description :: Description
                                                      , image :: Image
                                                      , name :: Name

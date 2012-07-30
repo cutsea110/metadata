@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TaxiStand where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A taxi stand.
+-- | [@id@] TaxiStand
+--   [@label@] Taxi Stand
+--   [@comment_plain@] A taxi stand.
+--   [@comment@] A taxi stand.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/TaxiStand>
 data TaxiStand = TaxiStand { description :: Description
                            , image :: Image
                            , name :: Name

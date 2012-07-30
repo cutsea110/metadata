@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Airport where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An airport.
+-- | [@id@] Airport
+--   [@label@] Airport
+--   [@comment_plain@] An airport.
+--   [@comment@] An airport.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Airport>
 data Airport = Airport { description :: Description
                        , image :: Image
                        , name :: Name

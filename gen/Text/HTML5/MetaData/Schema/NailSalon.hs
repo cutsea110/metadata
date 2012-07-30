@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NailSalon where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A nail salon.
+-- | [@id@] NailSalon
+--   [@label@] Nail Salon
+--   [@comment_plain@] A nail salon.
+--   [@comment@] A nail salon.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'HealthAndBeautyBusiness'@
+--   [@url@] <http://schema.org/NailSalon>
 data NailSalon = NailSalon { description :: Description
                            , image :: Image
                            , name :: Name

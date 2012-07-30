@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ApartmentComplex where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Residence type: Apartment complex.
+-- | [@id@] ApartmentComplex
+--   [@label@] Apartment Complex
+--   [@comment_plain@] Residence type: Apartment complex.
+--   [@comment@] Residence type: Apartment complex.
+--   [@ancestors@] @'Thing','Place','Residence'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Residence'@
+--   [@url@] <http://schema.org/ApartmentComplex>
 data ApartmentComplex = ApartmentComplex { description :: Description
                                          , image :: Image
                                          , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NewsArticle where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A news article
+-- | [@id@] NewsArticle
+--   [@label@] News Article
+--   [@comment_plain@] A news article
+--   [@comment@] A news article
+--   [@ancestors@] @'Thing','CreativeWork','Article'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Article'@
+--   [@url@] <http://schema.org/NewsArticle>
 data NewsArticle = NewsArticle { description :: Description
                                , image :: Image
                                , name :: Name

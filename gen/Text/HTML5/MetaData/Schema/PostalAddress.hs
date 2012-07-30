@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PostalAddress where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The mailing address.
+-- | [@id@] PostalAddress
+--   [@label@] Postal Address
+--   [@comment_plain@] The mailing address.
+--   [@comment@] The mailing address.
+--   [@ancestors@] @'Thing','Intangible','StructuredValue','ContactPoint'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'ContactPoint'@
+--   [@url@] <http://schema.org/PostalAddress>
 data PostalAddress = PostalAddress { description :: Description
                                    , image :: Image
                                    , name :: Name

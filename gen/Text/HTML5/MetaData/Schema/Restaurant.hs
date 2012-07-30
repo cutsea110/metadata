@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Restaurant where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A restaurant.
+-- | [@id@] Restaurant
+--   [@label@] Restaurant
+--   [@comment_plain@] A restaurant.
+--   [@comment@] A restaurant.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FoodEstablishment'@
+--   [@url@] <http://schema.org/Restaurant>
 data Restaurant = Restaurant { description :: Description
                              , image :: Image
                              , name :: Name

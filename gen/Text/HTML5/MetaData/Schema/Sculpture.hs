@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Sculpture where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A piece of sculpture.
+-- | [@id@] Sculpture
+--   [@label@] Sculpture
+--   [@comment_plain@] A piece of sculpture.
+--   [@comment@] A piece of sculpture.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/Sculpture>
 data Sculpture = Sculpture { description :: Description
                            , image :: Image
                            , name :: Name

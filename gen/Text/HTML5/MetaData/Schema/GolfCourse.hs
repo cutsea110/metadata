@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GolfCourse where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A golf course.
+-- | [@id@] GolfCourse
+--   [@label@] Golf Course
+--   [@comment_plain@] A golf course.
+--   [@comment@] A golf course.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'SportsActivityLocation'@
+--   [@url@] <http://schema.org/GolfCourse>
 data GolfCourse = GolfCourse { description :: Description
                              , image :: Image
                              , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PerformingArtsTheater where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A theatre or other performing art center.
+-- | [@id@] PerformingArtsTheater
+--   [@label@] Performing Arts Theater
+--   [@comment_plain@] A theatre or other performing art center.
+--   [@comment@] A theatre or other performing art center.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/PerformingArtsTheater>
 data PerformingArtsTheater = PerformingArtsTheater { description :: Description
                                                    , image :: Image
                                                    , name :: Name

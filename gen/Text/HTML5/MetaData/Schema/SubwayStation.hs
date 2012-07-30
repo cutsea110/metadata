@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SubwayStation where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A subway station.
+-- | [@id@] SubwayStation
+--   [@label@] Subway Station
+--   [@comment_plain@] A subway station.
+--   [@comment@] A subway station.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/SubwayStation>
 data SubwayStation = SubwayStation { description :: Description
                                    , image :: Image
                                    , name :: Name

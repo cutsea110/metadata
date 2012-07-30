@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NutritionInformation where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Nutritional information about the recipe.
+-- | [@id@] NutritionInformation
+--   [@label@] Nutrition Information
+--   [@comment_plain@] Nutritional information about the recipe.
+--   [@comment@] Nutritional information about the recipe.
+--   [@ancestors@] @'Thing','Intangible','StructuredValue'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'StructuredValue'@
+--   [@url@] <http://schema.org/NutritionInformation>
 data NutritionInformation = NutritionInformation { description :: Description
                                                  , image :: Image
                                                  , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Optician where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An optician's store.
+-- | [@id@] Optician
+--   [@label@] Optician
+--   [@comment_plain@] An optician's store.
+--   [@comment@] An optician's store.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'MedicalOrganization'@
+--   [@url@] <http://schema.org/Optician>
 data Optician = Optician { description :: Description
                          , image :: Image
                          , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.RealEstateAgent where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A real-estate agent.
+-- | [@id@] RealEstateAgent
+--   [@label@] Real Estate Agent
+--   [@comment_plain@] A real-estate agent.
+--   [@comment@] A real-estate agent.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/RealEstateAgent>
 data RealEstateAgent = RealEstateAgent { description :: Description
                                        , image :: Image
                                        , name :: Name

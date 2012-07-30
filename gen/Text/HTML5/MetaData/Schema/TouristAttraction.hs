@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TouristAttraction where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A tourist attraction.
+-- | [@id@] TouristAttraction
+--   [@label@] Tourist Attraction
+--   [@comment_plain@] A tourist attraction.
+--   [@comment@] A tourist attraction.
+--   [@ancestors@] @'Thing','Place'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Place'@
+--   [@url@] <http://schema.org/TouristAttraction>
 data TouristAttraction = TouristAttraction { description :: Description
                                            , image :: Image
                                            , name :: Name

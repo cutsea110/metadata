@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CollectionPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Collection page.
+-- | [@id@] CollectionPage
+--   [@label@] Collection Page
+--   [@comment_plain@] Web page type: Collection page.
+--   [@comment@] Web page type: Collection page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @'ImageGallery','VideoGallery'@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/CollectionPage>
 data CollectionPage = CollectionPage { description :: Description
                                      , image :: Image
                                      , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Article where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
+-- | [@id@] Article
+--   [@label@] Article
+--   [@comment_plain@] An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
+--   [@comment@] An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @'BlogPosting','NewsArticle','ScholarlyArticle'@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/Article>
 data Article = Article { description :: Description
                        , image :: Image
                        , name :: Name

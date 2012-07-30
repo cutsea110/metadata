@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HealthClub where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A health club.
+-- | [@id@] HealthClub
+--   [@label@] Health Club
+--   [@comment_plain@] A health club.
+--   [@comment@] A health club.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'SportsActivityLocation','HealthAndBeautyBusiness'@
+--   [@url@] <http://schema.org/HealthClub>
 data HealthClub = HealthClub { description :: Description
                              , image :: Image
                              , name :: Name

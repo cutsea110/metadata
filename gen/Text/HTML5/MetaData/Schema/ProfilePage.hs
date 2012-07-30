@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ProfilePage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Profile page.
+-- | [@id@] ProfilePage
+--   [@label@] Profile Page
+--   [@comment_plain@] Web page type: Profile page.
+--   [@comment@] Web page type: Profile page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/ProfilePage>
 data ProfilePage = ProfilePage { description :: Description
                                , image :: Image
                                , name :: Name

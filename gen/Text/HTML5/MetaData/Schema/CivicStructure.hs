@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CivicStructure where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A public structure, such as a town hall or concert hall.
+-- | [@id@] CivicStructure
+--   [@label@] Civic Structure
+--   [@comment_plain@] A public structure, such as a town hall or concert hall.
+--   [@comment@] A public structure, such as a town hall or concert hall.
+--   [@ancestors@] @'Thing','Place'@
+--   [@subtypes@] @'Airport','Aquarium','Beach','BusStation','BusStop','Campground','Cemetery','Crematorium','EventVenue','FireStation','GovernmentBuilding','Hospital','MovieTheater','Museum','MusicVenue','Park','ParkingFacility','PerformingArtsTheater','PlaceOfWorship','Playground','PoliceStation','RVPark','StadiumOrArena','SubwayStation','TaxiStand','TrainStation','Zoo'@
+--   [@supertypes@] @'Place'@
+--   [@url@] <http://schema.org/CivicStructure>
 data CivicStructure = CivicStructure { description :: Description
                                      , image :: Image
                                      , name :: Name

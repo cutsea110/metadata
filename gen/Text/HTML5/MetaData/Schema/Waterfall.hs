@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Waterfall where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A waterfall, like Niagara
+-- | [@id@] Waterfall
+--   [@label@] Waterfall
+--   [@comment_plain@] A waterfall, like Niagara
+--   [@comment@] A waterfall, like Niagara
+--   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'BodyOfWater'@
+--   [@url@] <http://schema.org/Waterfall>
 data Waterfall = Waterfall { description :: Description
                            , image :: Image
                            , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HardwareStore where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A hardware store.
+-- | [@id@] HardwareStore
+--   [@label@] Hardware Store
+--   [@comment_plain@] A hardware store.
+--   [@comment@] A hardware store.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/HardwareStore>
 data HardwareStore = HardwareStore { description :: Description
                                    , image :: Image
                                    , name :: Name

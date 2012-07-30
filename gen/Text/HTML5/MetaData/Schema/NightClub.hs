@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NightClub where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A nightclub or discotheque.
+-- | [@id@] NightClub
+--   [@label@] Night Club
+--   [@comment_plain@] A nightclub or discotheque.
+--   [@comment@] A nightclub or discotheque.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EntertainmentBusiness'@
+--   [@url@] <http://schema.org/NightClub>
 data NightClub = NightClub { description :: Description
                            , image :: Image
                            , name :: Name

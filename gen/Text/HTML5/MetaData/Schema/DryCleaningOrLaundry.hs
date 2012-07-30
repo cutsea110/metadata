@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DryCleaningOrLaundry where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dry-cleaning business.
+-- | [@id@] DryCleaningOrLaundry
+--   [@label@] Dry Cleaning or Laundry
+--   [@comment_plain@] A dry-cleaning business.
+--   [@comment@] A dry-cleaning business.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/DryCleaningOrLaundry>
 data DryCleaningOrLaundry = DryCleaningOrLaundry { description :: Description
                                                  , image :: Image
                                                  , name :: Name

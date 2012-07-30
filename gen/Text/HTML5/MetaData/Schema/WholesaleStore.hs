@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WholesaleStore where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A wholesale store.
+-- | [@id@] WholesaleStore
+--   [@label@] Wholesale Store
+--   [@comment_plain@] A wholesale store.
+--   [@comment@] A wholesale store.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Store'@
+--   [@url@] <http://schema.org/WholesaleStore>
 data WholesaleStore = WholesaleStore { description :: Description
                                      , image :: Image
                                      , name :: Name

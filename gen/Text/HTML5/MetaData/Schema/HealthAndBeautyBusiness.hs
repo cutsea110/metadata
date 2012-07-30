@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HealthAndBeautyBusiness where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Health and beauty.
+-- | [@id@] HealthAndBeautyBusiness
+--   [@label@] Health And Beauty Business
+--   [@comment_plain@] Health and beauty.
+--   [@comment@] Health and beauty.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @'BeautySalon','DaySpa','HairSalon','HealthClub','NailSalon','TattooParlor'@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/HealthAndBeautyBusiness>
 data HealthAndBeautyBusiness = HealthAndBeautyBusiness { description :: Description
                                                        , image :: Image
                                                        , name :: Name

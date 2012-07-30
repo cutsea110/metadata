@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PoliceStation where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A police station.
+-- | [@id@] PoliceStation
+--   [@label@] Police Station
+--   [@comment_plain@] A police station.
+--   [@comment@] A police station.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure','EmergencyService'@
+--   [@url@] <http://schema.org/PoliceStation>
 data PoliceStation = PoliceStation { description :: Description
                                    , image :: Image
                                    , name :: Name

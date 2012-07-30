@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicGroup where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+-- | [@id@] MusicGroup
+--   [@label@] Music Group
+--   [@comment_plain@] A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+--   [@comment@] A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+--   [@ancestors@] @'Thing','Organization','PerformingGroup'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'PerformingGroup'@
+--   [@url@] <http://schema.org/MusicGroup>
 data MusicGroup = MusicGroup { description :: Description
                              , image :: Image
                              , name :: Name

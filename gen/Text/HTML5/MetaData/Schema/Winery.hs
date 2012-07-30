@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Winery where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A winery.
+-- | [@id@] Winery
+--   [@label@] Winery
+--   [@comment_plain@] A winery.
+--   [@comment@] A winery.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FoodEstablishment'@
+--   [@url@] <http://schema.org/Winery>
 data Winery = Winery { description :: Description
                      , image :: Image
                      , name :: Name

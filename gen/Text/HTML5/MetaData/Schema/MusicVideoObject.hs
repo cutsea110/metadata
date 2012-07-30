@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicVideoObject where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A music video file.
+-- | [@id@] MusicVideoObject
+--   [@label@] Music Video Object
+--   [@comment_plain@] A music video file.
+--   [@comment@] A music video file.
+--   [@ancestors@] @'Thing','CreativeWork','MediaObject'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'MediaObject'@
+--   [@url@] <http://schema.org/MusicVideoObject>
 data MusicVideoObject = MusicVideoObject { description :: Description
                                          , image :: Image
                                          , name :: Name

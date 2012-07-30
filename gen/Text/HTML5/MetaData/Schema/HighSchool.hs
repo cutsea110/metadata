@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HighSchool where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A high school.
+-- | [@id@] HighSchool
+--   [@label@] High School
+--   [@comment_plain@] A high school.
+--   [@comment@] A high school.
+--   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EducationalOrganization'@
+--   [@url@] <http://schema.org/HighSchool>
 data HighSchool = HighSchool { description :: Description
                              , image :: Image
                              , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DaySpa where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A day spa.
+-- | [@id@] DaySpa
+--   [@label@] Day Spa
+--   [@comment_plain@] A day spa.
+--   [@comment@] A day spa.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'HealthAndBeautyBusiness'@
+--   [@url@] <http://schema.org/DaySpa>
 data DaySpa = DaySpa { description :: Description
                      , image :: Image
                      , name :: Name

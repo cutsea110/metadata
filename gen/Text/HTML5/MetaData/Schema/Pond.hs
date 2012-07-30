@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Pond where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A pond
+-- | [@id@] Pond
+--   [@label@] Pond
+--   [@comment_plain@] A pond
+--   [@comment@] A pond
+--   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'BodyOfWater'@
+--   [@url@] <http://schema.org/Pond>
 data Pond = Pond { description :: Description
                  , image :: Image
                  , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalClinic where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical clinic.
+-- | [@id@] MedicalClinic
+--   [@label@] Medical Clinic
+--   [@comment_plain@] A medical clinic.
+--   [@comment@] A medical clinic.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'MedicalOrganization'@
+--   [@url@] <http://schema.org/MedicalClinic>
 data MedicalClinic = MedicalClinic { description :: Description
                                    , image :: Image
                                    , name :: Name

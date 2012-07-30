@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPSideBar where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A sidebar section of the page.
+-- | [@id@] WPSideBar
+--   [@label@] WP Side Bar
+--   [@comment_plain@] A sidebar section of the page.
+--   [@comment@] A sidebar section of the page.
+--   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPageElement'@
+--   [@url@] <http://schema.org/WPSideBar>
 data WPSideBar = WPSideBar { description :: Description
                            , image :: Image
                            , name :: Name

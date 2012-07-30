@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Zoo where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A zoo.
+-- | [@id@] Zoo
+--   [@label@] Zoo
+--   [@comment_plain@] A zoo.
+--   [@comment@] A zoo.
+--   [@ancestors@] @'Thing','Place','CivicStructure'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CivicStructure'@
+--   [@url@] <http://schema.org/Zoo>
 data Zoo = Zoo { description :: Description
                , image :: Image
                , name :: Name

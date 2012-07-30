@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.RecyclingCenter where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A recycling center.
+-- | [@id@] RecyclingCenter
+--   [@label@] Recycling Center
+--   [@comment_plain@] A recycling center.
+--   [@comment@] A recycling center.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/RecyclingCenter>
 data RecyclingCenter = RecyclingCenter { description :: Description
                                        , image :: Image
                                        , name :: Name

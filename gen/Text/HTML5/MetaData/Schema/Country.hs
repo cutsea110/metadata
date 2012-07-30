@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Country where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A country.
+-- | [@id@] Country
+--   [@label@] Country
+--   [@comment_plain@] A country.
+--   [@comment@] A country.
+--   [@ancestors@] @'Thing','Place','AdministrativeArea'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'AdministrativeArea'@
+--   [@url@] <http://schema.org/Country>
 data Country = Country { description :: Description
                        , image :: Image
                        , name :: Name

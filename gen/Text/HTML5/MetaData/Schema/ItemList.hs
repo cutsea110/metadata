@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ItemList where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+-- | [@id@] ItemList
+--   [@label@] Item List
+--   [@comment_plain@] A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+--   [@comment@] A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/ItemList>
 data ItemList = ItemList { description :: Description
                          , image :: Image
                          , name :: Name

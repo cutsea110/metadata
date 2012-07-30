@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CityHall where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A city hall.
+-- | [@id@] CityHall
+--   [@label@] City Hall
+--   [@comment_plain@] A city hall.
+--   [@comment@] A city hall.
+--   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'GovernmentBuilding'@
+--   [@url@] <http://schema.org/CityHall>
 data CityHall = CityHall { description :: Description
                          , image :: Image
                          , name :: Name

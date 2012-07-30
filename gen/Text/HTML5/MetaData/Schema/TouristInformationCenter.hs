@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TouristInformationCenter where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A tourist information center.
+-- | [@id@] TouristInformationCenter
+--   [@label@] Tourist Information Center
+--   [@comment_plain@] A tourist information center.
+--   [@comment@] A tourist information center.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/TouristInformationCenter>
 data TouristInformationCenter = TouristInformationCenter { description :: Description
                                                          , image :: Image
                                                          , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WebPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page
+-- | [@id@] WebPage
+--   [@label@] Web Page
+--   [@comment_plain@] A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as breadcrumb may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page
+--   [@comment@] A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @'AboutPage','CheckoutPage','CollectionPage','ContactPage','ItemPage','ProfilePage','SearchResultsPage'@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/WebPage>
 data WebPage = WebPage { description :: Description
                        , image :: Image
                        , name :: Name

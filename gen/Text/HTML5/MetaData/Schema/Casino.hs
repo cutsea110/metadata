@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Casino where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A casino.
+-- | [@id@] Casino
+--   [@label@] Casino
+--   [@comment_plain@] A casino.
+--   [@comment@] A casino.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EntertainmentBusiness'@
+--   [@url@] <http://schema.org/Casino>
 data Casino = Casino { description :: Description
                      , image :: Image
                      , name :: Name

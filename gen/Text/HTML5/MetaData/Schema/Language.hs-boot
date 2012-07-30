@@ -1,5 +1,7 @@
 module Text.HTML5.MetaData.Schema.Language where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 
 -- | Natural languages such as Spanish, Tamil, Hindi, English, etc. and programming languages such as Scheme and Lisp.

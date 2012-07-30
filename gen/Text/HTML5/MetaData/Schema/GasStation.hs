@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GasStation where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A gas station.
+-- | [@id@] GasStation
+--   [@label@] Gas Station
+--   [@comment_plain@] A gas station.
+--   [@comment@] A gas station.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','AutomotiveBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'AutomotiveBusiness'@
+--   [@url@] <http://schema.org/GasStation>
 data GasStation = GasStation { description :: Description
                              , image :: Image
                              , name :: Name

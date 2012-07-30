@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicRecording where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A music recording (track), usually a single song.
+-- | [@id@] MusicRecording
+--   [@label@] Music Recording
+--   [@comment_plain@] A music recording (track), usually a single song.
+--   [@comment@] A music recording (track), usually a single song.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/MusicRecording>
 data MusicRecording = MusicRecording { description :: Description
                                      , image :: Image
                                      , name :: Name

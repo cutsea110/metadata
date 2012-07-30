@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ItemPage where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A page devoted to a single item, such as a particular product or hotel.
+-- | [@id@] ItemPage
+--   [@label@] Item Page
+--   [@comment_plain@] A page devoted to a single item, such as a particular product or hotel.
+--   [@comment@] A page devoted to a single item, such as a particular product or hotel.
+--   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'WebPage'@
+--   [@url@] <http://schema.org/ItemPage>
 data ItemPage = ItemPage { description :: Description
                          , image :: Image
                          , name :: Name

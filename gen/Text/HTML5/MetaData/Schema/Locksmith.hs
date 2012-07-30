@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Locksmith where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A locksmith.
+-- | [@id@] Locksmith
+--   [@label@] Locksmith
+--   [@comment_plain@] A locksmith.
+--   [@comment@] A locksmith.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HomeAndConstructionBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'HomeAndConstructionBusiness','ProfessionalService'@
+--   [@url@] <http://schema.org/Locksmith>
 data Locksmith = Locksmith { description :: Description
                            , image :: Image
                            , name :: Name

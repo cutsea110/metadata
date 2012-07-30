@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HomeAndConstructionBusiness where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A construction business.
+-- | [@id@] HomeAndConstructionBusiness
+--   [@label@] Home And Construction Business
+--   [@comment_plain@] A construction business.
+--   [@comment@] A construction business.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @'Electrician','GeneralContractor','HVACBusiness','HousePainter','Locksmith','MovingCompany','Plumber','RoofingContractor'@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/HomeAndConstructionBusiness>
 data HomeAndConstructionBusiness = HomeAndConstructionBusiness { description :: Description
                                                                , image :: Image
                                                                , name :: Name

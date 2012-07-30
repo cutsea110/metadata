@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserDownloads where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Download of an item.
+-- | [@id@] UserDownloads
+--   [@label@] User Downloads
+--   [@comment_plain@] User interaction: Download of an item.
+--   [@comment@] User interaction: Download of an item.
+--   [@ancestors@] @'Thing','Event','UserInteraction'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'UserInteraction'@
+--   [@url@] <http://schema.org/UserDownloads>
 data UserDownloads = UserDownloads { description :: Description
                                    , image :: Image
                                    , name :: Name

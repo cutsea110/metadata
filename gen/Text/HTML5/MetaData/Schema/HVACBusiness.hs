@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HVACBusiness where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An HVAC service.
+-- | [@id@] HVACBusiness
+--   [@label@] HVAC Business
+--   [@comment_plain@] An HVAC service.
+--   [@comment@] An HVAC service.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','HomeAndConstructionBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'HomeAndConstructionBusiness'@
+--   [@url@] <http://schema.org/HVACBusiness>
 data HVACBusiness = HVACBusiness { description :: Description
                                  , image :: Image
                                  , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.InternetCafe where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An internet cafe.
+-- | [@id@] InternetCafe
+--   [@label@] Internet Cafe
+--   [@comment_plain@] An internet cafe.
+--   [@comment@] An internet cafe.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/InternetCafe>
 data InternetCafe = InternetCafe { description :: Description
                                  , image :: Image
                                  , name :: Name

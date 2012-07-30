@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ChildCare where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Childcare center.
+-- | [@id@] ChildCare
+--   [@label@] Child Care
+--   [@comment_plain@] A Childcare center.
+--   [@comment@] A Childcare center.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'LocalBusiness'@
+--   [@url@] <http://schema.org/ChildCare>
 data ChildCare = ChildCare { description :: Description
                            , image :: Image
                            , name :: Name

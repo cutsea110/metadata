@@ -1,5 +1,7 @@
 module Text.HTML5.MetaData.Schema.Continent where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 
 -- | One of the continents (for example, Europe or Africa).

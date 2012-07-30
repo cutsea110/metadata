@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SkiResort where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A ski resort.
+-- | [@id@] SkiResort
+--   [@label@] Ski Resort
+--   [@comment_plain@] A ski resort.
+--   [@comment@] A ski resort.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'SportsActivityLocation'@
+--   [@url@] <http://schema.org/SkiResort>
 data SkiResort = SkiResort { description :: Description
                            , image :: Image
                            , name :: Name

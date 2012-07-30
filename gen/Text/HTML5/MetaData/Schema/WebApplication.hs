@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WebApplication where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web applications.
+-- | [@id@] WebApplication
+--   [@label@] Web Application
+--   [@comment_plain@] Web applications.
+--   [@comment@] Web applications.
+--   [@ancestors@] @'Thing','CreativeWork','SoftwareApplication'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'SoftwareApplication'@
+--   [@url@] <http://schema.org/WebApplication>
 data WebApplication = WebApplication { description :: Description
                                      , image :: Image
                                      , name :: Name

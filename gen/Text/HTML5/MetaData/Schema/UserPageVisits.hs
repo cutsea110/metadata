@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserPageVisits where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Visit to a web page.
+-- | [@id@] UserPageVisits
+--   [@label@] User Page Visits
+--   [@comment_plain@] User interaction: Visit to a web page.
+--   [@comment@] User interaction: Visit to a web page.
+--   [@ancestors@] @'Thing','Event','UserInteraction'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'UserInteraction'@
+--   [@url@] <http://schema.org/UserPageVisits>
 data UserPageVisits = UserPageVisits { description :: Description
                                      , image :: Image
                                      , name :: Name

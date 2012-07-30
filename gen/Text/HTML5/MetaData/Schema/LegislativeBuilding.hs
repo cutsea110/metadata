@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LegislativeBuilding where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A legislative building—for example, the state capitol.
+-- | [@id@] LegislativeBuilding
+--   [@label@] Legislative Building
+--   [@comment_plain@] A legislative building—for example, the state capitol.
+--   [@comment@] A legislative building—for example, the state capitol.
+--   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'GovernmentBuilding'@
+--   [@url@] <http://schema.org/LegislativeBuilding>
 data LegislativeBuilding = LegislativeBuilding { description :: Description
                                                , image :: Image
                                                , name :: Name

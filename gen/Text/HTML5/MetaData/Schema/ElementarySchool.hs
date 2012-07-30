@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ElementarySchool where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An elementary school.
+-- | [@id@] ElementarySchool
+--   [@label@] Elementary School
+--   [@comment_plain@] An elementary school.
+--   [@comment@] An elementary school.
+--   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'EducationalOrganization'@
+--   [@url@] <http://schema.org/ElementarySchool>
 data ElementarySchool = ElementarySchool { description :: Description
                                          , image :: Image
                                          , name :: Name

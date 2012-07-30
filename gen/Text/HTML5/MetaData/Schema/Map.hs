@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Map where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Map )
 import Data.Text
 
--- | A map.
+-- | [@id@] Map
+--   [@label@] Map
+--   [@comment_plain@] A map.
+--   [@comment@] A map.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/Map>
 data Map = Map { description :: Description
                , image :: Image
                , name :: Name

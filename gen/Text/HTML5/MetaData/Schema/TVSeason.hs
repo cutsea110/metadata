@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVSeason where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A TV season.
+-- | [@id@] TVSeason
+--   [@label@] TV Season
+--   [@comment_plain@] A TV season.
+--   [@comment@] A TV season.
+--   [@ancestors@] @'Thing','CreativeWork'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'CreativeWork'@
+--   [@url@] <http://schema.org/TVSeason>
 data TVSeason = TVSeason { description :: Description
                          , image :: Image
                          , name :: Name

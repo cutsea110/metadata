@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Place where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Entities that have a somewhat fixed, physical extension.
+-- | [@id@] Place
+--   [@label@] Place
+--   [@comment_plain@] Entities that have a somewhat fixed, physical extension.
+--   [@comment@] Entities that have a somewhat fixed, physical extension.
+--   [@ancestors@] @'Thing'@
+--   [@subtypes@] @'AdministrativeArea','CivicStructure','Landform','LandmarksOrHistoricalBuildings','LocalBusiness','Residence','TouristAttraction'@
+--   [@supertypes@] @'Thing'@
+--   [@url@] <http://schema.org/Place>
 data Place = Place { description :: Description
                    , image :: Image
                    , name :: Name

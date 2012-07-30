@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.IceCreamShop where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An ice cream shop
+-- | [@id@] IceCreamShop
+--   [@label@] Ice Cream Shop
+--   [@comment_plain@] An ice cream shop
+--   [@comment@] An ice cream shop
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'FoodEstablishment'@
+--   [@url@] <http://schema.org/IceCreamShop>
 data IceCreamShop = IceCreamShop { description :: Description
                                  , image :: Image
                                  , name :: Name

@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Notary where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A notary.
+-- | [@id@] Notary
+--   [@label@] Notary
+--   [@comment_plain@] A notary.
+--   [@comment@] A notary.
+--   [@ancestors@] @'Thing','Organization','LocalBusiness','ProfessionalService'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'ProfessionalService'@
+--   [@url@] <http://schema.org/Notary>
 data Notary = Notary { description :: Description
                      , image :: Image
                      , name :: Name

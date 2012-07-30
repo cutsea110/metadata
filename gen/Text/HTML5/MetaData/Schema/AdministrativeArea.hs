@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AdministrativeArea where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A geographical region under the jurisdiction of a particular government.
+-- | [@id@] AdministrativeArea
+--   [@label@] Administrative Area
+--   [@comment_plain@] A geographical region under the jurisdiction of a particular government.
+--   [@comment@] A geographical region under the jurisdiction of a particular government.
+--   [@ancestors@] @'Thing','Place'@
+--   [@subtypes@] @'City','Country','State'@
+--   [@supertypes@] @'Place'@
+--   [@url@] <http://schema.org/AdministrativeArea>
 data AdministrativeArea = AdministrativeArea { description :: Description
                                              , image :: Image
                                              , name :: Name

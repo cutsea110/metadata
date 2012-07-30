@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.OceanBodyOfWater where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An ocean (for example, the Pacific).
+-- | [@id@] OceanBodyOfWater
+--   [@label@] Ocean Body of Water
+--   [@comment_plain@] An ocean (for example, the Pacific).
+--   [@comment@] An ocean (for example, the Pacific).
+--   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'BodyOfWater'@
+--   [@url@] <http://schema.org/OceanBodyOfWater>
 data OceanBodyOfWater = OceanBodyOfWater { description :: Description
                                          , image :: Image
                                          , name :: Name

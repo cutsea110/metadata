@@ -1,11 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GatedResidenceCommunity where
 
+--  Valid: 2012-06-26 ( Schema.rdfs.org )
+
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Residence type: Gated community.
+-- | [@id@] GatedResidenceCommunity
+--   [@label@] Gated Residence Community
+--   [@comment_plain@] Residence type: Gated community.
+--   [@comment@] Residence type: Gated community.
+--   [@ancestors@] @'Thing','Place','Residence'@
+--   [@subtypes@] @@
+--   [@supertypes@] @'Residence'@
+--   [@url@] <http://schema.org/GatedResidenceCommunity>
 data GatedResidenceCommunity = GatedResidenceCommunity { description :: Description
                                                        , image :: Image
                                                        , name :: Name
