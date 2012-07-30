@@ -2,6 +2,7 @@
 {-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
 module MetaData.SchemaOrg.Data 
        ( getSchema
+       , Valid
        , DataType(..)
        , DataTypes
        , Property(..)
@@ -25,13 +26,16 @@ import Data.Attoparsec.Number
 
 import MetaData.SchemaOrg.Data.Internal
 
-getSchema :: IO (DataTypes, Properties)
+type Valid = Text
+
+getSchema :: IO (Valid, DataTypes, Properties)
 getSchema = do
   mj <- allJson
+  let Just valid = fmap toText $ "valid" <. mj
   let (Just jt, Just jp)
         = ((mj .> "types") >+< ("datatypes" <. mj), mj ~> "properties")
   let (ts, ps) = (types' ts ps jt, props' ts jp)
-  return (ts, ps)
+  return (valid, ts, ps)
 
 (>+<) :: Maybe Value -> Maybe Value -> Maybe Object
 x >+< y = liftA2 H.union (fmap toObject x) (fmap toObject y)

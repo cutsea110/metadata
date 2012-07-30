@@ -100,14 +100,17 @@ common_comms md = vcat [c_id, c_label, c_comment_plain, c_comment]
     c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain md]
     c_comment = hsep $ map text' ["--  ", "[@comment@]", comment md]
 
+valid_comment :: T.Text -> Doc
+valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [lparen, text "Schema.rdfs.org", rparen]
+
 fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
   where
     data_decl = hsep $ map text' ["data", symbol d]
     com = hsep $ map text' ["-- |", comment d]
 
-schemaDoc :: Properties -> DataType -> Doc
-schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instance_decl]
+schemaDoc :: Valid -> Properties -> DataType -> Doc
+schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_decl]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
     module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
@@ -136,8 +139,8 @@ schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instan
             fld (f, acc) = fillBreak flen (text' f) 
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
 
-schemaBootDoc :: DataType -> Doc
-schemaBootDoc d = vcat' [module_header, import_list, declares, instance_declares]
+schemaBootDoc :: Valid -> DataType -> Doc
+schemaBootDoc v d = vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
   where
     module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
@@ -150,8 +153,8 @@ schemaBootDoc d = vcat' [module_header, import_list, declares, instance_declares
       where
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
-typeDoc :: Properties -> Doc
-typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
+typeDoc :: Valid -> Properties -> Doc
+typeDoc v ps = vcat' [module_header, valid_comment v, import_list, special_declares, declares]
   where
     module_header = hsep $ map text' ["module", typeModuleName, "where"]
     import_list = vcat' [import_external_modules, import_schema_modules]
@@ -168,8 +171,8 @@ typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
         sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
 
-classDoc :: Doc
-classDoc = vcat' [module_header, import_list, class_declares]
+classDoc :: Valid -> Doc
+classDoc v = vcat' [module_header, valid_comment v, import_list, class_declares]
   where
     module_header = hsep $ map text' ["module", classModuleName, "where"]
     import_list = vsep $ map impdecl ["Data.Text"]
