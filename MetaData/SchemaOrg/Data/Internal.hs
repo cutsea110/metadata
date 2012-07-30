@@ -2,9 +2,9 @@
 module MetaData.SchemaOrg.Data.Internal 
        ( allJson
        , DataType(..)
-       , DataTypes(..)
+       , DataTypes
        , Property(..)
-       , Properties(..)
+       , Properties
        ) where
 
 import Data.Aeson
@@ -60,20 +60,3 @@ instance Show Property where
   show x = "#<" ++ unpack (p_id x) ++ ">"
 instance Eq Property where
   x == y = p_id x == p_id y
-
-class Meta a where
-  label :: a -> Text
-  comment_plain :: a -> Text
-  comment :: a -> Text
-  id :: a -> Text
-
-instance Meta DataType where
-  label = d_label
-  comment_plain = d_comment_plain
-  comment = d_comment
-  id = d_id
-instance Meta Property where
-  label = p_label
-  comment_plain = p_comment_plain
-  comment = p_comment
-  id = p_id

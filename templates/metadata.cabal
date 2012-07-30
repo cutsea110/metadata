@@ -2,9 +2,9 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                metadata
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            metadata library for semantic web.
--- description:         
+description:         metadata library for semantic web.
 homepage:            https://github.com/cutsea110/metadata
 license:             BSD3
 license-file:        LICENSE

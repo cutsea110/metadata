@@ -16,20 +16,12 @@ import Text.PrettyPrint.Leijen
 
 import MetaData.SchemaOrg.Data
 
-metadataModuleName :: T.Text
-metadataModuleName = "Text.HTML5.MetaData"
-schemaModuleName :: T.Text
-schemaModuleName = "Text.HTML5.MetaData.Schema"
-schemaModuleName' :: T.Text
+schemaModuleName' :: String
 schemaModuleName' = "Text.HTML5.MetaData.Schema."
 typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
-typeModuleName' :: T.Text
-typeModuleName' = "Text.HTML5.MetaData.Type."
 classModuleName :: T.Text
 classModuleName = "Text.HTML5.MetaData.Class"
-classModuleName' :: T.Text
-classModuleName' = "Text.HTML5.MetaData.Class."
 
 text' :: T.Text -> Doc
 text' = text . T.unpack
@@ -49,24 +41,30 @@ fromProperty p = case lookup (symbol p) special_types of
   where
     (rng, rlen, t1, t2) = (ranges p, V.length rng, rng V.! 0, rng V.! 1)
     (qnT1, qnT2) = (qualified_name (id t1), qualified_name (id t2))
-    type_decl True  = vcat [com, type_decl']
-    type_decl False = vcat [com, hsep [text "--", type_decl']]
+    type_decl True  = vcat [comms, type_decl']
+    type_decl False = vcat [comms, hsep [text "--", type_decl']]
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | otherwise = error "Found a property which has more than 3 types."
     single_type_decl = hsep $ map text' ["type", symbol p, "=", qnT1]
     either_type_decl = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
     qualified_name s = case lookup s special_types of 
-      Nothing -> foldl1 T.append [schemaModuleName', s, "." ,s]
+      Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
       Just _ -> s
-    com = hsep $ map text' ["-- |", comment p]
+    comms = vcat [common_comms p, c_domains, c_ranges]
+      where
+        c_domains = hsep (map text' ["--  ", "[@domains@]"]) 
+                    <+> (char '@' <> hcat (intersperse comma $ map link $ syms domains) <> char '@')
+        c_ranges = hsep (map text' ["--  ", "[@ranges@]"])
+                   <+> (char '@' <> hcat (intersperse comma $ map link $ syms ranges) <> char '@')
+        link t = char '\'' <> text' t <> char '\''
+        syms f = map symbol $ V.toList $ f p
 
 fromDataType :: DataType -> Doc
-fromDataType d = com <$> data_decl
+fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    com = hsep $ map text' ["-- |", comment d]
     data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derive]]
       where
         props = properties d
@@ -75,25 +73,47 @@ fromDataType d = com <$> data_decl
         fields = (fld_decl . V.toList . V.map field) props
         field p = hsep $ map text' [id p, "::", symbol p]
         fld_decl ps = align $ cat $ (zipWith (<+>) (lbrace:repeat comma) ps)++[rbrace]
-    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align (cat [constructors, derive])]
+    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derive]]
       where
         constructors = cnst_decl (V.toList $ V.map text' $ instances d)        
         cnst_decl cs = align $ cat $ zipWith (<+>) (map text' ("=":repeat "|")) cs
     derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
       where
         tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+    comms = vcat [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
+      where
+        c_ancestors = li "ancestors" ancestors
+        c_subtypes = li "subtypes" subtypes
+        c_supertypes = li "supertypes" supertypes
+        c_url = hsep (map text ["--  ", "[@url@]"])
+                <+> (char '<' <> text' (url d) <> char '>')
+        li c f = hsep (map text ["--  ", "[@"++c++"@]"])
+                 <+> (char '@' <> hcat (intersperse comma $ map link $ syms f) <> char '@')
+        link t = char '\'' <> text' t <> char '\''
+        syms f = map symbol $ V.toList $ f d
+
+common_comms :: SchemaMeta a => a -> Doc
+common_comms md = vcat [c_id, c_label, c_comment_plain, c_comment]
+  where
+    c_id = hsep $ map text' ["-- |", "[@id@]", id md]
+    c_label = hsep $ map text' ["--  ", "[@label@]", label md]
+    c_comment_plain = hsep $ map text' ["--  ", "[@comment_plain@]", comment_plain md]
+    c_comment = hsep $ map text' ["--  ", "[@comment@]", comment md]
+
+valid_comment :: T.Text -> Doc
+valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [lparen, text "Schema.rdfs.org", rparen]
 
 fromDataType' :: DataType -> Doc
-fromDataType' d = vcat' [com , data_decl]
+fromDataType' d = vcat' [com, data_decl]
   where
     data_decl = hsep $ map text' ["data", symbol d]
     com = hsep $ map text' ["-- |", comment d]
 
-schemaDoc :: Properties -> DataType -> Doc
-schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instance_decl]
+schemaDoc :: Valid -> Properties -> DataType -> Doc
+schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_decl]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
-    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
+    module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
         name = T.unpack $ symbol d
     import_list = vcat [import_class_module, import_type_module, import_external_modules]
@@ -104,7 +124,7 @@ schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instan
                              else impdecl typeModuleName
           where
             props = properties d
-            recursive = isJust $ V.find ((==(symbol d)).symbol) props
+            recursive = isJust $ V.find ((==symbol d).symbol) props
             export_from_type_module = isJust $ find (==symbol d) $ map symbol $ H.elems ps
         import_external_modules = vsep $ map impdecl ["Data.Text"]
         impdecl m = text "import" <+> text' m
@@ -113,22 +133,16 @@ schemaDoc ps d = pragmas <$> vcat' [module_header, import_list, declares, instan
     instance_decl = nest 2 (ins_decl <$> fields)
       where
         ins_decl = hsep $ map text ["instance", "MetaData", T.unpack $ symbol d, "where"]
-        fields = align $ vcat $ map fld fs
+        fields = align $ vcat $ map fld metaDataProperties
           where
-            flen = foldl max 0 $ map (T.length.fst) fs
+            flen = foldl max 0 $ map (T.length.fst) metaDataProperties
             fld (f, acc) = fillBreak flen (text' f) 
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
-            fs :: [(T.Text, DataType -> T.Text)]
-            fs = [ ("_label",label)
-                 , ("_comment_plain", comment_plain)
-                 , ("_comment", comment)
-                 , ("_url", url)
-                 ]
 
-schemaBootDoc :: DataType -> Doc
-schemaBootDoc d = vcat' [module_header, import_list, declares, instance_declares]
+schemaBootDoc :: Valid -> DataType -> Doc
+schemaBootDoc v d = vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
   where
-    module_header = hsep $ map text ["module", T.unpack schemaModuleName' ++ name, "where"]
+    module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
         name = T.unpack (symbol d)
     import_list = vsep $ map impdecl [classModuleName]
@@ -139,15 +153,15 @@ schemaBootDoc d = vcat' [module_header, import_list, declares, instance_declares
       where
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
-typeDoc :: Properties -> Doc
-typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
+typeDoc :: Valid -> Properties -> Doc
+typeDoc v ps = vcat' [module_header, valid_comment v, import_list, special_declares, declares]
   where
     module_header = hsep $ map text' ["module", typeModuleName, "where"]
     import_list = vcat' [import_external_modules, import_schema_modules]
     import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Time"]
       where 
         impdecl m = text "import" <+> text m
-    import_schema_modules = vsep $ map (impdecl.(T.unpack schemaModuleName'++)) schema_modules
+    import_schema_modules = vsep $ map (impdecl.(schemaModuleName'++)) schema_modules
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
@@ -157,18 +171,8 @@ typeDoc ps = vcat' [module_header, import_list, special_declares, declares]
         sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
 
-special_types :: [(T.Text, Maybe Doc)]
-special_types = [ ("Text", Nothing)
-                , ("URL", Just $ text "Text")
-                , ("Date", Just $ text "Day")
-                , ("Number", Just $ hsep $ map text ["Either", "Integer", "Float"])
-                , ("Integer", Nothing)
-                , ("Float", Nothing)
-                , ("Boolean", Just $ text "Bool")
-                ]
-
-classDoc :: Doc
-classDoc = vcat' [module_header, import_list, class_declares]
+classDoc :: Valid -> Doc
+classDoc v = vcat' [module_header, valid_comment v, import_list, class_declares]
   where
     module_header = hsep $ map text' ["module", classModuleName, "where"]
     import_list = vsep $ map impdecl ["Data.Text"]
@@ -181,10 +185,29 @@ classDoc = vcat' [module_header, import_list, class_declares]
           where
             flen = foldl max 0 $ map T.length fs
             fld f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "Text"])
-            fs = ["_label","_comment_plain","_comment","_url"]
+            fs = map fst metaDataProperties
 
 referedThings :: Properties -> V.Vector DataType
 referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
 
 referedThingSymbols :: Properties -> V.Vector String
 referedThingSymbols = V.map (T.unpack . symbol) . referedThings
+            
+metaDataProperties :: [(T.Text, DataType -> T.Text)]
+metaDataProperties = 
+  [ ("_label",label)
+  , ("_comment_plain", comment_plain)
+  , ("_comment", comment)
+  , ("_url", url)
+  ]
+
+special_types :: [(T.Text, Maybe Doc)]
+special_types = 
+  [ ("Text", Nothing)
+  , ("URL", Just $ text "Text")
+  , ("Date", Just $ text "Day")
+  , ("Number", Just $ hsep $ map text ["Either", "Integer", "Float"])
+  , ("Integer", Nothing)
+  , ("Float", Nothing)
+  , ("Boolean", Just $ text "Bool")
+  ]

@@ -1,4 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 import Control.Monad
@@ -21,6 +20,5 @@ copyTemplates = do
   files <- fmap (filter (not.dir)) $ getDirectoryContents src
   forM_ files (\f -> copyFile (src++f) (dst++f))
     where 
-      src = "templates/"
-      dst = "gen/"
+      (src, dst) = ("templates/", "gen/")
       dir = (`elem` [".",".."])
