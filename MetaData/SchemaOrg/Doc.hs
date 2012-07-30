@@ -89,8 +89,9 @@ fromDataType d = comms <$> data_decl
         c_supertypes = li "supertypes" supertypes
         c_url = hsep (map text ["--  ", "[@url@]"])
                 <+> (char '<' <> text' (url d) <> char '>')
-        li c f = hsep (map text ["--  ", "[@"++c++"@]"])
-                 <+> (char '@' <> hcat (intersperse comma $ map link $ syms f) <> char '@')
+        li c f | null (syms f) = hsep (map text ["--  ", "[@"++c++"@]"])
+               | otherwise = hsep (map text ["--  ", "[@"++c++"@]"])
+                             <+> (char '@' <> hcat (intersperse comma $ map link $ syms f) <> char '@')
         link t = char '\'' <> text' t <> char '\''
         syms f = map symbol $ V.toList $ f d
 
