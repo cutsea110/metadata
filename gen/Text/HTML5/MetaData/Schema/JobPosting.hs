@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] JobPosting
+-- | A listing that describes a job opening in a certain organization.
+--
+--   [@id@] JobPosting
+--
 --   [@label@] Job Posting
---   [@comment_plain@] A listing that describes a job opening in a certain organization.
+--
 --   [@comment@] A listing that describes a job opening in a certain organization.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/JobPosting>
 data JobPosting = JobPosting { description :: Description
                              , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserComments
+-- | The UserInteraction event in which a user comments on an item.
+--
+--   [@id@] UserComments
+--
 --   [@label@] User Comments
---   [@comment_plain@] The UserInteraction event in which a user comments on an item.
+--
 --   [@comment@] The UserInteraction event in which a user comments on an item.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserComments>
 data UserComments = UserComments { description :: Description
                                  , image :: Image

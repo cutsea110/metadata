@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BlogPosting
+-- | A blog post.
+--
+--   [@id@] BlogPosting
+--
 --   [@label@] Blog Posting
---   [@comment_plain@] A blog post.
+--
 --   [@comment@] A blog post.
+--
 --   [@ancestors@] @'Thing','CreativeWork','Article'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Article'@
+--
 --   [@url@] <http://schema.org/BlogPosting>
 data BlogPosting = BlogPosting { description :: Description
                                , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Table
+-- | A table on the page.
+--
+--   [@id@] Table
+--
 --   [@label@] Table
---   [@comment_plain@] A table on the page.
+--
 --   [@comment@] A table on the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/Table>
 data Table = Table { description :: Description
                    , image :: Image

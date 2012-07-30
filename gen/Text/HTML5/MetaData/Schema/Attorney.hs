@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Attorney
+-- | Professional service: Attorney.
+--
+--   [@id@] Attorney
+--
 --   [@label@] Attorney
---   [@comment_plain@] Professional service: Attorney.
+--
 --   [@comment@] Professional service: Attorney.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','ProfessionalService'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'ProfessionalService'@
+--
 --   [@url@] <http://schema.org/Attorney>
 data Attorney = Attorney { description :: Description
                          , image :: Image

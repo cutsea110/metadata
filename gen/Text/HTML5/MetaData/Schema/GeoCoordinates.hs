@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] GeoCoordinates
+-- | The geographic coordinates of a place or event.
+--
+--   [@id@] GeoCoordinates
+--
 --   [@label@] Geo Coordinates
---   [@comment_plain@] The geographic coordinates of a place or event.
+--
 --   [@comment@] The geographic coordinates of a place or event.
+--
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'StructuredValue'@
+--
 --   [@url@] <http://schema.org/GeoCoordinates>
 data GeoCoordinates = GeoCoordinates { description :: Description
                                      , image :: Image

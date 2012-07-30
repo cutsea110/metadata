@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] TattooParlor
+-- | A tattoo parlor.
+--
+--   [@id@] TattooParlor
+--
 --   [@label@] Tattoo Parlor
---   [@comment_plain@] A tattoo parlor.
+--
 --   [@comment@] A tattoo parlor.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'HealthAndBeautyBusiness'@
+--
 --   [@url@] <http://schema.org/TattooParlor>
 data TattooParlor = TattooParlor { description :: Description
                                  , image :: Image

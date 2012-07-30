@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] SingleFamilyResidence
+-- | Residence type: Single-family home.
+--
+--   [@id@] SingleFamilyResidence
+--
 --   [@label@] Single Family Residence
---   [@comment_plain@] Residence type: Single-family home.
+--
 --   [@comment@] Residence type: Single-family home.
+--
 --   [@ancestors@] @'Thing','Place','Residence'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Residence'@
+--
 --   [@url@] <http://schema.org/SingleFamilyResidence>
 data SingleFamilyResidence = SingleFamilyResidence { description :: Description
                                                    , image :: Image

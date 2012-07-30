@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserTweets
+-- | User interaction: Tweets.
+--
+--   [@id@] UserTweets
+--
 --   [@label@] User Tweets
---   [@comment_plain@] User interaction: Tweets.
+--
 --   [@comment@] User interaction: Tweets.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserTweets>
 data UserTweets = UserTweets { description :: Description
                              , image :: Image

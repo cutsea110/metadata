@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] LodgingBusiness
+-- | A lodging business, such as a motel, hotel, or inn.
+--
+--   [@id@] LodgingBusiness
+--
 --   [@label@] Lodging Business
---   [@comment_plain@] A lodging business, such as a motel, hotel, or inn.
+--
 --   [@comment@] A lodging business, such as a motel, hotel, or inn.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @'BedAndBreakfast','Hostel','Hotel','Motel'@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/LodgingBusiness>
 data LodgingBusiness = LodgingBusiness { description :: Description
                                        , image :: Image

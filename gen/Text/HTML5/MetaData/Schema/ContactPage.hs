@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ContactPage
+-- | Web page type: Contact page.
+--
+--   [@id@] ContactPage
+--
 --   [@label@] Contact Page
---   [@comment_plain@] Web page type: Contact page.
+--
 --   [@comment@] Web page type: Contact page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPage'@
+--
 --   [@url@] <http://schema.org/ContactPage>
 data ContactPage = ContactPage { description :: Description
                                , image :: Image

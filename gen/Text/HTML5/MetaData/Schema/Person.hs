@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Person
+-- | A person (alive, dead, undead, or fictional).
+--
+--   [@id@] Person
+--
 --   [@label@] Person
---   [@comment_plain@] A person (alive, dead, undead, or fictional).
+--
 --   [@comment@] A person (alive, dead, undead, or fictional).
+--
 --   [@ancestors@] @'Thing'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Thing'@
+--
 --   [@url@] <http://schema.org/Person>
 data Person = Person { description :: Description
                      , image :: Image

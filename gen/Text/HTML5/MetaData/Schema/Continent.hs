@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Continent
+-- | One of the continents (for example, Europe or Africa).
+--
+--   [@id@] Continent
+--
 --   [@label@] Continent
---   [@comment_plain@] One of the continents (for example, Europe or Africa).
+--
 --   [@comment@] One of the continents (for example, Europe or Africa).
+--
 --   [@ancestors@] @'Thing','Place','Landform'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Landform'@
+--
 --   [@url@] <http://schema.org/Continent>
 data Continent = Continent { description :: Description
                            , image :: Image

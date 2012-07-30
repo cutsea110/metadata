@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Reservoir
+-- | A reservoir, like the Lake Kariba reservoir.
+--
+--   [@id@] Reservoir
+--
 --   [@label@] Reservoir
---   [@comment_plain@] A reservoir, like the Lake Kariba reservoir.
+--
 --   [@comment@] A reservoir, like the Lake Kariba reservoir.
+--
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'BodyOfWater'@
+--
 --   [@url@] <http://schema.org/Reservoir>
 data Reservoir = Reservoir { description :: Description
                            , image :: Image

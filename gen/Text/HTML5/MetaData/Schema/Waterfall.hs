@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Waterfall
+-- | A waterfall, like Niagara
+--
+--   [@id@] Waterfall
+--
 --   [@label@] Waterfall
---   [@comment_plain@] A waterfall, like Niagara
+--
 --   [@comment@] A waterfall, like Niagara
+--
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'BodyOfWater'@
+--
 --   [@url@] <http://schema.org/Waterfall>
 data Waterfall = Waterfall { description :: Description
                            , image :: Image

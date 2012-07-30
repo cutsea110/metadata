@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Thing
+-- | The most generic type of item.
+--
+--   [@id@] Thing
+--
 --   [@label@] Thing
---   [@comment_plain@] The most generic type of item.
+--
 --   [@comment@] The most generic type of item.
+--
 --   [@ancestors@] @@
+--
 --   [@subtypes@] @'CreativeWork','Event','Intangible','Organization','Person','Place','Product'@
+--
 --   [@supertypes@] @@
+--
 --   [@url@] <http://schema.org/Thing>
 data Thing = Thing { description :: Description
                    , image :: Image

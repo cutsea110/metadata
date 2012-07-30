@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] HealthClub
+-- | A health club.
+--
+--   [@id@] HealthClub
+--
 --   [@label@] Health Club
---   [@comment_plain@] A health club.
+--
 --   [@comment@] A health club.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'SportsActivityLocation','HealthAndBeautyBusiness'@
+--
 --   [@url@] <http://schema.org/HealthClub>
 data HealthClub = HealthClub { description :: Description
                              , image :: Image

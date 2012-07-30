@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] GeoShape
+-- | The geographic shape of a place.
+--
+--   [@id@] GeoShape
+--
 --   [@label@] Geo Shape
---   [@comment_plain@] The geographic shape of a place.
+--
 --   [@comment@] The geographic shape of a place.
+--
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'StructuredValue'@
+--
 --   [@url@] <http://schema.org/GeoShape>
 data GeoShape = GeoShape { description :: Description
                          , image :: Image

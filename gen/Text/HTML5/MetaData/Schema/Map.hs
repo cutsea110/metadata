@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Map )
 import Data.Text
 
--- | [@id@] Map
+-- | A map.
+--
+--   [@id@] Map
+--
 --   [@label@] Map
---   [@comment_plain@] A map.
+--
 --   [@comment@] A map.
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/Map>
 data Map = Map { description :: Description
                , image :: Image

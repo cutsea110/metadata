@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WPHeader
+-- | The header section of the page.
+--
+--   [@id@] WPHeader
+--
 --   [@label@] WP Header
---   [@comment_plain@] The header section of the page.
+--
 --   [@comment@] The header section of the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/WPHeader>
 data WPHeader = WPHeader { description :: Description
                          , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WPAdBlock
+-- | An advertising section of the page.
+--
+--   [@id@] WPAdBlock
+--
 --   [@label@] WP Ad Block
---   [@comment_plain@] An advertising section of the page.
+--
 --   [@comment@] An advertising section of the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/WPAdBlock>
 data WPAdBlock = WPAdBlock { description :: Description
                            , image :: Image

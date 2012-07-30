@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] InsuranceAgency
+-- | Insurance agency.
+--
+--   [@id@] InsuranceAgency
+--
 --   [@label@] Insurance Agency
---   [@comment_plain@] Insurance agency.
+--
 --   [@comment@] Insurance agency.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'FinancialService'@
+--
 --   [@url@] <http://schema.org/InsuranceAgency>
 data InsuranceAgency = InsuranceAgency { description :: Description
                                        , image :: Image

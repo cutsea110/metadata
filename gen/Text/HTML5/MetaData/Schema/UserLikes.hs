@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserLikes
+-- | User interaction: Like an item.
+--
+--   [@id@] UserLikes
+--
 --   [@label@] User Likes
---   [@comment_plain@] User interaction: Like an item.
+--
 --   [@comment@] User interaction: Like an item.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserLikes>
 data UserLikes = UserLikes { description :: Description
                            , image :: Image

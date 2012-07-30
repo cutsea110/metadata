@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Pond
+-- | A pond
+--
+--   [@id@] Pond
+--
 --   [@label@] Pond
---   [@comment_plain@] A pond
+--
 --   [@comment@] A pond
+--
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'BodyOfWater'@
+--
 --   [@url@] <http://schema.org/Pond>
 data Pond = Pond { description :: Description
                  , image :: Image

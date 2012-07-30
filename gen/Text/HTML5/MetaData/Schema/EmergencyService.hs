@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] EmergencyService
+-- | An emergency service, such as a fire station or ER.
+--
+--   [@id@] EmergencyService
+--
 --   [@label@] Emergency Service
---   [@comment_plain@] An emergency service, such as a fire station or ER.
+--
 --   [@comment@] An emergency service, such as a fire station or ER.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @'FireStation','Hospital','PoliceStation'@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/EmergencyService>
 data EmergencyService = EmergencyService { description :: Description
                                          , image :: Image

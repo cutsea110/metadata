@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Mountain
+-- | A mountain, like Mount Whitney or Mount Everest
+--
+--   [@id@] Mountain
+--
 --   [@label@] Mountain
---   [@comment_plain@] A mountain, like Mount Whitney or Mount Everest
+--
 --   [@comment@] A mountain, like Mount Whitney or Mount Everest
+--
 --   [@ancestors@] @'Thing','Place','Landform'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Landform'@
+--
 --   [@url@] <http://schema.org/Mountain>
 data Mountain = Mountain { description :: Description
                          , image :: Image

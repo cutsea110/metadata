@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] CatholicChurch
+-- | A Catholic church.
+--
+--   [@id@] CatholicChurch
+--
 --   [@label@] Catholic Church
---   [@comment_plain@] A Catholic church.
+--
 --   [@comment@] A Catholic church.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'PlaceOfWorship'@
+--
 --   [@url@] <http://schema.org/CatholicChurch>
 data CatholicChurch = CatholicChurch { description :: Description
                                      , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserDownloads
+-- | User interaction: Download of an item.
+--
+--   [@id@] UserDownloads
+--
 --   [@label@] User Downloads
---   [@comment_plain@] User interaction: Download of an item.
+--
 --   [@comment@] User interaction: Download of an item.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserDownloads>
 data UserDownloads = UserDownloads { description :: Description
                                    , image :: Image

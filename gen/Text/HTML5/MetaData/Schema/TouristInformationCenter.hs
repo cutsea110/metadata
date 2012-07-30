@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] TouristInformationCenter
+-- | A tourist information center.
+--
+--   [@id@] TouristInformationCenter
+--
 --   [@label@] Tourist Information Center
---   [@comment_plain@] A tourist information center.
+--
 --   [@comment@] A tourist information center.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/TouristInformationCenter>
 data TouristInformationCenter = TouristInformationCenter { description :: Description
                                                          , image :: Image

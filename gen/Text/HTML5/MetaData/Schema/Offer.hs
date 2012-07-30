@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Offer
+-- | An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+--
+--   [@id@] Offer
+--
 --   [@label@] Offer
---   [@comment_plain@] An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+--
 --   [@comment@] An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @'AggregateOffer'@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/Offer>
 data Offer = Offer { description :: Description
                    , image :: Image

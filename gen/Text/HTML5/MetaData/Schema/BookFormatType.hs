@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BookFormatType
+-- | The publication format of the book.
+--
+--   [@id@] BookFormatType
+--
 --   [@label@] Book Format Type
---   [@comment_plain@] The publication format of the book.
+--
 --   [@comment@] The publication format of the book.
+--
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Enumeration'@
+--
 --   [@url@] <http://schema.org/BookFormatType>
 data BookFormatType = EBook
                     | Hardcover

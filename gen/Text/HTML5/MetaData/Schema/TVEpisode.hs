@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] TVEpisode
+-- | An episode of a TV series or season.
+--
+--   [@id@] TVEpisode
+--
 --   [@label@] TV Episode
---   [@comment_plain@] An episode of a TV series or season.
+--
 --   [@comment@] An episode of a TV series or season.
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/TVEpisode>
 data TVEpisode = TVEpisode { description :: Description
                            , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] MusicPlaylist
+-- | A collection of music tracks in playlist form.
+--
+--   [@id@] MusicPlaylist
+--
 --   [@label@] Music Playlist
---   [@comment_plain@] A collection of music tracks in playlist form.
+--
 --   [@comment@] A collection of music tracks in playlist form.
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @'MusicAlbum'@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/MusicPlaylist>
 data MusicPlaylist = MusicPlaylist { description :: Description
                                    , image :: Image

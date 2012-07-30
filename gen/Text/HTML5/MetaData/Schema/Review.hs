@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Review )
 import Data.Text
 
--- | [@id@] Review
+-- | A review of an item - for example, a restaurant, movie, or store.
+--
+--   [@id@] Review
+--
 --   [@label@] Review
---   [@comment_plain@] A review of an item - for example, a restaurant, movie, or store.
+--
 --   [@comment@] A review of an item - for example, a restaurant, movie, or store.
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/Review>
 data Review = Review { description :: Description
                      , image :: Image

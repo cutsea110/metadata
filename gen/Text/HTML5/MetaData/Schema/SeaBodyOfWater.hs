@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] SeaBodyOfWater
+-- | A sea (for example, the Caspian sea).
+--
+--   [@id@] SeaBodyOfWater
+--
 --   [@label@] Sea Body of Water
---   [@comment_plain@] A sea (for example, the Caspian sea).
+--
 --   [@comment@] A sea (for example, the Caspian sea).
+--
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'BodyOfWater'@
+--
 --   [@url@] <http://schema.org/SeaBodyOfWater>
 data SeaBodyOfWater = SeaBodyOfWater { description :: Description
                                      , image :: Image

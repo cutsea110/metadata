@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Rating
+-- | The rating of the video.
+--
+--   [@id@] Rating
+--
 --   [@label@] Rating
---   [@comment_plain@] The rating of the video.
+--
 --   [@comment@] The rating of the video.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @'AggregateRating'@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/Rating>
 data Rating = Rating { description :: Description
                      , image :: Image

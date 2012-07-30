@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ArtGallery
+-- | An art gallery.
+--
+--   [@id@] ArtGallery
+--
 --   [@label@] Art Gallery
---   [@comment_plain@] An art gallery.
+--
 --   [@comment@] An art gallery.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'EntertainmentBusiness'@
+--
 --   [@url@] <http://schema.org/ArtGallery>
 data ArtGallery = ArtGallery { description :: Description
                              , image :: Image

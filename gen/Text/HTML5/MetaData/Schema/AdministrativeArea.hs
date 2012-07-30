@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] AdministrativeArea
+-- | A geographical region under the jurisdiction of a particular government.
+--
+--   [@id@] AdministrativeArea
+--
 --   [@label@] Administrative Area
---   [@comment_plain@] A geographical region under the jurisdiction of a particular government.
+--
 --   [@comment@] A geographical region under the jurisdiction of a particular government.
+--
 --   [@ancestors@] @'Thing','Place'@
+--
 --   [@subtypes@] @'City','Country','State'@
+--
 --   [@supertypes@] @'Place'@
+--
 --   [@url@] <http://schema.org/AdministrativeArea>
 data AdministrativeArea = AdministrativeArea { description :: Description
                                              , image :: Image

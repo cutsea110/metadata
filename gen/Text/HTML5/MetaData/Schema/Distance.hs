@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Distance
+-- | Properties that take Distances as values are of the form '<Number> <Length unit of measure>'. E.g., '7 ft'
+--
+--   [@id@] Distance
+--
 --   [@label@] Distance
---   [@comment_plain@] Properties that take Distances as values are of the form '<Number> <Length unit of measure>'. E.g., '7 ft'
+--
 --   [@comment@] Properties that take Distances as values are of the form '<Number> <Length unit of measure>'. E.g., '7 ft'
+--
 --   [@ancestors@] @'Thing','Intangible','Quantity'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Quantity'@
+--
 --   [@url@] <http://schema.org/Distance>
 data Distance = Distance { description :: Description
                          , image :: Image

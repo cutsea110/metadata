@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] RVPark
+-- | An RV park.
+--
+--   [@id@] RVPark
+--
 --   [@label@] RV Park
---   [@comment_plain@] An RV park.
+--
 --   [@comment@] An RV park.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/RVPark>
 data RVPark = RVPark { description :: Description
                      , image :: Image

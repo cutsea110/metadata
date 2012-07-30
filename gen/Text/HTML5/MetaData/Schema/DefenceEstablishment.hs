@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] DefenceEstablishment
+-- | A defence establishment, such as an army or navy base.
+--
+--   [@id@] DefenceEstablishment
+--
 --   [@label@] Defence Establishment
---   [@comment_plain@] A defence establishment, such as an army or navy base.
+--
 --   [@comment@] A defence establishment, such as an army or navy base.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'GovernmentBuilding'@
+--
 --   [@url@] <http://schema.org/DefenceEstablishment>
 data DefenceEstablishment = DefenceEstablishment { description :: Description
                                                  , image :: Image

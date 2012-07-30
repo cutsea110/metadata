@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Notary
+-- | A notary.
+--
+--   [@id@] Notary
+--
 --   [@label@] Notary
---   [@comment_plain@] A notary.
+--
 --   [@comment@] A notary.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','ProfessionalService'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'ProfessionalService'@
+--
 --   [@url@] <http://schema.org/Notary>
 data Notary = Notary { description :: Description
                      , image :: Image

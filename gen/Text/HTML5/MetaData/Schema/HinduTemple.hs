@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] HinduTemple
+-- | A Hindu temple.
+--
+--   [@id@] HinduTemple
+--
 --   [@label@] Hindu Temple
---   [@comment_plain@] A Hindu temple.
+--
 --   [@comment@] A Hindu temple.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'PlaceOfWorship'@
+--
 --   [@url@] <http://schema.org/HinduTemple>
 data HinduTemple = HinduTemple { description :: Description
                                , image :: Image

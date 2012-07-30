@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] SiteNavigationElement
+-- | A navigation element of the page.
+--
+--   [@id@] SiteNavigationElement
+--
 --   [@label@] Site Navigation Element
---   [@comment_plain@] A navigation element of the page.
+--
 --   [@comment@] A navigation element of the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/SiteNavigationElement>
 data SiteNavigationElement = SiteNavigationElement { description :: Description
                                                    , image :: Image

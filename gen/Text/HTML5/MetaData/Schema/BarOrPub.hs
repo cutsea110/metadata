@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BarOrPub
+-- | A bar or pub.
+--
+--   [@id@] BarOrPub
+--
 --   [@label@] Bar or Pub
---   [@comment_plain@] A bar or pub.
+--
 --   [@comment@] A bar or pub.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'FoodEstablishment'@
+--
 --   [@url@] <http://schema.org/BarOrPub>
 data BarOrPub = BarOrPub { description :: Description
                          , image :: Image

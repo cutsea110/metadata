@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Winery
+-- | A winery.
+--
+--   [@id@] Winery
+--
 --   [@label@] Winery
---   [@comment_plain@] A winery.
+--
 --   [@comment@] A winery.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'FoodEstablishment'@
+--
 --   [@url@] <http://schema.org/Winery>
 data Winery = Winery { description :: Description
                      , image :: Image

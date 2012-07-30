@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Embassy
+-- | An embassy.
+--
+--   [@id@] Embassy
+--
 --   [@label@] Embassy
---   [@comment_plain@] An embassy.
+--
 --   [@comment@] An embassy.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'GovernmentBuilding'@
+--
 --   [@url@] <http://schema.org/Embassy>
 data Embassy = Embassy { description :: Description
                        , image :: Image

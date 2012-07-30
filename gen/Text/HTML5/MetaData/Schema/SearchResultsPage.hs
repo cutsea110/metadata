@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] SearchResultsPage
+-- | Web page type: Search results page.
+--
+--   [@id@] SearchResultsPage
+--
 --   [@label@] Search Results Page
---   [@comment_plain@] Web page type: Search results page.
+--
 --   [@comment@] Web page type: Search results page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPage'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPage'@
+--
 --   [@url@] <http://schema.org/SearchResultsPage>
 data SearchResultsPage = SearchResultsPage { description :: Description
                                            , image :: Image

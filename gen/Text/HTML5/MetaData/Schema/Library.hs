@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Library
+-- | A library.
+--
+--   [@id@] Library
+--
 --   [@label@] Library
---   [@comment_plain@] A library.
+--
 --   [@comment@] A library.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/Library>
 data Library = Library { description :: Description
                        , image :: Image

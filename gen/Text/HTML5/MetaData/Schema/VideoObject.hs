@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] VideoObject
+-- | A video file.
+--
+--   [@id@] VideoObject
+--
 --   [@label@] Video Object
---   [@comment_plain@] A video file.
+--
 --   [@comment@] A video file.
+--
 --   [@ancestors@] @'Thing','CreativeWork','MediaObject'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'MediaObject'@
+--
 --   [@url@] <http://schema.org/VideoObject>
 data VideoObject = VideoObject { description :: Description
                                , image :: Image

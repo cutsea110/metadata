@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Corporation
+-- | Organization: A business corporation.
+--
+--   [@id@] Corporation
+--
 --   [@label@] Corporation
---   [@comment_plain@] Organization: A business corporation.
+--
 --   [@comment@] Organization: A business corporation.
+--
 --   [@ancestors@] @'Thing','Organization'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Organization'@
+--
 --   [@url@] <http://schema.org/Corporation>
 data Corporation = Corporation { description :: Description
                                , image :: Image

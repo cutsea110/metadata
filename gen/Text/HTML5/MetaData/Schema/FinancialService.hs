@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] FinancialService
+-- | Financial services business.
+--
+--   [@id@] FinancialService
+--
 --   [@label@] Financial Service
---   [@comment_plain@] Financial services business.
+--
 --   [@comment@] Financial services business.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @'AccountingService','AutomatedTeller','BankOrCreditUnion','InsuranceAgency'@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/FinancialService>
 data FinancialService = FinancialService { description :: Description
                                          , image :: Image

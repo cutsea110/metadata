@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ScholarlyArticle
+-- | A scholarly article.
+--
+--   [@id@] ScholarlyArticle
+--
 --   [@label@] Scholarly Article
---   [@comment_plain@] A scholarly article.
+--
 --   [@comment@] A scholarly article.
+--
 --   [@ancestors@] @'Thing','CreativeWork','Article'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Article'@
+--
 --   [@url@] <http://schema.org/ScholarlyArticle>
 data ScholarlyArticle = ScholarlyArticle { description :: Description
                                          , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Playground
+-- | A playground.
+--
+--   [@id@] Playground
+--
 --   [@label@] Playground
---   [@comment_plain@] A playground.
+--
 --   [@comment@] A playground.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/Playground>
 data Playground = Playground { description :: Description
                              , image :: Image

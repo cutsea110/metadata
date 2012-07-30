@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ItemAvailability
+-- | A list of possible product availablity options.
+--
+--   [@id@] ItemAvailability
+--
 --   [@label@] Item Availability
---   [@comment_plain@] A list of possible product availablity options.
+--
 --   [@comment@] A list of possible product availablity options.
+--
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Enumeration'@
+--
 --   [@url@] <http://schema.org/ItemAvailability>
 data ItemAvailability = Discontinued
                       | InStock

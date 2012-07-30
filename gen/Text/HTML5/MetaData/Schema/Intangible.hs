@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Intangible
+-- | A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
+--
+--   [@id@] Intangible
+--
 --   [@label@] Intangible
---   [@comment_plain@] A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
+--
 --   [@comment@] A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
+--
 --   [@ancestors@] @'Thing'@
+--
 --   [@subtypes@] @'Enumeration','JobPosting','Language','Offer','Quantity','Rating','StructuredValue'@
+--
 --   [@supertypes@] @'Thing'@
+--
 --   [@url@] <http://schema.org/Intangible>
 data Intangible = Intangible { description :: Description
                              , image :: Image

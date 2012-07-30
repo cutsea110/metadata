@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Product
+-- | A product is anything that is made available for sale—for example, a pair of shoes, a concert ticket, or a car.
+--
+--   [@id@] Product
+--
 --   [@label@] Product
---   [@comment_plain@] A product is anything that is made available for sale—for example, a pair of shoes, a concert ticket, or a car.
+--
 --   [@comment@] A product is anything that is made available for sale—for example, a pair of shoes, a concert ticket, or a car.
+--
 --   [@ancestors@] @'Thing'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Thing'@
+--
 --   [@url@] <http://schema.org/Product>
 data Product = Product { description :: Description
                        , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WPFooter
+-- | The footer section of the page.
+--
+--   [@id@] WPFooter
+--
 --   [@label@] WP Footer
---   [@comment_plain@] The footer section of the page.
+--
 --   [@comment@] The footer section of the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/WPFooter>
 data WPFooter = WPFooter { description :: Description
                          , image :: Image

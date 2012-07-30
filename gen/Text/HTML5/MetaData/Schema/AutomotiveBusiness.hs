@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] AutomotiveBusiness
+-- | Car repair, sales, or parts.
+--
+--   [@id@] AutomotiveBusiness
+--
 --   [@label@] Automotive Business
---   [@comment_plain@] Car repair, sales, or parts.
+--
 --   [@comment@] Car repair, sales, or parts.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @'AutoBodyShop','AutoDealer','AutoPartsStore','AutoRental','AutoRepair','AutoWash','GasStation','MotorcycleDealer','MotorcycleRepair'@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/AutomotiveBusiness>
 data AutomotiveBusiness = AutomotiveBusiness { description :: Description
                                              , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] PerformingArtsTheater
+-- | A theatre or other performing art center.
+--
+--   [@id@] PerformingArtsTheater
+--
 --   [@label@] Performing Arts Theater
---   [@comment_plain@] A theatre or other performing art center.
+--
 --   [@comment@] A theatre or other performing art center.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/PerformingArtsTheater>
 data PerformingArtsTheater = PerformingArtsTheater { description :: Description
                                                    , image :: Image

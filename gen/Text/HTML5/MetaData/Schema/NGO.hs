@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] NGO
+-- | Organization: Non-governmental Organization.
+--
+--   [@id@] NGO
+--
 --   [@label@] NGO
---   [@comment_plain@] Organization: Non-governmental Organization.
+--
 --   [@comment@] Organization: Non-governmental Organization.
+--
 --   [@ancestors@] @'Thing','Organization'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Organization'@
+--
 --   [@url@] <http://schema.org/NGO>
 data NGO = NGO { description :: Description
                , image :: Image

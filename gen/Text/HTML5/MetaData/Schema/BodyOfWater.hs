@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BodyOfWater
+-- | A body of water, such as a sea, ocean, or lake.
+--
+--   [@id@] BodyOfWater
+--
 --   [@label@] Body of Water
---   [@comment_plain@] A body of water, such as a sea, ocean, or lake.
+--
 --   [@comment@] A body of water, such as a sea, ocean, or lake.
+--
 --   [@ancestors@] @'Thing','Place','Landform'@
+--
 --   [@subtypes@] @'Canal','LakeBodyOfWater','OceanBodyOfWater','Pond','Reservoir','RiverBodyOfWater','SeaBodyOfWater','Waterfall'@
+--
 --   [@supertypes@] @'Landform'@
+--
 --   [@url@] <http://schema.org/BodyOfWater>
 data BodyOfWater = BodyOfWater { description :: Description
                                , image :: Image

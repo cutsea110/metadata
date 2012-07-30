@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ElementarySchool
+-- | An elementary school.
+--
+--   [@id@] ElementarySchool
+--
 --   [@label@] Elementary School
---   [@comment_plain@] An elementary school.
+--
 --   [@comment@] An elementary school.
+--
 --   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'EducationalOrganization'@
+--
 --   [@url@] <http://schema.org/ElementarySchool>
 data ElementarySchool = ElementarySchool { description :: Description
                                          , image :: Image

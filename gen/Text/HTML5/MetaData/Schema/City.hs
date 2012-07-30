@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] City
+-- | A city or town.
+--
+--   [@id@] City
+--
 --   [@label@] City
---   [@comment_plain@] A city or town.
+--
 --   [@comment@] A city or town.
+--
 --   [@ancestors@] @'Thing','Place','AdministrativeArea'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'AdministrativeArea'@
+--
 --   [@url@] <http://schema.org/City>
 data City = City { description :: Description
                  , image :: Image

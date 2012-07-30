@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Dentist
+-- | A dentist.
+--
+--   [@id@] Dentist
+--
 --   [@label@] Dentist
---   [@comment_plain@] A dentist.
+--
 --   [@comment@] A dentist.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'MedicalOrganization','ProfessionalService'@
+--
 --   [@url@] <http://schema.org/Dentist>
 data Dentist = Dentist { description :: Description
                        , image :: Image

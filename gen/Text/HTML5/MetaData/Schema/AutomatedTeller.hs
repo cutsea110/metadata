@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] AutomatedTeller
+-- | ATM/cash machine.
+--
+--   [@id@] AutomatedTeller
+--
 --   [@label@] Automated Teller
---   [@comment_plain@] ATM/cash machine.
+--
 --   [@comment@] ATM/cash machine.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'FinancialService'@
+--
 --   [@url@] <http://schema.org/AutomatedTeller>
 data AutomatedTeller = AutomatedTeller { description :: Description
                                        , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] State
+-- | A state or province.
+--
+--   [@id@] State
+--
 --   [@label@] State
---   [@comment_plain@] A state or province.
+--
 --   [@comment@] A state or province.
+--
 --   [@ancestors@] @'Thing','Place','AdministrativeArea'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'AdministrativeArea'@
+--
 --   [@url@] <http://schema.org/State>
 data State = State { description :: Description
                    , image :: Image

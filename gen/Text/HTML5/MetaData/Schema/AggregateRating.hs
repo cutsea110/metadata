@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( AggregateRating )
 import Data.Text
 
--- | [@id@] AggregateRating
+-- | The average rating based on multiple ratings or reviews.
+--
+--   [@id@] AggregateRating
+--
 --   [@label@] Aggregate Rating
---   [@comment_plain@] The average rating based on multiple ratings or reviews.
+--
 --   [@comment@] The average rating based on multiple ratings or reviews.
+--
 --   [@ancestors@] @'Thing','Intangible','Rating'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Rating'@
+--
 --   [@url@] <http://schema.org/AggregateRating>
 data AggregateRating = AggregateRating { description :: Description
                                        , image :: Image

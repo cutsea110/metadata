@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ImageObject
+-- | An image file.
+--
+--   [@id@] ImageObject
+--
 --   [@label@] Image Object
---   [@comment_plain@] An image file.
+--
 --   [@comment@] An image file.
+--
 --   [@ancestors@] @'Thing','CreativeWork','MediaObject'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'MediaObject'@
+--
 --   [@url@] <http://schema.org/ImageObject>
 data ImageObject = ImageObject { description :: Description
                                , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserBlocks
+-- | User interaction: Block this content.
+--
+--   [@id@] UserBlocks
+--
 --   [@label@] User Blocks
---   [@comment_plain@] User interaction: Block this content.
+--
 --   [@comment@] User interaction: Block this content.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserBlocks>
 data UserBlocks = UserBlocks { description :: Description
                              , image :: Image

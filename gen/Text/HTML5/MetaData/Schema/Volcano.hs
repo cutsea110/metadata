@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Volcano
+-- | A volcano, like Fuji san
+--
+--   [@id@] Volcano
+--
 --   [@label@] Volcano
---   [@comment_plain@] A volcano, like Fuji san
+--
 --   [@comment@] A volcano, like Fuji san
+--
 --   [@ancestors@] @'Thing','Place','Landform'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Landform'@
+--
 --   [@url@] <http://schema.org/Volcano>
 data Volcano = Volcano { description :: Description
                        , image :: Image

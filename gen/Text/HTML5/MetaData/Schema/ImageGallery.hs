@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] ImageGallery
+-- | Web page type: Image gallery page.
+--
+--   [@id@] ImageGallery
+--
 --   [@label@] Image Gallery
---   [@comment_plain@] Web page type: Image gallery page.
+--
 --   [@comment@] Web page type: Image gallery page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPage','CollectionPage'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CollectionPage'@
+--
 --   [@url@] <http://schema.org/ImageGallery>
 data ImageGallery = ImageGallery { description :: Description
                                  , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] GeneralContractor
+-- | A general contractor.
+--
+--   [@id@] GeneralContractor
+--
 --   [@label@] General Contractor
---   [@comment_plain@] A general contractor.
+--
 --   [@comment@] A general contractor.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HomeAndConstructionBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'HomeAndConstructionBusiness','ProfessionalService'@
+--
 --   [@url@] <http://schema.org/GeneralContractor>
 data GeneralContractor = GeneralContractor { description :: Description
                                            , image :: Image

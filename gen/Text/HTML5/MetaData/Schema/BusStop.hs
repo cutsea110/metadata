@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BusStop
+-- | A bus stop.
+--
+--   [@id@] BusStop
+--
 --   [@label@] Bus Stop
---   [@comment_plain@] A bus stop.
+--
 --   [@comment@] A bus stop.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/BusStop>
 data BusStop = BusStop { description :: Description
                        , image :: Image

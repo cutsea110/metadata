@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] PostalAddress
+-- | The mailing address.
+--
+--   [@id@] PostalAddress
+--
 --   [@label@] Postal Address
---   [@comment_plain@] The mailing address.
+--
 --   [@comment@] The mailing address.
+--
 --   [@ancestors@] @'Thing','Intangible','StructuredValue','ContactPoint'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'ContactPoint'@
+--
 --   [@url@] <http://schema.org/PostalAddress>
 data PostalAddress = PostalAddress { description :: Description
                                    , image :: Image

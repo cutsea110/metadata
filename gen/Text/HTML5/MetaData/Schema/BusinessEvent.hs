@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] BusinessEvent
+-- | Event type: Business event.
+--
+--   [@id@] BusinessEvent
+--
 --   [@label@] Business Event
---   [@comment_plain@] Event type: Business event.
+--
 --   [@comment@] Event type: Business event.
+--
 --   [@ancestors@] @'Thing','Event'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Event'@
+--
 --   [@url@] <http://schema.org/BusinessEvent>
 data BusinessEvent = BusinessEvent { description :: Description
                                    , image :: Image

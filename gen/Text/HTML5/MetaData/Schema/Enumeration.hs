@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Enumeration
+-- | Lists or enumerations—for example, a list of cuisines or music genres, etc.
+--
+--   [@id@] Enumeration
+--
 --   [@label@] Enumeration
---   [@comment_plain@] Lists or enumerations—for example, a list of cuisines or music genres, etc.
+--
 --   [@comment@] Lists or enumerations—for example, a list of cuisines or music genres, etc.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @'BookFormatType','ItemAvailability','OfferItemCondition'@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/Enumeration>
 data Enumeration = Enumeration { description :: Description
                                , image :: Image

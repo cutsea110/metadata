@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Quantity
+-- | Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like '3 Kg' or '4 milligrams'.
+--
+--   [@id@] Quantity
+--
 --   [@label@] Quantity
---   [@comment_plain@] Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like '3 Kg' or '4 milligrams'.
+--
 --   [@comment@] Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like '3 Kg' or '4 milligrams'.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @'Distance','Duration','Energy','Mass'@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/Quantity>
 data Quantity = Quantity { description :: Description
                          , image :: Image

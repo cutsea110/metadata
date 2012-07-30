@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Residence
+-- | The place where a person lives.
+--
+--   [@id@] Residence
+--
 --   [@label@] Residence
---   [@comment_plain@] The place where a person lives.
+--
 --   [@comment@] The place where a person lives.
+--
 --   [@ancestors@] @'Thing','Place'@
+--
 --   [@subtypes@] @'ApartmentComplex','GatedResidenceCommunity','SingleFamilyResidence'@
+--
 --   [@supertypes@] @'Place'@
+--
 --   [@url@] <http://schema.org/Residence>
 data Residence = Residence { description :: Description
                            , image :: Image

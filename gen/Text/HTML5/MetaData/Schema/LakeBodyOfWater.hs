@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] LakeBodyOfWater
+-- | A lake (for example, Lake Pontrachain).
+--
+--   [@id@] LakeBodyOfWater
+--
 --   [@label@] Lake Body of Water
---   [@comment_plain@] A lake (for example, Lake Pontrachain).
+--
 --   [@comment@] A lake (for example, Lake Pontrachain).
+--
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'BodyOfWater'@
+--
 --   [@url@] <http://schema.org/LakeBodyOfWater>
 data LakeBodyOfWater = LakeBodyOfWater { description :: Description
                                        , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] StructuredValue
+-- | Structured values are strings—for example, addresses—that have certain constraints on their structure.
+--
+--   [@id@] StructuredValue
+--
 --   [@label@] Structured Value
---   [@comment_plain@] Structured values are strings—for example, addresses—that have certain constraints on their structure.
+--
 --   [@comment@] Structured values are strings—for example, addresses—that have certain constraints on their structure.
+--
 --   [@ancestors@] @'Thing','Intangible'@
+--
 --   [@subtypes@] @'ContactPoint','GeoCoordinates','GeoShape','NutritionInformation'@
+--
 --   [@supertypes@] @'Intangible'@
+--
 --   [@url@] <http://schema.org/StructuredValue>
 data StructuredValue = StructuredValue { description :: Description
                                        , image :: Image

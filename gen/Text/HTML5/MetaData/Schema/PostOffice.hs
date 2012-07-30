@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] PostOffice
+-- | A post office.
+--
+--   [@id@] PostOffice
+--
 --   [@label@] Post Office
---   [@comment_plain@] A post office.
+--
 --   [@comment@] A post office.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','GovernmentOffice'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'GovernmentOffice'@
+--
 --   [@url@] <http://schema.org/PostOffice>
 data PostOffice = PostOffice { description :: Description
                              , image :: Image

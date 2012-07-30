@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] GovernmentBuilding
+-- | A government building.
+--
+--   [@id@] GovernmentBuilding
+--
 --   [@label@] Government Building
---   [@comment_plain@] A government building.
+--
 --   [@comment@] A government building.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @'CityHall','Courthouse','DefenceEstablishment','Embassy','LegislativeBuilding'@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/GovernmentBuilding>
 data GovernmentBuilding = GovernmentBuilding { description :: Description
                                              , image :: Image

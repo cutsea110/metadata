@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] NutritionInformation
+-- | Nutritional information about the recipe.
+--
+--   [@id@] NutritionInformation
+--
 --   [@label@] Nutrition Information
---   [@comment_plain@] Nutritional information about the recipe.
+--
 --   [@comment@] Nutritional information about the recipe.
+--
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'StructuredValue'@
+--
 --   [@url@] <http://schema.org/NutritionInformation>
 data NutritionInformation = NutritionInformation { description :: Description
                                                  , image :: Image

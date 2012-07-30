@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] TVSeries
+-- | A television series.
+--
+--   [@id@] TVSeries
+--
 --   [@label@] TV Series
---   [@comment_plain@] A television series.
+--
 --   [@comment@] A television series.
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/TVSeries>
 data TVSeries = TVSeries { description :: Description
                          , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Aquarium
+-- | Aquarium.
+--
+--   [@id@] Aquarium
+--
 --   [@label@] Aquarium
---   [@comment_plain@] Aquarium.
+--
 --   [@comment@] Aquarium.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure'@
+--
 --   [@url@] <http://schema.org/Aquarium>
 data Aquarium = Aquarium { description :: Description
                          , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WPSideBar
+-- | A sidebar section of the page.
+--
+--   [@id@] WPSideBar
+--
 --   [@label@] WP Side Bar
---   [@comment_plain@] A sidebar section of the page.
+--
 --   [@comment@] A sidebar section of the page.
+--
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'WebPageElement'@
+--
 --   [@url@] <http://schema.org/WPSideBar>
 data WPSideBar = WPSideBar { description :: Description
                            , image :: Image

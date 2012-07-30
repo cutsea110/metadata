@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] AdultEntertainment
+-- | An adult entertainment establishment.
+--
+--   [@id@] AdultEntertainment
+--
 --   [@label@] Adult Entertainment
---   [@comment_plain@] An adult entertainment establishment.
+--
 --   [@comment@] An adult entertainment establishment.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'EntertainmentBusiness'@
+--
 --   [@url@] <http://schema.org/AdultEntertainment>
 data AdultEntertainment = AdultEntertainment { description :: Description
                                              , image :: Image

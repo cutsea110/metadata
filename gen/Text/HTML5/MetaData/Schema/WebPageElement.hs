@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WebPageElement
+-- | A web page element, like a table or an image
+--
+--   [@id@] WebPageElement
+--
 --   [@label@] Web Page Element
---   [@comment_plain@] A web page element, like a table or an image
+--
 --   [@comment@] A web page element, like a table or an image
+--
 --   [@ancestors@] @'Thing','CreativeWork'@
+--
 --   [@subtypes@] @'SiteNavigationElement','Table','WPAdBlock','WPFooter','WPHeader','WPSideBar'@
+--
 --   [@supertypes@] @'CreativeWork'@
+--
 --   [@url@] <http://schema.org/WebPageElement>
 data WebPageElement = WebPageElement { description :: Description
                                      , image :: Image

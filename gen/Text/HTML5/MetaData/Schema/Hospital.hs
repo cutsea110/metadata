@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Hospital
+-- | A hospital.
+--
+--   [@id@] Hospital
+--
 --   [@label@] Hospital
---   [@comment_plain@] A hospital.
+--
 --   [@comment@] A hospital.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'CivicStructure','MedicalOrganization','EmergencyService'@
+--
 --   [@url@] <http://schema.org/Hospital>
 data Hospital = Hospital { description :: Description
                          , image :: Image

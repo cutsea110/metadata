@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] UserPlays
+-- | User interaction: Play count of an item, for example a video or a song.
+--
+--   [@id@] UserPlays
+--
 --   [@label@] User Plays
---   [@comment_plain@] User interaction: Play count of an item, for example a video or a song.
+--
 --   [@comment@] User interaction: Play count of an item, for example a video or a song.
+--
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'UserInteraction'@
+--
 --   [@url@] <http://schema.org/UserPlays>
 data UserPlays = UserPlays { description :: Description
                            , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] GovernmentOffice
+-- | A government office—for example, an IRS or DMV office.
+--
+--   [@id@] GovernmentOffice
+--
 --   [@label@] Government Office
---   [@comment_plain@] A government office—for example, an IRS or DMV office.
+--
 --   [@comment@] A government office—for example, an IRS or DMV office.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @'PostOffice'@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/GovernmentOffice>
 data GovernmentOffice = GovernmentOffice { description :: Description
                                          , image :: Image

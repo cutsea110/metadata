@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] LandmarksOrHistoricalBuildings
+-- | An historical landmark or building.
+--
+--   [@id@] LandmarksOrHistoricalBuildings
+--
 --   [@label@] Landmarks or Historical Buildings
---   [@comment_plain@] An historical landmark or building.
+--
 --   [@comment@] An historical landmark or building.
+--
 --   [@ancestors@] @'Thing','Place'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Place'@
+--
 --   [@url@] <http://schema.org/LandmarksOrHistoricalBuildings>
 data LandmarksOrHistoricalBuildings = LandmarksOrHistoricalBuildings { description :: Description
                                                                      , image :: Image

@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] WebApplication
+-- | Web applications.
+--
+--   [@id@] WebApplication
+--
 --   [@label@] Web Application
---   [@comment_plain@] Web applications.
+--
 --   [@comment@] Web applications.
+--
 --   [@ancestors@] @'Thing','CreativeWork','SoftwareApplication'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'SoftwareApplication'@
+--
 --   [@url@] <http://schema.org/WebApplication>
 data WebApplication = WebApplication { description :: Description
                                      , image :: Image

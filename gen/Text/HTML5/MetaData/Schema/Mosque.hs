@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Mosque
+-- | A mosque.
+--
+--   [@id@] Mosque
+--
 --   [@label@] Mosque
---   [@comment_plain@] A mosque.
+--
 --   [@comment@] A mosque.
+--
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'PlaceOfWorship'@
+--
 --   [@url@] <http://schema.org/Mosque>
 data Mosque = Mosque { description :: Description
                      , image :: Image

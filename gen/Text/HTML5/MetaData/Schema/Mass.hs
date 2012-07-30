@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] Mass
+-- | Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+--
+--   [@id@] Mass
+--
 --   [@label@] Mass
---   [@comment_plain@] Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+--
 --   [@comment@] Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+--
 --   [@ancestors@] @'Thing','Intangible','Quantity'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'Quantity'@
+--
 --   [@url@] <http://schema.org/Mass>
 data Mass = Mass { description :: Description
                  , image :: Image

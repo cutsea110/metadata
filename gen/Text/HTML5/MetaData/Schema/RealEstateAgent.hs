@@ -7,13 +7,20 @@ import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | [@id@] RealEstateAgent
+-- | A real-estate agent.
+--
+--   [@id@] RealEstateAgent
+--
 --   [@label@] Real Estate Agent
---   [@comment_plain@] A real-estate agent.
+--
 --   [@comment@] A real-estate agent.
+--
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
+--
 --   [@subtypes@] @@
+--
 --   [@supertypes@] @'LocalBusiness'@
+--
 --   [@url@] <http://schema.org/RealEstateAgent>
 data RealEstateAgent = RealEstateAgent { description :: Description
                                        , image :: Image
