@@ -1,0 +1,12 @@
+module Text.HTML5.MetaData.Schema.RVPark where
+
+import Text.HTML5.MetaData.Class
+
+-- | An RV park.
+
+data RVPark
+
+instance Show RVPark
+instance Read RVPark
+instance Eq RVPark
+instance MetaData RVPark
