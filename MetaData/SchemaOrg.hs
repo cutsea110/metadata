@@ -14,14 +14,14 @@ import MetaData.SchemaOrg.Doc
 
 createSchema :: IO ()
 createSchema = do
-  (ts, ps) <- getSchema
-  gen (genMetaDataDir ++ "Type.hs") $ typeDoc ps
-  gen (genMetaDataDir ++ "Class.hs") classDoc
+  (v, ts, ps) <- getSchema
+  gen (genMetaDataDir ++ "Type.hs") $ typeDoc v ps
+  gen (genMetaDataDir ++ "Class.hs") $ classDoc v
 
   forM_ (H.toList $ H.filter descendantOfThing ts) 
     (\(_, d) -> do
-        gen (bootPath d) $ schemaBootDoc d            
-        gen (path d) $ schemaDoc ps d
+        gen (bootPath d) $ schemaBootDoc v d
+        gen (path d) $ schemaDoc v ps d
     )
   where
     gen :: FilePath -> Doc -> IO ()
