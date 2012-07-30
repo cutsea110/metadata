@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','GovernmentOffice'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'GovernmentOffice'@
 --

@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','CreativeWork','MediaObject'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'MediaObject'@
 --

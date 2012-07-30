@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'WebPageElement'@
 --

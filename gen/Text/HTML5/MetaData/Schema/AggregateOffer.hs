@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','Intangible','Offer'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'Offer'@
 --

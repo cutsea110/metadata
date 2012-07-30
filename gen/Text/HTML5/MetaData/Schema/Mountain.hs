@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','Place','Landform'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'Landform'@
 --

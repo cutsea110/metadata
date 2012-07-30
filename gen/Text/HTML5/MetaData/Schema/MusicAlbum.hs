@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','CreativeWork','MusicPlaylist'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'MusicPlaylist'@
 --

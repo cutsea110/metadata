@@ -15,11 +15,11 @@ import Data.Text
 --
 --   [@comment@] The most generic type of item.
 --
---   [@ancestors@] @@
+--   [@ancestors@]
 --
 --   [@subtypes@] @'CreativeWork','Event','Intangible','Organization','Person','Place','Product'@
 --
---   [@supertypes@] @@
+--   [@supertypes@]
 --
 --   [@url@] <http://schema.org/Thing>
 data Thing = Thing { description :: Description

@@ -17,7 +17,7 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing'@
 --
---   [@subtypes@] @@
+--   [@subtypes@]
 --
 --   [@supertypes@] @'Thing'@
 --
