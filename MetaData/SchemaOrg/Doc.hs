@@ -68,7 +68,7 @@ fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derive]]
+    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derivingSRE]]
       where
         props = properties d
         record | V.null props = text' (symbol d)
@@ -76,13 +76,10 @@ fromDataType d = comms <$> data_decl
         fields = (fld_decl . V.toList . V.map field) props
         field p = hsep $ map text' [id p, "::", symbol p]
         fld_decl ps = align $ cat $ (zipWith (<+>) (lbrace:repeat comma) ps)++[rbrace]
-    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derive]]
+    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derivingSRE]]
       where
         constructors = cnst_decl (V.toList $ V.map text' $ instances d)        
         cnst_decl cs = align $ cat $ zipWith (<+>) (map text' ("=":repeat "|")) cs
-    derive = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
-      where
-        tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
     comms = vcat $ intersperse nulline [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
       where
         nulline = hsep $ map text ["--"]
@@ -101,10 +98,10 @@ common_comms :: SchemaMeta a => a -> Doc
 common_comms md = vcat $ intersperse nulline [c_comment_plain, c_id, c_label, c_comment]
   where
     nulline = hsep $ map text ["--"]
-    c_comment_plain = hsep $ map text' ["-- |", comment_plain md]
+    c_comment_plain = hsep $ map text' ["-- |", oneliner $ comment_plain md]
     c_id = hsep $ map text' ["--  ", "[@id@]", id md]
     c_label = hsep $ map text' ["--  ", "[@label@]", label md]
-    c_comment = hsep $ map text' ["--  ", "[@comment@]", comment md]
+    c_comment = hsep $ map text' ["--  ", "[@comment@]", oneliner $ comment md]
 
 valid_comment :: T.Text -> Doc
 valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [lparen, text "Schema.rdfs.org", rparen]
@@ -113,7 +110,7 @@ fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
   where
     data_decl = hsep $ map text' ["data", symbol d]
-    com = hsep $ map text' ["-- |", comment d]
+    com = hsep $ map text' ["-- |", oneliner $ comment d]
 
 schemaDoc :: Valid -> Properties -> DataType -> Doc
 schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_decl]
@@ -202,8 +199,8 @@ referedThingSymbols = V.map (T.unpack . symbol) . referedThings
 metaDataProperties :: [(T.Text, DataType -> T.Text)]
 metaDataProperties = 
   [ ("_label",label)
-  , ("_comment_plain", comment_plain)
-  , ("_comment", comment)
+  , ("_comment_plain", oneliner . comment_plain)
+  , ("_comment", oneliner . comment)
   , ("_url", url)
   ]
 
@@ -224,7 +221,15 @@ special_datas = [either3]
     either3 = lhs <+> rhs
       where
         lhs = hsep (map text' ["data", "Either3", "a", "b", "c"])
-        rhs = align $ cat $ zipWith (<+>) (map text' ("=":repeat "|"))
-              (map (\(f,s)->text' f<+>text' s) [("Left3","a"),("Center3","b"),("Right3","c")])
+        rhs = align $ cat $ constructors ++ [derivingSRE]
+        constructors = zipWith (<+>) (map text' ("=":repeat "|"))
+                            (map (\(f,s)->text' f<+>text' s) [("Left3","a"),("Center3","b"),("Right3","c")])
 
-    
+derivingSRE :: Doc
+derivingSRE = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
+  where
+    tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+
+
+oneliner :: T.Text -> T.Text
+oneliner = T.concat . T.lines
