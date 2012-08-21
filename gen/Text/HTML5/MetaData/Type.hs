@@ -1,33 +1,78 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
 
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AdministrativeArea
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AggregateRating
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AnatomicalStructure
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AnatomicalSystem
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Audience
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AudioObject
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BlogPosting
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BookFormatType
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BrainStructure
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CollectionPage
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ContactPoint
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Country
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DDxElement
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Distance
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DoseSchedule
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Drug
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugClass
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugCost
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugCostCategory
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugLegalStatus
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugPregnancyCategory
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugPrescriptionStatus
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugStrength
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Duration
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EducationalOrganization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Energy
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Event
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoCoordinates
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoShape
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Hospital
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ImageObject
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.InfectiousAgentClass
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ItemAvailability
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Mass
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MaximumDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MediaObject
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalCause
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalCode
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalCondition
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalConditionStage
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalContraindication
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalDevice
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalDevicePurpose
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalEvidenceLevel
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalGuideline
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalImagingTechnique
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalIndication
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalObservationalStudyDesign
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalProcedure
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalProcedureType
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalRiskFactor
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalSign
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalSignOrSymptom
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalSpecialty
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalStudy
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalStudyStatus
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalTest
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalTherapy
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicalTrialDesign
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MedicineSystem
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Muscle
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MusicAlbum
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MusicGroup
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MusicPlaylist
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MusicRecording
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Nerve
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.NewsArticle
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.NutritionInformation
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Offer
@@ -35,16 +80,22 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OfferItemCondition
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Organization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Person
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Photograph
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PhysicalActivityCategory
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PhysicalExam
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Place
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PostalAddress
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Product
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Rating
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RecommendedDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Review
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Specialty
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SuperficialAnatomy
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVEpisode
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeason
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeries
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Thing
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.UserComments
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Vessel
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.VideoObject
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.WebPageElement
 
@@ -55,6 +106,10 @@ type Number = Either Integer Float
 -- use type Integer from Haskell primitive
 -- use type Float from Haskell primitive
 type Boolean = Bool
+data Either3 a b c = Left3 a
+                   | Center3 b
+                   | Right3 c
+                   deriving (Show, Read, Eq)
 
 -- | MIME format of the binary (e.g. application/zip).
 --
@@ -95,6 +150,32 @@ type InLanguage = Text
 --   [@ranges@] @'TVSeason'@
 type Season = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
 
+-- | Strength of evidence of the data used to formulate the guideline (enumerated).
+--
+--   [@id@] evidenceLevel
+--
+--   [@label@] Evidence Level
+--
+--   [@comment@] Strength of evidence of the data used to formulate the guideline (enumerated).
+--
+--   [@domains@] @'MedicalGuideline'@
+--
+--   [@ranges@] @'MedicalEvidenceLevel'@
+type EvidenceLevel = Text.HTML5.MetaData.Schema.MedicalEvidenceLevel.MedicalEvidenceLevel
+
+-- | The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
+--
+--   [@id@] procedureType
+--
+--   [@label@] Procedure Type
+--
+--   [@comment@] The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
+--
+--   [@domains@] @'MedicalProcedure'@
+--
+--   [@ranges@] @'MedicalProcedureType'@
+type ProcedureType = Text.HTML5.MetaData.Schema.MedicalProcedureType.MedicalProcedureType
+
 -- | Storage requirements (free space required).
 --
 --   [@id@] storageRequirements
@@ -121,6 +202,19 @@ type StorageRequirements = Either URL Text
 --   [@ranges@] @'Text'@
 type PrintEdition = Text
 
+-- | The stage represented as a number, e.g. 3.
+--
+--   [@id@] stageAsNumber
+--
+--   [@label@] Stage As Number
+--
+--   [@comment@] The stage represented as a number, e.g. 3.
+--
+--   [@domains@] @'MedicalConditionStage'@
+--
+--   [@ranges@] @'Number'@
+type StageAsNumber = Number
+
 -- | The trailer of the movie or TV series, season, or episode.
 --
 --   [@id@] trailer
@@ -133,6 +227,19 @@ type PrintEdition = Text
 --
 --   [@ranges@] @'VideoObject'@
 type Trailer = Text.HTML5.MetaData.Schema.VideoObject.VideoObject
+
+-- | A sign detected by the test.
+--
+--   [@id@] signDetected
+--
+--   [@label@] Sign Detected
+--
+--   [@comment@] A sign detected by the test.
+--
+--   [@domains@] @'MedicalTest'@
+--
+--   [@ranges@] @'MedicalSign'@
+type SignDetected = Text.HTML5.MetaData.Schema.MedicalSign.MedicalSign
 
 -- | The date on which the CreativeWork was most recently modified.
 --
@@ -173,6 +280,32 @@ type SoftwareVersion = Text
 --   [@ranges@] @'Person','Organization'@
 type Author = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | Any information related to overdose on a drug, including signs or symptoms, treatments, contact information for emergency response.
+--
+--   [@id@] overdosage
+--
+--   [@label@] Overdosage
+--
+--   [@comment@] Any information related to overdose on a drug, including signs or symptoms, treatments, contact information for emergency response.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type Overdosage = Text
+
+-- | An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
+--
+--   [@id@] diagram
+--
+--   [@label@] Diagram
+--
+--   [@comment@] An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'ImageObject'@
+type Diagram = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+
 -- | A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more spacedelimited points where the first and final points are identical.
 --
 --   [@id@] box
@@ -186,6 +319,19 @@ type Author = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaDat
 --   [@ranges@] @'Text'@
 type Box = Text
 
+-- | People or organizations that endorse the plan.
+--
+--   [@id@] endorsers
+--
+--   [@label@] Endorsers
+--
+--   [@comment@] People or organizations that endorse the plan.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Person','Organization'@
+type Endorsers = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+
 -- | Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
 --
 --   [@id@] countriesNotSupported
@@ -198,6 +344,19 @@ type Box = Text
 --
 --   [@ranges@] @'Text'@
 type CountriesNotSupported = Text
+
+-- | A physical examination that can identify this sign.
+--
+--   [@id@] identifyingExam
+--
+--   [@label@] Identifying Exam
+--
+--   [@comment@] A physical examination that can identify this sign.
+--
+--   [@domains@] @'MedicalSign'@
+--
+--   [@ranges@] @'PhysicalExam'@
+type IdentifyingExam = Text.HTML5.MetaData.Schema.PhysicalExam.PhysicalExam
 
 -- | The quantity produced by the recipe (for example, number of people served, number of servings, etc).
 --
@@ -225,6 +384,19 @@ type RecipeYield = Text
 --   [@ranges@] @'Person','Organization'@
 type Performers = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | The generic name of this drug or supplement.
+--
+--   [@id@] nonProprietaryName
+--
+--   [@label@] Non Proprietary Name
+--
+--   [@comment@] The generic name of this drug or supplement.
+--
+--   [@domains@] @'DietarySupplement','Drug'@
+--
+--   [@ranges@] @'Text'@
+type NonProprietaryName = Text
+
 -- | Description of benefits associated with the job.
 --
 --   [@id@] benefits
@@ -251,6 +423,32 @@ type Benefits = Text
 --   [@ranges@] @'Number'@
 type RatingCount = Number
 
+-- | Typical or recommended followup care after the procedure is performed.
+--
+--   [@id@] followup
+--
+--   [@label@] Followup
+--
+--   [@comment@] Typical or recommended followup care after the procedure is performed.
+--
+--   [@domains@] @'MedicalProcedure'@
+--
+--   [@ranges@] @'Text'@
+type Followup = Text
+
+-- | A medical guideline related to this entity.
+--
+--   [@id@] guideline
+--
+--   [@label@] Guideline
+--
+--   [@comment@] A medical guideline related to this entity.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'MedicalGuideline'@
+type Guideline = Text.HTML5.MetaData.Schema.MedicalGuideline.MedicalGuideline
+
 -- | A sibling of the person.
 --
 --   [@id@] sibling
@@ -263,6 +461,19 @@ type RatingCount = Number
 --
 --   [@ranges@] @'Person'@
 type Sibling = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Indicates whether this drug is available by prescription or over-the-counter.
+--
+--   [@id@] prescriptionStatus
+--
+--   [@label@] Prescription Status
+--
+--   [@comment@] Indicates whether this drug is available by prescription or over-the-counter.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DrugPrescriptionStatus'@
+type PrescriptionStatus = Text.HTML5.MetaData.Schema.DrugPrescriptionStatus.DrugPrescriptionStatus
 
 -- | The number of grams of unsaturated fat.
 --
@@ -277,6 +488,32 @@ type Sibling = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Mass'@
 type UnsaturatedFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | The type of the medical article, taken from the US NLM MeSH publication type catalog.
+--
+--   [@id@] publicationType
+--
+--   [@label@] Publication Type
+--
+--   [@comment@] The type of the medical article, taken from the US NLM MeSH <a href="http://www.nlm.nih.gov/mesh/pubtypes.html">publication type catalog.</a>
+--
+--   [@domains@] @'MedicalScholarlyArticle'@
+--
+--   [@ranges@] @'Text'@
+type PublicationType = Text
+
+-- | Other anatomical structures to which this structure is connected.
+--
+--   [@id@] connectedTo
+--
+--   [@label@] Connected to
+--
+--   [@comment@] Other anatomical structures to which this structure is connected.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type ConnectedTo = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
 -- | The media objects that encode this creative work. This property is a synonym for encodings.
 --
 --   [@id@] associatedMedia
@@ -289,6 +526,19 @@ type UnsaturatedFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --
 --   [@ranges@] @'MediaObject'@
 type AssociatedMedia = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
+
+-- | The status of the study (enumerated).
+--
+--   [@id@] status
+--
+--   [@label@] Status
+--
+--   [@comment@] The status of the study (enumerated).
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'MedicalStudyStatus'@
+type Status = Text.HTML5.MetaData.Schema.MedicalStudyStatus.MedicalStudyStatus
 
 -- | The most generic familial relation.
 --
@@ -303,6 +553,32 @@ type AssociatedMedia = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 --   [@ranges@] @'Person'@
 type RelatedTo = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+--
+--   [@id@] maximumIntake
+--
+--   [@label@] Maximum Intake
+--
+--   [@comment@] Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+--
+--   [@domains@] @'DietarySupplement'@
+--
+--   [@ranges@] @'MaximumDoseSchedule'@
+type MaximumIntake = Text.HTML5.MetaData.Schema.MaximumDoseSchedule.MaximumDoseSchedule
+
+-- | The intended audience of the work, i.e. the group for whom the work was created.
+--
+--   [@id@] audience
+--
+--   [@label@] Audience
+--
+--   [@comment@] The intended audience of the work, i.e. the group for whom the work was created.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Audience'@
+type Audience = Text.HTML5.MetaData.Schema.Audience.Audience
+
 -- | The telephone number.
 --
 --   [@id@] telephone
@@ -311,7 +587,7 @@ type RelatedTo = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] The telephone number.
 --
---   [@domains@] @'Organization','ContactPoint','Place','Person'@
+--   [@domains@] @'Person','ContactPoint','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Telephone = Text
@@ -328,6 +604,19 @@ type Telephone = Text
 --
 --   [@ranges@] @'CollectionPage'@
 type IsPartOf = Text.HTML5.MetaData.Schema.CollectionPage.CollectionPage
+
+-- | A hospital with which the physician or office is affiliated.
+--
+--   [@id@] hospitalAffiliation
+--
+--   [@label@] Hospital Affiliation
+--
+--   [@comment@] A hospital with which the physician or office is affiliated.
+--
+--   [@domains@] @'Physician'@
+--
+--   [@ranges@] @'Hospital'@
+type HospitalAffiliation = Text.HTML5.MetaData.Schema.Hospital.Hospital
 
 -- | A collection of music albums (legacy spelling; see singular form, album).
 --
@@ -355,6 +644,19 @@ type Albums = Text.HTML5.MetaData.Schema.MusicAlbum.MusicAlbum
 --   [@ranges@] @'Date'@
 type StartDate = Date
 
+-- | The branches that delineate from the nerve bundle.
+--
+--   [@id@] branch
+--
+--   [@label@] Branch
+--
+--   [@comment@] The branches that delineate from the nerve bundle.
+--
+--   [@domains@] @'Nerve'@
+--
+--   [@ranges@] @'Nerve','AnatomicalStructure'@
+type Branch = Either Text.HTML5.MetaData.Schema.Nerve.Nerve Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
 -- | A NewsArticle associated with the Media Object.
 --
 --   [@id@] associatedArticle
@@ -380,6 +682,32 @@ type AssociatedArticle = Text.HTML5.MetaData.Schema.NewsArticle.NewsArticle
 --
 --   [@ranges@] @'Date'@
 type DateCreated = Date
+
+-- | The stage of the condition, if applicable.
+--
+--   [@id@] stage
+--
+--   [@label@] Stage
+--
+--   [@comment@] The stage of the condition, if applicable.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalConditionStage'@
+type Stage = Text.HTML5.MetaData.Schema.MedicalConditionStage.MedicalConditionStage
+
+-- | How often the dose is taken, e.g. 'daily'.
+--
+--   [@id@] frequency
+--
+--   [@label@] Frequency
+--
+--   [@comment@] How often the dose is taken, e.g. 'daily'.
+--
+--   [@domains@] @'DoseSchedule'@
+--
+--   [@ranges@] @'Text'@
+type Frequency = Text
 
 -- | The exchange traded instrument associated with a Corporation object. The tickerSymbol is expressed as an exchange and an instrument name separated by a space character. For the exchange component of the tickerSymbol attribute, we reccommend using the controlled vocaulary of Market Identifier Codes (MIC) specified in ISO15022.
 --
@@ -407,6 +735,58 @@ type TickerSymbol = Text
 --   [@ranges@] @'Text'@
 type ApplicationSuite = Text
 
+-- | A medical service available from this provider.
+--
+--   [@id@] availableService
+--
+--   [@label@] Available Service
+--
+--   [@comment@] A medical service available from this provider.
+--
+--   [@domains@] @'Physician','Hospital','MedicalClinic'@
+--
+--   [@ranges@] @'MedicalTest','MedicalProcedure','MedicalTherapy'@
+type AvailableService = Either3 Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest Text.HTML5.MetaData.Schema.MedicalProcedure.MedicalProcedure Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
+
+-- | A therapy that duplicates or overlaps this one.
+--
+--   [@id@] duplicateTherapy
+--
+--   [@label@] Duplicate Therapy
+--
+--   [@comment@] A therapy that duplicates or overlaps this one.
+--
+--   [@domains@] @'MedicalTherapy'@
+--
+--   [@ranges@] @'MedicalTherapy'@
+type DuplicateTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
+
+-- | A drug in this drug class.
+--
+--   [@id@] drug
+--
+--   [@label@] Drug
+--
+--   [@comment@] A drug in this drug class.
+--
+--   [@domains@] @'DrugClass'@
+--
+--   [@ranges@] @'Drug'@
+type Drug = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | The class of infectious agent (bacteria, prion, etc.) that causes the disease.
+--
+--   [@id@] infectiousAgentClass
+--
+--   [@label@] Infectious Agent Class
+--
+--   [@comment@] The class of infectious agent (bacteria, prion, etc.) that causes the disease.
+--
+--   [@domains@] @'InfectiousDisease'@
+--
+--   [@ranges@] @'InfectiousAgentClass'@
+type InfectiousAgentClass = Text.HTML5.MetaData.Schema.InfectiousAgentClass.InfectiousAgentClass
+
 -- | The production company or studio that made the movie, TV series, season, or episode, or video.
 --
 --   [@id@] productionCompany
@@ -419,6 +799,19 @@ type ApplicationSuite = Text
 --
 --   [@ranges@] @'Organization'@
 type ProductionCompany = Text.HTML5.MetaData.Schema.Organization.Organization
+
+-- | The place or point where a muscle arises.
+--
+--   [@id@] origin
+--
+--   [@label@] Origin
+--
+--   [@comment@] The place or point where a muscle arises.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type Origin = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | The actual body of the article.
 --
@@ -446,6 +839,19 @@ type ArticleBody = Text
 --   [@ranges@] @'Place'@
 type ContentLocation = Text.HTML5.MetaData.Schema.Place.Place
 
+-- | A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
+--
+--   [@id@] indication
+--
+--   [@label@] Indication
+--
+--   [@comment@] A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
+--
+--   [@domains@] @'MedicalDevice','MedicalTherapy'@
+--
+--   [@ranges@] @'MedicalIndication'@
+type Indication = Text.HTML5.MetaData.Schema.MedicalIndication.MedicalIndication
+
 -- | Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the Name property.
 --
 --   [@id@] givenName
@@ -458,6 +864,45 @@ type ContentLocation = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@ranges@] @'Text'@
 type GivenName = Text
+
+-- | The expected progression of the condition if it is not treated and allowed to progress naturally.
+--
+--   [@id@] naturalProgression
+--
+--   [@label@] Natural Progression
+--
+--   [@comment@] The expected progression of the condition if it is not treated and allowed to progress naturally.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'Text'@
+type NaturalProgression = Text
+
+-- | Link to the drug's label details.
+--
+--   [@id@] labelDetails
+--
+--   [@label@] Label Details
+--
+--   [@comment@] Link to the drug's label details.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'URL'@
+type LabelDetails = URL
+
+-- | A medical specialty of the provider.
+--
+--   [@id@] medicalSpecialty
+--
+--   [@label@] Medical Specialty
+--
+--   [@comment@] A medical specialty of the provider.
+--
+--   [@domains@] @'Physician','Hospital','MedicalClinic'@
+--
+--   [@ranges@] @'MedicalSpecialty'@
+type MedicalSpecialty = Text.HTML5.MetaData.Schema.MedicalSpecialty.MedicalSpecialty
 
 -- | URL of an image of the item.
 --
@@ -511,6 +956,32 @@ type UploadDate = Date
 --   [@ranges@] @'Mass'@
 type CholesterolContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | True if this item's name is a proprietary/brand name (vs. generic name).
+--
+--   [@id@] isProprietary
+--
+--   [@label@] Is Proprietary
+--
+--   [@comment@] True if this item's name is a proprietary/brand name (vs. generic name).
+--
+--   [@domains@] @'DietarySupplement','Drug'@
+--
+--   [@ranges@] @'Boolean'@
+type IsProprietary = Boolean
+
+-- | Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
+--
+--   [@id@] workload
+--
+--   [@label@] Workload
+--
+--   [@comment@] Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Energy'@
+type Workload = Text.HTML5.MetaData.Schema.Energy.Energy
+
 -- | The method of cooking, such as Frying, Steaming, ...
 --
 --   [@id@] cookingMethod
@@ -536,6 +1007,19 @@ type CookingMethod = Text
 --
 --   [@ranges@] @'Text'@
 type ServingSize = Text
+
+-- | The substage, e.g. 'a' for Stage IIIa.
+--
+--   [@id@] subStageSuffix
+--
+--   [@label@] Sub Stage Suffix
+--
+--   [@comment@] The substage, e.g. 'a' for Stage IIIa.
+--
+--   [@domains@] @'MedicalConditionStage'@
+--
+--   [@ranges@] @'Text'@
+type SubStageSuffix = Text
 
 -- | The job title of the person (for example, Financial Manager).
 --
@@ -615,6 +1099,45 @@ type Siblings = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Duration'@
 type TotalTime = Text.HTML5.MetaData.Schema.Duration.Duration
 
+-- | A route by which this drug may be administered, e.g. 'oral'.
+--
+--   [@id@] administrationRoute
+--
+--   [@label@] Administration Route
+--
+--   [@comment@] A route by which this drug may be administered, e.g. 'oral'.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type AdministrationRoute = Text
+
+-- | A description of the postoperative procedures, care, and/or followups for this device.
+--
+--   [@id@] postOp
+--
+--   [@label@] Post Op
+--
+--   [@comment@] A description of the postoperative procedures, care, and/or followups for this device.
+--
+--   [@domains@] @'MedicalDevice'@
+--
+--   [@ranges@] @'Text'@
+type PostOp = Text
+
+-- | A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.
+--
+--   [@id@] possibleComplication
+--
+--   [@label@] Possible Complication
+--
+--   [@comment@] A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'Text'@
+type PossibleComplication = Text
+
 -- | The number of the column in which the NewsArticle appears in the print edition.
 --
 --   [@id@] printColumn
@@ -628,6 +1151,19 @@ type TotalTime = Text.HTML5.MetaData.Schema.Duration.Duration
 --   [@ranges@] @'Text'@
 type PrintColumn = Text
 
+-- | Any alternate name for this medical entity.
+--
+--   [@id@] alternateName
+--
+--   [@label@] Alternate Name
+--
+--   [@comment@] Any alternate name for this medical entity.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'Text'@
+type AlternateName = Text
+
 -- | The manufacturer of the product.
 --
 --   [@id@] manufacturer
@@ -636,7 +1172,7 @@ type PrintColumn = Text
 --
 --   [@comment@] The manufacturer of the product.
 --
---   [@domains@] @'Product'@
+--   [@domains@] @'Product','DietarySupplement','Drug'@
 --
 --   [@ranges@] @'Organization'@
 type Manufacturer = Text.HTML5.MetaData.Schema.Organization.Organization
@@ -667,6 +1203,19 @@ type StreetAddress = Text
 --   [@ranges@] @'Duration'@
 type OpeningHours = Text.HTML5.MetaData.Schema.Duration.Duration
 
+-- | Source of the data used to formulate the guidance, e.g. RCT, consensus opinion, etc.
+--
+--   [@id@] evidenceOrigin
+--
+--   [@label@] Evidence Origin
+--
+--   [@comment@] Source of the data used to formulate the guidance, e.g. RCT, consensus opinion, etc.
+--
+--   [@domains@] @'MedicalGuideline'@
+--
+--   [@ranges@] @'Text'@
+type EvidenceOrigin = Text
+
 -- | A music album.
 --
 --   [@id@] album
@@ -692,6 +1241,19 @@ type Album = Text.HTML5.MetaData.Schema.MusicAlbum.MusicAlbum
 --
 --   [@ranges@] @'Text'@
 type Name = Text
+
+-- | The drug or supplement's legal status, including any controlled substance schedules that apply.
+--
+--   [@id@] legalStatus
+--
+--   [@label@] Legal Status
+--
+--   [@comment@] The drug or supplement's legal status, including any controlled substance schedules that apply.
+--
+--   [@domains@] @'DietarySupplement','Drug'@
+--
+--   [@ranges@] @'DrugLegalStatus'@
+type LegalStatus = Text.HTML5.MetaData.Schema.DrugLegalStatus.DrugLegalStatus
 
 -- | Headline of the article
 --
@@ -797,6 +1359,19 @@ type Description = Text
 --   [@ranges@] @'AudioObject'@
 type Audio = Text.HTML5.MetaData.Schema.AudioObject.AudioObject
 
+-- | The value of the dose, e.g. 500.
+--
+--   [@id@] doseValue
+--
+--   [@label@] Dose Value
+--
+--   [@comment@] The value of the dose, e.g. 500.
+--
+--   [@domains@] @'DoseSchedule'@
+--
+--   [@ranges@] @'Number'@
+type DoseValue = Number
+
 -- | Features or modules provided by this application (and possibly required by other applications).
 --
 --   [@id@] featureList
@@ -831,7 +1406,7 @@ type ContainedIn = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@comment@] Physical address of the item.
 --
---   [@domains@] @'Organization','Place','Person'@
+--   [@domains@] @'Person','Place','Organization'@
 --
 --   [@ranges@] @'PostalAddress'@
 type Address = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
@@ -862,6 +1437,19 @@ type Ingredients = Text
 --   [@ranges@] @'OfferItemCondition'@
 type ItemCondition = Text.HTML5.MetaData.Schema.OfferItemCondition.OfferItemCondition
 
+-- | How often one should break from the activity.
+--
+--   [@id@] restPeriods
+--
+--   [@label@] Rest Periods
+--
+--   [@comment@] How often one should break from the activity.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Text'@
+type RestPeriods = Text
+
 -- | The ISBN of the book.
 --
 --   [@id@] isbn
@@ -874,6 +1462,45 @@ type ItemCondition = Text.HTML5.MetaData.Schema.OfferItemCondition.OfferItemCond
 --
 --   [@ranges@] @'Text'@
 type Isbn = Text
+
+-- | A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
+--
+--   [@id@] includedRiskFactor
+--
+--   [@label@] Included Risk Factor
+--
+--   [@comment@] A modifiable or non-modifiable risk factor included in the calculation, e.g. age, coexisting condition.
+--
+--   [@domains@] @'MedicalRiskEstimator'@
+--
+--   [@ranges@] @'MedicalRiskFactor'@
+type IncludedRiskFactor = Text.HTML5.MetaData.Schema.MedicalRiskFactor.MedicalRiskFactor
+
+-- | Another drug that is known to interact with this drug in a way that impacts the effect of this drug or causes a risk to the patient. Note: disease interactions are typically captured as contraindications.
+--
+--   [@id@] interactingDrug
+--
+--   [@label@] Interacting Drug
+--
+--   [@comment@] Another drug that is known to interact with this drug in a way that impacts the effect of this drug or causes a risk to the patient. Note: disease interactions are typically captured as contraindications.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Drug'@
+type InteractingDrug = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | The anatomical or organ system that the vein flows into; a larger structure that the vein connects to.
+--
+--   [@id@] tributary
+--
+--   [@label@] Tributary
+--
+--   [@comment@] The anatomical or organ system that the vein flows into; a larger structure that the vein connects to.
+--
+--   [@domains@] @'Vein'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type Tributary = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | The seasons of the TV series (legacy spelling; see singular form, season).
 --
@@ -900,6 +1527,19 @@ type Seasons = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
 --
 --   [@ranges@] @'Text'@
 type HonorificSuffix = Text
+
+-- | The actual code.
+--
+--   [@id@] codeValue
+--
+--   [@label@] Code Value
+--
+--   [@comment@] The actual code.
+--
+--   [@domains@] @'MedicalCode'@
+--
+--   [@ranges@] @'Text'@
+type CodeValue = Text
 
 -- | If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
 --
@@ -979,6 +1619,19 @@ type SeasonNumber = Integer
 --   [@ranges@] @'TVEpisode'@
 type Episode = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
 
+-- | The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+--
+--   [@id@] medicineSystem
+--
+--   [@label@] Medicine System
+--
+--   [@comment@] The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'MedicineSystem'@
+type MedicineSystem = Text.HTML5.MetaData.Schema.MedicineSystem.MedicineSystem
+
 -- | An award won by this person or for this creative work.
 --
 --   [@id@] award
@@ -992,6 +1645,19 @@ type Episode = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
 --   [@ranges@] @'Text'@
 type Award = Text
 
+-- | An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
+--
+--   [@id@] cause
+--
+--   [@label@] Cause
+--
+--   [@comment@] An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
+--
+--   [@domains@] @'MedicalCondition','MedicalSignOrSymptom'@
+--
+--   [@ranges@] @'MedicalCause'@
+type Cause = Text.HTML5.MetaData.Schema.MedicalCause.MedicalCause
+
 -- | The base salary of the job.
 --
 --   [@id@] baseSalary
@@ -1004,6 +1670,19 @@ type Award = Text
 --
 --   [@ranges@] @'Number'@
 type BaseSalary = Number
+
+-- | Component (sub-)structure(s) that comprise this anatomical structure.
+--
+--   [@id@] subStructure
+--
+--   [@label@] Sub Structure
+--
+--   [@comment@] Component (sub-)structure(s) that comprise this anatomical structure.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type SubStructure = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | An embedded video object.
 --
@@ -1057,6 +1736,19 @@ type PriceValidUntil = Date
 --   [@ranges@] @'Text'@
 type HonorificPrefix = Text
 
+-- | A contraindication for this therapy.
+--
+--   [@id@] contraindication
+--
+--   [@label@] Contraindication
+--
+--   [@comment@] A contraindication for this therapy.
+--
+--   [@domains@] @'MedicalDevice','MedicalTherapy'@
+--
+--   [@ranges@] @'MedicalContraindication'@
+type Contraindication = Text.HTML5.MetaData.Schema.MedicalContraindication.MedicalContraindication
+
 -- | The availability of this item—for example In stock, Out of stock, Pre-order, etc.
 --
 --   [@id@] availability
@@ -1069,6 +1761,32 @@ type HonorificPrefix = Text
 --
 --   [@ranges@] @'ItemAvailability'@
 type Availability = Text.HTML5.MetaData.Schema.ItemAvailability.ItemAvailability
+
+-- | The neurological pathway extension that involves muscle control.
+--
+--   [@id@] nerveMotor
+--
+--   [@label@] Nerve Motor
+--
+--   [@comment@] The neurological pathway extension that involves muscle control.
+--
+--   [@domains@] @'Nerve'@
+--
+--   [@ranges@] @'Muscle'@
+type NerveMotor = Text.HTML5.MetaData.Schema.Muscle.Muscle
+
+-- | An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+--
+--   [@id@] additionalType
+--
+--   [@label@] Additional Type
+--
+--   [@comment@] An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+--
+--   [@domains@] @'Thing'@
+--
+--   [@ranges@] @'URL'@
+type AdditionalType = URL
 
 -- | The illustrator of the book.
 --
@@ -1095,6 +1813,32 @@ type Illustrator = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'MusicPlaylist'@
 type InPlaylist = Text.HTML5.MetaData.Schema.MusicPlaylist.MusicPlaylist
+
+-- | Date on which the content on this web page was last reviewed for accuracy and/or completeness.
+--
+--   [@id@] lastReviewed
+--
+--   [@label@] Last Reviewed
+--
+--   [@comment@] Date on which the content on this web page was last reviewed for accuracy and/or completeness.
+--
+--   [@domains@] @'WebPage'@
+--
+--   [@ranges@] @'Date'@
+type LastReviewed = Date
+
+-- | Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
+--
+--   [@id@] pregnancyWarning
+--
+--   [@label@] Pregnancy Warning
+--
+--   [@comment@] Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type PregnancyWarning = Text
 
 -- | People working for this organization. (legacy spelling; see singular form, employee)
 --
@@ -1174,6 +1918,32 @@ type PerformerIn = Text.HTML5.MetaData.Schema.Event.Event
 --   [@ranges@] @'Date'@
 type BirthDate = Date
 
+-- | The vasculature the lymphatic structure originates, or afferents, from.
+--
+--   [@id@] originatesFrom
+--
+--   [@label@] Originates From
+--
+--   [@comment@] The vasculature the lymphatic structure originates, or afferents, from.
+--
+--   [@domains@] @'LymphaticVessel'@
+--
+--   [@ranges@] @'Vessel'@
+type OriginatesFrom = Text.HTML5.MetaData.Schema.Vessel.Vessel
+
+-- | The vasculature the lymphatic structure runs, or efferents, to.
+--
+--   [@id@] runsTo
+--
+--   [@label@] Runs to
+--
+--   [@comment@] The vasculature the lymphatic structure runs, or efferents, to.
+--
+--   [@domains@] @'LymphaticVessel'@
+--
+--   [@ranges@] @'Vessel'@
+type RunsTo = Text.HTML5.MetaData.Schema.Vessel.Vessel
+
 -- | A person who founded this organization.
 --
 --   [@id@] founder
@@ -1212,6 +1982,45 @@ type SpecialCommitments = Text
 --
 --   [@ranges@] @'Organization'@
 type Seller = Text.HTML5.MetaData.Schema.Organization.Organization
+
+-- | The degree of mobility the joint allows.
+--
+--   [@id@] functionalClass
+--
+--   [@label@] Functional Class
+--
+--   [@comment@] The degree of mobility the joint allows.
+--
+--   [@domains@] @'Joint'@
+--
+--   [@ranges@] @'Text'@
+type FunctionalClass = Text
+
+-- | The underlying anatomical structures, such as organs, that comprise the anatomical system.
+--
+--   [@id@] comprisedOf
+--
+--   [@label@] Comprised of
+--
+--   [@comment@] The underlying anatomical structures, such as organs, that comprise the anatomical system.
+--
+--   [@domains@] @'AnatomicalSystem'@
+--
+--   [@ranges@] @'AnatomicalStructure','AnatomicalSystem'@
+type ComprisedOf = Either Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem
+
+-- | The anatomy of the underlying organ system or structures associated with this entity.
+--
+--   [@id@] associatedAnatomy
+--
+--   [@label@] Associated Anatomy
+--
+--   [@comment@] The anatomy of the underlying organ system or structures associated with this entity.
+--
+--   [@domains@] @'MedicalCondition','PhysicalActivity'@
+--
+--   [@ranges@] @'AnatomicalSystem','SuperficialAnatomy','AnatomicalStructure'@
+type AssociatedAnatomy = Either3 Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.SuperficialAnatomy.SuperficialAnatomy Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).
 --
@@ -1265,6 +2074,32 @@ type EmbedUrl = URL
 --   [@ranges@] @'Mass'@
 type TransFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | Any precaution, guidance, contraindication, etc. related to consumption of alcohol while taking this drug.
+--
+--   [@id@] alcoholWarning
+--
+--   [@label@] Alcohol Warning
+--
+--   [@comment@] Any precaution, guidance, contraindication, etc. related to consumption of alcohol while taking this drug.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type AlcoholWarning = Text
+
+-- | How the procedure is performed.
+--
+--   [@id@] howPerformed
+--
+--   [@label@] How Performed
+--
+--   [@comment@] How the procedure is performed.
+--
+--   [@domains@] @'MedicalProcedure'@
+--
+--   [@ranges@] @'Text'@
+type HowPerformed = Text
+
 -- | The currency accepted (in ISO 4217 currency format).
 --
 --   [@id@] currenciesAccepted
@@ -1303,6 +2138,19 @@ type Affiliation = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'MediaObject'@
 type Encodings = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
+
+-- | Specifics about the trial design (enumerated).
+--
+--   [@id@] trialDesign
+--
+--   [@label@] Trial Design
+--
+--   [@comment@] Specifics about the trial design (enumerated).
+--
+--   [@domains@] @'MedicalTrial'@
+--
+--   [@ranges@] @'MedicalTrialDesign'@
+type TrialDesign = Text.HTML5.MetaData.Schema.MedicalTrialDesign.MedicalTrialDesign
 
 -- | The album to which this recording belongs.
 --
@@ -1343,6 +2191,45 @@ type Member = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaDat
 --   [@ranges@] @'Date'@
 type Expires = Date
 
+-- | The branches that comprise the arterial structure.
+--
+--   [@id@] arterialBranch
+--
+--   [@label@] Arterial Branch
+--
+--   [@comment@] The branches that comprise the arterial structure.
+--
+--   [@domains@] @'Artery'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type ArterialBranch = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
+-- | Specific physiologic risks associated to the plan.
+--
+--   [@id@] risks
+--
+--   [@label@] Risks
+--
+--   [@comment@] Specific physiologic risks associated to the plan.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type Risks = Text
+
+-- | If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+--
+--   [@id@] recognizingAuthority
+--
+--   [@label@] Recognizing Authority
+--
+--   [@comment@] If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'Organization'@
+type RecognizingAuthority = Text.HTML5.MetaData.Schema.Organization.Organization
+
 -- | The number of milligrams of sodium.
 --
 --   [@id@] sodiumContent
@@ -1355,6 +2242,32 @@ type Expires = Date
 --
 --   [@ranges@] @'Mass'@
 type SodiumContent = Text.HTML5.MetaData.Schema.Mass.Mass
+
+-- | A condition the test is used to diagnose.
+--
+--   [@id@] usedToDiagnose
+--
+--   [@label@] Used to Diagnose
+--
+--   [@comment@] A condition the test is used to diagnose.
+--
+--   [@domains@] @'MedicalTest'@
+--
+--   [@ranges@] @'MedicalCondition'@
+type UsedToDiagnose = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
+
+-- | Link to prescribing information for the drug.
+--
+--   [@id@] prescribingInfo
+--
+--   [@label@] Prescribing Info
+--
+--   [@comment@] Link to prescribing information for the drug.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'URL'@
+type PrescribingInfo = URL
 
 -- | Specifies browser requirements in human-readable text. For example,"requires HTML5 support".
 --
@@ -1369,6 +2282,19 @@ type SodiumContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --   [@ranges@] @'Text'@
 type BrowserRequirements = Text
 
+-- | An aspect of medical practice that is considered on the page, such as 'diagnosis', 'treatment', 'causes', 'prognosis', 'etiology', 'epidemiology', etc.
+--
+--   [@id@] aspect
+--
+--   [@label@] Aspect
+--
+--   [@comment@] An aspect of medical practice that is considered on the page, such as 'diagnosis', 'treatment', 'causes', 'prognosis', 'etiology', 'epidemiology', etc.
+--
+--   [@domains@] @'MedicalWebPage'@
+--
+--   [@ranges@] @'Text'@
+type Aspect = Text
+
 -- | The director of the movie, TV episode, or series.
 --
 --   [@id@] director
@@ -1381,6 +2307,19 @@ type BrowserRequirements = Text
 --
 --   [@ranges@] @'Person'@
 type Director = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | The category of physical activity, classified according to its physiologic effect or impact on the body.
+--
+--   [@id@] category
+--
+--   [@label@] Category
+--
+--   [@comment@] The category of physical activity, classified according to its physiologic effect or impact on the body.
+--
+--   [@domains@] @'PhysicalActivity'@
+--
+--   [@ranges@] @'PhysicalActivityCategory'@
+type Category = Text.HTML5.MetaData.Schema.PhysicalActivityCategory.PhysicalActivityCategory
 
 -- | The title of the job.
 --
@@ -1408,6 +2347,58 @@ type Title = Text
 --   [@ranges@] @'Text'@
 type EncodingFormat = Text
 
+-- | The location in which the status applies.
+--
+--   [@id@] applicableLocation
+--
+--   [@label@] Applicable Location
+--
+--   [@comment@] The location in which the status applies.
+--
+--   [@domains@] @'DrugLegalStatus','DrugCost'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type ApplicableLocation = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
+-- | Date on which this guideline's recommendation was made.
+--
+--   [@id@] guidelineDate
+--
+--   [@label@] Guideline Date
+--
+--   [@comment@] Date on which this guideline's recommendation was made.
+--
+--   [@domains@] @'MedicalGuideline'@
+--
+--   [@ranges@] @'Date'@
+type GuidelineDate = Date
+
+-- | The biomechanical properties of the bone.
+--
+--   [@id@] biomechnicalClass
+--
+--   [@label@] Biomechnical Class
+--
+--   [@comment@] The biomechanical properties of the bone.
+--
+--   [@domains@] @'Joint'@
+--
+--   [@ranges@] @'Text'@
+type BiomechnicalClass = Text
+
+-- | Description of the absorption and elimination of drugs, including their concentration (pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).
+--
+--   [@id@] clincalPharmacology
+--
+--   [@label@] Clincal Pharmacology
+--
+--   [@comment@] Description of the absorption and elimination of drugs, including their concentration (pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type ClincalPharmacology = Text
+
 -- | Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
 --
 --   [@id@] countriesSupported
@@ -1420,6 +2411,32 @@ type EncodingFormat = Text
 --
 --   [@ranges@] @'Text'@
 type CountriesSupported = Text
+
+-- | People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
+--
+--   [@id@] reviewedBy
+--
+--   [@label@] Reviewed by
+--
+--   [@comment@] People or organizations that have reviewed the content on this web page for accuracy and/or completeness.
+--
+--   [@domains@] @'WebPage'@
+--
+--   [@ranges@] @'Person','Organization'@
+type ReviewedBy = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+
+-- | Number of times one should repeat the activity.
+--
+--   [@id@] repetitions
+--
+--   [@label@] Repetitions
+--
+--   [@comment@] Number of times one should repeat the activity.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Number'@
+type Repetitions = Number
 
 -- | The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 used for the main salary information in this job posting.
 --
@@ -1447,6 +2464,19 @@ type SalaryCurrency = Text
 --   [@ranges@] @'UserComments'@
 type Comment = Text.HTML5.MetaData.Schema.UserComments.UserComments
 
+-- | Length of time to engage in the activity.
+--
+--   [@id@] activityDuration
+--
+--   [@label@] Activity Duration
+--
+--   [@comment@] Length of time to engage in the activity.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Duration'@
+type ActivityDuration = Text.HTML5.MetaData.Schema.Duration.Duration
+
 -- | A media object that encode this CreativeWork.
 --
 --   [@id@] encoding
@@ -1459,6 +2489,19 @@ type Comment = Text.HTML5.MetaData.Schema.UserComments.UserComments
 --
 --   [@ranges@] @'MediaObject'@
 type Encoding = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
+
+-- | The name given to how bone physically connects to each other.
+--
+--   [@id@] structuralClass
+--
+--   [@label@] Structural Class
+--
+--   [@comment@] The name given to how bone physically connects to each other.
+--
+--   [@domains@] @'Joint'@
+--
+--   [@ranges@] @'Text'@
+type StructuralClass = Text
 
 -- | A member of this organization (legacy spelling; see singular form, member).
 --
@@ -1486,6 +2529,19 @@ type Members = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaDa
 --   [@ranges@] @'Mass'@
 type FiberContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
+--
+--   [@id@] studySubject
+--
+--   [@label@] Study Subject
+--
+--   [@comment@] A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type StudySubject = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
+
 -- | The longitude of a location. For example -122.08585.
 --
 --   [@id@] longitude
@@ -1498,6 +2554,19 @@ type FiberContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --
 --   [@ranges@] @'Number','Text'@
 type Longitude = Either Number Text
+
+-- | One or more alternative conditions considered in the differential diagnosis process.
+--
+--   [@id@] diagnosis
+--
+--   [@label@] Diagnosis
+--
+--   [@comment@] One or more alternative conditions considered in the differential diagnosis process.
+--
+--   [@domains@] @'DDxElement'@
+--
+--   [@ranges@] @'MedicalCondition'@
+type Diagnosis = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
 
 -- | A secondary contributor to the CreativeWork.
 --
@@ -1538,6 +2607,19 @@ type CarbohydrateContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --   [@ranges@] @'Number','Text'@
 type HighPrice = Either Number Text
 
+-- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+--
+--   [@id@] citation
+--
+--   [@label@] Citation
+--
+--   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+--
+--   [@domains@] @'MedicalScholarlyArticle'@
+--
+--   [@ranges@] @'CreativeWork','Text'@
+type Citation = Either Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork Text
+
 -- | The steps to make the dish.
 --
 --   [@id@] recipeInstructions
@@ -1550,6 +2632,19 @@ type HighPrice = Either Number Text
 --
 --   [@ranges@] @'Text'@
 type RecipeInstructions = Text
+
+-- | The units of an active ingredient's strength, e.g. mg.
+--
+--   [@id@] strengthUnit
+--
+--   [@label@] Strength Unit
+--
+--   [@comment@] The units of an active ingredient's strength, e.g. mg.
+--
+--   [@domains@] @'DrugStrength'@
+--
+--   [@ranges@] @'Text'@
+type StrengthUnit = Text
 
 -- | Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
 --
@@ -1577,6 +2672,19 @@ type FileSize = Integer
 --   [@ranges@] @'Place'@
 type RegionsAllowed = Text.HTML5.MetaData.Schema.Place.Place
 
+-- | Descriptive information establishing the overarching theory/philosophy of the plan. May include the rationale for the name, the population where the plan first came to prominence, etc.
+--
+--   [@id@] overview
+--
+--   [@label@] Overview
+--
+--   [@comment@] Descriptive information establishing the overarching theory/philosophy of the plan. May include the rationale for the name, the population where the plan first came to prominence, etc.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type Overview = Text
+
 -- | A child of the person.
 --
 --   [@id@] children
@@ -1603,6 +2711,19 @@ type Children = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Text','URL'@
 type Menu = Either Text URL
 
+-- | Specific physiologic benefits associated to the plan.
+--
+--   [@id@] physiologicalBenefits
+--
+--   [@label@] Physiological Benefits
+--
+--   [@comment@] Specific physiologic benefits associated to the plan.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type PhysiologicalBenefits = Text
+
 -- | The episode number.
 --
 --   [@id@] episodeNumber
@@ -1615,6 +2736,32 @@ type Menu = Either Text URL
 --
 --   [@ranges@] @'Number'@
 type EpisodeNumber = Number
+
+-- | A diagnostic test that can identify this sign.
+--
+--   [@id@] identifyingTest
+--
+--   [@label@] Identifying Test
+--
+--   [@comment@] A diagnostic test that can identify this sign.
+--
+--   [@domains@] @'MedicalSign'@
+--
+--   [@ranges@] @'MedicalTest'@
+type IdentifyingTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
+
+-- | The muscle whose action counteracts the specified muscle.
+--
+--   [@id@] antagonist
+--
+--   [@label@] Antagonist
+--
+--   [@comment@] The muscle whose action counteracts the specified muscle.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'Muscle'@
+type Antagonist = Text.HTML5.MetaData.Schema.Muscle.Muscle
 
 -- | A person who founded this organization (legacy spelling; see singular form, founder).
 --
@@ -1681,6 +2828,19 @@ type ContentUrl = URL
 --   [@ranges@] @'Text'@
 type PriceRange = Text
 
+-- | One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.
+--
+--   [@id@] differentialDiagnosis
+--
+--   [@label@] Differential Diagnosis
+--
+--   [@comment@] One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'DDxElement'@
+type DifferentialDiagnosis = Text.HTML5.MetaData.Schema.DDxElement.DDxElement
+
 -- | Specific qualifications required for this role.
 --
 --   [@id@] qualifications
@@ -1720,6 +2880,19 @@ type Skills = Text
 --   [@ranges@] @'Text'@
 type Incentives = Text
 
+-- | The unit in which the drug is measured, e.g. '5 mg tablet'.
+--
+--   [@id@] drugUnit
+--
+--   [@label@] Drug Unit
+--
+--   [@comment@] The unit in which the drug is measured, e.g. '5 mg tablet'.
+--
+--   [@domains@] @'DrugCost'@
+--
+--   [@ranges@] @'Text'@
+type DrugUnit = Text
+
 -- | The number of grams of protein.
 --
 --   [@id@] proteinContent
@@ -1745,6 +2918,19 @@ type ProteinContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --
 --   [@ranges@] @'Person'@
 type Employee = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Function of the anatomical structure.
+--
+--   [@id@] function
+--
+--   [@label@] Function
+--
+--   [@comment@] Function of the anatomical structure.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'Text'@
+type Function = Text
 
 -- | If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).
 --
@@ -1837,6 +3023,19 @@ type ReplyToUrl = URL
 --   [@ranges@] @'Text'@
 type Awards = Text
 
+-- | The location in which the study is taking/took place.
+--
+--   [@id@] studyLocation
+--
+--   [@label@] Study Location
+--
+--   [@comment@] The location in which the study is taking/took place.
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type StudyLocation = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
 -- | Alumni of educational organization.
 --
 --   [@id@] alumni
@@ -1849,6 +3048,19 @@ type Awards = Text
 --
 --   [@ranges@] @'Person'@
 type Alumni = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | A component test of the panel.
+--
+--   [@id@] subTest
+--
+--   [@label@] Sub Test
+--
+--   [@comment@] A component test of the panel.
+--
+--   [@domains@] @'MedicalTestPanel'@
+--
+--   [@ranges@] @'MedicalTest'@
+type SubTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
 
 -- | The episode of a TV series or season (legacy spelling; see singular form, episode).
 --
@@ -1902,6 +3114,19 @@ type HomeLocation = Either Text.HTML5.MetaData.Schema.Place.Place Text.HTML5.Met
 --   [@ranges@] @'Text'@
 type ExperienceRequirements = Text
 
+-- | A description of the procedure involved in setting up, using, and/or installing the device.
+--
+--   [@id@] procedure
+--
+--   [@label@] Procedure
+--
+--   [@comment@] A description of the procedure involved in setting up, using, and/or installing the device.
+--
+--   [@domains@] @'MedicalDevice'@
+--
+--   [@ranges@] @'Text'@
+type Procedure = Text
+
 -- | Indicates if use of the media require a subscription  (either paid or free). Allowed values are yes or no.
 --
 --   [@id@] requiresSubscription
@@ -1928,6 +3153,19 @@ type RequiresSubscription = Boolean
 --   [@ranges@] @'Organization'@
 type BranchOf = Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+--
+--   [@id@] code
+--
+--   [@label@] Code
+--
+--   [@comment@] A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'MedicalCode'@
+type Code = Text.HTML5.MetaData.Schema.MedicalCode.MedicalCode
+
 -- | The edition of the book.
 --
 --   [@id@] bookEdition
@@ -1953,6 +3191,19 @@ type BookEdition = Text
 --
 --   [@ranges@] @'Person','Organization'@
 type Attendees = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+
+-- | The condition, complication, etc. influenced by this factor.
+--
+--   [@id@] increasesRiskOf
+--
+--   [@label@] Increases Risk of
+--
+--   [@comment@] The condition, complication, etc. influenced by this factor.
+--
+--   [@domains@] @'MedicalRiskFactor'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type IncreasesRiskOf = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 
 -- | The party holding the legal copyright to the CreativeWork.
 --
@@ -1992,6 +3243,19 @@ type CopyrightHolder = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML
 --
 --   [@ranges@] @'PostalAddress','Place'@
 type Location = Either Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress Text.HTML5.MetaData.Schema.Place.Place
+
+-- | Specifics about the observational study design (enumerated).
+--
+--   [@id@] studyDesign
+--
+--   [@label@] Study Design
+--
+--   [@comment@] Specifics about the observational study design (enumerated).
+--
+--   [@domains@] @'MedicalObservationalStudy'@
+--
+--   [@ranges@] @'MedicalObservationalStudyDesign'@
+type StudyDesign = Text.HTML5.MetaData.Schema.MedicalObservationalStudyDesign.MedicalObservationalStudyDesign
 
 -- | The offer price of the product.
 --
@@ -2097,6 +3361,32 @@ type CookTime = Text.HTML5.MetaData.Schema.Duration.Duration
 --   [@ranges@] @'Text'@
 type Bitrate = Text
 
+-- | The anatomical or organ system that the artery originates from.
+--
+--   [@id@] source
+--
+--   [@label@] Source
+--
+--   [@comment@] The anatomical or organ system that the artery originates from.
+--
+--   [@domains@] @'Artery'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type Source = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
+-- | Location in the body of the anatomical structure.
+--
+--   [@id@] bodyLocation
+--
+--   [@label@] Body Location
+--
+--   [@comment@] Location in the body of the anatomical structure.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'Text'@
+type BodyLocation = Text
+
 -- | Minimum memory requirements.
 --
 --   [@id@] memoryRequirements
@@ -2110,6 +3400,19 @@ type Bitrate = Text
 --   [@ranges@] @'URL','Text'@
 type MemoryRequirements = Either URL Text
 
+-- | A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
+--
+--   [@id@] dosageForm
+--
+--   [@label@] Dosage Form
+--
+--   [@comment@] A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
+--
+--   [@domains@] @'DietarySupplement','Drug'@
+--
+--   [@ranges@] @'Text'@
+type DosageForm = Text
+
 -- | Publication date for the job posting.
 --
 --   [@id@] datePosted
@@ -2122,6 +3425,19 @@ type MemoryRequirements = Either URL Text
 --
 --   [@ranges@] @'Date'@
 type DatePosted = Date
+
+-- | The coding system, e.g. 'ICD-10'.
+--
+--   [@id@] codingSystem
+--
+--   [@label@] Coding System
+--
+--   [@comment@] The coding system, e.g. 'ICD-10'.
+--
+--   [@domains@] @'MedicalCode'@
+--
+--   [@ranges@] @'Text'@
+type CodingSystem = Text
 
 -- | One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
 --
@@ -2188,6 +3504,32 @@ type Requirements = Either URL Text
 --   [@ranges@] @'Energy'@
 type Calories = Text.HTML5.MetaData.Schema.Energy.Energy
 
+-- | A medical test typically performed given this condition.
+--
+--   [@id@] typicalTest
+--
+--   [@label@] Typical Test
+--
+--   [@comment@] A medical test typically performed given this condition.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalTest'@
+type TypicalTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
+
+-- | Range of acceptable values for a typical patient, when applicable.
+--
+--   [@id@] normalRange
+--
+--   [@label@] Normal Range
+--
+--   [@comment@] Range of acceptable values for a typical patient, when applicable.
+--
+--   [@domains@] @'MedicalTest'@
+--
+--   [@ranges@] @'Text'@
+type NormalRange = Text
+
 -- | A contact point for a person or organization.
 --
 --   [@id@] contactPoint
@@ -2196,10 +3538,49 @@ type Calories = Text.HTML5.MetaData.Schema.Energy.Energy
 --
 --   [@comment@] A contact point for a person or organization.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoint = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
+
+-- | The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
+--
+--   [@id@] mechanismOfAction
+--
+--   [@label@] Mechanism of Action
+--
+--   [@comment@] The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
+--
+--   [@domains@] @'DietarySupplement','Drug'@
+--
+--   [@ranges@] @'Text'@
+type MechanismOfAction = Text
+
+-- | The currency (in 3-letter ISO 4217 format) of the drug cost.
+--
+--   [@id@] costCurrency
+--
+--   [@label@] Cost Currency
+--
+--   [@comment@] The currency (in 3-letter <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 format</a>) of the drug cost.
+--
+--   [@domains@] @'DrugCost'@
+--
+--   [@ranges@] @'Text'@
+type CostCurrency = Text
+
+-- | A medical therapy related to this anatomy.
+--
+--   [@id@] relatedTherapy
+--
+--   [@label@] Related Therapy
+--
+--   [@comment@] A medical therapy related to this anatomy.
+--
+--   [@domains@] @'SuperficialAnatomy','AnatomicalSystem','AnatomicalStructure'@
+--
+--   [@ranges@] @'MedicalTherapy'@
+type RelatedTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
 -- | Email address.
 --
@@ -2209,7 +3590,7 @@ type ContactPoint = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
 --
 --   [@comment@] Email address.
 --
---   [@domains@] @'Organization','ContactPoint','Person'@
+--   [@domains@] @'Person','ContactPoint','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Email = Text
@@ -2266,6 +3647,19 @@ type ContentSize = Text
 --   [@ranges@] @'MusicRecording'@
 type Tracks = Text.HTML5.MetaData.Schema.MusicRecording.MusicRecording
 
+-- | The likely outcome in either the short term or long term of the medical condition.
+--
+--   [@id@] expectedPrognosis
+--
+--   [@label@] Expected Prognosis
+--
+--   [@comment@] The likely outcome in either the short term or long term of the medical condition.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'Text'@
+type ExpectedPrognosis = Text
+
 -- | A parent of this person.
 --
 --   [@id@] parent
@@ -2279,6 +3673,19 @@ type Tracks = Text.HTML5.MetaData.Schema.MusicRecording.MusicRecording
 --   [@ranges@] @'Person'@
 type Parent = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Sponsor of the study.
+--
+--   [@id@] sponsor
+--
+--   [@label@] Sponsor
+--
+--   [@comment@] Sponsor of the study.
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'Organization'@
+type Sponsor = Text.HTML5.MetaData.Schema.Organization.Organization
+
 -- | A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more spacedelimited points where the first and final points are identical.
 --
 --   [@id@] polygon
@@ -2291,6 +3698,32 @@ type Parent = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'Text'@
 type Polygon = Text
+
+-- | Strength of the guideline's recommendation (e.g. 'class I').
+--
+--   [@id@] recommendationStrength
+--
+--   [@label@] Recommendation Strength
+--
+--   [@comment@] Strength of the guideline's recommendation (e.g. 'class I').
+--
+--   [@domains@] @'MedicalGuidelineRecommendation'@
+--
+--   [@ranges@] @'Text'@
+type RecommendationStrength = Text
+
+-- | A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.
+--
+--   [@id@] subtype
+--
+--   [@label@] Subtype
+--
+--   [@comment@] A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'Text'@
+type Subtype = Text
 
 -- | A contact location for a person's place of work.
 --
@@ -2357,6 +3790,32 @@ type ItemOffered = Text.HTML5.MetaData.Schema.Product.Product
 --   [@ranges@] @'Date'@
 type DatePublished = Date
 
+-- | A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.
+--
+--   [@id@] secondaryPrevention
+--
+--   [@label@] Secondary Prevention
+--
+--   [@comment@] A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalTherapy'@
+type SecondaryPrevention = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
+
+-- | An available dosage strength for the drug.
+--
+--   [@id@] availableStrength
+--
+--   [@label@] Available Strength
+--
+--   [@comment@] An available dosage strength for the drug.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DrugStrength'@
+type AvailableStrength = Text.HTML5.MetaData.Schema.DrugStrength.DrugStrength
+
 -- | The fax number.
 --
 --   [@id@] faxNumber
@@ -2365,7 +3824,7 @@ type DatePublished = Date
 --
 --   [@comment@] The fax number.
 --
---   [@domains@] @'Organization','ContactPoint','Place','Person'@
+--   [@domains@] @'Person','ContactPoint','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type FaxNumber = Text
@@ -2409,6 +3868,19 @@ type Event = Text.HTML5.MetaData.Schema.Event.Event
 --   [@ranges@] @'Photograph','ImageObject'@
 type Photo = Either Text.HTML5.MetaData.Schema.Photograph.Photograph Text.HTML5.MetaData.Schema.ImageObject.ImageObject
 
+-- | One of the domain specialities to which this web page's content applies.
+--
+--   [@id@] specialty
+--
+--   [@label@] Specialty
+--
+--   [@comment@] One of the domain specialities to which this web page's content applies.
+--
+--   [@domains@] @'WebPage'@
+--
+--   [@ranges@] @'Specialty'@
+type Specialty = Text.HTML5.MetaData.Schema.Specialty.Specialty
+
 -- | The quality of the video.
 --
 --   [@id@] videoQuality
@@ -2435,6 +3907,32 @@ type VideoQuality = Text
 --   [@ranges@] @'Person','Organization'@
 type Creator = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
+--
+--   [@id@] seriousAdverseOutcome
+--
+--   [@label@] Serious Adverse Outcome
+--
+--   [@comment@] A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
+--
+--   [@domains@] @'MedicalDevice','MedicalTherapy'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type SeriousAdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
+
+-- | A medical condition associated with this anatomy.
+--
+--   [@id@] relatedCondition
+--
+--   [@label@] Related Condition
+--
+--   [@comment@] A medical condition associated with this anatomy.
+--
+--   [@domains@] @'SuperficialAnatomy','AnatomicalSystem','AnatomicalStructure'@
+--
+--   [@ranges@] @'MedicalCondition'@
+type RelatedCondition = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
+
 -- | Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
 --
 --   [@id@] publishingPrinciples
@@ -2447,6 +3945,19 @@ type Creator = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaDa
 --
 --   [@ranges@] @'URL'@
 type PublishingPrinciples = URL
+
+-- | A medical study or trial related to this entity.
+--
+--   [@id@] study
+--
+--   [@label@] Study
+--
+--   [@comment@] A medical study or trial related to this entity.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'MedicalStudy'@
+type Study = Text.HTML5.MetaData.Schema.MedicalStudy.MedicalStudy
 
 -- | A parents of the person (legacy spelling; see singular form, parent).
 --
@@ -2461,6 +3972,32 @@ type PublishingPrinciples = URL
 --   [@ranges@] @'Person'@
 type Parents = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
+--
+--   [@id@] intensity
+--
+--   [@label@] Intensity
+--
+--   [@comment@] Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Text'@
+type Intensity = Text
+
+-- | Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
+--
+--   [@id@] additionalVariable
+--
+--   [@label@] Additional Variable
+--
+--   [@comment@] Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Text'@
+type AdditionalVariable = Text
+
 -- | Gender of the person.
 --
 --   [@id@] gender
@@ -2473,6 +4010,19 @@ type Parents = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'Text'@
 type Gender = Text
+
+-- | The phase of the trial.
+--
+--   [@id@] phase
+--
+--   [@label@] Phase
+--
+--   [@comment@] The phase of the trial.
+--
+--   [@domains@] @'MedicalTrial'@
+--
+--   [@ranges@] @'Text'@
+type Phase = Text
 
 -- | The number of grams of saturated fat.
 --
@@ -2500,6 +4050,32 @@ type SaturatedFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --   [@ranges@] @'CreativeWork'@
 type EncodesCreativeWork = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 
+-- | A diagnostic test or procedure offered by this lab.
+--
+--   [@id@] availableTest
+--
+--   [@label@] Available Test
+--
+--   [@comment@] A diagnostic test or procedure offered by this lab.
+--
+--   [@domains@] @'DiagnosticLab'@
+--
+--   [@ranges@] @'MedicalTest'@
+type AvailableTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
+
+-- | If applicable, a medical specialty in which this entity is relevant.
+--
+--   [@id@] relevantSpecialty
+--
+--   [@label@] Relevant Specialty
+--
+--   [@comment@] If applicable, a medical specialty in which this entity is relevant.
+--
+--   [@domains@] @'MedicalEntity'@
+--
+--   [@ranges@] @'MedicalSpecialty'@
+type RelevantSpecialty = Text.HTML5.MetaData.Schema.MedicalSpecialty.MedicalSpecialty
+
 -- | A contact point for a person or organization (legacy spelling; see singular form, contactPoint).
 --
 --   [@id@] contactPoints
@@ -2508,7 +4084,7 @@ type EncodesCreativeWork = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 --
 --   [@comment@] A contact point for a person or organization (legacy spelling; see singular form, contactPoint).
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoints = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
@@ -2538,6 +4114,45 @@ type Height = Text.HTML5.MetaData.Schema.Distance.Distance
 --
 --   [@ranges@] @'Text'@
 type Model = Text
+
+-- | The condition, complication, or symptom whose risk is being estimated.
+--
+--   [@id@] estimatesRiskOf
+--
+--   [@label@] Estimates Risk of
+--
+--   [@comment@] The condition, complication, or symptom whose risk is being estimated.
+--
+--   [@domains@] @'MedicalRiskEstimator'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type EstimatesRiskOf = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
+
+-- | The algorithm or rules to follow to compute the score.
+--
+--   [@id@] algorithm
+--
+--   [@label@] Algorithm
+--
+--   [@comment@] The algorithm or rules to follow to compute the score.
+--
+--   [@domains@] @'MedicalRiskScore'@
+--
+--   [@ranges@] @'Text'@
+type Algorithm = Text
+
+-- | The place of attachment of a muscle, or what the muscle moves.
+--
+--   [@id@] insertion
+--
+--   [@label@] Insertion
+--
+--   [@comment@] The place of attachment of a muscle, or what the muscle moves.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type Insertion = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | If the file can be downloaded, URL to download the binary.
 --
@@ -2591,6 +4206,32 @@ type Photos = Either Text.HTML5.MetaData.Schema.Photograph.Photograph Text.HTML5
 --   [@ranges@] @'Text'@
 type AddressLocality = Text
 
+-- | The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
+--
+--   [@id@] significance
+--
+--   [@label@] Significance
+--
+--   [@comment@] The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
+--
+--   [@domains@] @'SuperficialAnatomy'@
+--
+--   [@ranges@] @'Text'@
+type Significance = Text
+
+-- | A sign or symptom of this condition. Signs are objective or physically observable manifestations of the medical condition while symptoms are the subjective experienceof the medical condition.
+--
+--   [@id@] signOrSymptom
+--
+--   [@label@] Sign or Symptom
+--
+--   [@comment@] A sign or symptom of this condition. Signs are objective or physically observable manifestations of the medical condition while symptoms are the subjective experienceof the medical condition.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalSignOrSymptom'@
+type SignOrSymptom = Text.HTML5.MetaData.Schema.MedicalSignOrSymptom.MedicalSignOrSymptom
+
 -- | A music recording (track)—usually a single song.
 --
 --   [@id@] track
@@ -2617,6 +4258,19 @@ type Track = Text.HTML5.MetaData.Schema.MusicRecording.MusicRecording
 --   [@ranges@] @'Person'@
 type Colleague = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Additional details to capture the origin of the cost data. For example, 'Medicare Part B'.
+--
+--   [@id@] costOrigin
+--
+--   [@label@] Cost Origin
+--
+--   [@comment@] Additional details to capture the origin of the cost data. For example, 'Medicare Part B'.
+--
+--   [@domains@] @'DrugCost'@
+--
+--   [@ranges@] @'Text'@
+type CostOrigin = Text
+
 -- | A URL to a map of the place (legacy spelling; see singular form, map).
 --
 --   [@id@] maps
@@ -2629,6 +4283,32 @@ type Colleague = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'URL'@
 type Maps = URL
+
+-- | The neurological pathway that originates the neurons.
+--
+--   [@id@] sourcedFrom
+--
+--   [@label@] Sourced From
+--
+--   [@comment@] The neurological pathway that originates the neurons.
+--
+--   [@domains@] @'Nerve'@
+--
+--   [@ranges@] @'BrainStructure'@
+type SourcedFrom = Text.HTML5.MetaData.Schema.BrainStructure.BrainStructure
+
+-- | A link related to this web page, for example to other related web pages.
+--
+--   [@id@] relatedLink
+--
+--   [@label@] Related Link
+--
+--   [@comment@] A link related to this web page, for example to other related web pages.
+--
+--   [@domains@] @'WebPage'@
+--
+--   [@ranges@] @'URL'@
+type RelatedLink = URL
 
 -- | The person's spouse.
 --
@@ -2656,6 +4336,19 @@ type Spouse = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Text'@
 type ContentRating = Text
 
+-- | Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
+--
+--   [@id@] background
+--
+--   [@label@] Background
+--
+--   [@comment@] Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
+--
+--   [@domains@] @'DietarySupplement'@
+--
+--   [@ranges@] @'Text'@
+type Background = Text
+
 -- | A member of the music group—for example, John, Paul, George, or Ringo.
 --
 --   [@id@] musicGroupMember
@@ -2668,6 +4361,19 @@ type ContentRating = Text
 --
 --   [@ranges@] @'Person'@
 type MusicGroupMember = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
+--
+--   [@id@] exerciseType
+--
+--   [@label@] Exercise Type
+--
+--   [@comment@] Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Text'@
+type ExerciseType = Text
 
 -- | The item that is being reviewed/rated.
 --
@@ -2747,6 +4453,32 @@ type BlogPost = Text.HTML5.MetaData.Schema.BlogPosting.BlogPosting
 --   [@ranges@] @'Text'@
 type AdditionalName = Text
 
+-- | One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
+--
+--   [@id@] distinguishingSign
+--
+--   [@label@] Distinguishing Sign
+--
+--   [@comment@] One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
+--
+--   [@domains@] @'DDxElement'@
+--
+--   [@ranges@] @'MedicalSignOrSymptom'@
+type DistinguishingSign = Text.HTML5.MetaData.Schema.MedicalSignOrSymptom.MedicalSignOrSymptom
+
+-- | The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.
+--
+--   [@id@] purpose
+--
+--   [@label@] Purpose
+--
+--   [@comment@] The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.
+--
+--   [@domains@] @'MedicalDevice'@
+--
+--   [@ranges@] @'MedicalDevicePurpose'@
+type Purpose = Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurpose
+
 -- | The post offce box number for PO box addresses.
 --
 --   [@id@] postOfficeBoxNumber
@@ -2773,6 +4505,19 @@ type PostOfficeBoxNumber = Text
 --   [@ranges@] @'Text'@
 type Line = Text
 
+-- | The movement the muscle generates.
+--
+--   [@id@] action
+--
+--   [@label@] Action
+--
+--   [@comment@] The movement the muscle generates.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'Text'@
+type Action = Text
+
 -- | The most generic bi-directional social/work relation.
 --
 --   [@id@] knows
@@ -2785,6 +4530,19 @@ type Line = Text
 --
 --   [@ranges@] @'Person'@
 type Knows = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Imaging technique used.
+--
+--   [@id@] imagingTechnique
+--
+--   [@label@] Imaging Technique
+--
+--   [@comment@] Imaging technique used.
+--
+--   [@domains@] @'ImagingTest'@
+--
+--   [@ranges@] @'MedicalImagingTechnique'@
+type ImagingTechnique = Text.HTML5.MetaData.Schema.MedicalImagingTechnique.MedicalImagingTechnique
 
 -- | The region. For example, CA.
 --
@@ -2811,6 +4569,19 @@ type AddressRegion = Text
 --
 --   [@ranges@] @'Text','URL'@
 type ApplicationSubCategory = Either Text URL
+
+-- | The location in which the strength is available.
+--
+--   [@id@] availableIn
+--
+--   [@label@] Available in
+--
+--   [@comment@] The location in which the strength is available.
+--
+--   [@domains@] @'DrugStrength'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type AvailableIn = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
 
 -- | The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.
 --
@@ -2851,6 +4622,19 @@ type CommentText = Text
 --   [@ranges@] @'Person','Organization'@
 type Attendee = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | The value of an active ingredient's strength, e.g. 325.
+--
+--   [@id@] strengthValue
+--
+--   [@label@] Strength Value
+--
+--   [@comment@] The value of an active ingredient's strength, e.g. 325.
+--
+--   [@domains@] @'DrugStrength'@
+--
+--   [@ranges@] @'Number'@
+type StrengthValue = Number
+
 -- | Specifies the Person that is legally accountable for the CreativeWork.
 --
 --   [@id@] accountablePerson
@@ -2863,6 +4647,32 @@ type Attendee = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaD
 --
 --   [@ranges@] @'Person'@
 type AccountablePerson = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition, e.g. age,  coexisting condition.
+--
+--   [@id@] riskFactor
+--
+--   [@label@] Risk Factor
+--
+--   [@comment@] A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition, e.g. age,  coexisting condition.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalRiskFactor'@
+type RiskFactor = Text.HTML5.MetaData.Schema.MedicalRiskFactor.MedicalRiskFactor
+
+-- | Anatomical systems or structures that relate to the superficial anatomy.
+--
+--   [@id@] relatedAnatomy
+--
+--   [@label@] Related Anatomy
+--
+--   [@comment@] Anatomical systems or structures that relate to the superficial anatomy.
+--
+--   [@domains@] @'SuperficialAnatomy'@
+--
+--   [@ranges@] @'AnatomicalSystem','AnatomicalStructure'@
+type RelatedAnatomy = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | The publisher of the creative work.
 --
@@ -2903,6 +4713,19 @@ type SignificantLinks = URL
 --   [@ranges@] @'Organization'@
 type WorksFor = Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | Typical preparation that a patient must undergo before having the procedure performed.
+--
+--   [@id@] preparation
+--
+--   [@label@] Preparation
+--
+--   [@comment@] Typical preparation that a patient must undergo before having the procedure performed.
+--
+--   [@domains@] @'MedicalProcedure'@
+--
+--   [@ranges@] @'Text'@
+type Preparation = Text
+
 -- | Type of ordering (e.g. Ascending, Descending, Unordered).
 --
 --   [@id@] itemListOrder
@@ -2915,6 +4738,19 @@ type WorksFor = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'Text'@
 type ItemListOrder = Text
+
+-- | How often one should engage in the activity.
+--
+--   [@id@] activityFrequency
+--
+--   [@label@] Activity Frequency
+--
+--   [@comment@] How often one should engage in the activity.
+--
+--   [@domains@] @'ExercisePlan'@
+--
+--   [@ranges@] @'Text'@
+type ActivityFrequency = Text
 
 -- | The frame size of the video.
 --
@@ -2937,10 +4773,36 @@ type VideoFrameSize = Text
 --
 --   [@comment@] A count of a specific user interactions with this item—for example, <code>20 UserLikes</code>, <code>5 UserComments</code>, or <code>300 UserDownloads</code>. The user interaction type should be one of the sub types of <a href="http://schema.org/UserInteraction">UserInteraction</a>.
 --
---   [@domains@] @'Organization','Place','Person','CreativeWork'@
+--   [@domains@] @'Person','CreativeWork','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type InteractionCount = Text
+
+-- | Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+--
+--   [@id@] recommendedIntake
+--
+--   [@label@] Recommended Intake
+--
+--   [@comment@] Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+--
+--   [@domains@] @'DietarySupplement'@
+--
+--   [@ranges@] @'RecommendedDoseSchedule'@
+type RecommendedIntake = Text.HTML5.MetaData.Schema.RecommendedDoseSchedule.RecommendedDoseSchedule
+
+-- | The neurological pathway extension that inputs and sends information to the brain or spinal cord.
+--
+--   [@id@] sensoryUnit
+--
+--   [@label@] Sensory Unit
+--
+--   [@comment@] The neurological pathway extension that inputs and sends information to the brain or spinal cord.
+--
+--   [@domains@] @'Nerve'@
+--
+--   [@ranges@] @'SuperficialAnatomy','AnatomicalStructure'@
+type SensoryUnit = Either Text.HTML5.MetaData.Schema.SuperficialAnatomy.SuperficialAnatomy Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
 --
@@ -2955,6 +4817,19 @@ type InteractionCount = Text
 --   [@ranges@] @'Thing'@
 type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
 
+-- | The blood vessel that carries blood from the heart to the muscle.
+--
+--   [@id@] bloodSupply
+--
+--   [@label@] Blood Supply
+--
+--   [@comment@] The blood vessel that carries blood from the heart to the muscle.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'Vessel'@
+type BloodSupply = Text.HTML5.MetaData.Schema.Vessel.Vessel
+
 -- | The count of total number of reviews.
 --
 --   [@id@] reviewCount
@@ -2967,6 +4842,32 @@ type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
 --
 --   [@ranges@] @'Number'@
 type ReviewCount = Number
+
+-- | How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes aegypti', etc.
+--
+--   [@id@] transmissionMethod
+--
+--   [@label@] Transmission Method
+--
+--   [@comment@] How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes aegypti', etc.
+--
+--   [@domains@] @'InfectiousDisease'@
+--
+--   [@ranges@] @'Text'@
+type TransmissionMethod = Text
+
+-- | An active ingredient, typically chemical compounds and/or biologic substances.
+--
+--   [@id@] activeIngredient
+--
+--   [@label@] Active Ingredient
+--
+--   [@comment@] An active ingredient, typically chemical compounds and/or biologic substances.
+--
+--   [@domains@] @'DrugStrength','DietarySupplement','Drug'@
+--
+--   [@ranges@] @'Text'@
+type ActiveIngredient = Text
 
 -- | A single list item.
 --
@@ -2993,6 +4894,32 @@ type ItemListElement = Text
 --
 --   [@ranges@] @'Review'@
 type Reviews = Text.HTML5.MetaData.Schema.Review.Review
+
+-- | Drugs that affect the test's results.
+--
+--   [@id@] affectedBy
+--
+--   [@label@] Affected by
+--
+--   [@comment@] Drugs that affect the test's results.
+--
+--   [@domains@] @'MedicalTest'@
+--
+--   [@ranges@] @'Drug'@
+type AffectedBy = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | A possible treatment to address this condition, sign or symptom.
+--
+--   [@id@] possibleTreatment
+--
+--   [@label@] Possible Treatment
+--
+--   [@comment@] A possible treatment to address this condition, sign or symptom.
+--
+--   [@domains@] @'MedicalCondition','MedicalSignOrSymptom'@
+--
+--   [@ranges@] @'MedicalTherapy'@
+type PossibleTreatment = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
 -- | An organization to which the person belongs.
 --
@@ -3033,6 +4960,19 @@ type LowPrice = Either Number Text
 --   [@ranges@] @'Boolean'@
 type RepresentativeOfPage = Boolean
 
+-- | The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
+--
+--   [@id@] regionDrained
+--
+--   [@label@] Region Drained
+--
+--   [@comment@] The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
+--
+--   [@domains@] @'LymphaticVessel','Vein'@
+--
+--   [@ranges@] @'AnatomicalSystem','AnatomicalStructure'@
+type RegionDrained = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
 -- | A secondary title of the CreativeWork.
 --
 --   [@id@] alternativeHeadline
@@ -3045,6 +4985,19 @@ type RepresentativeOfPage = Boolean
 --
 --   [@ranges@] @'Text'@
 type AlternativeHeadline = Text
+
+-- | Any precaution, guidance, contraindication, etc. related to consumption of specific foods while taking this drug.
+--
+--   [@id@] foodWarning
+--
+--   [@label@] Food Warning
+--
+--   [@comment@] Any precaution, guidance, contraindication, etc. related to consumption of specific foods while taking this drug.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type FoodWarning = Text
 
 -- | A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.
 --
@@ -3071,6 +5024,19 @@ type ContactType = Text
 --
 --   [@ranges@] @'Event'@
 type SubEvent = Text.HTML5.MetaData.Schema.Event.Event
+
+-- | The medical conditions, treatments, etc. that are the subject of the guideline.
+--
+--   [@id@] guidelineSubject
+--
+--   [@label@] Guideline Subject
+--
+--   [@comment@] The medical conditions, treatments, etc. that are the subject of the guideline.
+--
+--   [@domains@] @'MedicalGuideline'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type GuidelineSubject = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 
 -- | Organization offering the job position.
 --
@@ -3150,6 +5116,19 @@ type Device = Text
 --   [@ranges@] @'Text'@
 type OperatingSystem = Text
 
+-- | A description of the workup, testing, and other preparations required before implanting this device.
+--
+--   [@id@] preOp
+--
+--   [@label@] Pre Op
+--
+--   [@comment@] A description of the workup, testing, and other preparations required before implanting this device.
+--
+--   [@domains@] @'MedicalDevice'@
+--
+--   [@ranges@] @'Text'@
+type PreOp = Text
+
 -- | Nutrition information about the recipe.
 --
 --   [@id@] nutrition
@@ -3162,6 +5141,19 @@ type OperatingSystem = Text
 --
 --   [@ranges@] @'NutritionInformation'@
 type Nutrition = Text.HTML5.MetaData.Schema.NutritionInformation.NutritionInformation
+
+-- | A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
+--
+--   [@id@] doseSchedule
+--
+--   [@label@] Dose Schedule
+--
+--   [@comment@] A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DoseSchedule'@
+type DoseSchedule = Text.HTML5.MetaData.Schema.DoseSchedule.DoseSchedule
 
 -- | Indicates if this web page element is the main subject of the page.
 --
@@ -3176,6 +5168,19 @@ type Nutrition = Text.HTML5.MetaData.Schema.NutritionInformation.NutritionInform
 --   [@ranges@] @'WebPageElement'@
 type MainContentOfPage = Text.HTML5.MetaData.Schema.WebPageElement.WebPageElement
 
+-- | The area to which the artery supplies blood to.
+--
+--   [@id@] supplyTo
+--
+--   [@label@] Supply to
+--
+--   [@comment@] The area to which the artery supplies blood to.
+--
+--   [@domains@] @'Artery'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type SupplyTo = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
 -- | Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
 --
 --   [@id@] employmentType
@@ -3188,6 +5193,19 @@ type MainContentOfPage = Text.HTML5.MetaData.Schema.WebPageElement.WebPageElemen
 --
 --   [@ranges@] @'Text'@
 type EmploymentType = Text
+
+-- | Device used to perform the test.
+--
+--   [@id@] usesDevice
+--
+--   [@label@] Uses Device
+--
+--   [@comment@] Device used to perform the test.
+--
+--   [@domains@] @'MedicalTest'@
+--
+--   [@ranges@] @'MedicalDevice'@
+type UsesDevice = Text.HTML5.MetaData.Schema.MedicalDevice.MedicalDevice
 
 -- | The postal code. For example, 94043.
 --
@@ -3214,6 +5232,45 @@ type PostalCode = Text
 --
 --   [@ranges@] @'Text'@
 type PrintSection = Text
+
+-- | The vasculature that the vein drains into.
+--
+--   [@id@] drainsTo
+--
+--   [@label@] Drains to
+--
+--   [@comment@] The vasculature that the vein drains into.
+--
+--   [@domains@] @'Vein'@
+--
+--   [@ranges@] @'Vessel'@
+type DrainsTo = Text.HTML5.MetaData.Schema.Vessel.Vessel
+
+-- | A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+--
+--   [@id@] adverseOutcome
+--
+--   [@label@] Adverse Outcome
+--
+--   [@comment@] A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+--
+--   [@domains@] @'MedicalDevice','MedicalTherapy'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type AdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
+
+-- | The condition, complication, symptom, sign, etc. caused.
+--
+--   [@id@] causeOf
+--
+--   [@label@] Cause of
+--
+--   [@comment@] The condition, complication, symptom, sign, etc. caused.
+--
+--   [@domains@] @'MedicalCause'@
+--
+--   [@ranges@] @'MedicalEntity'@
+type CauseOf = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 
 -- | Date of death.
 --
@@ -3280,6 +5337,71 @@ type Permissions = Text
 --   [@ranges@] @'URL'@
 type Url = URL
 
+-- | The type of tissue sample required for the test.
+--
+--   [@id@] tissueSample
+--
+--   [@label@] Tissue Sample
+--
+--   [@comment@] The type of tissue sample required for the test.
+--
+--   [@domains@] @'PathologyTest'@
+--
+--   [@ranges@] @'Text'@
+type TissueSample = Text
+
+-- | Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers.
+--
+--   [@id@] breastfeedingWarning
+--
+--   [@label@] Breastfeeding Warning
+--
+--   [@comment@] Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text'@
+type BreastfeedingWarning = Text
+
+-- | Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines.
+--
+--   [@id@] dietFeatures
+--
+--   [@label@] Diet Features
+--
+--   [@comment@] Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type DietFeatures = Text
+
+-- | The category of cost, such as wholesale, retail, reimbursement cap, etc.
+--
+--   [@id@] costCategory
+--
+--   [@label@] Cost Category
+--
+--   [@comment@] The category of cost, such as wholesale, retail, reimbursement cap, etc.
+--
+--   [@domains@] @'DrugCost'@
+--
+--   [@ranges@] @'DrugCostCategory'@
+type CostCategory = Text.HTML5.MetaData.Schema.DrugCostCategory.DrugCostCategory
+
+-- | The anatomical or organ system that this structure is part of.
+--
+--   [@id@] partOfSystem
+--
+--   [@label@] Part of System
+--
+--   [@comment@] The anatomical or organ system that this structure is part of.
+--
+--   [@domains@] @'AnatomicalStructure'@
+--
+--   [@ranges@] @'AnatomicalSystem'@
+type PartOfSystem = Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem
+
 -- | The end date and time of the event (in ISO 8601 date format).
 --
 --   [@id@] endDate
@@ -3306,6 +5428,32 @@ type EndDate = Date
 --   [@ranges@] @'EducationalOrganization'@
 type AlumniOf = Text.HTML5.MetaData.Schema.EducationalOrganization.EducationalOrganization
 
+-- | The unit of the dose, e.g. 'mg'.
+--
+--   [@id@] doseUnit
+--
+--   [@label@] Dose Unit
+--
+--   [@comment@] The unit of the dose, e.g. 'mg'.
+--
+--   [@domains@] @'DoseSchedule'@
+--
+--   [@ranges@] @'Text'@
+type DoseUnit = Text
+
+-- | Pregnancy category of this drug.
+--
+--   [@id@] pregnancyCategory
+--
+--   [@label@] Pregnancy Category
+--
+--   [@comment@] Pregnancy category of this drug.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DrugPregnancyCategory'@
+type PregnancyCategory = Text.HTML5.MetaData.Schema.DrugPregnancyCategory.DrugPregnancyCategory
+
 -- | Events that are a part of this event. For example, a conference event includes many presentations, each are subEvents of the conference (legacy spelling; see singular form, subEvent).
 --
 --   [@id@] subEvents
@@ -3319,6 +5467,19 @@ type AlumniOf = Text.HTML5.MetaData.Schema.EducationalOrganization.EducationalOr
 --   [@ranges@] @'Event'@
 type SubEvents = Text.HTML5.MetaData.Schema.Event.Event
 
+-- | Medical expert advice related to the plan.
+--
+--   [@id@] expertConsiderations
+--
+--   [@label@] Expert Considerations
+--
+--   [@comment@] Medical expert advice related to the plan.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type ExpertConsiderations = Text
+
 -- | A cast member of the movie, TV series, season, or episode, or video.
 --
 --   [@id@] actor
@@ -3331,6 +5492,19 @@ type SubEvents = Text.HTML5.MetaData.Schema.Event.Event
 --
 --   [@ranges@] @'Person'@
 type Actor = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
+--
+--   [@id@] pathophysiology
+--
+--   [@label@] Pathophysiology
+--
+--   [@comment@] Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
+--
+--   [@domains@] @'MedicalCondition','PhysicalActivity'@
+--
+--   [@ranges@] @'Text'@
+type Pathophysiology = Text
 
 -- | Player type required—for example, Flash or Silverlight.
 --
@@ -3383,6 +5557,32 @@ type Brand = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'URL'@
 type DiscussionUrl = URL
+
+-- | Any other drug related to this one, for example commonly-prescribed alternatives.
+--
+--   [@id@] relatedDrug
+--
+--   [@label@] Related Drug
+--
+--   [@comment@] Any other drug related to this one, for example commonly-prescribed alternatives.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Drug'@
+type RelatedDrug = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | Cost per unit of the drug, as reported by the source being tagged.
+--
+--   [@id@] cost
+--
+--   [@label@] Cost
+--
+--   [@comment@] Cost per unit of the drug, as reported by the source being tagged.
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DrugCost'@
+type Cost = Text.HTML5.MetaData.Schema.DrugCost.DrugCost
 
 -- | The season to which this episode belongs.
 --
@@ -3449,6 +5649,19 @@ type Genre = Text
 --   [@ranges@] @'Boolean'@
 type IsFamilyFriendly = Boolean
 
+-- | Any characteristics of the population used in the study, e.g. 'males under 65'.
+--
+--   [@id@] population
+--
+--   [@label@] Population
+--
+--   [@comment@] Any characteristics of the population used in the study, e.g. 'males under 65'.
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'Text'@
+type Population = Text
+
 -- | An offer to sell this item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
 --
 --   [@id@] offers
@@ -3462,6 +5675,19 @@ type IsFamilyFriendly = Boolean
 --   [@ranges@] @'Offer'@
 type Offers = Text.HTML5.MetaData.Schema.Offer.Offer
 
+-- | The characteristics of associated patients, such as age, gender, race etc.
+--
+--   [@id@] epidemiology
+--
+--   [@label@] Epidemiology
+--
+--   [@comment@] The characteristics of associated patients, such as age, gender, race etc.
+--
+--   [@domains@] @'MedicalCondition','PhysicalActivity'@
+--
+--   [@ranges@] @'Text'@
+type Epidemiology = Text
+
 -- | Cash, credit card, etc.
 --
 --   [@id@] paymentAccepted
@@ -3474,6 +5700,19 @@ type Offers = Text.HTML5.MetaData.Schema.Offer.Offer
 --
 --   [@ranges@] @'Text'@
 type PaymentAccepted = Text
+
+-- | If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+--
+--   [@id@] associatedPathophysiology
+--
+--   [@label@] Associated Pathophysiology
+--
+--   [@comment@] If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+--
+--   [@domains@] @'SuperficialAnatomy','AnatomicalSystem','AnatomicalStructure'@
+--
+--   [@ranges@] @'Text'@
+type AssociatedPathophysiology = Text
 
 -- | The number of tracks in this album or playlist.
 --
@@ -3514,6 +5753,45 @@ type Keywords = Text
 --   [@ranges@] @'Country'@
 type Nationality = Text.HTML5.MetaData.Schema.Country.Country
 
+-- | Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
+--
+--   [@id@] targetPopulation
+--
+--   [@label@] Target Population
+--
+--   [@comment@] Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
+--
+--   [@domains@] @'DietarySupplement','DoseSchedule'@
+--
+--   [@ranges@] @'Text'@
+type TargetPopulation = Text
+
+-- | The class of drug this belongs to (e.g., statins).
+--
+--   [@id@] drugClass
+--
+--   [@label@] Drug Class
+--
+--   [@comment@] The class of drug this belongs to (e.g., statins).
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'DrugClass'@
+type DrugClass = Text.HTML5.MetaData.Schema.DrugClass.DrugClass
+
+-- | Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
+--
+--   [@id@] safetyConsideration
+--
+--   [@label@] Safety Consideration
+--
+--   [@comment@] Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
+--
+--   [@domains@] @'DietarySupplement'@
+--
+--   [@ranges@] @'Text'@
+type SafetyConsideration = Text
+
 -- | Type of software application, e.g. "Game, Multimedia".
 --
 --   [@id@] applicationCategory
@@ -3527,6 +5805,45 @@ type Nationality = Text.HTML5.MetaData.Schema.Country.Country
 --   [@ranges@] @'Text','URL'@
 type ApplicationCategory = Either Text URL
 
+-- | Proprietary name given to the diet plan, typically by its originator or creator.
+--
+--   [@id@] proprietaryName
+--
+--   [@label@] Proprietary Name
+--
+--   [@comment@] Proprietary name given to the diet plan, typically by its originator or creator.
+--
+--   [@domains@] @'Diet'@
+--
+--   [@ranges@] @'Text'@
+type ProprietaryName = Text
+
+-- | The underlying innervation associated with the muscle.
+--
+--   [@id@] nerve
+--
+--   [@label@] Nerve
+--
+--   [@comment@] The underlying innervation associated with the muscle.
+--
+--   [@domains@] @'Muscle'@
+--
+--   [@ranges@] @'Nerve'@
+type Nerve = Text.HTML5.MetaData.Schema.Nerve.Nerve
+
+-- | Expected or actual outcomes of the study.
+--
+--   [@id@] outcome
+--
+--   [@label@] Outcome
+--
+--   [@comment@] Expected or actual outcomes of the study.
+--
+--   [@domains@] @'MedicalStudy'@
+--
+--   [@ranges@] @'Text'@
+type Outcome = Text
+
 -- | URL at which the app may be installed, if different from the URL of the item.
 --
 --   [@id@] installUrl
@@ -3539,6 +5856,32 @@ type ApplicationCategory = Either Text URL
 --
 --   [@ranges@] @'URL'@
 type InstallUrl = URL
+
+-- | Any FDA or other warnings about the drug (text or URL).
+--
+--   [@id@] warning
+--
+--   [@label@] Warning
+--
+--   [@comment@] Any FDA or other warnings about the drug (text or URL).
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Text','URL'@
+type Warning = Either Text URL
+
+-- | Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
+--
+--   [@id@] relatedStructure
+--
+--   [@label@] Related Structure
+--
+--   [@comment@] Related anatomical structure(s) that are not part of the system but relate or connect to it, such as vascular bundles associated with an organ system.
+--
+--   [@domains@] @'AnatomicalSystem'@
+--
+--   [@ranges@] @'AnatomicalStructure'@
+type RelatedStructure = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
 -- | The version of the CreativeWork embodied by a specified resource.
 --
@@ -3618,6 +5961,19 @@ type Review = Text.HTML5.MetaData.Schema.Review.Review
 --   [@ranges@] @'URL','Text'@
 type ReleaseNotes = Either URL Text
 
+-- | The cost per unit of the drug.
+--
+--   [@id@] costPerUnit
+--
+--   [@label@] Cost Per Unit
+--
+--   [@comment@] The cost per unit of the drug.
+--
+--   [@domains@] @'DrugCost'@
+--
+--   [@ranges@] @'Number','Text'@
+type CostPerUnit = Either Number Text
+
 -- | The format of the book.
 --
 --   [@id@] bookFormat
@@ -3643,6 +5999,19 @@ type BookFormat = Text.HTML5.MetaData.Schema.BookFormatType.BookFormatType
 --
 --   [@ranges@] @'Text'@
 type OccupationalCategory = Text
+
+-- | A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.
+--
+--   [@id@] primaryPrevention
+--
+--   [@label@] Primary Prevention
+--
+--   [@comment@] A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.
+--
+--   [@domains@] @'MedicalCondition'@
+--
+--   [@ranges@] @'MedicalTherapy'@
+type PrimaryPrevention = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
 -- | The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
 --
@@ -3695,6 +6064,32 @@ type Responsibilities = Text
 --
 --   [@ranges@] @'Text'@
 type ServesCuisine = Text
+
+-- | True if the drug is available in a generic form (regardless of name).
+--
+--   [@id@] isAvailableGenerically
+--
+--   [@label@] Is Available Generically
+--
+--   [@comment@] True if the drug is available in a generic form (regardless of name).
+--
+--   [@domains@] @'Drug'@
+--
+--   [@ranges@] @'Boolean'@
+type IsAvailableGenerically = Boolean
+
+-- | The actual infectious agent, such as a specific bacterium.
+--
+--   [@id@] infectiousAgent
+--
+--   [@label@] Infectious Agent
+--
+--   [@comment@] The actual infectious agent, such as a specific bacterium.
+--
+--   [@domains@] @'InfectiousDisease'@
+--
+--   [@ranges@] @'Text'@
+type InfectiousAgent = Text
 
 -- | The industry associated with the job position.
 --

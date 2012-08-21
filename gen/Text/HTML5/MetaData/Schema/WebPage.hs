@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WebPage where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -17,12 +17,13 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
---   [@subtypes@] @'AboutPage','CheckoutPage','CollectionPage','ContactPage','ItemPage','ProfilePage','SearchResultsPage'@
+--   [@subtypes@] @'AboutPage','CheckoutPage','CollectionPage','ContactPage','ItemPage','MedicalWebPage','ProfilePage','SearchResultsPage'@
 --
 --   [@supertypes@] @'CreativeWork'@
 --
 --   [@url@] <http://schema.org/WebPage>
-data WebPage = WebPage { description :: Description
+data WebPage = WebPage { additionalType :: AdditionalType
+                       , description :: Description
                        , image :: Image
                        , name :: Name
                        , url :: Url
@@ -31,6 +32,7 @@ data WebPage = WebPage { description :: Description
                        , aggregateRating :: AggregateRating
                        , alternativeHeadline :: AlternativeHeadline
                        , associatedMedia :: AssociatedMedia
+                       , audience :: Audience
                        , audio :: Audio
                        , author :: Author
                        , award :: Award
@@ -69,10 +71,14 @@ data WebPage = WebPage { description :: Description
                        , video :: Video
                        , breadcrumb :: Breadcrumb
                        , isPartOf :: IsPartOf
+                       , lastReviewed :: LastReviewed
                        , mainContentOfPage :: MainContentOfPage
                        , primaryImageOfPage :: PrimaryImageOfPage
+                       , relatedLink :: RelatedLink
+                       , reviewedBy :: ReviewedBy
                        , significantLink :: SignificantLink
                        , significantLinks :: SignificantLinks
+                       , specialty :: Specialty
                        }
                deriving (Show, Read, Eq)
 

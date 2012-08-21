@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPSideBar where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -22,7 +22,8 @@ import Data.Text
 --   [@supertypes@] @'WebPageElement'@
 --
 --   [@url@] <http://schema.org/WPSideBar>
-data WPSideBar = WPSideBar { description :: Description
+data WPSideBar = WPSideBar { additionalType :: AdditionalType
+                           , description :: Description
                            , image :: Image
                            , name :: Name
                            , url :: Url
@@ -31,6 +32,7 @@ data WPSideBar = WPSideBar { description :: Description
                            , aggregateRating :: AggregateRating
                            , alternativeHeadline :: AlternativeHeadline
                            , associatedMedia :: AssociatedMedia
+                           , audience :: Audience
                            , audio :: Audio
                            , author :: Author
                            , award :: Award

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Hospital where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -22,7 +22,8 @@ import Data.Text
 --   [@supertypes@] @'CivicStructure','MedicalOrganization','EmergencyService'@
 --
 --   [@url@] <http://schema.org/Hospital>
-data Hospital = Hospital { description :: Description
+data Hospital = Hospital { additionalType :: AdditionalType
+                         , description :: Description
                          , image :: Image
                          , name :: Name
                          , url :: Url
@@ -57,6 +58,8 @@ data Hospital = Hospital { description :: Description
                          , openingHours :: OpeningHours
                          , paymentAccepted :: PaymentAccepted
                          , priceRange :: PriceRange
+                         , availableService :: AvailableService
+                         , medicalSpecialty :: MedicalSpecialty
                          }
                 deriving (Show, Read, Eq)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SearchResultsPage where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -22,7 +22,8 @@ import Data.Text
 --   [@supertypes@] @'WebPage'@
 --
 --   [@url@] <http://schema.org/SearchResultsPage>
-data SearchResultsPage = SearchResultsPage { description :: Description
+data SearchResultsPage = SearchResultsPage { additionalType :: AdditionalType
+                                           , description :: Description
                                            , image :: Image
                                            , name :: Name
                                            , url :: Url
@@ -31,6 +32,7 @@ data SearchResultsPage = SearchResultsPage { description :: Description
                                            , aggregateRating :: AggregateRating
                                            , alternativeHeadline :: AlternativeHeadline
                                            , associatedMedia :: AssociatedMedia
+                                           , audience :: Audience
                                            , audio :: Audio
                                            , author :: Author
                                            , award :: Award
@@ -69,10 +71,14 @@ data SearchResultsPage = SearchResultsPage { description :: Description
                                            , video :: Video
                                            , breadcrumb :: Breadcrumb
                                            , isPartOf :: IsPartOf
+                                           , lastReviewed :: LastReviewed
                                            , mainContentOfPage :: MainContentOfPage
                                            , primaryImageOfPage :: PrimaryImageOfPage
+                                           , relatedLink :: RelatedLink
+                                           , reviewedBy :: ReviewedBy
                                            , significantLink :: SignificantLink
                                            , significantLinks :: SignificantLinks
+                                           , specialty :: Specialty
                                            }
                          deriving (Show, Read, Eq)
 

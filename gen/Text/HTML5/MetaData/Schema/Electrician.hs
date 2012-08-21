@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Electrician where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -19,10 +19,11 @@ import Data.Text
 --
 --   [@subtypes@]
 --
---   [@supertypes@] @'HomeAndConstructionBusiness','ProfessionalService'@
+--   [@supertypes@] @'ProfessionalService','HomeAndConstructionBusiness'@
 --
 --   [@url@] <http://schema.org/Electrician>
-data Electrician = Electrician { description :: Description
+data Electrician = Electrician { additionalType :: AdditionalType
+                               , description :: Description
                                , image :: Image
                                , name :: Name
                                , url :: Url

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LandmarksOrHistoricalBuildings where
 
---  Valid: 2012-06-26 ( Schema.rdfs.org )
+--  Valid: 2012-08-20 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -22,7 +22,8 @@ import Data.Text
 --   [@supertypes@] @'Place'@
 --
 --   [@url@] <http://schema.org/LandmarksOrHistoricalBuildings>
-data LandmarksOrHistoricalBuildings = LandmarksOrHistoricalBuildings { description :: Description
+data LandmarksOrHistoricalBuildings = LandmarksOrHistoricalBuildings { additionalType :: AdditionalType
+                                                                     , description :: Description
                                                                      , image :: Image
                                                                      , name :: Name
                                                                      , url :: Url
