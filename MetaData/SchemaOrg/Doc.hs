@@ -39,15 +39,17 @@ fromProperty p = case lookup (symbol p) special_types of
   Nothing -> type_decl True
   Just _ -> type_decl False
   where
-    (rng, rlen, t1, t2) = (ranges p, V.length rng, rng V.! 0, rng V.! 1)
-    (qnT1, qnT2) = (qualified_name (id t1), qualified_name (id t2))
+    (rng, rlen, t1, t2, t3) = (ranges p, V.length rng, rng V.! 0, rng V.! 1, rng V.! 2)
+    (qnT1, qnT2, qnT3) = (qualified_name (id t1), qualified_name (id t2), qualified_name (id t3))
     type_decl True  = vcat [comms, type_decl']
     type_decl False = vcat [comms, hsep [text "--", type_decl']]
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
-               | otherwise = error "Found a property which has more than 3 types."
-    single_type_decl = hsep $ map text' ["type", symbol p, "=", qnT1]
-    either_type_decl = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
+               | rlen==3 = either3_types_decl
+               | otherwise = error $ "Found a property which has more than 3 types. This has "++show rlen++" types."
+    single_type_decl   = hsep $ map text' ["type", symbol p, "=", qnT1]
+    either_type_decl   = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
+    either3_types_decl = hsep $ map text' ["type", symbol p, "=", "Either3", qnT1, qnT2, qnT3]
     qualified_name s = case lookup s special_types of 
       Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
       Just _ -> s
@@ -169,7 +171,7 @@ typeDoc v ps = vcat' [module_header, valid_comment v, import_list, special_decla
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    special_declares = vcat $ map sp_decl special_types
+    special_declares = vcat $ map sp_decl special_types ++ special_datas
       where
         sp_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
         sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
@@ -215,3 +217,14 @@ special_types =
   , ("Float", Nothing)
   , ("Boolean", Just $ text "Bool")
   ]
+
+special_datas :: [Doc]
+special_datas = [either3]
+  where
+    either3 = lhs <+> rhs
+      where
+        lhs = hsep (map text' ["data", "Either3", "a", "b", "c"])
+        rhs = align $ cat $ zipWith (<+>) (map text' ("=":repeat "|"))
+              (map (\(f,s)->text' f<+>text' s) [("Left3","a"),("Center3","b"),("Right3","c")])
+
+    
