@@ -11,7 +11,7 @@ license-file:        LICENSE
 author:              Katsutoshi Itoh
 maintainer:          cutsea110@gmail.com
 -- copyright:           
-category:            Text
+category:            Text, Web, Data
 build-type:          Simple
 cabal-version:       >=1.8
 
