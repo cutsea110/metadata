@@ -46,7 +46,7 @@ fromProperty p = case lookup (symbol p) special_types of
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | rlen==3 = either3_types_decl
-               | otherwise = error $ "Found a property which has more than 3 types. This has "++show rlen++" types."
+               | otherwise = error $ "Found a property which has more than 4 types. This has "++show rlen++" types."
     single_type_decl   = hsep $ map text' ["type", symbol p, "=", qnT1]
     either_type_decl   = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
     either3_types_decl = hsep $ map text' ["type", symbol p, "=", "Either3", qnT1, qnT2, qnT3]
