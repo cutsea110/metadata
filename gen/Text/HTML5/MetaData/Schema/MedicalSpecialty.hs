@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalSpecialty where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( MedicalSpecialty )
@@ -15,7 +15,7 @@ import Data.Text
 --
 --   [@comment@] Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type.
 --
---   [@ancestors@] @'Thing','Intangible','Enumeration','Specialty'@
+--   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
 --   [@subtypes@]
 --
@@ -48,7 +48,7 @@ data MedicalSpecialty = Anesthesia
                       | Otolaryngologic
                       | Pathology
                       | Pediatric
-                      | Pharmacy
+                      | PharmacySpecialty
                       | Physiotherapy
                       | PlasticSurgery
                       | Podiatric

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DiagnosticProcedure where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -15,7 +15,7 @@ import Data.Text
 --
 --   [@comment@] A medical procedure intended primarly for diagnostic, as opposed to therapeutic, purposes.
 --
---   [@ancestors@] @'Thing','MedicalEntity','MedicalTest'@
+--   [@ancestors@] @'Thing','MedicalEntity','MedicalProcedure'@
 --
 --   [@subtypes@]
 --
@@ -34,15 +34,15 @@ data DiagnosticProcedure = DiagnosticProcedure { additionalType :: AdditionalTyp
                                                , recognizingAuthority :: RecognizingAuthority
                                                , relevantSpecialty :: RelevantSpecialty
                                                , study :: Study
-                                               , followup :: Followup
-                                               , howPerformed :: HowPerformed
-                                               , preparation :: Preparation
-                                               , procedureType :: ProcedureType
                                                , affectedBy :: AffectedBy
                                                , normalRange :: NormalRange
                                                , signDetected :: SignDetected
                                                , usedToDiagnose :: UsedToDiagnose
                                                , usesDevice :: UsesDevice
+                                               , followup :: Followup
+                                               , howPerformed :: HowPerformed
+                                               , preparation :: Preparation
+                                               , procedureType :: ProcedureType
                                                }
                            deriving (Show, Read, Eq)
 

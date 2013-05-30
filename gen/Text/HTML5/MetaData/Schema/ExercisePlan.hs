@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ExercisePlan where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -15,7 +15,7 @@ import Data.Text
 --
 --   [@comment@] Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
 --
---   [@ancestors@] @'Thing','MedicalEntity','MedicalTherapy','LifestyleModification','PhysicalActivity'@
+--   [@ancestors@] @'Thing','CreativeWork'@
 --
 --   [@subtypes@]
 --
@@ -27,6 +27,22 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
                                  , image :: Image
                                  , name :: Name
                                  , url :: Url
+                                 , alternateName :: AlternateName
+                                 , code :: Code
+                                 , guideline :: Guideline
+                                 , medicineSystem :: MedicineSystem
+                                 , recognizingAuthority :: RecognizingAuthority
+                                 , relevantSpecialty :: RelevantSpecialty
+                                 , study :: Study
+                                 , adverseOutcome :: AdverseOutcome
+                                 , contraindication :: Contraindication
+                                 , duplicateTherapy :: DuplicateTherapy
+                                 , indication :: Indication
+                                 , seriousAdverseOutcome :: SeriousAdverseOutcome
+                                 , associatedAnatomy :: AssociatedAnatomy
+                                 , category :: Category
+                                 , epidemiology :: Epidemiology
+                                 , pathophysiology :: Pathophysiology
                                  , about :: About
                                  , accountablePerson :: AccountablePerson
                                  , aggregateRating :: AggregateRating
@@ -49,14 +65,19 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
                                  , datePublished :: DatePublished
                                  , discussionUrl :: DiscussionUrl
                                  , editor :: Editor
+                                 , educationalAlignment :: EducationalAlignment
+                                 , educationalUse :: EducationalUse
                                  , encoding :: Encoding
                                  , encodings :: Encodings
                                  , genre :: Genre
                                  , headline :: Headline
                                  , inLanguage :: InLanguage
                                  , interactionCount :: InteractionCount
+                                 , interactivityType :: InteractivityType
+                                 , isBasedOnUrl :: IsBasedOnUrl
                                  , isFamilyFriendly :: IsFamilyFriendly
                                  , keywords :: Keywords
+                                 , learningResourceType :: LearningResourceType
                                  , mentions :: Mentions
                                  , offers :: Offers
                                  , provider :: Provider
@@ -67,24 +88,10 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
                                  , sourceOrganization :: SourceOrganization
                                  , text :: Text
                                  , thumbnailUrl :: ThumbnailUrl
+                                 , timeRequired :: TimeRequired
+                                 , typicalAgeRange :: TypicalAgeRange
                                  , version :: Version
                                  , video :: Video
-                                 , alternateName :: AlternateName
-                                 , code :: Code
-                                 , guideline :: Guideline
-                                 , medicineSystem :: MedicineSystem
-                                 , recognizingAuthority :: RecognizingAuthority
-                                 , relevantSpecialty :: RelevantSpecialty
-                                 , study :: Study
-                                 , adverseOutcome :: AdverseOutcome
-                                 , contraindication :: Contraindication
-                                 , duplicateTherapy :: DuplicateTherapy
-                                 , indication :: Indication
-                                 , seriousAdverseOutcome :: SeriousAdverseOutcome
-                                 , associatedAnatomy :: AssociatedAnatomy
-                                 , category :: Category
-                                 , epidemiology :: Epidemiology
-                                 , pathophysiology :: Pathophysiology
                                  , activityDuration :: ActivityDuration
                                  , activityFrequency :: ActivityFrequency
                                  , additionalVariable :: AdditionalVariable

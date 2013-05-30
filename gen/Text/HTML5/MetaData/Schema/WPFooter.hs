@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPFooter where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -49,14 +49,19 @@ data WPFooter = WPFooter { additionalType :: AdditionalType
                          , datePublished :: DatePublished
                          , discussionUrl :: DiscussionUrl
                          , editor :: Editor
+                         , educationalAlignment :: EducationalAlignment
+                         , educationalUse :: EducationalUse
                          , encoding :: Encoding
                          , encodings :: Encodings
                          , genre :: Genre
                          , headline :: Headline
                          , inLanguage :: InLanguage
                          , interactionCount :: InteractionCount
+                         , interactivityType :: InteractivityType
+                         , isBasedOnUrl :: IsBasedOnUrl
                          , isFamilyFriendly :: IsFamilyFriendly
                          , keywords :: Keywords
+                         , learningResourceType :: LearningResourceType
                          , mentions :: Mentions
                          , offers :: Offers
                          , provider :: Provider
@@ -67,6 +72,8 @@ data WPFooter = WPFooter { additionalType :: AdditionalType
                          , sourceOrganization :: SourceOrganization
                          , text :: Text
                          , thumbnailUrl :: ThumbnailUrl
+                         , timeRequired :: TimeRequired
+                         , typicalAgeRange :: TypicalAgeRange
                          , version :: Version
                          , video :: Video
                          }

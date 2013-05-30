@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Person where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -34,34 +34,45 @@ data Person = Person { additionalType :: AdditionalType
                      , award :: Award
                      , awards :: Awards
                      , birthDate :: BirthDate
+                     , brand :: Brand
                      , children :: Children
                      , colleague :: Colleague
                      , colleagues :: Colleagues
                      , contactPoint :: ContactPoint
                      , contactPoints :: ContactPoints
                      , deathDate :: DeathDate
+                     , duns :: Duns
                      , email :: Email
                      , familyName :: FamilyName
                      , faxNumber :: FaxNumber
                      , follows :: Follows
                      , gender :: Gender
                      , givenName :: GivenName
+                     , globalLocationNumber :: GlobalLocationNumber
+                     , hasPOS :: HasPOS
                      , homeLocation :: HomeLocation
                      , honorificPrefix :: HonorificPrefix
                      , honorificSuffix :: HonorificSuffix
                      , interactionCount :: InteractionCount
+                     , isicV4 :: IsicV4
                      , jobTitle :: JobTitle
                      , knows :: Knows
+                     , makesOffer :: MakesOffer
                      , memberOf :: MemberOf
+                     , naics :: Naics
                      , nationality :: Nationality
+                     , owns :: Owns
                      , parent :: Parent
                      , parents :: Parents
                      , performerIn :: PerformerIn
                      , relatedTo :: RelatedTo
+                     , seeks :: Seeks
                      , sibling :: Sibling
                      , siblings :: Siblings
                      , spouse :: Spouse
+                     , taxID :: TaxID
                      , telephone :: Telephone
+                     , vatID :: VatID
                      , workLocation :: WorkLocation
                      , worksFor :: WorksFor
                      }

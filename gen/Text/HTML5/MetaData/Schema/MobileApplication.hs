@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MobileApplication where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | None
+-- | A mobile software application.
 --
 --   [@id@] MobileApplication
 --
 --   [@label@] Mobile Application
 --
---   [@comment@] None
+--   [@comment@] A mobile software application.
 --
 --   [@ancestors@] @'Thing','CreativeWork','SoftwareApplication'@
 --
@@ -49,14 +49,19 @@ data MobileApplication = MobileApplication { additionalType :: AdditionalType
                                            , datePublished :: DatePublished
                                            , discussionUrl :: DiscussionUrl
                                            , editor :: Editor
+                                           , educationalAlignment :: EducationalAlignment
+                                           , educationalUse :: EducationalUse
                                            , encoding :: Encoding
                                            , encodings :: Encodings
                                            , genre :: Genre
                                            , headline :: Headline
                                            , inLanguage :: InLanguage
                                            , interactionCount :: InteractionCount
+                                           , interactivityType :: InteractivityType
+                                           , isBasedOnUrl :: IsBasedOnUrl
                                            , isFamilyFriendly :: IsFamilyFriendly
                                            , keywords :: Keywords
+                                           , learningResourceType :: LearningResourceType
                                            , mentions :: Mentions
                                            , offers :: Offers
                                            , provider :: Provider
@@ -67,6 +72,8 @@ data MobileApplication = MobileApplication { additionalType :: AdditionalType
                                            , sourceOrganization :: SourceOrganization
                                            , text :: Text
                                            , thumbnailUrl :: ThumbnailUrl
+                                           , timeRequired :: TimeRequired
+                                           , typicalAgeRange :: TypicalAgeRange
                                            , version :: Version
                                            , video :: Video
                                            , applicationCategory :: ApplicationCategory
@@ -95,6 +102,6 @@ data MobileApplication = MobileApplication { additionalType :: AdditionalType
 
 instance MetaData MobileApplication where
   _label         = const "Mobile Application"
-  _comment_plain = const "None"
-  _comment       = const "None"
+  _comment_plain = const "A mobile software application."
+  _comment       = const "A mobile software application."
   _url           = const "http://schema.org/MobileApplication"

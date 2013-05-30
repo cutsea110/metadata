@@ -1,12 +1,13 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2012-08-31 ( Schema.rdfs.org )
+--  Valid: 2013-05-30 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
 
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AdministrativeArea
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AggregateRating
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AlignmentObject
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AnatomicalStructure
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AnatomicalSystem
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Audience
@@ -14,11 +15,21 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AudioObject
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BlogPosting
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BookFormatType
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BrainStructure
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Brand
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BusinessEntityType
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BusinessFunction
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Class
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CollectionPage
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ContactPoint
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Country
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CreativeWork
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DDxElement
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DataCatalog
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DataDownload
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Dataset
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DayOfWeek
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DeliveryMethod
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Demand
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Distance
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Drug
@@ -32,6 +43,7 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugStrength
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Duration
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EducationalOrganization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Energy
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Enumeration
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Event
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoCoordinates
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoShape
@@ -77,31 +89,45 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.NewsArticle
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.NutritionInformation
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Offer
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OfferItemCondition
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OpeningHoursSpecification
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OwnershipInfo
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PaymentMethod
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Person
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Photograph
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PhysicalActivityCategory
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PhysicalExam
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Place
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PostalAddress
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PriceSpecification
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Product
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ProductModel
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QualitativeValue
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QuantitativeValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Rating
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RecommendedDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Review
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SoftwareApplication
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Specialty
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.StructuredValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SuperficialAnatomy
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVEpisode
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeason
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeries
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TypeAndQuantityNode
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.UserComments
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Vessel
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.VideoObject
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.WarrantyPromise
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.WarrantyScope
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.WebPageElement
 
 -- use type Text from Haskell primitive
 type URL = Text
 type Date = Day
+type Time = TimeOfDay
+type DateTime = UTCTime
 type Number = Either Integer Float
 -- use type Integer from Haskell primitive
 -- use type Float from Haskell primitive
@@ -150,18 +176,18 @@ type Parents = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'MusicAlbum'@
 type Album = Text.HTML5.MetaData.Schema.MusicAlbum.MusicAlbum
 
--- | The model of the product.
+-- | The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
 --
 --   [@id@] model
 --
 --   [@label@] Model
 --
---   [@comment@] The model of the product.
+--   [@comment@] The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
 --
 --   [@domains@] @'Product'@
 --
---   [@ranges@] @'Text'@
-type Model = Text
+--   [@ranges@] @'ProductModel','Text'@
+type Model = Either Text.HTML5.MetaData.Schema.ProductModel.ProductModel Text
 
 -- | Additional details to capture the origin of the cost data. For example, 'Medicare Part B'.
 --
@@ -215,6 +241,19 @@ type MedicalSpecialty = Text.HTML5.MetaData.Schema.MedicalSpecialty.MedicalSpeci
 --   [@ranges@] @'Text'@
 type PossibleComplication = Text
 
+-- | This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
+--
+--   [@id@] lesserOrEqual
+--
+--   [@label@] Lesser or Equal
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type LesserOrEqual = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
+
 -- | The locality. For example, Mountain View.
 --
 --   [@id@] addressLocality
@@ -267,18 +306,57 @@ type Spouse = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'URL'@
 type DownloadUrl = URL
 
--- | The height of the media object.
+-- | The height of the item.
 --
 --   [@id@] height
 --
 --   [@label@] Height
 --
---   [@comment@] The height of the media object.
+--   [@comment@] The height of the item.
 --
---   [@domains@] @'MediaObject'@
+--   [@domains@] @'MediaObject','Product'@
 --
---   [@ranges@] @'Distance'@
-type Height = Text.HTML5.MetaData.Schema.Distance.Distance
+--   [@ranges@] @'Distance','QuantitativeValue'@
+type Height = Either Text.HTML5.MetaData.Schema.Distance.Distance Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | The upper of the product characteristic.
+--
+--   [@id@] maxValue
+--
+--   [@label@] Max Value
+--
+--   [@comment@] The upper of the product characteristic.
+--
+--   [@domains@] @'QuantitativeValue'@
+--
+--   [@ranges@] @'Number'@
+type MaxValue = Number
+
+-- | The lowest price if the price is a range.
+--
+--   [@id@] minPrice
+--
+--   [@label@] Min Price
+--
+--   [@comment@] The lowest price if the price is a range.
+--
+--   [@domains@] @'PriceSpecification'@
+--
+--   [@ranges@] @'Number'@
+type MinPrice = Number
+
+-- | A pointer from a newer variant of a product  to its previous, often discontinued predecessor.
+--
+--   [@id@] successorOf
+--
+--   [@label@] Successor of
+--
+--   [@comment@] A pointer from a newer variant of a product  to its previous, often discontinued predecessor.
+--
+--   [@domains@] @'ProductModel'@
+--
+--   [@ranges@] @'ProductModel'@
+type SuccessorOf = Text.HTML5.MetaData.Schema.ProductModel.ProductModel
 
 -- | A medical study or trial related to this entity.
 --
@@ -449,6 +527,19 @@ type Algorithm = Text
 --   [@ranges@] @'Text','Number'@
 type Elevation = Either Text Number
 
+-- | The place(s) from which the offer can be obtained (e.g. store locations).
+--
+--   [@id@] availableAtOrFrom
+--
+--   [@label@] Available At or From
+--
+--   [@comment@] The place(s) from which the offer can be obtained (e.g. store locations).
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'Place'@
+type AvailableAtOrFrom = Text.HTML5.MetaData.Schema.Place.Place
+
 -- | A URL to a map of the place (legacy spelling; see singular form, map).
 --
 --   [@id@] maps
@@ -501,6 +592,32 @@ type DuplicateTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 --   [@ranges@] @'Person'@
 type Parent = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | A pointer from a previous, often discontinued variant of the product to its newer variant.
+--
+--   [@id@] predecessorOf
+--
+--   [@label@] Predecessor of
+--
+--   [@comment@] A pointer from a previous, often discontinued variant of the product to its newer variant.
+--
+--   [@domains@] @'ProductModel'@
+--
+--   [@ranges@] @'ProductModel'@
+type PredecessorOf = Text.HTML5.MetaData.Schema.ProductModel.ProductModel
+
+-- | The purpose of a work in the context of education; for example, 'assignment', 'group work'.
+--
+--   [@id@] educationalUse
+--
+--   [@label@] Educational Use
+--
+--   [@comment@] The purpose of a work in the context of education; for example, 'assignment', 'group work'.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type EducationalUse = Text
+
 -- | The status of the study (enumerated).
 --
 --   [@id@] status
@@ -527,6 +644,19 @@ type Status = Text.HTML5.MetaData.Schema.MedicalStudyStatus.MedicalStudyStatus
 --   [@ranges@] @'MedicalCondition'@
 type RelatedCondition = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
 
+-- | The Dun & Bradstreet DUNS number for identifying an organization or business person.
+--
+--   [@id@] duns
+--
+--   [@label@] Duns
+--
+--   [@comment@] The Dun & Bradstreet DUNS number for identifying an organization or business person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Text'@
+type Duns = Text
+
 -- | A NewsArticle associated with the Media Object.
 --
 --   [@id@] associatedArticle
@@ -552,6 +682,19 @@ type AssociatedArticle = Text.HTML5.MetaData.Schema.NewsArticle.NewsArticle
 --
 --   [@ranges@] @'URL'@
 type Map = URL
+
+-- | The payment method(s) to which the payment charge specification applies.
+--
+--   [@id@] appliesToPaymentMethod
+--
+--   [@label@] Applies to Payment Method
+--
+--   [@comment@] The payment method(s) to which the payment charge specification applies.
+--
+--   [@domains@] @'PaymentChargeSpecification'@
+--
+--   [@ranges@] @'PaymentMethod'@
+type AppliesToPaymentMethod = Text.HTML5.MetaData.Schema.PaymentMethod.PaymentMethod
 
 -- | A medical therapy related to this anatomy.
 --
@@ -591,6 +734,19 @@ type HospitalAffiliation = Text.HTML5.MetaData.Schema.Hospital.Hospital
 --
 --   [@ranges@] @'MedicalTest','MedicalProcedure','MedicalTherapy'@
 type AvailableService = Either3 Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest Text.HTML5.MetaData.Schema.MedicalProcedure.MedicalProcedure Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
+
+-- | The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
+--
+--   [@id@] businessFunction
+--
+--   [@label@] Business Function
+--
+--   [@comment@] The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
+--
+--   [@domains@] @'Offer','TypeAndQuantityNode','Demand'@
+--
+--   [@ranges@] @'BusinessFunction'@
+type BusinessFunction = Text.HTML5.MetaData.Schema.BusinessFunction.BusinessFunction
 
 -- | A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.
 --
@@ -683,6 +839,19 @@ type Drug = Text.HTML5.MetaData.Schema.Drug.Drug
 --   [@ranges@] @'ImageObject','URL'@
 type Screenshot = Either Text.HTML5.MetaData.Schema.ImageObject.ImageObject URL
 
+-- | The payment method(s) accepted by seller for this offer.
+--
+--   [@id@] acceptedPaymentMethod
+--
+--   [@label@] Accepted Payment Method
+--
+--   [@comment@] The payment method(s) accepted by seller for this offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'PaymentMethod'@
+type AcceptedPaymentMethod = Text.HTML5.MetaData.Schema.PaymentMethod.PaymentMethod
+
 -- | Date of first broadcast/publication.
 --
 --   [@id@] datePublished
@@ -695,6 +864,19 @@ type Screenshot = Either Text.HTML5.MetaData.Schema.ImageObject.ImageObject URL
 --
 --   [@ranges@] @'Date'@
 type DatePublished = Date
+
+-- | Associated product/technology version. e.g., .NET Framework 4.5
+--
+--   [@id@] assemblyVersion
+--
+--   [@label@] Assembly Version
+--
+--   [@comment@] Associated product/technology version. e.g., .NET Framework 4.5
+--
+--   [@domains@] @'APIReference'@
+--
+--   [@ranges@] @'Text'@
+type AssemblyVersion = Text
 
 -- | A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.
 --
@@ -709,15 +891,15 @@ type DatePublished = Date
 --   [@ranges@] @'MedicalTherapy'@
 type SecondaryPrevention = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
--- | The intended audience of the work, i.e. the group for whom the work was created.
+-- | The intended audience of the item, i.e. the group for whom the item was created.
 --
 --   [@id@] audience
 --
 --   [@label@] Audience
 --
---   [@comment@] The intended audience of the work, i.e. the group for whom the work was created.
+--   [@comment@] The intended audience of the item, i.e. the group for whom the item was created.
 --
---   [@domains@] @'CreativeWork'@
+--   [@domains@] @'Product','CreativeWork'@
 --
 --   [@ranges@] @'Audience'@
 type Audience = Text.HTML5.MetaData.Schema.Audience.Audience
@@ -734,6 +916,19 @@ type Audience = Text.HTML5.MetaData.Schema.Audience.Audience
 --
 --   [@ranges@] @'MedicalIndication'@
 type Indication = Text.HTML5.MetaData.Schema.MedicalIndication.MedicalIndication
+
+-- | Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
+--
+--   [@id@] timeRequired
+--
+--   [@label@] Time Required
+--
+--   [@comment@] Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Duration'@
+type TimeRequired = Text.HTML5.MetaData.Schema.Duration.Duration
 
 -- | Indicates whether this drug is available by prescription or over-the-counter.
 --
@@ -836,8 +1031,8 @@ type Origin = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 --
 --   [@domains@] @'SoftwareApplication'@
 --
---   [@ranges@] @'URL','Text'@
-type Requirements = Either URL Text
+--   [@ranges@] @'Text','URL'@
+type Requirements = Either Text URL
 
 -- | Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
 --
@@ -925,7 +1120,7 @@ type MechanismOfAction = Text
 --
 --   [@comment@] The fax number.
 --
---   [@domains@] @'Person','ContactPoint','Place','Organization'@
+--   [@domains@] @'Organization','ContactPoint','Place','Person'@
 --
 --   [@ranges@] @'Text'@
 type FaxNumber = Text
@@ -938,10 +1133,23 @@ type FaxNumber = Text
 --
 --   [@comment@] The item being sold.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'Offer','Demand'@
 --
 --   [@ranges@] @'Product'@
 type ItemOffered = Text.HTML5.MetaData.Schema.Product.Product
+
+-- | A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
+--
+--   [@id@] isVariantOf
+--
+--   [@label@] Is Variant of
+--
+--   [@comment@] A pointer to a base product from which this product is a variant. It is safe to infer that the variant inherits all product features from the base model, unless defined locally. This is not transitive.
+--
+--   [@domains@] @'ProductModel'@
+--
+--   [@ranges@] @'ProductModel'@
+type IsVariantOf = Text.HTML5.MetaData.Schema.ProductModel.ProductModel
 
 -- | The telephone number.
 --
@@ -951,7 +1159,7 @@ type ItemOffered = Text.HTML5.MetaData.Schema.Product.Product
 --
 --   [@comment@] The telephone number.
 --
---   [@domains@] @'Person','ContactPoint','Place','Organization'@
+--   [@domains@] @'Organization','ContactPoint','Place','Person'@
 --
 --   [@ranges@] @'Text'@
 type Telephone = Text
@@ -977,7 +1185,7 @@ type VideoFrameSize = Text
 --
 --   [@comment@] The availability of this item—for example In stock, Out of stock, Pre-order, etc.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'Offer','Demand'@
 --
 --   [@ranges@] @'ItemAvailability'@
 type Availability = Text.HTML5.MetaData.Schema.ItemAvailability.ItemAvailability
@@ -1018,8 +1226,8 @@ type Employees = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@domains@] @'Nerve'@
 --
---   [@ranges@] @'SuperficialAnatomy','AnatomicalStructure'@
-type SensoryUnit = Either Text.HTML5.MetaData.Schema.SuperficialAnatomy.SuperficialAnatomy Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+--   [@ranges@] @'AnatomicalStructure','SuperficialAnatomy'@
+type SensoryUnit = Either Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure Text.HTML5.MetaData.Schema.SuperficialAnatomy.SuperficialAnatomy
 
 -- | The vasculature the lymphatic structure runs, or efferents, to.
 --
@@ -1086,6 +1294,19 @@ type RegionDrained = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.Anatomic
 --   [@ranges@] @'Drug'@
 type AffectedBy = Text.HTML5.MetaData.Schema.Drug.Drug
 
+-- | The date and time of obtaining the product.
+--
+--   [@id@] ownedFrom
+--
+--   [@label@] Owned From
+--
+--   [@comment@] The date and time of obtaining the product.
+--
+--   [@domains@] @'OwnershipInfo'@
+--
+--   [@ranges@] @'DateTime'@
+type OwnedFrom = DateTime
+
 -- | Event that this person is a performer or participant in.
 --
 --   [@id@] performerIn
@@ -1138,6 +1359,19 @@ type BaseSalary = Number
 --   [@ranges@] @'Text'@
 type FamilyName = Text
 
+-- | Prerequisites needed to fulfill steps in article.
+--
+--   [@id@] dependencies
+--
+--   [@label@] Dependencies
+--
+--   [@comment@] Prerequisites needed to fulfill steps in article.
+--
+--   [@domains@] @'TechArticle'@
+--
+--   [@ranges@] @'Text'@
+type Dependencies = Text
+
 -- | An award won by this person or for this creative work.
 --
 --   [@id@] award
@@ -1177,18 +1411,31 @@ type SubStructure = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStr
 --   [@ranges@] @'Text'@
 type AlternativeHeadline = Text
 
--- | The seller of the product.
+-- | The day of the week for which these opening hours are valid.
+--
+--   [@id@] dayOfWeek
+--
+--   [@label@] Day of Week
+--
+--   [@comment@] The day of the week for which these opening hours are valid.
+--
+--   [@domains@] @'OpeningHoursSpecification'@
+--
+--   [@ranges@] @'DayOfWeek'@
+type DayOfWeek = Text.HTML5.MetaData.Schema.DayOfWeek.DayOfWeek
+
+-- | The seller.
 --
 --   [@id@] seller
 --
 --   [@label@] Seller
 --
---   [@comment@] The seller of the product.
+--   [@comment@] The seller.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'Offer','Demand'@
 --
---   [@ranges@] @'Organization'@
-type Seller = Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Seller = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | An episode of a TV series or season.
 --
@@ -1202,6 +1449,19 @@ type Seller = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'TVEpisode'@
 type Episode = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
+
+-- | A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html
+--
+--   [@id@] isBasedOnUrl
+--
+--   [@label@] Is Based On Url
+--
+--   [@comment@] A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'URL'@
+type IsBasedOnUrl = URL
 
 -- | Recommended intake of this supplement for a given population as defined by a specific recommending authority.
 --
@@ -1268,6 +1528,19 @@ type ReviewCount = Number
 --   [@ranges@] @'Person'@
 type Illustrator = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | The type(s) of customers for which the given offer is valid.
+--
+--   [@id@] eligibleCustomerType
+--
+--   [@label@] Eligible Customer Type
+--
+--   [@comment@] The type(s) of customers for which the given offer is valid.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'BusinessEntityType'@
+type EligibleCustomerType = Text.HTML5.MetaData.Schema.BusinessEntityType.BusinessEntityType
+
 -- | Organizations that the person works for.
 --
 --   [@id@] worksFor
@@ -1293,6 +1566,19 @@ type WorksFor = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'MedicalContraindication'@
 type Contraindication = Text.HTML5.MetaData.Schema.MedicalContraindication.MedicalContraindication
+
+-- | Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
+--
+--   [@id@] valueAddedTaxIncluded
+--
+--   [@label@] Value Added Tax Included
+--
+--   [@comment@] Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
+--
+--   [@domains@] @'PriceSpecification'@
+--
+--   [@ranges@] @'Boolean'@
+type ValueAddedTaxIncluded = Boolean
 
 -- | The most significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most (legacy spelling; see singular form, significantLink).
 --
@@ -1320,6 +1606,19 @@ type SignificantLinks = URL
 --   [@ranges@] @'Text'@
 type RecipeCuisine = Text
 
+-- | Library file name e.g., mscorlib.dll, system.web.dll
+--
+--   [@id@] assembly
+--
+--   [@label@] Assembly
+--
+--   [@comment@] Library file name e.g., mscorlib.dll, system.web.dll
+--
+--   [@domains@] @'APIReference'@
+--
+--   [@ranges@] @'Text'@
+type Assembly = Text
+
 -- | The post offce box number for PO box addresses.
 --
 --   [@id@] postOfficeBoxNumber
@@ -1333,18 +1632,57 @@ type RecipeCuisine = Text
 --   [@ranges@] @'Text'@
 type PostOfficeBoxNumber = Text
 
--- | The condition of the item for sale—for example New, Refurbished, Used, etc.
+-- | A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
 --
 --   [@id@] itemCondition
 --
 --   [@label@] Item Condition
 --
---   [@comment@] The condition of the item for sale—for example New, Refurbished, Used, etc.
+--   [@comment@] A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'Product','Offer','Demand'@
 --
 --   [@ranges@] @'OfferItemCondition'@
 type ItemCondition = Text.HTML5.MetaData.Schema.OfferItemCondition.OfferItemCondition
+
+-- | Indicates whether API is managed or unmanaged.
+--
+--   [@id@] programmingModel
+--
+--   [@label@] Programming Model
+--
+--   [@comment@] Indicates whether API is managed or unmanaged.
+--
+--   [@domains@] @'APIReference'@
+--
+--   [@ranges@] @'Text'@
+type ProgrammingModel = Text
+
+-- | A pointer to another, somehow related product (or multiple products).
+--
+--   [@id@] isRelatedTo
+--
+--   [@label@] Is Related to
+--
+--   [@comment@] A pointer to another, somehow related product (or multiple products).
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Product'@
+type IsRelatedTo = Text.HTML5.MetaData.Schema.Product.Product
+
+-- | The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+--
+--   [@id@] eligibleQuantity
+--
+--   [@label@] Eligible Quantity
+--
+--   [@comment@] The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+--
+--   [@domains@] @'Demand','PriceSpecification','Offer'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type EligibleQuantity = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
 
 -- | An ingredient used in the recipe.
 --
@@ -1411,6 +1749,19 @@ type InteractingDrug = Text.HTML5.MetaData.Schema.Drug.Drug
 --   [@ranges@] @'Number'@
 type StrengthValue = Number
 
+-- | The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
+--
+--   [@id@] learningResourceType
+--
+--   [@label@] Learning Resource Type
+--
+--   [@comment@] The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type LearningResourceType = Text
+
 -- | If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
 --
 --   [@id@] transcript
@@ -1423,6 +1774,32 @@ type StrengthValue = Number
 --
 --   [@ranges@] @'Text'@
 type Transcript = Text
+
+-- | The name of a node in an established educational framework.
+--
+--   [@id@] targetName
+--
+--   [@label@] Target Name
+--
+--   [@comment@] The name of a node in an established educational framework.
+--
+--   [@domains@] @'AlignmentObject'@
+--
+--   [@ranges@] @'Text'@
+type TargetName = Text
+
+-- | The Value-added Tax ID of the organisation or person.
+--
+--   [@id@] vatID
+--
+--   [@label@] Vat ID
+--
+--   [@comment@] The Value-added Tax ID of the organisation or person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Text'@
+type VatID = Text
 
 -- | The Organization on whose behalf the creator was working.
 --
@@ -1463,6 +1840,19 @@ type Background = Text
 --   [@ranges@] @'Text'@
 type RestPeriods = Text
 
+-- | A pointer to another product (or multiple products) for which this product is an accessory or spare part.
+--
+--   [@id@] isAccessoryOrSparePartFor
+--
+--   [@label@] Is Accessory or Spare Part for
+--
+--   [@comment@] A pointer to another product (or multiple products) for which this product is an accessory or spare part.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Product'@
+type IsAccessoryOrSparePartFor = Text.HTML5.MetaData.Schema.Product.Product
+
 -- | Imaging technique used.
 --
 --   [@id@] imagingTechnique
@@ -1489,6 +1879,19 @@ type ImagingTechnique = Text.HTML5.MetaData.Schema.MedicalImagingTechnique.Medic
 --   [@ranges@] @'MedicalDevicePurpose'@
 type Purpose = Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurpose
 
+-- | Points-of-Sales operated by the organization or person.
+--
+--   [@id@] hasPOS
+--
+--   [@label@] Has POS
+--
+--   [@comment@] Points-of-Sales operated by the organization or person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Place'@
+type HasPOS = Text.HTML5.MetaData.Schema.Place.Place
+
 -- | The text of the UserComment.
 --
 --   [@id@] commentText
@@ -1502,6 +1905,19 @@ type Purpose = Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurp
 --   [@ranges@] @'Text'@
 type CommentText = Text
 
+-- | The typical range of ages the content's intendedEndUser, for example '7-9', '11-'.
+--
+--   [@id@] typicalAgeRange
+--
+--   [@label@] Typical Age Range
+--
+--   [@comment@] The typical range of ages the content's intendedEndUser, for example '7-9', '11-'.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type TypicalAgeRange = Text
+
 -- | Anatomical systems or structures that relate to the superficial anatomy.
 --
 --   [@id@] relatedAnatomy
@@ -1512,8 +1928,8 @@ type CommentText = Text
 --
 --   [@domains@] @'SuperficialAnatomy'@
 --
---   [@ranges@] @'AnatomicalSystem','AnatomicalStructure'@
-type RelatedAnatomy = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+--   [@ranges@] @'AnatomicalStructure','AnatomicalSystem'@
+type RelatedAnatomy = Either Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem
 
 -- | The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.
 --
@@ -1549,7 +1965,7 @@ type Discusses = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 --
 --   [@comment@] Physical address of the item.
 --
---   [@domains@] @'Person','Place','Organization'@
+--   [@domains@] @'Organization','Place','Person'@
 --
 --   [@ranges@] @'PostalAddress'@
 type Address = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
@@ -1580,18 +1996,18 @@ type AccountablePerson = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'MedicalRiskFactor'@
 type RiskFactor = Text.HTML5.MetaData.Schema.MedicalRiskFactor.MedicalRiskFactor
 
--- | The width of the media object.
+-- | The width of the item.
 --
 --   [@id@] width
 --
 --   [@label@] Width
 --
---   [@comment@] The width of the media object.
+--   [@comment@] The width of the item.
 --
---   [@domains@] @'MediaObject'@
+--   [@domains@] @'MediaObject','Product'@
 --
---   [@ranges@] @'Distance'@
-type Width = Text.HTML5.MetaData.Schema.Distance.Distance
+--   [@ranges@] @'Distance','QuantitativeValue'@
+type Width = Either Text.HTML5.MetaData.Schema.Distance.Distance Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
 
 -- | The time at which the UserComment was made.
 --
@@ -1618,6 +2034,32 @@ type CommentTime = Date
 --
 --   [@ranges@] @'Text'@
 type Caption = Text
+
+-- | The duration for which the given offer is valid.
+--
+--   [@id@] eligibleDuration
+--
+--   [@label@] Eligible Duration
+--
+--   [@comment@] The duration for which the given offer is valid.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type EligibleDuration = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+--
+--   [@id@] mpn
+--
+--   [@label@] Mpn
+--
+--   [@comment@] The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+--
+--   [@domains@] @'Product','Offer','Demand'@
+--
+--   [@ranges@] @'Text'@
+type Mpn = Text
 
 -- | The anatomical or organ system that this structure is part of.
 --
@@ -1788,6 +2230,19 @@ type CarbohydrateContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --   [@ranges@] @'Event'@
 type SubEvents = Text.HTML5.MetaData.Schema.Event.Event
 
+-- | The computer programming language.
+--
+--   [@id@] programmingLanguage
+--
+--   [@label@] Programming Language
+--
+--   [@comment@] The computer programming language.
+--
+--   [@domains@] @'Code'@
+--
+--   [@ranges@] @'Thing'@
+type ProgrammingLanguage = Text.HTML5.MetaData.Schema.Thing.Thing
+
 -- | The number of offers for the product.
 --
 --   [@id@] offerCount
@@ -1915,8 +2370,8 @@ type Longitude = Either Number Text
 --
 --   [@domains@] @'CreativeWork'@
 --
---   [@ranges@] @'Person','Organization'@
-type Contributor = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Contributor = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The steps to make the dish.
 --
@@ -1930,6 +2385,19 @@ type Contributor = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.Me
 --
 --   [@ranges@] @'Text'@
 type RecipeInstructions = Text
+
+-- | The framework to which the resource being described is aligned.
+--
+--   [@id@] educationalFramework
+--
+--   [@label@] Educational Framework
+--
+--   [@comment@] The framework to which the resource being described is aligned.
+--
+--   [@domains@] @'AlignmentObject'@
+--
+--   [@ranges@] @'Text'@
+type EducationalFramework = Text
 
 -- | Genre of the creative work
 --
@@ -1982,6 +2450,19 @@ type DietFeatures = Text
 --
 --   [@ranges@] @'Text'@
 type AssociatedPathophysiology = Text
+
+-- | Minimal age of the child
+--
+--   [@id@] childMinAge
+--
+--   [@label@] Child Min Age
+--
+--   [@comment@] Minimal age of the child
+--
+--   [@domains@] @'ParentAudience'@
+--
+--   [@ranges@] @'Number'@
+type ChildMinAge = Number
 
 -- | Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
 --
@@ -2100,6 +2581,45 @@ type PostalCode = Text
 --   [@ranges@] @'Organization'@
 type HiringOrganization = Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | The quantity of the goods included in the offer.
+--
+--   [@id@] amountOfThisGood
+--
+--   [@label@] Amount of This Good
+--
+--   [@comment@] The quantity of the goods included in the offer.
+--
+--   [@domains@] @'TypeAndQuantityNode'@
+--
+--   [@ranges@] @'Number'@
+type AmountOfThisGood = Number
+
+-- | An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
+--
+--   [@id@] addOn
+--
+--   [@label@] Add On
+--
+--   [@comment@] An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
+--
+--   [@domains@] @'Offer'@
+--
+--   [@ranges@] @'Offer'@
+type AddOn = Text.HTML5.MetaData.Schema.Offer.Offer
+
+-- | The beginning of the validity of offer, price specification, or opening hours data.
+--
+--   [@id@] validFrom
+--
+--   [@label@] Valid From
+--
+--   [@comment@] The beginning of the validity of offer, price specification, or opening hours data.
+--
+--   [@domains@] @'OpeningHoursSpecification','Demand','PriceSpecification','Offer'@
+--
+--   [@ranges@] @'DateTime'@
+type ValidFrom = DateTime
+
 -- | Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
 --
 --   [@id@] employmentType
@@ -2152,18 +2672,18 @@ type Device = Text
 --   [@ranges@] @'AnatomicalStructure'@
 type ArterialBranch = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
--- | The category of physical activity, classified according to its physiologic effect or impact on the body.
+-- | A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
 --
 --   [@id@] category
 --
 --   [@label@] Category
 --
---   [@comment@] The category of physical activity, classified according to its physiologic effect or impact on the body.
+--   [@comment@] A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
 --
---   [@domains@] @'PhysicalActivity'@
+--   [@domains@] @'PhysicalActivity','Offer'@
 --
---   [@ranges@] @'PhysicalActivityCategory'@
-type Category = Text.HTML5.MetaData.Schema.PhysicalActivityCategory.PhysicalActivityCategory
+--   [@ranges@] @'Text','PhysicalActivityCategory','Thing'@
+type Category = Either3 Text Text.HTML5.MetaData.Schema.PhysicalActivityCategory.PhysicalActivityCategory Text.HTML5.MetaData.Schema.Thing.Thing
 
 -- | Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
 --
@@ -2370,8 +2890,8 @@ type PrintSection = Text
 --
 --   [@domains@] @'WebPage'@
 --
---   [@ranges@] @'Person','Organization'@
-type ReviewedBy = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type ReviewedBy = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | An organization that this person is affiliated with. For example, a school/university, a club, or a team.
 --
@@ -2464,6 +2984,19 @@ type GuidelineSubject = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 --   [@ranges@] @'AnatomicalStructure'@
 type SupplyTo = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
+-- | The weight of the product.
+--
+--   [@id@] weight
+--
+--   [@label@] Weight
+--
+--   [@comment@] The weight of the product.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type Weight = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
 -- | Any precaution, guidance, contraindication, etc. related to consumption of specific foods while taking this drug.
 --
 --   [@id@] foodWarning
@@ -2539,8 +3072,8 @@ type AdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 --
 --   [@domains@] @'Event'@
 --
---   [@ranges@] @'Person','Organization'@
-type Attendees = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Attendees = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
 --
@@ -2565,8 +3098,8 @@ type SignificantLink = URL
 --
 --   [@domains@] @'CreativeWork'@
 --
---   [@ranges@] @'Person','Organization'@
-type CopyrightHolder = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type CopyrightHolder = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
 --
@@ -2591,8 +3124,8 @@ type ProcedureType = Text.HTML5.MetaData.Schema.MedicalProcedureType.MedicalProc
 --
 --   [@domains@] @'Event'@
 --
---   [@ranges@] @'Person','Organization'@
-type Performers = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Performers = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The date on which the CreativeWork was most recently modified.
 --
@@ -2669,8 +3202,8 @@ type IncreasesRiskOf = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 --
 --   [@domains@] @'CreativeWork'@
 --
---   [@ranges@] @'Person','Organization'@
-type Author = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Author = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The rating given in this review. Note that reviews can themselves be rated. The reviewRating applies to rating given by the review. The aggregateRating property applies to the review itself, as a creative work.
 --
@@ -2737,6 +3270,32 @@ type SignDetected = Text.HTML5.MetaData.Schema.MedicalSign.MedicalSign
 --   [@ranges@] @'Text'@
 type PrintEdition = Text
 
+-- | Maximal age of the child
+--
+--   [@id@] childMaxAge
+--
+--   [@label@] Child Max Age
+--
+--   [@comment@] Maximal age of the child
+--
+--   [@domains@] @'ParentAudience'@
+--
+--   [@ranges@] @'Number'@
+type ChildMaxAge = Number
+
+-- | The end of the availability of the product or service included in the offer.
+--
+--   [@id@] availabilityEnds
+--
+--   [@label@] Availability Ends
+--
+--   [@comment@] The end of the availability of the product or service included in the offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'DateTime'@
+type AvailabilityEnds = DateTime
+
 -- | The postings that are part of this blog (legacy spelling; see singular form, blogPost).
 --
 --   [@id@] blogPosts
@@ -2750,13 +3309,13 @@ type PrintEdition = Text
 --   [@ranges@] @'BlogPosting'@
 type BlogPosts = Text.HTML5.MetaData.Schema.BlogPosting.BlogPosting
 
--- | Indicates if use of the media require a subscription  (either paid or free). Allowed values are yes or no.
+-- | Indicates if use of the media require a subscription  (either paid or free). Allowed values are true or false (note that an earlier version had 'yes', 'no').
 --
 --   [@id@] requiresSubscription
 --
 --   [@label@] Requires Subscription
 --
---   [@comment@] Indicates if use of the media require a subscription  (either paid or free). Allowed values are <code>yes</code> or <code>no</code>.
+--   [@comment@] Indicates if use of the media require a subscription  (either paid or free). Allowed values are <code>true</code> or <code>false</code> (note that an earlier version had 'yes', 'no').
 --
 --   [@domains@] @'MediaObject'@
 --
@@ -2789,6 +3348,32 @@ type CookTime = Text.HTML5.MetaData.Schema.Duration.Duration
 --   [@ranges@] @'Text'@
 type Overdosage = Text
 
+-- | The typical delay between the receipt of the order and the goods leaving the warehouse.
+--
+--   [@id@] deliveryLeadTime
+--
+--   [@label@] Delivery Lead Time
+--
+--   [@comment@] The typical delay between the receipt of the order and the goods leaving the warehouse.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type DeliveryLeadTime = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
+--
+--   [@id@] priceType
+--
+--   [@label@] Price Type
+--
+--   [@comment@] A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
+--
+--   [@domains@] @'UnitPriceSpecification'@
+--
+--   [@ranges@] @'Text'@
+type PriceType = Text
+
 -- | Strength of evidence of the data used to formulate the guideline (enumerated).
 --
 --   [@id@] evidenceLevel
@@ -2812,8 +3397,21 @@ type EvidenceLevel = Text.HTML5.MetaData.Schema.MedicalEvidenceLevel.MedicalEvid
 --
 --   [@domains@] @'SoftwareApplication'@
 --
---   [@ranges@] @'URL','Text'@
-type StorageRequirements = Either URL Text
+--   [@ranges@] @'Text','URL'@
+type StorageRequirements = Either Text URL
+
+-- | The color of the product.
+--
+--   [@id@] color
+--
+--   [@label@] Color
+--
+--   [@comment@] The color of the product.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Text'@
+type Color = Text
 
 -- | A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more spacedelimited points where the first and final points are identical.
 --
@@ -2854,6 +3452,19 @@ type Code = Text.HTML5.MetaData.Schema.MedicalCode.MedicalCode
 --   [@ranges@] @'Text'@
 type ArticleSection = Text
 
+-- | The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+--
+--   [@id@] eligibleRegion
+--
+--   [@label@] Eligible Region
+--
+--   [@comment@] The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+--
+--   [@domains@] @'DeliveryChargeSpecification','Offer','Demand'@
+--
+--   [@ranges@] @'Text','GeoShape'@
+type EligibleRegion = Either Text Text.HTML5.MetaData.Schema.GeoShape.GeoShape
+
 -- | An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
 --
 --   [@id@] superEvent
@@ -2890,8 +3501,8 @@ type Diagram = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
 --
 --   [@domains@] @'SoftwareApplication'@
 --
---   [@ranges@] @'URL','Text'@
-type ReleaseNotes = Either URL Text
+--   [@ranges@] @'Text','URL'@
+type ReleaseNotes = Either Text URL
 
 -- | The location in which the study is taking/took place.
 --
@@ -2942,8 +3553,8 @@ type Nerve = Text.HTML5.MetaData.Schema.Nerve.Nerve
 --
 --   [@domains@] @'Person'@
 --
---   [@ranges@] @'Place','ContactPoint'@
-type HomeLocation = Either Text.HTML5.MetaData.Schema.Place.Place Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
+--   [@ranges@] @'ContactPoint','Place'@
+type HomeLocation = Either Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint Text.HTML5.MetaData.Schema.Place.Place
 
 -- | The unit in which the drug is measured, e.g. '5 mg tablet'.
 --
@@ -2983,6 +3594,19 @@ type FoundingDate = Date
 --
 --   [@ranges@] @'MedicalTest'@
 type SubTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
+
+-- | The product that this structured value is referring to.
+--
+--   [@id@] typeOfGood
+--
+--   [@label@] Type of Good
+--
+--   [@comment@] The product that this structured value is referring to.
+--
+--   [@domains@] @'OwnershipInfo','TypeAndQuantityNode'@
+--
+--   [@ranges@] @'Product'@
+type TypeOfGood = Text.HTML5.MetaData.Schema.Product.Product
 
 -- | Responsibilities associated with this role.
 --
@@ -3062,6 +3686,19 @@ type Outcome = Text
 --   [@ranges@] @'Text'@
 type OccupationalCategory = Text
 
+-- | A pointer to another product (or multiple products) for which this product is a consumable.
+--
+--   [@id@] isConsumableFor
+--
+--   [@label@] Is Consumable for
+--
+--   [@comment@] A pointer to another product (or multiple products) for which this product is a consumable.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Product'@
+type IsConsumableFor = Text.HTML5.MetaData.Schema.Product.Product
+
 -- | A person who founded this organization (legacy spelling; see singular form, founder).
 --
 --   [@id@] founders
@@ -3127,6 +3764,19 @@ type TargetPopulation = Text
 --   [@ranges@] @'Integer'@
 type NumberOfPages = Integer
 
+-- | This ordering relation for qualitative values indicates that the subject is greater than the object.
+--
+--   [@id@] greater
+--
+--   [@label@] Greater
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is greater than the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type Greater = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
+
 -- | True if the drug is available in a generic form (regardless of name).
 --
 --   [@id@] isAvailableGenerically
@@ -3179,6 +3829,32 @@ type Circle = Text
 --   [@ranges@] @'Text'@
 type ExperienceRequirements = Text
 
+-- | Maximal age recommended for viewing content
+--
+--   [@id@] suggestedMaxAge
+--
+--   [@label@] Suggested Max Age
+--
+--   [@comment@] Maximal age recommended for viewing content
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Number'@
+type SuggestedMaxAge = Number
+
+-- | This links to a node or nodes indicating the exact quantity of the products included in the offer.
+--
+--   [@id@] includesObject
+--
+--   [@label@] Includes Object
+--
+--   [@comment@] This links to a node or nodes indicating the exact quantity of the products included in the offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'TypeAndQuantityNode'@
+type IncludesObject = Text.HTML5.MetaData.Schema.TypeAndQuantityNode.TypeAndQuantityNode
+
 -- | A (typically single) geographic location associated with the job position.
 --
 --   [@id@] jobLocation
@@ -3192,6 +3868,45 @@ type ExperienceRequirements = Text
 --   [@ranges@] @'Place'@
 type JobLocation = Text.HTML5.MetaData.Schema.Place.Place
 
+-- | The delivery method(s) to which the delivery charge or payment charge specification applies.
+--
+--   [@id@] appliesToDeliveryMethod
+--
+--   [@label@] Applies to Delivery Method
+--
+--   [@comment@] The delivery method(s) to which the delivery charge or payment charge specification applies.
+--
+--   [@domains@] @'DeliveryChargeSpecification','PaymentChargeSpecification'@
+--
+--   [@ranges@] @'DeliveryMethod'@
+type AppliesToDeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.DeliveryMethod
+
+-- | A downloadable form of this dataset, at a specific location, in a specific format.
+--
+--   [@id@] distribution
+--
+--   [@label@] Distribution
+--
+--   [@comment@] A downloadable form of this dataset, at a specific location, in a specific format.
+--
+--   [@domains@] @'Dataset'@
+--
+--   [@ranges@] @'DataDownload'@
+type Distribution = Text.HTML5.MetaData.Schema.DataDownload.DataDownload
+
+-- | The opening hours of a certain place.
+--
+--   [@id@] openingHoursSpecification
+--
+--   [@label@] Opening Hours Specification
+--
+--   [@comment@] The opening hours of a certain place.
+--
+--   [@domains@] @'Place'@
+--
+--   [@ranges@] @'OpeningHoursSpecification'@
+type OpeningHoursSpecification = Text.HTML5.MetaData.Schema.OpeningHoursSpecification.OpeningHoursSpecification
+
 -- | The format of the book.
 --
 --   [@id@] bookFormat
@@ -3204,6 +3919,19 @@ type JobLocation = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@ranges@] @'BookFormatType'@
 type BookFormat = Text.HTML5.MetaData.Schema.BookFormatType.BookFormatType
+
+-- | Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
+--
+--   [@id@] targetProduct
+--
+--   [@label@] Target Product
+--
+--   [@comment@] Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.
+--
+--   [@domains@] @'Code'@
+--
+--   [@ranges@] @'SoftwareApplication'@
+type TargetProduct = Text.HTML5.MetaData.Schema.SoftwareApplication.SoftwareApplication
 
 -- | Someone working for this organization.
 --
@@ -3282,6 +4010,19 @@ type Dateline = Text
 --
 --   [@ranges@] @'DDxElement'@
 type DifferentialDiagnosis = Text.HTML5.MetaData.Schema.DDxElement.DDxElement
+
+-- | A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
+--
+--   [@id@] alignmentType
+--
+--   [@label@] Alignment Type
+--
+--   [@comment@] A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
+--
+--   [@domains@] @'AlignmentObject'@
+--
+--   [@ranges@] @'Text'@
+type AlignmentType = Text
 
 -- | True if this item's name is a proprietary/brand name (vs. generic name).
 --
@@ -3491,6 +4232,45 @@ type EvidenceOrigin = Text
 --   [@ranges@] @'Text'@
 type PrintColumn = Text
 
+-- | Relates a property to a class that is (one of) the type(s) the property is expected to be used on.
+--
+--   [@id@] domainIncludes
+--
+--   [@label@] Domain Includes
+--
+--   [@comment@] Relates a property to a class that is (one of) the type(s) the property is expected to be used on.
+--
+--   [@domains@] @'Property'@
+--
+--   [@ranges@] @'Class'@
+type DomainIncludes = Text.HTML5.MetaData.Schema.Class.Class
+
+-- | Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex)
+--
+--   [@id@] codeRepository
+--
+--   [@label@] Code Repository
+--
+--   [@comment@] Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex)
+--
+--   [@domains@] @'Code'@
+--
+--   [@ranges@] @'URL'@
+type CodeRepository = URL
+
+-- | The description of a node in an established educational framework.
+--
+--   [@id@] targetDescription
+--
+--   [@label@] Target Description
+--
+--   [@comment@] The description of a node in an established educational framework.
+--
+--   [@domains@] @'AlignmentObject'@
+--
+--   [@ranges@] @'Text'@
+type TargetDescription = Text
+
 -- | A link related to this web page, for example to other related web pages.
 --
 --   [@id@] relatedLink
@@ -3517,6 +4297,19 @@ type RelatedLink = URL
 --   [@ranges@] @'Duration'@
 type OpeningHours = Text.HTML5.MetaData.Schema.Duration.Duration
 
+-- | Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
+--
+--   [@id@] proficiencyLevel
+--
+--   [@label@] Proficiency Level
+--
+--   [@comment@] Proficiency needed for this content; expected values: 'Beginner', 'Expert'.
+--
+--   [@domains@] @'TechArticle'@
+--
+--   [@ranges@] @'Text'@
+type ProficiencyLevel = Text
+
 -- | Any alternate name for this medical entity.
 --
 --   [@id@] alternateName
@@ -3538,7 +4331,7 @@ type AlternateName = Text
 --
 --   [@comment@] A contact point for a person or organization (legacy spelling; see singular form, contactPoint).
 --
---   [@domains@] @'Person','Organization'@
+--   [@domains@] @'Organization','Person'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoints = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
@@ -3569,6 +4362,19 @@ type Phase = Text
 --   [@ranges@] @'Number','Text'@
 type BestRating = Either Number Text
 
+-- | The opening hour of the place or service on the given day(s) of the week.
+--
+--   [@id@] opens
+--
+--   [@label@] Opens
+--
+--   [@comment@] The opening hour of the place or service on the given day(s) of the week.
+--
+--   [@domains@] @'OpeningHoursSpecification'@
+--
+--   [@ranges@] @'Time'@
+type Opens = Time
+
 -- | Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
 --
 --   [@id@] additionalVariable
@@ -3592,8 +4398,8 @@ type AdditionalVariable = Text
 --
 --   [@domains@] @'Place'@
 --
---   [@ranges@] @'Photograph','ImageObject'@
-type Photos = Either Text.HTML5.MetaData.Schema.Photograph.Photograph Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+--   [@ranges@] @'ImageObject','Photograph'@
+type Photos = Either Text.HTML5.MetaData.Schema.ImageObject.ImageObject Text.HTML5.MetaData.Schema.Photograph.Photograph
 
 -- | The name of the item.
 --
@@ -3659,6 +4465,19 @@ type EncodesCreativeWork = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 --
 --   [@ranges@] @'TVSeries'@
 type PartOfTVSeries = Text.HTML5.MetaData.Schema.TVSeries.TVSeries
+
+-- | Expectations for health conditions of target audience
+--
+--   [@id@] healthCondition
+--
+--   [@label@] Health Condition
+--
+--   [@comment@] Expectations for health conditions of target audience
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'MedicalCondition'@
+type HealthCondition = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
 
 -- | The serving size, in terms of the number of volume or mass
 --
@@ -3738,6 +4557,19 @@ type NormalRange = Text
 --   [@ranges@] @'Text'@
 type CostCurrency = Text
 
+-- | Minimal age recommended for viewing content
+--
+--   [@id@] suggestedMinAge
+--
+--   [@label@] Suggested Min Age
+--
+--   [@comment@] Minimal age recommended for viewing content
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Number'@
+type SuggestedMinAge = Number
+
 -- | The creator/author of this CreativeWork or UserComments. This is the same as the Author property for CreativeWork.
 --
 --   [@id@] creator
@@ -3748,8 +4580,21 @@ type CostCurrency = Text
 --
 --   [@domains@] @'UserComments','CreativeWork'@
 --
---   [@ranges@] @'Person','Organization'@
-type Creator = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Creator = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | The amount of time that is required between accepting the offer and the actual usage of the resource or service.
+--
+--   [@id@] advanceBookingRequirement
+--
+--   [@label@] Advance Booking Requirement
+--
+--   [@comment@] The amount of time that is required between accepting the offer and the actual usage of the resource or service.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type AdvanceBookingRequirement = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
 
 -- | The expected progression of the condition if it is not treated and allowed to progress naturally.
 --
@@ -3785,7 +4630,7 @@ type Sibling = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] Email address.
 --
---   [@domains@] @'Person','ContactPoint','Organization'@
+--   [@domains@] @'Organization','ContactPoint','Person'@
 --
 --   [@ranges@] @'Text'@
 type Email = Text
@@ -3881,6 +4726,19 @@ type ArticleBody = Text
 --   [@ranges@] @'AnatomicalStructure'@
 type ConnectedTo = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
+-- | The official name of the organization, e.g. the registered company name.
+--
+--   [@id@] legalName
+--
+--   [@label@] Legal Name
+--
+--   [@comment@] The official name of the organization, e.g. the registered company name.
+--
+--   [@domains@] @'Organization'@
+--
+--   [@ranges@] @'Text'@
+type LegalName = Text
+
 -- | Description of benefits associated with the job.
 --
 --   [@id@] benefits
@@ -3920,6 +4778,19 @@ type GivenName = Text
 --   [@ranges@] @'CollectionPage'@
 type IsPartOf = Text.HTML5.MetaData.Schema.CollectionPage.CollectionPage
 
+-- | The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).
+--
+--   [@id@] temporal
+--
+--   [@label@] Temporal
+--
+--   [@comment@] The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).
+--
+--   [@domains@] @'Dataset'@
+--
+--   [@ranges@] @'DateTime'@
+type Temporal = DateTime
+
 -- | The most generic familial relation.
 --
 --   [@id@] relatedTo
@@ -3941,7 +4812,7 @@ type RelatedTo = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] A contact point for a person or organization.
 --
---   [@domains@] @'Person','Organization'@
+--   [@domains@] @'Organization','Person'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoint = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
@@ -4008,8 +4879,8 @@ type Followup = Text
 --
 --   [@domains@] @'Nerve'@
 --
---   [@ranges@] @'Nerve','AnatomicalStructure'@
-type Branch = Either Text.HTML5.MetaData.Schema.Nerve.Nerve Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+--   [@ranges@] @'AnatomicalStructure','Nerve'@
+type Branch = Either Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure Text.HTML5.MetaData.Schema.Nerve.Nerve
 
 -- | One of the domain specialities to which this web page's content applies.
 --
@@ -4023,6 +4894,19 @@ type Branch = Either Text.HTML5.MetaData.Schema.Nerve.Nerve Text.HTML5.MetaData.
 --
 --   [@ranges@] @'Specialty'@
 type Specialty = Text.HTML5.MetaData.Schema.Specialty.Specialty
+
+-- | The date and time of giving up ownership on the product.
+--
+--   [@id@] ownedThrough
+--
+--   [@label@] Owned Through
+--
+--   [@comment@] The date and time of giving up ownership on the product.
+--
+--   [@domains@] @'OwnershipInfo'@
+--
+--   [@ranges@] @'DateTime'@
+type OwnedThrough = DateTime
 
 -- | How often the dose is taken, e.g. 'daily'.
 --
@@ -4047,8 +4931,8 @@ type Frequency = Text
 --
 --   [@domains@] @'Place'@
 --
---   [@ranges@] @'Photograph','ImageObject'@
-type Photo = Either Text.HTML5.MetaData.Schema.Photograph.Photograph Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+--   [@ranges@] @'ImageObject','Photograph'@
+type Photo = Either Text.HTML5.MetaData.Schema.ImageObject.ImageObject Text.HTML5.MetaData.Schema.Photograph.Photograph
 
 -- | Recommended intake of this supplement for a given population as defined by a specific recommending authority.
 --
@@ -4076,6 +4960,32 @@ type MaximumIntake = Text.HTML5.MetaData.Schema.MaximumDoseSchedule.MaximumDoseS
 --   [@ranges@] @'Text'@
 type RecommendationStrength = Text
 
+-- | The current approximate inventory level for the item or items.
+--
+--   [@id@] inventoryLevel
+--
+--   [@label@] Inventory Level
+--
+--   [@comment@] The current approximate inventory level for the item or items.
+--
+--   [@domains@] @'SomeProducts','Offer','Demand'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type InventoryLevel = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | This ordering relation for qualitative values indicates that the subject is equal to the object.
+--
+--   [@id@] equal
+--
+--   [@label@] Equal
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is equal to the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type Equal = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
+
 -- | A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
 --
 --   [@id@] seriousAdverseOutcome
@@ -4088,6 +4998,19 @@ type RecommendationStrength = Text
 --
 --   [@ranges@] @'MedicalEntity'@
 type SeriousAdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
+
+-- | Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0)
+--
+--   [@id@] runtime
+--
+--   [@label@] Runtime
+--
+--   [@comment@] Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0)
+--
+--   [@domains@] @'Code'@
+--
+--   [@ranges@] @'Text'@
+type Runtime = Text
 
 -- | The type of the medical article, taken from the US NLM MeSH publication type catalog.
 --
@@ -4102,6 +5025,19 @@ type SeriousAdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEnt
 --   [@ranges@] @'Text'@
 type PublicationType = Text
 
+-- | The GTIN-8 code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN.
+--
+--   [@id@] gtin8
+--
+--   [@label@] Gtin8
+--
+--   [@comment@] The GTIN-8 code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN.
+--
+--   [@domains@] @'Product','Offer','Demand'@
+--
+--   [@ranges@] @'Text'@
+type Gtin8 = Text
+
 -- | A contact location for a person's place of work.
 --
 --   [@id@] workLocation
@@ -4112,8 +5048,8 @@ type PublicationType = Text
 --
 --   [@domains@] @'Person'@
 --
---   [@ranges@] @'Place','ContactPoint'@
-type WorkLocation = Either Text.HTML5.MetaData.Schema.Place.Place Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
+--   [@ranges@] @'ContactPoint','Place'@
+type WorkLocation = Either Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint Text.HTML5.MetaData.Schema.Place.Place
 
 -- | A collection of music albums (legacy spelling; see singular form, album).
 --
@@ -4127,6 +5063,19 @@ type WorkLocation = Either Text.HTML5.MetaData.Schema.Place.Place Text.HTML5.Met
 --
 --   [@ranges@] @'MusicAlbum'@
 type Albums = Text.HTML5.MetaData.Schema.MusicAlbum.MusicAlbum
+
+-- | The warranty promise(s) included in the offer.
+--
+--   [@id@] warranty
+--
+--   [@label@] Warranty
+--
+--   [@comment@] The warranty promise(s) included in the offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'WarrantyPromise'@
+type Warranty = Text.HTML5.MetaData.Schema.WarrantyPromise.WarrantyPromise
 
 -- | Thumbnail image for an image or video.
 --
@@ -4297,6 +5246,19 @@ type ComprisedOf = Either Text.HTML5.MetaData.Schema.AnatomicalStructure.Anatomi
 --   [@ranges@] @'Review'@
 type Reviews = Text.HTML5.MetaData.Schema.Review.Review
 
+-- | A pointer to products or services offered by the organization or person.
+--
+--   [@id@] makesOffer
+--
+--   [@label@] Makes Offer
+--
+--   [@comment@] A pointer to products or services offered by the organization or person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Offer'@
+type MakesOffer = Text.HTML5.MetaData.Schema.Offer.Offer
+
 -- | The neurological pathway extension that involves muscle control.
 --
 --   [@id@] nerveMotor
@@ -4385,8 +5347,8 @@ type AssociatedAnatomy = Either3 Text.HTML5.MetaData.Schema.AnatomicalSystem.Ana
 --
 --   [@domains@] @'CreativeWork'@
 --
---   [@ranges@] @'Person','Organization'@
-type Provider = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Provider = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The degree of mobility the joint allows.
 --
@@ -4422,7 +5384,7 @@ type ItemListOrder = Text
 --
 --   [@comment@] A count of a specific user interactions with this item—for example, <code>20 UserLikes</code>, <code>5 UserComments</code>, or <code>300 UserDownloads</code>. The user interaction type should be one of the sub types of <a href="http://schema.org/UserInteraction">UserInteraction</a>.
 --
---   [@domains@] @'Person','CreativeWork','Place','Organization'@
+--   [@domains@] @'Organization','CreativeWork','Place','Person'@
 --
 --   [@ranges@] @'Text'@
 type InteractionCount = Text
@@ -4440,6 +5402,19 @@ type InteractionCount = Text
 --   [@ranges@] @'Thing'@
 type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
 
+-- | The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
+--
+--   [@id@] eligibleTransactionVolume
+--
+--   [@label@] Eligible Transaction Volume
+--
+--   [@comment@] The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
+--
+--   [@domains@] @'Demand','PriceSpecification','Offer'@
+--
+--   [@ranges@] @'PriceSpecification'@
+type EligibleTransactionVolume = Text.HTML5.MetaData.Schema.PriceSpecification.PriceSpecification
+
 -- | Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
 --
 --   [@id@] pregnancyWarning
@@ -4452,6 +5427,19 @@ type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
 --
 --   [@ranges@] @'Text'@
 type PregnancyWarning = Text
+
+-- | The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
+--
+--   [@id@] interactivityType
+--
+--   [@label@] Interactivity Type
+--
+--   [@comment@] The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type InteractivityType = Text
 
 -- | Indicates whether this image is representative of the content of the page.
 --
@@ -4466,6 +5454,32 @@ type PregnancyWarning = Text
 --   [@ranges@] @'Boolean'@
 type RepresentativeOfPage = Boolean
 
+-- | The highest price if the price is a range.
+--
+--   [@id@] maxPrice
+--
+--   [@label@] Max Price
+--
+--   [@comment@] The highest price if the price is a range.
+--
+--   [@domains@] @'PriceSpecification'@
+--
+--   [@ranges@] @'Number'@
+type MaxPrice = Number
+
+-- | The lower value of the product characteristic.
+--
+--   [@id@] minValue
+--
+--   [@label@] Min Value
+--
+--   [@comment@] The lower value of the product characteristic.
+--
+--   [@domains@] @'QuantitativeValue'@
+--
+--   [@ranges@] @'Number'@
+type MinValue = Number
+
 -- | The lowest price of all offers available.
 --
 --   [@id@] lowPrice
@@ -4478,6 +5492,19 @@ type RepresentativeOfPage = Boolean
 --
 --   [@ranges@] @'Number','Text'@
 type LowPrice = Either Number Text
+
+-- | The GTIN-14 code of the product, or the product to which the offer refers.
+--
+--   [@id@] gtin14
+--
+--   [@label@] Gtin14
+--
+--   [@comment@] The GTIN-14 code of the product, or the product to which the offer refers.
+--
+--   [@domains@] @'Product','Offer','Demand'@
+--
+--   [@ranges@] @'Text'@
+type Gtin14 = Text
 
 -- | Specifies the Person who edited the CreativeWork.
 --
@@ -4530,6 +5557,19 @@ type DistinguishingSign = Text.HTML5.MetaData.Schema.MedicalSignOrSymptom.Medica
 --
 --   [@ranges@] @'Place'@
 type ContainedIn = Text.HTML5.MetaData.Schema.Place.Place
+
+-- | This ordering relation for qualitative values indicates that the subject is lesser than the object.
+--
+--   [@id@] lesser
+--
+--   [@label@] Lesser
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is lesser than the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type Lesser = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
 
 -- | Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
 --
@@ -4726,6 +5766,32 @@ type AggregateRating = Text.HTML5.MetaData.Schema.AggregateRating.AggregateRatin
 --   [@ranges@] @'Integer'@
 type SeasonNumber = Integer
 
+-- | The scope of the warranty promise.
+--
+--   [@id@] warrantyScope
+--
+--   [@label@] Warranty Scope
+--
+--   [@comment@] The scope of the warranty promise.
+--
+--   [@domains@] @'WarrantyPromise'@
+--
+--   [@ranges@] @'WarrantyScope'@
+type WarrantyScope = Text.HTML5.MetaData.Schema.WarrantyScope.WarrantyScope
+
+-- | Full (compile ready) solution, code snippet, inline code, scripts, template.
+--
+--   [@id@] sampleType
+--
+--   [@label@] Sample Type
+--
+--   [@comment@] Full (compile ready) solution, code snippet, inline code, scripts, template.
+--
+--   [@domains@] @'Code'@
+--
+--   [@ranges@] @'Text'@
+type SampleType = Text
+
 -- | Features or modules provided by this application (and possibly required by other applications).
 --
 --   [@id@] featureList
@@ -4736,8 +5802,21 @@ type SeasonNumber = Integer
 --
 --   [@domains@] @'SoftwareApplication'@
 --
---   [@ranges@] @'URL','Text'@
-type FeatureList = Either URL Text
+--   [@ranges@] @'Text','URL'@
+type FeatureList = Either Text URL
+
+-- | The North American Industry Classification System (NAICS) code for a particular organization or business person.
+--
+--   [@id@] naics
+--
+--   [@label@] Naics
+--
+--   [@comment@] The North American Industry Classification System (NAICS) code for a particular organization or business person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Text'@
+type Naics = Text
 
 -- | The movement the muscle generates.
 --
@@ -4788,8 +5867,8 @@ type EducationRequirements = Text
 --
 --   [@domains@] @'Event'@
 --
---   [@ranges@] @'Person','Organization'@
-type Performer = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Performer = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The seasons of the TV series (legacy spelling; see singular form, season).
 --
@@ -4829,6 +5908,19 @@ type ContentRating = Text
 --
 --   [@ranges@] @'Text'@
 type ProductID = Text
+
+-- | The GTIN-13 code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero.
+--
+--   [@id@] gtin13
+--
+--   [@label@] Gtin13
+--
+--   [@comment@] The GTIN-13 code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero.
+--
+--   [@domains@] @'Product','Offer','Demand'@
+--
+--   [@ranges@] @'Text'@
+type Gtin13 = Text
 
 -- | The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
 --
@@ -4892,8 +5984,21 @@ type DoseValue = Number
 --
 --   [@domains@] @'Event'@
 --
---   [@ranges@] @'Person','Organization'@
-type Attendee = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Attendee = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Type of app development: phone, Metro style, desktop, XBox, etc.
+--
+--   [@id@] targetPlatform
+--
+--   [@label@] Target Platform
+--
+--   [@comment@] Type of app development: phone, Metro style, desktop, XBox, etc.
+--
+--   [@domains@] @'APIReference'@
+--
+--   [@ranges@] @'Text'@
+type TargetPlatform = Text
 
 -- | The actual code.
 --
@@ -4920,6 +6025,19 @@ type CodeValue = Text
 --
 --   [@ranges@] @'Mass'@
 type SugarContent = Text.HTML5.MetaData.Schema.Mass.Mass
+
+-- | The value of the product characteristic.
+--
+--   [@id@] value
+--
+--   [@label@] Value
+--
+--   [@comment@] The value of the product characteristic.
+--
+--   [@domains@] @'QuantitativeValue'@
+--
+--   [@ranges@] @'Number'@
+type Value = Number
 
 -- | A media object that encode this CreativeWork.
 --
@@ -4999,18 +6117,31 @@ type Actor = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Date'@
 type EndDate = Date
 
--- | The brand of the product.
+-- | The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
+--
+--   [@id@] durationOfWarranty
+--
+--   [@label@] Duration of Warranty
+--
+--   [@comment@] The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
+--
+--   [@domains@] @'WarrantyPromise'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type DurationOfWarranty = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
 --
 --   [@id@] brand
 --
 --   [@label@] Brand
 --
---   [@comment@] The brand of the product.
+--   [@comment@] The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
 --
---   [@domains@] @'Product'@
+--   [@domains@] @'Organization','Product','Person'@
 --
---   [@ranges@] @'Organization'@
-type Brand = Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Brand'@
+type Brand = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Brand.Brand
 
 -- | A member of this organization (legacy spelling; see singular form, member).
 --
@@ -5022,8 +6153,8 @@ type Brand = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@domains@] @'Organization'@
 --
---   [@ranges@] @'Person','Organization'@
-type Members = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Members = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The unit of the dose, e.g. 'mg'.
 --
@@ -5051,6 +6182,19 @@ type DoseUnit = Text
 --   [@ranges@] @'Text'@
 type Pathophysiology = Text
 
+-- | This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
+--
+--   [@id@] greaterOrEqual
+--
+--   [@label@] Greater or Equal
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type GreaterOrEqual = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
+
 -- | A link to the page containing the comments of the CreativeWork.
 --
 --   [@id@] discussionUrl
@@ -5064,6 +6208,19 @@ type Pathophysiology = Text
 --   [@ranges@] @'URL'@
 type DiscussionUrl = URL
 
+-- | An educationalRole of an EducationalAudience
+--
+--   [@id@] educationalRole
+--
+--   [@label@] Educational Role
+--
+--   [@comment@] An educationalRole of an EducationalAudience
+--
+--   [@domains@] @'EducationalAudience'@
+--
+--   [@ranges@] @'Text'@
+type EducationalRole = Text
+
 -- | The characteristics of associated patients, such as age, gender, race etc.
 --
 --   [@id@] epidemiology
@@ -5076,6 +6233,19 @@ type DiscussionUrl = URL
 --
 --   [@ranges@] @'Text'@
 type Epidemiology = Text
+
+-- | A pointer to products or services sought by the organization or person (demand).
+--
+--   [@id@] seeks
+--
+--   [@label@] Seeks
+--
+--   [@comment@] A pointer to products or services sought by the organization or person (demand).
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Demand'@
+type Seeks = Text.HTML5.MetaData.Schema.Demand.Demand
 
 -- | Specific physiologic benefits associated to the plan.
 --
@@ -5103,6 +6273,32 @@ type PhysiologicalBenefits = Text
 --   [@ranges@] @'URL'@
 type Url = URL
 
+-- | The unit of measurement given using the UN/CEFACT Common Code (3 characters).
+--
+--   [@id@] unitCode
+--
+--   [@label@] Unit Code
+--
+--   [@comment@] The unit of measurement given using the UN/CEFACT Common Code (3 characters).
+--
+--   [@domains@] @'TypeAndQuantityNode','QuantitativeValue','UnitPriceSpecification'@
+--
+--   [@ranges@] @'Text'@
+type UnitCode = Text
+
+-- | URL of an image for the logo of the item.
+--
+--   [@id@] logo
+--
+--   [@label@] Logo
+--
+--   [@comment@] URL of an image for the logo of the item.
+--
+--   [@domains@] @'Organization','Brand','Place','Product'@
+--
+--   [@ranges@] @'URL','ImageObject'@
+type Logo = Either URL Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+
 -- | Any other drug related to this one, for example commonly-prescribed alternatives.
 --
 --   [@id@] relatedDrug
@@ -5115,6 +6311,19 @@ type Url = URL
 --
 --   [@ranges@] @'Drug'@
 type RelatedDrug = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | A data catalog which contains a dataset.
+--
+--   [@id@] catalog
+--
+--   [@label@] Catalog
+--
+--   [@comment@] A data catalog which contains a dataset.
+--
+--   [@domains@] @'Dataset'@
+--
+--   [@ranges@] @'DataCatalog'@
+type Catalog = Text.HTML5.MetaData.Schema.DataCatalog.DataCatalog
 
 -- | Any characteristics of the population used in the study, e.g. 'males under 65'.
 --
@@ -5155,6 +6364,19 @@ type Offers = Text.HTML5.MetaData.Schema.Offer.Offer
 --   [@ranges@] @'Duration'@
 type ActivityDuration = Text.HTML5.MetaData.Schema.Duration.Duration
 
+-- | The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
+--
+--   [@id@] serialNumber
+--
+--   [@label@] Serial Number
+--
+--   [@comment@] The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
+--
+--   [@domains@] @'Demand','IndividualProduct','Offer'@
+--
+--   [@ranges@] @'Text'@
+type SerialNumber = Text
+
 -- | Indicates whether this content is family friendly.
 --
 --   [@id@] isFamilyFriendly
@@ -5167,6 +6389,19 @@ type ActivityDuration = Text.HTML5.MetaData.Schema.Duration.Duration
 --
 --   [@ranges@] @'Boolean'@
 type IsFamilyFriendly = Boolean
+
+-- | This ordering relation for qualitative values indicates that the subject is not equal to the object.
+--
+--   [@id@] nonEqual
+--
+--   [@label@] Non Equal
+--
+--   [@comment@] This ordering relation for qualitative values indicates that the subject is not equal to the object.
+--
+--   [@domains@] @'QualitativeValue'@
+--
+--   [@ranges@] @'QualitativeValue'@
+type NonEqual = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
 
 -- | Link to prescribing information for the drug.
 --
@@ -5219,6 +6454,19 @@ type DeathDate = Date
 --
 --   [@ranges@] @'DoseSchedule'@
 type DoseSchedule = Text.HTML5.MetaData.Schema.DoseSchedule.DoseSchedule
+
+-- | One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+--
+--   [@id@] priceSpecification
+--
+--   [@label@] Price Specification
+--
+--   [@comment@] One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'PriceSpecification'@
+type PriceSpecification = Text.HTML5.MetaData.Schema.PriceSpecification.PriceSpecification
 
 -- | A URL pointing to a player for a specific video. In general, this is the information in the src element of an embed tag and should not be the same as the content of the loc tag. (previous spelling: embedURL)
 --
@@ -5376,6 +6624,19 @@ type ApplicableLocation = Text.HTML5.MetaData.Schema.AdministrativeArea.Administ
 --   [@ranges@] @'Text'@
 type AlcoholWarning = Text
 
+-- | A pointer to another, functionally similar product (or multiple products).
+--
+--   [@id@] isSimilarTo
+--
+--   [@label@] Is Similar to
+--
+--   [@comment@] A pointer to another, functionally similar product (or multiple products).
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Product'@
+type IsSimilarTo = Text.HTML5.MetaData.Schema.Product.Product
+
 -- | mp3, mpeg4, etc.
 --
 --   [@id@] encodingFormat
@@ -5389,6 +6650,19 @@ type AlcoholWarning = Text
 --   [@ranges@] @'Text'@
 type EncodingFormat = Text
 
+-- | A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+--
+--   [@id@] valueReference
+--
+--   [@label@] Value Reference
+--
+--   [@comment@] A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+--
+--   [@domains@] @'QualitativeValue','QuantitativeValue'@
+--
+--   [@ranges@] @'Enumeration','StructuredValue'@
+type ValueReference = Either Text.HTML5.MetaData.Schema.Enumeration.Enumeration Text.HTML5.MetaData.Schema.StructuredValue.StructuredValue
+
 -- | Date the content expires and is no longer useful or available. Useful for videos.
 --
 --   [@id@] expires
@@ -5401,6 +6675,19 @@ type EncodingFormat = Text
 --
 --   [@ranges@] @'Date'@
 type Expires = Date
+
+-- | The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+--
+--   [@id@] taxID
+--
+--   [@label@] Tax ID
+--
+--   [@comment@] The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'Text'@
+type TaxID = Text
 
 -- | Specifies browser requirements in human-readable text. For example,"requires HTML5 support".
 --
@@ -5425,8 +6712,34 @@ type BrowserRequirements = Text
 --
 --   [@domains@] @'Organization'@
 --
---   [@ranges@] @'Person','Organization'@
-type Member = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Member = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Relates a property to a class that constitutes (one of) the expected type(s) for values of the property.
+--
+--   [@id@] rangeIncludes
+--
+--   [@label@] Range Includes
+--
+--   [@comment@] Relates a property to a class that constitutes (one of) the expected type(s) for values of the property.
+--
+--   [@domains@] @'Property'@
+--
+--   [@ranges@] @'Class'@
+type RangeIncludes = Text.HTML5.MetaData.Schema.Class.Class
+
+-- | An alignment to an established educational framework.
+--
+--   [@id@] educationalAlignment
+--
+--   [@label@] Educational Alignment
+--
+--   [@comment@] An alignment to an established educational framework.
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'AlignmentObject'@
+type EducationalAlignment = Text.HTML5.MetaData.Schema.AlignmentObject.AlignmentObject
 
 -- | The bitrate of the media object.
 --
@@ -5467,6 +6780,19 @@ type Procedure = Text
 --   [@ranges@] @'PostalAddress','Place'@
 type Location = Either Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress Text.HTML5.MetaData.Schema.Place.Place
 
+-- | The closing hour of the place or service on the given day(s) of the week.
+--
+--   [@id@] closes
+--
+--   [@label@] Closes
+--
+--   [@comment@] The closing hour of the place or service on the given day(s) of the week.
+--
+--   [@domains@] @'OpeningHoursSpecification'@
+--
+--   [@ranges@] @'Time'@
+type Closes = Time
+
 -- | A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
 --
 --   [@id@] dosageForm
@@ -5490,8 +6816,8 @@ type DosageForm = Text
 --
 --   [@domains@] @'Diet'@
 --
---   [@ranges@] @'Person','Organization'@
-type Endorsers = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.Organization.Organization
+--   [@ranges@] @'Organization','Person'@
+type Endorsers = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | Version of the software instance.
 --
@@ -5506,6 +6832,19 @@ type Endorsers = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.Meta
 --   [@ranges@] @'Text'@
 type SoftwareVersion = Text
 
+-- | The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+--
+--   [@id@] sku
+--
+--   [@label@] Sku
+--
+--   [@comment@] The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+--
+--   [@domains@] @'Product','Offer','Demand'@
+--
+--   [@ranges@] @'Text'@
+type Sku = Text
+
 -- | The language of the content. please use one of the language codes from the IETF BCP 47 standard.
 --
 --   [@id@] inLanguage
@@ -5518,6 +6857,19 @@ type SoftwareVersion = Text
 --
 --   [@ranges@] @'Text'@
 type InLanguage = Text
+
+-- | The release date of a product or product model. This can be used to distinguish the exact variant of a product.
+--
+--   [@id@] releaseDate
+--
+--   [@label@] Release Date
+--
+--   [@comment@] The release date of a product or product model. This can be used to distinguish the exact variant of a product.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Date'@
+type ReleaseDate = Date
 
 -- | The subject matter of the content.
 --
@@ -5581,8 +6933,21 @@ type Geo = Either Text.HTML5.MetaData.Schema.GeoCoordinates.GeoCoordinates Text.
 --
 --   [@domains@] @'SoftwareApplication'@
 --
---   [@ranges@] @'URL','Text'@
-type MemoryRequirements = Either URL Text
+--   [@ranges@] @'Text','URL'@
+type MemoryRequirements = Either Text URL
+
+-- | The end of the validity of offer, price specification, or opening hours data.
+--
+--   [@id@] validThrough
+--
+--   [@label@] Valid Through
+--
+--   [@comment@] The end of the validity of offer, price specification, or opening hours data.
+--
+--   [@domains@] @'OpeningHoursSpecification','Demand','PriceSpecification','Offer'@
+--
+--   [@ranges@] @'DateTime'@
+type ValidThrough = DateTime
 
 -- | MIME format of the binary (e.g. application/zip).
 --
@@ -5662,6 +7027,32 @@ type IdentifyingExam = Text.HTML5.MetaData.Schema.PhysicalExam.PhysicalExam
 --   [@ranges@] @'Text'@
 type RecipeYield = Text
 
+-- | The depth of the product.
+--
+--   [@id@] depth
+--
+--   [@label@] Depth
+--
+--   [@comment@] The depth of the product.
+--
+--   [@domains@] @'Product'@
+--
+--   [@ranges@] @'Distance','QuantitativeValue'@
+type Depth = Either Text.HTML5.MetaData.Schema.Distance.Distance Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | Products owned by the organization or person.
+--
+--   [@id@] owns
+--
+--   [@label@] Owns
+--
+--   [@comment@] Products owned by the organization or person.
+--
+--   [@domains@] @'Organization','Person'@
+--
+--   [@ranges@] @'OwnershipInfo','Product'@
+type Owns = Either Text.HTML5.MetaData.Schema.OwnershipInfo.OwnershipInfo Text.HTML5.MetaData.Schema.Product.Product
+
 -- | The edition of the book.
 --
 --   [@id@] bookEdition
@@ -5675,18 +7066,31 @@ type RecipeYield = Text
 --   [@ranges@] @'Text'@
 type BookEdition = Text
 
--- | The offer price of the product.
+-- | The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
 --
 --   [@id@] price
 --
 --   [@label@] Price
 --
---   [@comment@] The offer price of the product.
+--   [@comment@] The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'PriceSpecification','Offer'@
 --
---   [@ranges@] @'Number','Text'@
-type Price = Either Number Text
+--   [@ranges@] @'Text','Number'@
+type Price = Either Text Number
+
+-- | The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+--
+--   [@id@] globalLocationNumber
+--
+--   [@label@] Global Location Number
+--
+--   [@comment@] The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+--
+--   [@domains@] @'Organization','Place','Person'@
+--
+--   [@ranges@] @'Text'@
+type GlobalLocationNumber = Text
 
 -- | The coding system, e.g. 'ICD-10'.
 --
@@ -5753,6 +7157,32 @@ type PrintPage = Text
 --   [@ranges@] @'Duration'@
 type PrepTime = Text.HTML5.MetaData.Schema.Duration.Duration
 
+-- | The organization or person from which the product was acquired.
+--
+--   [@id@] acquiredFrom
+--
+--   [@label@] Acquired From
+--
+--   [@comment@] The organization or person from which the product was acquired.
+--
+--   [@domains@] @'OwnershipInfo'@
+--
+--   [@ranges@] @'Organization','Person'@
+type AcquiredFrom = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+--
+--   [@id@] billingIncrement
+--
+--   [@label@] Billing Increment
+--
+--   [@comment@] This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+--
+--   [@domains@] @'UnitPriceSpecification'@
+--
+--   [@ranges@] @'Number'@
+type BillingIncrement = Number
+
 -- | The episode of a TV series or season (legacy spelling; see singular form, episode).
 --
 --   [@id@] episodes
@@ -5804,6 +7234,32 @@ type InfectiousAgent = Text
 --
 --   [@ranges@] @'Person','MusicGroup'@
 type MusicBy = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.MusicGroup.MusicGroup
+
+-- | A dataset contained in a catalog.
+--
+--   [@id@] dataset
+--
+--   [@label@] Dataset
+--
+--   [@comment@] A dataset contained in a catalog.
+--
+--   [@domains@] @'DataCatalog'@
+--
+--   [@ranges@] @'Dataset'@
+type Dataset = Text.HTML5.MetaData.Schema.Dataset.Dataset
+
+-- | The URL of a node in an established educational framework.
+--
+--   [@id@] targetUrl
+--
+--   [@label@] Target Url
+--
+--   [@comment@] The URL of a node in an established educational framework.
+--
+--   [@domains@] @'AlignmentObject'@
+--
+--   [@ranges@] @'URL'@
+type TargetUrl = URL
 
 -- | A review of the item.
 --
@@ -5870,6 +7326,19 @@ type EpisodeNumber = Number
 --   [@ranges@] @'MusicGroup'@
 type ByArtist = Text.HTML5.MetaData.Schema.MusicGroup.MusicGroup
 
+-- | The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
+--
+--   [@id@] spatial
+--
+--   [@label@] Spatial
+--
+--   [@comment@] The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
+--
+--   [@domains@] @'Dataset'@
+--
+--   [@ranges@] @'Place'@
+type Spatial = Text.HTML5.MetaData.Schema.Place.Place
+
 -- | The actual body of the review
 --
 --   [@id@] reviewBody
@@ -5895,6 +7364,19 @@ type ReviewBody = Text
 --
 --   [@ranges@] @'Person'@
 type Alumni = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+--
+--   [@id@] isicV4
+--
+--   [@label@] Isic V4
+--
+--   [@comment@] The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+--
+--   [@domains@] @'Organization','Place','Person'@
+--
+--   [@ranges@] @'Text'@
+type IsicV4 = Text
 
 -- | Actual bytes of the media object, for example the image file or video file. (previous spelling: contentURL)
 --
@@ -6039,6 +7521,19 @@ type CostPerUnit = Either Number Text
 --   [@ranges@] @'DrugClass'@
 type DrugClass = Text.HTML5.MetaData.Schema.DrugClass.DrugClass
 
+-- | The delivery method(s) available for this offer.
+--
+--   [@id@] availableDeliveryMethod
+--
+--   [@label@] Available Delivery Method
+--
+--   [@comment@] The delivery method(s) available for this offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'DeliveryMethod'@
+type AvailableDeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.DeliveryMethod
+
 -- | Description of bonus and commission compensation aspects of the job.
 --
 --   [@id@] incentives
@@ -6078,6 +7573,32 @@ type WorstRating = Either Number Text
 --   [@ranges@] @'Text'@
 type PriceRange = Text
 
+-- | The gender of the person or audience.
+--
+--   [@id@] suggestedGender
+--
+--   [@label@] Suggested Gender
+--
+--   [@comment@] The gender of the person or audience.
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Text'@
+type SuggestedGender = Text
+
+-- | The beginning of the availability of the product or service included in the offer.
+--
+--   [@id@] availabilityStarts
+--
+--   [@label@] Availability Starts
+--
+--   [@comment@] The beginning of the availability of the product or service included in the offer.
+--
+--   [@domains@] @'Offer','Demand'@
+--
+--   [@ranges@] @'DateTime'@
+type AvailabilityStarts = DateTime
+
 -- | URL at which the app may be installed, if different from the URL of the item.
 --
 --   [@id@] installUrl
@@ -6104,15 +7625,15 @@ type InstallUrl = URL
 --   [@ranges@] @'AnatomicalStructure'@
 type RelatedStructure = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
--- | The currency (in 3-letter ISO 4217 format) of the offer price.
+-- | The currency (in 3-letter ISO 4217 format) of the offer price or a price component, when attached to PriceSpecification and its subtypes.
 --
 --   [@id@] priceCurrency
 --
 --   [@label@] Price Currency
 --
---   [@comment@] The currency (in 3-letter <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 format</a>) of the offer price.
+--   [@comment@] The currency (in 3-letter ISO 4217 format) of the offer price or a price component, when attached to PriceSpecification and its subtypes.
 --
---   [@domains@] @'Offer'@
+--   [@domains@] @'PriceSpecification','Offer'@
 --
 --   [@ranges@] @'Text'@
 type PriceCurrency = Text
