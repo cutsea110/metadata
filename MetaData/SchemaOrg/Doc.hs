@@ -209,6 +209,8 @@ special_types =
   [ ("Text", Nothing)
   , ("URL", Just $ text "Text")
   , ("Date", Just $ text "Day")
+  , ("Time", Just $ text "TimeOfDay") -- FIXME : require ISO8601 format
+  , ("DateTime", Just $ text "UTCTime") -- FIXME : require ISO8601 format
   , ("Number", Just $ hsep $ map text ["Either", "Integer", "Float"])
   , ("Integer", Nothing)
   , ("Float", Nothing)
