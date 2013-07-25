@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalTrial where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures. In general, medical trials are controlled and subjects are allocated at random to the different treatment and/or control groups.
+-- | 
 --
 --   [@id@] MedicalTrial
 --
 --   [@label@] Medical Trial
 --
---   [@comment@] A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures. In general, medical trials are controlled and subjects are allocated at random to the different treatment and/or control groups.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalStudy'@
 --
@@ -26,6 +26,7 @@ data MedicalTrial = MedicalTrial { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , alternateName :: AlternateName
                                  , code :: Code
@@ -47,6 +48,6 @@ data MedicalTrial = MedicalTrial { additionalType :: AdditionalType
 
 instance MetaData MedicalTrial where
   _label         = const "Medical Trial"
-  _comment_plain = const "A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures. In general, medical trials are controlled and subjects are allocated at random to the different treatment and/or control groups."
-  _comment       = const "A medical trial is a type of medical study that uses scientific process used to compare the safety and efficacy of medical therapies or medical procedures. In general, medical trials are controlled and subjects are allocated at random to the different treatment and/or control groups."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalTrial"

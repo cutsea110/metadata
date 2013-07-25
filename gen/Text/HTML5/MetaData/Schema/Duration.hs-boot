@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.Duration where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Quantity: Duration (use  <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 duration format</a>).
+-- | 
 
 data Duration
 

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ItemPage where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A page devoted to a single item, such as a particular product or hotel.
+-- | 
 --
 --   [@id@] ItemPage
 --
 --   [@label@] Item Page
 --
---   [@comment@] A page devoted to a single item, such as a particular product or hotel.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPage'@
 --
@@ -26,6 +26,7 @@ data ItemPage = ItemPage { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , about :: About
                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data ItemPage = ItemPage { additionalType :: AdditionalType
                          , author :: Author
                          , award :: Award
                          , awards :: Awards
+                         , citation :: Citation
                          , comment :: Comment
                          , contentLocation :: ContentLocation
                          , contentRating :: ContentRating
@@ -91,6 +93,6 @@ data ItemPage = ItemPage { additionalType :: AdditionalType
 
 instance MetaData ItemPage where
   _label         = const "Item Page"
-  _comment_plain = const "A page devoted to a single item, such as a particular product or hotel."
-  _comment       = const "A page devoted to a single item, such as a particular product or hotel."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ItemPage"

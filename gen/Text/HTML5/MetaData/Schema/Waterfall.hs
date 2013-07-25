@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Waterfall where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A waterfall, like Niagara
+-- | 
 --
 --   [@id@] Waterfall
 --
 --   [@label@] Waterfall
 --
---   [@comment@] A waterfall, like Niagara
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
 --
@@ -26,6 +26,7 @@ data Waterfall = Waterfall { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , address :: Address
                            , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data Waterfall = Waterfall { additionalType :: AdditionalType
 
 instance MetaData Waterfall where
   _label         = const "Waterfall"
-  _comment_plain = const "A waterfall, like Niagara"
-  _comment       = const "A waterfall, like Niagara"
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Waterfall"

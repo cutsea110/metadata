@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ApartmentComplex where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Residence type: Apartment complex.
+-- | 
 --
 --   [@id@] ApartmentComplex
 --
 --   [@label@] Apartment Complex
 --
---   [@comment@] Residence type: Apartment complex.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Residence'@
 --
@@ -26,6 +26,7 @@ data ApartmentComplex = ApartmentComplex { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , address :: Address
                                          , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data ApartmentComplex = ApartmentComplex { additionalType :: AdditionalType
 
 instance MetaData ApartmentComplex where
   _label         = const "Apartment Complex"
-  _comment_plain = const "Residence type: Apartment complex."
-  _comment       = const "Residence type: Apartment complex."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ApartmentComplex"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AdultEntertainment where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An adult entertainment establishment.
+-- | 
 --
 --   [@id@] AdultEntertainment
 --
 --   [@label@] Adult Entertainment
 --
---   [@comment@] An adult entertainment establishment.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
 --
@@ -26,6 +26,7 @@ data AdultEntertainment = AdultEntertainment { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , address :: Address
                                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AdultEntertainment = AdultEntertainment { additionalType :: AdditionalType
 
 instance MetaData AdultEntertainment where
   _label         = const "Adult Entertainment"
-  _comment_plain = const "An adult entertainment establishment."
-  _comment       = const "An adult entertainment establishment."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AdultEntertainment"

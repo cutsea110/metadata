@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Residence where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The place where a person lives.
+-- | 
 --
 --   [@id@] Residence
 --
 --   [@label@] Residence
 --
---   [@comment@] The place where a person lives.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place'@
 --
@@ -26,6 +26,7 @@ data Residence = Residence { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , address :: Address
                            , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data Residence = Residence { additionalType :: AdditionalType
 
 instance MetaData Residence where
   _label         = const "Residence"
-  _comment_plain = const "The place where a person lives."
-  _comment       = const "The place where a person lives."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Residence"

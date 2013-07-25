@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AutomotiveBusiness where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Car repair, sales, or parts.
+-- | 
 --
 --   [@id@] AutomotiveBusiness
 --
 --   [@label@] Automotive Business
 --
---   [@comment@] Car repair, sales, or parts.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data AutomotiveBusiness = AutomotiveBusiness { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , address :: Address
                                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AutomotiveBusiness = AutomotiveBusiness { additionalType :: AdditionalType
 
 instance MetaData AutomotiveBusiness where
   _label         = const "Automotive Business"
-  _comment_plain = const "Car repair, sales, or parts."
-  _comment       = const "Car repair, sales, or parts."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AutomotiveBusiness"

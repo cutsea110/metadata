@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.Ligament where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A short band of tough, flexible, fibrous connective tissue that functions to connect multiple bones, cartilages, and structurally support joints.
+-- | 
 
 data Ligament
 

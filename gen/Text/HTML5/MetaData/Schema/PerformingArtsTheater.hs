@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PerformingArtsTheater where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A theatre or other performing art center.
+-- | 
 --
 --   [@id@] PerformingArtsTheater
 --
 --   [@label@] Performing Arts Theater
 --
---   [@comment@] A theatre or other performing art center.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data PerformingArtsTheater = PerformingArtsTheater { additionalType :: Additiona
                                                    , description :: Description
                                                    , image :: Image
                                                    , name :: Name
+                                                   , sameAs :: SameAs
                                                    , url :: Url
                                                    , address :: Address
                                                    , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data PerformingArtsTheater = PerformingArtsTheater { additionalType :: Additiona
 
 instance MetaData PerformingArtsTheater where
   _label         = const "Performing Arts Theater"
-  _comment_plain = const "A theatre or other performing art center."
-  _comment       = const "A theatre or other performing art center."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PerformingArtsTheater"

@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.Offer where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+-- | 
 
 data Offer
 

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.City where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A city or town.
+-- | 
 --
 --   [@id@] City
 --
 --   [@label@] City
 --
---   [@comment@] A city or town.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','AdministrativeArea'@
 --
@@ -26,6 +26,7 @@ data City = City { additionalType :: AdditionalType
                  , description :: Description
                  , image :: Image
                  , name :: Name
+                 , sameAs :: SameAs
                  , url :: Url
                  , address :: Address
                  , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data City = City { additionalType :: AdditionalType
 
 instance MetaData City where
   _label         = const "City"
-  _comment_plain = const "A city or town."
-  _comment       = const "A city or town."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/City"

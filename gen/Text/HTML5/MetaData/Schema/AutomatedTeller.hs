@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AutomatedTeller where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | ATM/cash machine.
+-- | 
 --
 --   [@id@] AutomatedTeller
 --
 --   [@label@] Automated Teller
 --
---   [@comment@] ATM/cash machine.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
 --
@@ -26,6 +26,7 @@ data AutomatedTeller = AutomatedTeller { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , address :: Address
                                        , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AutomatedTeller = AutomatedTeller { additionalType :: AdditionalType
 
 instance MetaData AutomatedTeller where
   _label         = const "Automated Teller"
-  _comment_plain = const "ATM/cash machine."
-  _comment       = const "ATM/cash machine."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AutomatedTeller"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Casino where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A casino.
+-- | 
 --
 --   [@id@] Casino
 --
 --   [@label@] Casino
 --
---   [@comment@] A casino.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
 --
@@ -26,6 +26,7 @@ data Casino = Casino { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , address :: Address
                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Casino = Casino { additionalType :: AdditionalType
 
 instance MetaData Casino where
   _label         = const "Casino"
-  _comment_plain = const "A casino."
-  _comment       = const "A casino."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Casino"

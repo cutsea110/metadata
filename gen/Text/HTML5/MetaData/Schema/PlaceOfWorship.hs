@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PlaceOfWorship where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Place of worship, such as a church, synagogue, or mosque.
+-- | 
 --
 --   [@id@] PlaceOfWorship
 --
 --   [@label@] Place of Worship
 --
---   [@comment@] Place of worship, such as a church, synagogue, or mosque.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data PlaceOfWorship = PlaceOfWorship { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data PlaceOfWorship = PlaceOfWorship { additionalType :: AdditionalType
 
 instance MetaData PlaceOfWorship where
   _label         = const "Place of Worship"
-  _comment_plain = const "Place of worship, such as a church, synagogue, or mosque."
-  _comment       = const "Place of worship, such as a church, synagogue, or mosque."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PlaceOfWorship"

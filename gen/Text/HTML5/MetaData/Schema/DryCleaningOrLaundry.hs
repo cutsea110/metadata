@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DryCleaningOrLaundry where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dry-cleaning business.
+-- | 
 --
 --   [@id@] DryCleaningOrLaundry
 --
 --   [@label@] Dry Cleaning or Laundry
 --
---   [@comment@] A dry-cleaning business.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data DryCleaningOrLaundry = DryCleaningOrLaundry { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , address :: Address
                                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data DryCleaningOrLaundry = DryCleaningOrLaundry { additionalType :: AdditionalT
 
 instance MetaData DryCleaningOrLaundry where
   _label         = const "Dry Cleaning or Laundry"
-  _comment_plain = const "A dry-cleaning business."
-  _comment       = const "A dry-cleaning business."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DryCleaningOrLaundry"

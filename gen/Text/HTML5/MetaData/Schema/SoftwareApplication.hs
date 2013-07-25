@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SoftwareApplication where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A software application.
+-- | 
 --
 --   [@id@] SoftwareApplication
 --
 --   [@label@] Software Application
 --
---   [@comment@] A software application.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data SoftwareApplication = SoftwareApplication { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , about :: About
                                                , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data SoftwareApplication = SoftwareApplication { additionalType :: AdditionalTyp
                                                , author :: Author
                                                , award :: Award
                                                , awards :: Awards
+                                               , citation :: Citation
                                                , comment :: Comment
                                                , contentLocation :: ContentLocation
                                                , contentRating :: ContentRating
@@ -101,6 +103,6 @@ data SoftwareApplication = SoftwareApplication { additionalType :: AdditionalTyp
 
 instance MetaData SoftwareApplication where
   _label         = const "Software Application"
-  _comment_plain = const "A software application."
-  _comment       = const "A software application."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SoftwareApplication"

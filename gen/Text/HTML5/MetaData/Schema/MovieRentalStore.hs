@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MovieRentalStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A movie rental store.
+-- | 
 --
 --   [@id@] MovieRentalStore
 --
 --   [@label@] Movie Rental Store
 --
---   [@comment@] A movie rental store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data MovieRentalStore = MovieRentalStore { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , address :: Address
                                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data MovieRentalStore = MovieRentalStore { additionalType :: AdditionalType
 
 instance MetaData MovieRentalStore where
   _label         = const "Movie Rental Store"
-  _comment_plain = const "A movie rental store."
-  _comment       = const "A movie rental store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MovieRentalStore"

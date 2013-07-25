@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WebPageElement where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A web page element, like a table or an image
+-- | 
 --
 --   [@id@] WebPageElement
 --
 --   [@label@] Web Page Element
 --
---   [@comment@] A web page element, like a table or an image
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data WebPageElement = WebPageElement { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , about :: About
                                      , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data WebPageElement = WebPageElement { additionalType :: AdditionalType
                                      , author :: Author
                                      , award :: Award
                                      , awards :: Awards
+                                     , citation :: Citation
                                      , comment :: Comment
                                      , contentLocation :: ContentLocation
                                      , contentRating :: ContentRating
@@ -81,6 +83,6 @@ data WebPageElement = WebPageElement { additionalType :: AdditionalType
 
 instance MetaData WebPageElement where
   _label         = const "Web Page Element"
-  _comment_plain = const "A web page element, like a table or an image"
-  _comment       = const "A web page element, like a table or an image"
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/WebPageElement"

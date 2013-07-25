@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalGuidelineContraindication where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A guideline contraindication that designates a process as harmful and where quality of the data supporting the contraindication is sound.
+-- | 
 --
 --   [@id@] MedicalGuidelineContraindication
 --
 --   [@label@] Medical Guideline Contraindication
 --
---   [@comment@] A guideline contraindication that designates a process as harmful and where quality of the data supporting the contraindication is sound.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalGuideline'@
 --
@@ -26,6 +26,7 @@ data MedicalGuidelineContraindication = MedicalGuidelineContraindication { addit
                                                                          , description :: Description
                                                                          , image :: Image
                                                                          , name :: Name
+                                                                         , sameAs :: SameAs
                                                                          , url :: Url
                                                                          , alternateName :: AlternateName
                                                                          , code :: Code
@@ -43,6 +44,6 @@ data MedicalGuidelineContraindication = MedicalGuidelineContraindication { addit
 
 instance MetaData MedicalGuidelineContraindication where
   _label         = const "Medical Guideline Contraindication"
-  _comment_plain = const "A guideline contraindication that designates a process as harmful and where quality of the data supporting the contraindication is sound."
-  _comment       = const "A guideline contraindication that designates a process as harmful and where quality of the data supporting the contraindication is sound."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalGuidelineContraindication"

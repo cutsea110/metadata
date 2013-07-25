@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalEnumeration where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Enumerations related to health and the practice of medicine.
+-- | 
 --
 --   [@id@] MedicalEnumeration
 --
 --   [@label@] Medical Enumeration
 --
---   [@comment@] Enumerations related to health and the practice of medicine.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible'@
 --
@@ -26,6 +26,7 @@ data MedicalEnumeration = MedicalEnumeration { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , alternateName :: AlternateName
                                              , code :: Code
@@ -39,6 +40,6 @@ data MedicalEnumeration = MedicalEnumeration { additionalType :: AdditionalType
 
 instance MetaData MedicalEnumeration where
   _label         = const "Medical Enumeration"
-  _comment_plain = const "Enumerations related to health and the practice of medicine."
-  _comment       = const "Enumerations related to health and the practice of medicine."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalEnumeration"

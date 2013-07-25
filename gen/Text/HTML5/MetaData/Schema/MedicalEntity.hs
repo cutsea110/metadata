@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalEntity where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The most generic type of entity related to health and the practice of medicine.
+-- | 
 --
 --   [@id@] MedicalEntity
 --
 --   [@label@] Medical Entity
 --
---   [@comment@] The most generic type of entity related to health and the practice of medicine.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing'@
 --
@@ -26,6 +26,7 @@ data MedicalEntity = MedicalEntity { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , alternateName :: AlternateName
                                    , code :: Code
@@ -39,6 +40,6 @@ data MedicalEntity = MedicalEntity { additionalType :: AdditionalType
 
 instance MetaData MedicalEntity where
   _label         = const "Medical Entity"
-  _comment_plain = const "The most generic type of entity related to health and the practice of medicine."
-  _comment       = const "The most generic type of entity related to health and the practice of medicine."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalEntity"

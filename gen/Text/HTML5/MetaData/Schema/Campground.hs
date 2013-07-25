@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Campground where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A campground.
+-- | 
 --
 --   [@id@] Campground
 --
 --   [@label@] Campground
 --
---   [@comment@] A campground.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data Campground = Campground { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Campground = Campground { additionalType :: AdditionalType
 
 instance MetaData Campground where
   _label         = const "Campground"
-  _comment_plain = const "A campground."
-  _comment       = const "A campground."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Campground"

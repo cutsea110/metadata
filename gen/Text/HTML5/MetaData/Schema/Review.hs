@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Review where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Review )
 import Data.Text
 
--- | A review of an item - for example, a restaurant, movie, or store.
+-- | 
 --
 --   [@id@] Review
 --
 --   [@label@] Review
 --
---   [@comment@] A review of an item - for example, a restaurant, movie, or store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data Review = Review { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , about :: About
                      , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data Review = Review { additionalType :: AdditionalType
                      , author :: Author
                      , award :: Award
                      , awards :: Awards
+                     , citation :: Citation
                      , comment :: Comment
                      , contentLocation :: ContentLocation
                      , contentRating :: ContentRating
@@ -84,6 +86,6 @@ data Review = Review { additionalType :: AdditionalType
 
 instance MetaData Review where
   _label         = const "Review"
-  _comment_plain = const "A review of an item - for example, a restaurant, movie, or store."
-  _comment       = const "A review of an item - for example, a restaurant, movie, or store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Review"

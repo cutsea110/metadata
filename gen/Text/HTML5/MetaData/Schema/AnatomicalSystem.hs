@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AnatomicalSystem where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems.
+-- | 
 --
 --   [@id@] AnatomicalSystem
 --
 --   [@label@] Anatomical System
 --
---   [@comment@] An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data AnatomicalSystem = AnatomicalSystem { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , alternateName :: AlternateName
                                          , code :: Code
@@ -44,6 +45,6 @@ data AnatomicalSystem = AnatomicalSystem { additionalType :: AdditionalType
 
 instance MetaData AnatomicalSystem where
   _label         = const "Anatomical System"
-  _comment_plain = const "An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems."
-  _comment       = const "An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AnatomicalSystem"

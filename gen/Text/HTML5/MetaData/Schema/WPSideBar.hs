@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPSideBar where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A sidebar section of the page.
+-- | 
 --
 --   [@id@] WPSideBar
 --
 --   [@label@] WP Side Bar
 --
---   [@comment@] A sidebar section of the page.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
 --
@@ -26,6 +26,7 @@ data WPSideBar = WPSideBar { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , about :: About
                            , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data WPSideBar = WPSideBar { additionalType :: AdditionalType
                            , author :: Author
                            , award :: Award
                            , awards :: Awards
+                           , citation :: Citation
                            , comment :: Comment
                            , contentLocation :: ContentLocation
                            , contentRating :: ContentRating
@@ -81,6 +83,6 @@ data WPSideBar = WPSideBar { additionalType :: AdditionalType
 
 instance MetaData WPSideBar where
   _label         = const "WP Side Bar"
-  _comment_plain = const "A sidebar section of the page."
-  _comment       = const "A sidebar section of the page."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/WPSideBar"

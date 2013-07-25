@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ClothingStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A clothing store.
+-- | 
 --
 --   [@id@] ClothingStore
 --
 --   [@label@] Clothing Store
 --
---   [@comment@] A clothing store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data ClothingStore = ClothingStore { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data ClothingStore = ClothingStore { additionalType :: AdditionalType
 
 instance MetaData ClothingStore where
   _label         = const "Clothing Store"
-  _comment_plain = const "A clothing store."
-  _comment       = const "A clothing store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ClothingStore"

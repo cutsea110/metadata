@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.RecommendedDoseSchedule where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity.
+-- | 
 --
 --   [@id@] RecommendedDoseSchedule
 --
 --   [@label@] Recommended Dose Schedule
 --
---   [@comment@] A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','DoseSchedule'@
 --
@@ -26,6 +26,7 @@ data RecommendedDoseSchedule = RecommendedDoseSchedule { additionalType :: Addit
                                                        , description :: Description
                                                        , image :: Image
                                                        , name :: Name
+                                                       , sameAs :: SameAs
                                                        , url :: Url
                                                        , alternateName :: AlternateName
                                                        , code :: Code
@@ -43,6 +44,6 @@ data RecommendedDoseSchedule = RecommendedDoseSchedule { additionalType :: Addit
 
 instance MetaData RecommendedDoseSchedule where
   _label         = const "Recommended Dose Schedule"
-  _comment_plain = const "A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity."
-  _comment       = const "A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/RecommendedDoseSchedule"

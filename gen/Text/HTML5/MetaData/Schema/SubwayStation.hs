@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SubwayStation where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A subway station.
+-- | 
 --
 --   [@id@] SubwayStation
 --
 --   [@label@] Subway Station
 --
---   [@comment@] A subway station.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data SubwayStation = SubwayStation { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data SubwayStation = SubwayStation { additionalType :: AdditionalType
 
 instance MetaData SubwayStation where
   _label         = const "Subway Station"
-  _comment_plain = const "A subway station."
-  _comment       = const "A subway station."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SubwayStation"

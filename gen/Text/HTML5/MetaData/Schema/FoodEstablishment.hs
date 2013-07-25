@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.FoodEstablishment where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A food-related business.
+-- | 
 --
 --   [@id@] FoodEstablishment
 --
 --   [@label@] Food Establishment
 --
---   [@comment@] A food-related business.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data FoodEstablishment = FoodEstablishment { additionalType :: AdditionalType
                                            , description :: Description
                                            , image :: Image
                                            , name :: Name
+                                           , sameAs :: SameAs
                                            , url :: Url
                                            , address :: Address
                                            , aggregateRating :: AggregateRating
@@ -80,6 +81,6 @@ data FoodEstablishment = FoodEstablishment { additionalType :: AdditionalType
 
 instance MetaData FoodEstablishment where
   _label         = const "Food Establishment"
-  _comment_plain = const "A food-related business."
-  _comment       = const "A food-related business."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/FoodEstablishment"

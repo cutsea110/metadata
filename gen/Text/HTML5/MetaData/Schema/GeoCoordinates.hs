@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GeoCoordinates where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The geographic coordinates of a place or event.
+-- | 
 --
 --   [@id@] GeoCoordinates
 --
 --   [@label@] Geo Coordinates
 --
---   [@comment@] The geographic coordinates of a place or event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data GeoCoordinates = GeoCoordinates { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , elevation :: Elevation
                                      , latitude :: Latitude
@@ -35,6 +36,6 @@ data GeoCoordinates = GeoCoordinates { additionalType :: AdditionalType
 
 instance MetaData GeoCoordinates where
   _label         = const "Geo Coordinates"
-  _comment_plain = const "The geographic coordinates of a place or event."
-  _comment       = const "The geographic coordinates of a place or event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/GeoCoordinates"

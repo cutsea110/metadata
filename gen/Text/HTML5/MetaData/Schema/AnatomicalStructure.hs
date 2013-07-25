@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AnatomicalStructure where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
+-- | 
 --
 --   [@id@] AnatomicalStructure
 --
 --   [@label@] Anatomical Structure
 --
---   [@comment@] Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data AnatomicalStructure = AnatomicalStructure { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , alternateName :: AlternateName
                                                , code :: Code
@@ -48,6 +49,6 @@ data AnatomicalStructure = AnatomicalStructure { additionalType :: AdditionalTyp
 
 instance MetaData AnatomicalStructure where
   _label         = const "Anatomical Structure"
-  _comment_plain = const "Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures."
-  _comment       = const "Any part of the human body, typically a component of an anatomical system. Organs, tissues, and cells are all anatomical structures."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AnatomicalStructure"

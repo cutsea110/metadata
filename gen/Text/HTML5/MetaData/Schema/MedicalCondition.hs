@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalCondition where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.
+-- | 
 --
 --   [@id@] MedicalCondition
 --
 --   [@label@] Medical Condition
 --
---   [@comment@] Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalCondition = MedicalCondition { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , alternateName :: AlternateName
                                          , code :: Code
@@ -55,6 +56,6 @@ data MedicalCondition = MedicalCondition { additionalType :: AdditionalType
 
 instance MetaData MedicalCondition where
   _label         = const "Medical Condition"
-  _comment_plain = const "Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc."
-  _comment       = const "Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalCondition"

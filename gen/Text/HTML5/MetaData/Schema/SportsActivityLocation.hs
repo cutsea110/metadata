@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SportsActivityLocation where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A sports location, such as a playing field.
+-- | 
 --
 --   [@id@] SportsActivityLocation
 --
 --   [@label@] Sports Activity Location
 --
---   [@comment@] A sports location, such as a playing field.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data SportsActivityLocation = SportsActivityLocation { additionalType :: Additio
                                                      , description :: Description
                                                      , image :: Image
                                                      , name :: Name
+                                                     , sameAs :: SameAs
                                                      , url :: Url
                                                      , address :: Address
                                                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data SportsActivityLocation = SportsActivityLocation { additionalType :: Additio
 
 instance MetaData SportsActivityLocation where
   _label         = const "Sports Activity Location"
-  _comment_plain = const "A sports location, such as a playing field."
-  _comment       = const "A sports location, such as a playing field."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SportsActivityLocation"

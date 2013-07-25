@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Specialty where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Specialty )
 import Data.Text
 
--- | Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
+-- | 
 --
 --   [@id@] Specialty
 --
 --   [@label@] Specialty
 --
---   [@comment@] Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
 --
@@ -26,12 +26,13 @@ data Specialty = Specialty { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            }
                  deriving (Show, Read, Eq)
 
 instance MetaData Specialty where
   _label         = const "Specialty"
-  _comment_plain = const "Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort."
-  _comment       = const "Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Specialty"

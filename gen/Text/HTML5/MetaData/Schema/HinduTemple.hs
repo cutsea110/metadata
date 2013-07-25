@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HinduTemple where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Hindu temple.
+-- | 
 --
 --   [@id@] HinduTemple
 --
 --   [@label@] Hindu Temple
 --
---   [@comment@] A Hindu temple.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
 --
@@ -26,6 +26,7 @@ data HinduTemple = HinduTemple { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , address :: Address
                                , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data HinduTemple = HinduTemple { additionalType :: AdditionalType
 
 instance MetaData HinduTemple where
   _label         = const "Hindu Temple"
-  _comment_plain = const "A Hindu temple."
-  _comment       = const "A Hindu temple."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/HinduTemple"

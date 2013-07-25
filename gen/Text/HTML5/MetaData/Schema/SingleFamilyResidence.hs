@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SingleFamilyResidence where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Residence type: Single-family home.
+-- | 
 --
 --   [@id@] SingleFamilyResidence
 --
 --   [@label@] Single Family Residence
 --
---   [@comment@] Residence type: Single-family home.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Residence'@
 --
@@ -26,6 +26,7 @@ data SingleFamilyResidence = SingleFamilyResidence { additionalType :: Additiona
                                                    , description :: Description
                                                    , image :: Image
                                                    , name :: Name
+                                                   , sameAs :: SameAs
                                                    , url :: Url
                                                    , address :: Address
                                                    , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data SingleFamilyResidence = SingleFamilyResidence { additionalType :: Additiona
 
 instance MetaData SingleFamilyResidence where
   _label         = const "Single Family Residence"
-  _comment_plain = const "Residence type: Single-family home."
-  _comment       = const "Residence type: Single-family home."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SingleFamilyResidence"

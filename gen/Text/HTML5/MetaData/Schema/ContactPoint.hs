@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ContactPoint where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( ContactPoint )
 import Data.Text
 
--- | A contact point—for example, a Customer Complaints department.
+-- | 
 --
 --   [@id@] ContactPoint
 --
 --   [@label@] Contact Point
 --
---   [@comment@] A contact point—for example, a Customer Complaints department.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data ContactPoint = ContactPoint { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , contactType :: ContactType
                                  , email :: Email
@@ -36,6 +37,6 @@ data ContactPoint = ContactPoint { additionalType :: AdditionalType
 
 instance MetaData ContactPoint where
   _label         = const "Contact Point"
-  _comment_plain = const "A contact point\8212for example, a Customer Complaints department."
-  _comment       = const "A contact point\8212for example, a Customer Complaints department."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ContactPoint"

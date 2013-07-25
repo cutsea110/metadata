@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Duration where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Duration )
 import Data.Text
 
--- | Quantity: Duration (use  ISO 8601 duration format).
+-- | 
 --
 --   [@id@] Duration
 --
 --   [@label@] Duration
 --
---   [@comment@] Quantity: Duration (use  <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 duration format</a>).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Quantity'@
 --
@@ -27,6 +27,6 @@ data Duration = Duration
 
 instance MetaData Duration where
   _label         = const "Duration"
-  _comment_plain = const "Quantity: Duration (use  ISO 8601 duration format)."
-  _comment       = const "Quantity: Duration (use  <a href=\"http://en.wikipedia.org/wiki/ISO_8601\">ISO 8601 duration format</a>)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Duration"

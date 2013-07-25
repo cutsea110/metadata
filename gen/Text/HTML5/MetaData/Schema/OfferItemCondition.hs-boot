@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.OfferItemCondition where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A list of possible conditions for the item for sale.
+-- | 
 
 data OfferItemCondition
 

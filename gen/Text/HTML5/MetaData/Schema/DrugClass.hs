@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DrugClass where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( DrugClass )
 import Data.Text
 
--- | A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc.
+-- | 
 --
 --   [@id@] DrugClass
 --
 --   [@label@] Drug Class
 --
---   [@comment@] A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTherapy'@
 --
@@ -26,6 +26,7 @@ data DrugClass = DrugClass { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , alternateName :: AlternateName
                            , code :: Code
@@ -45,6 +46,6 @@ data DrugClass = DrugClass { additionalType :: AdditionalType
 
 instance MetaData DrugClass where
   _label         = const "Drug Class"
-  _comment_plain = const "A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc."
-  _comment       = const "A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DrugClass"

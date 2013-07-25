@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Table where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A table on the page.
+-- | 
 --
 --   [@id@] Table
 --
 --   [@label@] Table
 --
---   [@comment@] A table on the page.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
 --
@@ -26,6 +26,7 @@ data Table = Table { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , about :: About
                    , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data Table = Table { additionalType :: AdditionalType
                    , author :: Author
                    , award :: Award
                    , awards :: Awards
+                   , citation :: Citation
                    , comment :: Comment
                    , contentLocation :: ContentLocation
                    , contentRating :: ContentRating
@@ -81,6 +83,6 @@ data Table = Table { additionalType :: AdditionalType
 
 instance MetaData Table where
   _label         = const "Table"
-  _comment_plain = const "A table on the page."
-  _comment       = const "A table on the page."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Table"

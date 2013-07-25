@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.OfferItemCondition where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A list of possible conditions for the item for sale.
+-- | 
 --
 --   [@id@] OfferItemCondition
 --
 --   [@label@] Offer Item Condition
 --
---   [@comment@] A list of possible conditions for the item for sale.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
 --
@@ -30,6 +30,6 @@ data OfferItemCondition = DamagedCondition
 
 instance MetaData OfferItemCondition where
   _label         = const "Offer Item Condition"
-  _comment_plain = const "A list of possible conditions for the item for sale."
-  _comment       = const "A list of possible conditions for the item for sale."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/OfferItemCondition"

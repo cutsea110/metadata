@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LegislativeBuilding where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A legislative building—for example, the state capitol.
+-- | 
 --
 --   [@id@] LegislativeBuilding
 --
 --   [@label@] Legislative Building
 --
---   [@comment@] A legislative building—for example, the state capitol.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
 --
@@ -26,6 +26,7 @@ data LegislativeBuilding = LegislativeBuilding { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , address :: Address
                                                , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data LegislativeBuilding = LegislativeBuilding { additionalType :: AdditionalTyp
 
 instance MetaData LegislativeBuilding where
   _label         = const "Legislative Building"
-  _comment_plain = const "A legislative building\8212for example, the state capitol."
-  _comment       = const "A legislative building\8212for example, the state capitol."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/LegislativeBuilding"

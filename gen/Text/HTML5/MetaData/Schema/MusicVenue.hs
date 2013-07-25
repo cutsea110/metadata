@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicVenue where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A music venue.
+-- | 
 --
 --   [@id@] MusicVenue
 --
 --   [@label@] Music Venue
 --
---   [@comment@] A music venue.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data MusicVenue = MusicVenue { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data MusicVenue = MusicVenue { additionalType :: AdditionalType
 
 instance MetaData MusicVenue where
   _label         = const "Music Venue"
-  _comment_plain = const "A music venue."
-  _comment       = const "A music venue."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MusicVenue"

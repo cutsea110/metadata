@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LocalBusiness where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
+-- | 
 --
 --   [@id@] LocalBusiness
 --
 --   [@label@] Local Business
 --
---   [@comment@] A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization'@
 --
@@ -26,6 +26,7 @@ data LocalBusiness = LocalBusiness { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data LocalBusiness = LocalBusiness { additionalType :: AdditionalType
 
 instance MetaData LocalBusiness where
   _label         = const "Local Business"
-  _comment_plain = const "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc."
-  _comment       = const "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/LocalBusiness"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AutoPartsStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An auto parts store.
+-- | 
 --
 --   [@id@] AutoPartsStore
 --
 --   [@label@] Auto Parts Store
 --
---   [@comment@] An auto parts store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','AutomotiveBusiness'@
 --
@@ -26,6 +26,7 @@ data AutoPartsStore = AutoPartsStore { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AutoPartsStore = AutoPartsStore { additionalType :: AdditionalType
 
 instance MetaData AutoPartsStore where
   _label         = const "Auto Parts Store"
-  _comment_plain = const "An auto parts store."
-  _comment       = const "An auto parts store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AutoPartsStore"

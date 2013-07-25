@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HVACBusiness where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An HVAC service.
+-- | 
 --
 --   [@id@] HVACBusiness
 --
 --   [@label@] HVAC Business
 --
---   [@comment@] An HVAC service.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HomeAndConstructionBusiness'@
 --
@@ -26,6 +26,7 @@ data HVACBusiness = HVACBusiness { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , address :: Address
                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data HVACBusiness = HVACBusiness { additionalType :: AdditionalType
 
 instance MetaData HVACBusiness where
   _label         = const "HVAC Business"
-  _comment_plain = const "An HVAC service."
-  _comment       = const "An HVAC service."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/HVACBusiness"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Optician where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An optician's store.
+-- | 
 --
 --   [@id@] Optician
 --
 --   [@label@] Optician
 --
---   [@comment@] An optician's store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
 --
@@ -26,6 +26,7 @@ data Optician = Optician { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Optician = Optician { additionalType :: AdditionalType
 
 instance MetaData Optician where
   _label         = const "Optician"
-  _comment_plain = const "An optician's store."
-  _comment       = const "An optician's store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Optician"

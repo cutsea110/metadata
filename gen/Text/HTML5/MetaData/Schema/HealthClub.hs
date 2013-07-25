@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HealthClub where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A health club.
+-- | 
 --
 --   [@id@] HealthClub
 --
 --   [@label@] Health Club
 --
---   [@comment@] A health club.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
 --
@@ -26,6 +26,7 @@ data HealthClub = HealthClub { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data HealthClub = HealthClub { additionalType :: AdditionalType
 
 instance MetaData HealthClub where
   _label         = const "Health Club"
-  _comment_plain = const "A health club."
-  _comment       = const "A health club."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/HealthClub"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.EmploymentAgency where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An employment agency.
+-- | 
 --
 --   [@id@] EmploymentAgency
 --
 --   [@label@] Employment Agency
 --
---   [@comment@] An employment agency.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data EmploymentAgency = EmploymentAgency { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , address :: Address
                                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data EmploymentAgency = EmploymentAgency { additionalType :: AdditionalType
 
 instance MetaData EmploymentAgency where
   _label         = const "Employment Agency"
-  _comment_plain = const "An employment agency."
-  _comment       = const "An employment agency."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/EmploymentAgency"

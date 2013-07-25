@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BowlingAlley where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bowling alley.
+-- | 
 --
 --   [@id@] BowlingAlley
 --
 --   [@label@] Bowling Alley
 --
---   [@comment@] A bowling alley.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
 --
@@ -26,6 +26,7 @@ data BowlingAlley = BowlingAlley { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , address :: Address
                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data BowlingAlley = BowlingAlley { additionalType :: AdditionalType
 
 instance MetaData BowlingAlley where
   _label         = const "Bowling Alley"
-  _comment_plain = const "A bowling alley."
-  _comment       = const "A bowling alley."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BowlingAlley"

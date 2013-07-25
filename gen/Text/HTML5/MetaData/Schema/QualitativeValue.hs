@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.QualitativeValue where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A predefined value for a product characteristic, e.g. the the power cord plug type "US" or the garment sizes "S", "M", "L", and "XL"
+-- | 
 --
 --   [@id@] QualitativeValue
 --
 --   [@label@] Qualitative Value
 --
---   [@comment@] A predefined value for a product characteristic, e.g. the the power cord plug type "US" or the garment sizes "S", "M", "L", and "XL"
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
 --
@@ -26,6 +26,7 @@ data QualitativeValue = QualitativeValue { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , equal :: Equal
                                          , greater :: Greater
@@ -39,6 +40,6 @@ data QualitativeValue = QualitativeValue { additionalType :: AdditionalType
 
 instance MetaData QualitativeValue where
   _label         = const "Qualitative Value"
-  _comment_plain = const "A predefined value for a product characteristic, e.g. the the power cord plug type \"US\" or the garment sizes \"S\", \"M\", \"L\", and \"XL\""
-  _comment       = const "A predefined value for a product characteristic, e.g. the the power cord plug type \"US\" or the garment sizes \"S\", \"M\", \"L\", and \"XL\""
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/QualitativeValue"

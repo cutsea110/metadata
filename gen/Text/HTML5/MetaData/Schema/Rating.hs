@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Rating where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The rating of the video.
+-- | 
 --
 --   [@id@] Rating
 --
 --   [@label@] Rating
 --
---   [@comment@] The rating of the video.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible'@
 --
@@ -26,6 +26,7 @@ data Rating = Rating { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , bestRating :: BestRating
                      , ratingValue :: RatingValue
@@ -35,6 +36,6 @@ data Rating = Rating { additionalType :: AdditionalType
 
 instance MetaData Rating where
   _label         = const "Rating"
-  _comment_plain = const "The rating of the video."
-  _comment       = const "The rating of the video."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Rating"

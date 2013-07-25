@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Joint where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The anatomical location at which two or more bones make contact.
+-- | 
 --
 --   [@id@] Joint
 --
 --   [@label@] Joint
 --
---   [@comment@] The anatomical location at which two or more bones make contact.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure'@
 --
@@ -26,6 +26,7 @@ data Joint = Joint { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , alternateName :: AlternateName
                    , code :: Code
@@ -51,6 +52,6 @@ data Joint = Joint { additionalType :: AdditionalType
 
 instance MetaData Joint where
   _label         = const "Joint"
-  _comment_plain = const "The anatomical location at which two or more bones make contact."
-  _comment       = const "The anatomical location at which two or more bones make contact."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Joint"

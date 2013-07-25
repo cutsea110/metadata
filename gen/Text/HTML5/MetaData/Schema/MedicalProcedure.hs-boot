@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.MedicalProcedure where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques.
+-- | 
 
 data MedicalProcedure
 

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Muscle where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement.
+-- | 
 --
 --   [@id@] Muscle
 --
 --   [@label@] Muscle
 --
---   [@comment@] A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure'@
 --
@@ -26,6 +26,7 @@ data Muscle = Muscle { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , alternateName :: AlternateName
                      , code :: Code
@@ -54,6 +55,6 @@ data Muscle = Muscle { additionalType :: AdditionalType
 
 instance MetaData Muscle where
   _label         = const "Muscle"
-  _comment_plain = const "A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement."
-  _comment       = const "A muscle is an anatomical structure consisting of a contractile form of tissue that animals use to effect movement."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Muscle"

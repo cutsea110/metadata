@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Notary where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A notary.
+-- | 
 --
 --   [@id@] Notary
 --
 --   [@label@] Notary
 --
---   [@comment@] A notary.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','ProfessionalService'@
 --
@@ -26,6 +26,7 @@ data Notary = Notary { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , address :: Address
                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Notary = Notary { additionalType :: AdditionalType
 
 instance MetaData Notary where
   _label         = const "Notary"
-  _comment_plain = const "A notary."
-  _comment       = const "A notary."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Notary"

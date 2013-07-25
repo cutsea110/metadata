@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.MedicalRiskFactor where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.
+-- | 
 
 data MedicalRiskFactor
 

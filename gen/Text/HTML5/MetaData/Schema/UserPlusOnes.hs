@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserPlusOnes where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: +1.
+-- | 
 --
 --   [@id@] UserPlusOnes
 --
 --   [@label@] User Plus Ones
 --
---   [@comment@] User interaction: +1.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
 --
@@ -26,6 +26,7 @@ data UserPlusOnes = UserPlusOnes { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , attendee :: Attendee
                                  , attendees :: Attendees
@@ -44,6 +45,6 @@ data UserPlusOnes = UserPlusOnes { additionalType :: AdditionalType
 
 instance MetaData UserPlusOnes where
   _label         = const "User Plus Ones"
-  _comment_plain = const "User interaction: +1."
-  _comment       = const "User interaction: +1."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UserPlusOnes"

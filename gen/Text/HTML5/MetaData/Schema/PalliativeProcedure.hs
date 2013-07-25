@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PalliativeProcedure where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical procedure intended primarly for palliative purposes, aimed at relieving the symptoms of an underlying health condition.
+-- | 
 --
 --   [@id@] PalliativeProcedure
 --
 --   [@label@] Palliative Procedure
 --
---   [@comment@] A medical procedure intended primarly for palliative purposes, aimed at relieving the symptoms of an underlying health condition.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalProcedure'@
 --
@@ -26,6 +26,7 @@ data PalliativeProcedure = PalliativeProcedure { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , alternateName :: AlternateName
                                                , code :: Code
@@ -48,6 +49,6 @@ data PalliativeProcedure = PalliativeProcedure { additionalType :: AdditionalTyp
 
 instance MetaData PalliativeProcedure where
   _label         = const "Palliative Procedure"
-  _comment_plain = const "A medical procedure intended primarly for palliative purposes, aimed at relieving the symptoms of an underlying health condition."
-  _comment       = const "A medical procedure intended primarly for palliative purposes, aimed at relieving the symptoms of an underlying health condition."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PalliativeProcedure"

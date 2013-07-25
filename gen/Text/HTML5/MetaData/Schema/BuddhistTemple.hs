@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BuddhistTemple where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Buddhist temple.
+-- | 
 --
 --   [@id@] BuddhistTemple
 --
 --   [@label@] Buddhist Temple
 --
---   [@comment@] A Buddhist temple.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
 --
@@ -26,6 +26,7 @@ data BuddhistTemple = BuddhistTemple { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data BuddhistTemple = BuddhistTemple { additionalType :: AdditionalType
 
 instance MetaData BuddhistTemple where
   _label         = const "Buddhist Temple"
-  _comment_plain = const "A Buddhist temple."
-  _comment       = const "A Buddhist temple."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BuddhistTemple"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Festival where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Festival.
+-- | 
 --
 --   [@id@] Festival
 --
 --   [@label@] Festival
 --
---   [@comment@] Event type: Festival.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event'@
 --
@@ -26,6 +26,7 @@ data Festival = Festival { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , attendee :: Attendee
                          , attendees :: Attendees
@@ -44,6 +45,6 @@ data Festival = Festival { additionalType :: AdditionalType
 
 instance MetaData Festival where
   _label         = const "Festival"
-  _comment_plain = const "Event type: Festival."
-  _comment       = const "Event type: Festival."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Festival"

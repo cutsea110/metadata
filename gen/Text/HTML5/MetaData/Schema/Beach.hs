@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Beach where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Beach.
+-- | 
 --
 --   [@id@] Beach
 --
 --   [@label@] Beach
 --
---   [@comment@] Beach.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data Beach = Beach { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , address :: Address
                    , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Beach = Beach { additionalType :: AdditionalType
 
 instance MetaData Beach where
   _label         = const "Beach"
-  _comment_plain = const "Beach."
-  _comment       = const "Beach."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Beach"

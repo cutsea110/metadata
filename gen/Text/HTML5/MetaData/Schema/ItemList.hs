@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ItemList where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+-- | 
 --
 --   [@id@] ItemList
 --
 --   [@label@] Item List
 --
---   [@comment@] A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data ItemList = ItemList { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , about :: About
                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data ItemList = ItemList { additionalType :: AdditionalType
                          , author :: Author
                          , award :: Award
                          , awards :: Awards
+                         , citation :: Citation
                          , comment :: Comment
                          , contentLocation :: ContentLocation
                          , contentRating :: ContentRating
@@ -83,6 +85,6 @@ data ItemList = ItemList { additionalType :: AdditionalType
 
 instance MetaData ItemList where
   _label         = const "Item List"
-  _comment_plain = const "A list of items of any sort\8212for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting."
-  _comment       = const "A list of items of any sort\8212for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ItemList"

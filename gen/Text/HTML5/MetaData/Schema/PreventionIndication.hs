@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PreventionIndication where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An indication for preventing an underlying condition, symptom, etc.
+-- | 
 --
 --   [@id@] PreventionIndication
 --
 --   [@label@] Prevention Indication
 --
---   [@comment@] An indication for preventing an underlying condition, symptom, etc.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIndication'@
 --
@@ -26,6 +26,7 @@ data PreventionIndication = PreventionIndication { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , alternateName :: AlternateName
                                                  , code :: Code
@@ -39,6 +40,6 @@ data PreventionIndication = PreventionIndication { additionalType :: AdditionalT
 
 instance MetaData PreventionIndication where
   _label         = const "Prevention Indication"
-  _comment_plain = const "An indication for preventing an underlying condition, symptom, etc."
-  _comment       = const "An indication for preventing an underlying condition, symptom, etc."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PreventionIndication"

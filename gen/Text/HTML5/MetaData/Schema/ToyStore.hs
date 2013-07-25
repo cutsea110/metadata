@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ToyStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A toystore.
+-- | 
 --
 --   [@id@] ToyStore
 --
 --   [@label@] Toy Store
 --
---   [@comment@] A toystore.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data ToyStore = ToyStore { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data ToyStore = ToyStore { additionalType :: AdditionalType
 
 instance MetaData ToyStore where
   _label         = const "Toy Store"
-  _comment_plain = const "A toystore."
-  _comment       = const "A toystore."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ToyStore"

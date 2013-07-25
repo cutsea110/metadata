@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.StadiumOrArena where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A stadium.
+-- | 
 --
 --   [@id@] StadiumOrArena
 --
 --   [@label@] Stadium or Arena
 --
---   [@comment@] A stadium.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data StadiumOrArena = StadiumOrArena { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data StadiumOrArena = StadiumOrArena { additionalType :: AdditionalType
 
 instance MetaData StadiumOrArena where
   _label         = const "Stadium or Arena"
-  _comment_plain = const "A stadium."
-  _comment       = const "A stadium."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/StadiumOrArena"

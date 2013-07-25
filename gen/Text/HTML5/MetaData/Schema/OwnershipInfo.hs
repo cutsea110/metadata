@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.OwnershipInfo where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A structured value providing information about when a certain organization or person owned a certain product.
+-- | 
 --
 --   [@id@] OwnershipInfo
 --
 --   [@label@] Ownership Info
 --
---   [@comment@] A structured value providing information about when a certain organization or person owned a certain product.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data OwnershipInfo = OwnershipInfo { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , acquiredFrom :: AcquiredFrom
                                    , ownedFrom :: OwnedFrom
@@ -36,6 +37,6 @@ data OwnershipInfo = OwnershipInfo { additionalType :: AdditionalType
 
 instance MetaData OwnershipInfo where
   _label         = const "Ownership Info"
-  _comment_plain = const "A structured value providing information about when a certain organization or person owned a certain product."
-  _comment       = const "A structured value providing information about when a certain organization or person owned a certain product."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/OwnershipInfo"

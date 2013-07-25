@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Pond where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A pond
+-- | 
 --
 --   [@id@] Pond
 --
 --   [@label@] Pond
 --
---   [@comment@] A pond
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
 --
@@ -26,6 +26,7 @@ data Pond = Pond { additionalType :: AdditionalType
                  , description :: Description
                  , image :: Image
                  , name :: Name
+                 , sameAs :: SameAs
                  , url :: Url
                  , address :: Address
                  , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data Pond = Pond { additionalType :: AdditionalType
 
 instance MetaData Pond where
   _label         = const "Pond"
-  _comment_plain = const "A pond"
-  _comment       = const "A pond"
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Pond"

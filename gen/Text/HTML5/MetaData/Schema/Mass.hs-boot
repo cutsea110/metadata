@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.Mass where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'
+-- | 
 
 data Mass
 

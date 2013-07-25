@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PsychologicalTreatment where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A process of care relying upon counseling, dialogue, communication, verbalization aimed at improving a mental health condition.
+-- | 
 --
 --   [@id@] PsychologicalTreatment
 --
 --   [@label@] Psychological Treatment
 --
---   [@comment@] A process of care relying upon counseling, dialogue, communication, verbalization aimed at improving a mental health condition.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTherapy'@
 --
@@ -26,6 +26,7 @@ data PsychologicalTreatment = PsychologicalTreatment { additionalType :: Additio
                                                      , description :: Description
                                                      , image :: Image
                                                      , name :: Name
+                                                     , sameAs :: SameAs
                                                      , url :: Url
                                                      , alternateName :: AlternateName
                                                      , code :: Code
@@ -44,6 +45,6 @@ data PsychologicalTreatment = PsychologicalTreatment { additionalType :: Additio
 
 instance MetaData PsychologicalTreatment where
   _label         = const "Psychological Treatment"
-  _comment_plain = const "A process of care relying upon counseling, dialogue, communication, verbalization aimed at improving a mental health condition."
-  _comment       = const "A process of care relying upon counseling, dialogue, communication, verbalization aimed at improving a mental health condition."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PsychologicalTreatment"

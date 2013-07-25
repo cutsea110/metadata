@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DeliveryChargeSpecification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The price for the delivery of an offer using a particular delivery method.
+-- | 
 --
 --   [@id@] DeliveryChargeSpecification
 --
 --   [@label@] Delivery Charge Specification
 --
---   [@comment@] The price for the delivery of an offer using a particular delivery method.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue','PriceSpecification'@
 --
@@ -26,6 +26,7 @@ data DeliveryChargeSpecification = DeliveryChargeSpecification { additionalType 
                                                                , description :: Description
                                                                , image :: Image
                                                                , name :: Name
+                                                               , sameAs :: SameAs
                                                                , url :: Url
                                                                , eligibleQuantity :: EligibleQuantity
                                                                , eligibleTransactionVolume :: EligibleTransactionVolume
@@ -43,6 +44,6 @@ data DeliveryChargeSpecification = DeliveryChargeSpecification { additionalType 
 
 instance MetaData DeliveryChargeSpecification where
   _label         = const "Delivery Charge Specification"
-  _comment_plain = const "The price for the delivery of an offer using a particular delivery method."
-  _comment       = const "The price for the delivery of an offer using a particular delivery method."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DeliveryChargeSpecification"

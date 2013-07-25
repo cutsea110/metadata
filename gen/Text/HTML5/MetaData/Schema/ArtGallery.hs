@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ArtGallery where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An art gallery.
+-- | 
 --
 --   [@id@] ArtGallery
 --
 --   [@label@] Art Gallery
 --
---   [@comment@] An art gallery.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','EntertainmentBusiness'@
 --
@@ -26,6 +26,7 @@ data ArtGallery = ArtGallery { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data ArtGallery = ArtGallery { additionalType :: AdditionalType
 
 instance MetaData ArtGallery where
   _label         = const "Art Gallery"
-  _comment_plain = const "An art gallery."
-  _comment       = const "An art gallery."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ArtGallery"

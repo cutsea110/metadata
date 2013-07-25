@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DanceGroup where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dance group—for example, the Alvin Ailey Dance Theater or Riverdance.
+-- | 
 --
 --   [@id@] DanceGroup
 --
 --   [@label@] Dance Group
 --
---   [@comment@] A dance group—for example, the Alvin Ailey Dance Theater or Riverdance.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','PerformingGroup'@
 --
@@ -26,6 +26,7 @@ data DanceGroup = DanceGroup { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -65,6 +66,6 @@ data DanceGroup = DanceGroup { additionalType :: AdditionalType
 
 instance MetaData DanceGroup where
   _label         = const "Dance Group"
-  _comment_plain = const "A dance group\8212for example, the Alvin Ailey Dance Theater or Riverdance."
-  _comment       = const "A dance group\8212for example, the Alvin Ailey Dance Theater or Riverdance."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DanceGroup"

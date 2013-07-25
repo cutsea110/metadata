@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A music store.
+-- | 
 --
 --   [@id@] MusicStore
 --
 --   [@label@] Music Store
 --
---   [@comment@] A music store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data MusicStore = MusicStore { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data MusicStore = MusicStore { additionalType :: AdditionalType
 
 instance MetaData MusicStore where
   _label         = const "Music Store"
-  _comment_plain = const "A music store."
-  _comment       = const "A music store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MusicStore"

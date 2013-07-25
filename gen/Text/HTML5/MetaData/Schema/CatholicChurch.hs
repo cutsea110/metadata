@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CatholicChurch where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A Catholic church.
+-- | 
 --
 --   [@id@] CatholicChurch
 --
 --   [@label@] Catholic Church
 --
---   [@comment@] A Catholic church.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
 --
@@ -26,6 +26,7 @@ data CatholicChurch = CatholicChurch { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data CatholicChurch = CatholicChurch { additionalType :: AdditionalType
 
 instance MetaData CatholicChurch where
   _label         = const "Catholic Church"
-  _comment_plain = const "A Catholic church."
-  _comment       = const "A Catholic church."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/CatholicChurch"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Embassy where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An embassy.
+-- | 
 --
 --   [@id@] Embassy
 --
 --   [@label@] Embassy
 --
---   [@comment@] An embassy.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
 --
@@ -26,6 +26,7 @@ data Embassy = Embassy { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , address :: Address
                        , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Embassy = Embassy { additionalType :: AdditionalType
 
 instance MetaData Embassy where
   _label         = const "Embassy"
-  _comment_plain = const "An embassy."
-  _comment       = const "An embassy."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Embassy"

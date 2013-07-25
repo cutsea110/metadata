@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicEvent where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Music event.
+-- | 
 --
 --   [@id@] MusicEvent
 --
 --   [@label@] Music Event
 --
---   [@comment@] Event type: Music event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event'@
 --
@@ -26,6 +26,7 @@ data MusicEvent = MusicEvent { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , attendee :: Attendee
                              , attendees :: Attendees
@@ -44,6 +45,6 @@ data MusicEvent = MusicEvent { additionalType :: AdditionalType
 
 instance MetaData MusicEvent where
   _label         = const "Music Event"
-  _comment_plain = const "Event type: Music event."
-  _comment       = const "Event type: Music event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MusicEvent"

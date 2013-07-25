@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Event where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Event )
 import Data.Text
 
--- | An event happening at a certain time at a certain location.
+-- | 
 --
 --   [@id@] Event
 --
 --   [@label@] Event
 --
---   [@comment@] An event happening at a certain time at a certain location.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing'@
 --
@@ -26,6 +26,7 @@ data Event = Event { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , attendee :: Attendee
                    , attendees :: Attendees
@@ -44,6 +45,6 @@ data Event = Event { additionalType :: AdditionalType
 
 instance MetaData Event where
   _label         = const "Event"
-  _comment_plain = const "An event happening at a certain time at a certain location."
-  _comment       = const "An event happening at a certain time at a certain location."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Event"

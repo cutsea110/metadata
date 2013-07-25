@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.MusicAlbum where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A collection of music tracks.
+-- | 
 
 data MusicAlbum
 

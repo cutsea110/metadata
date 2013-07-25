@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserPlays where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Play count of an item, for example a video or a song.
+-- | 
 --
 --   [@id@] UserPlays
 --
 --   [@label@] User Plays
 --
---   [@comment@] User interaction: Play count of an item, for example a video or a song.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
 --
@@ -26,6 +26,7 @@ data UserPlays = UserPlays { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , attendee :: Attendee
                            , attendees :: Attendees
@@ -44,6 +45,6 @@ data UserPlays = UserPlays { additionalType :: AdditionalType
 
 instance MetaData UserPlays where
   _label         = const "User Plays"
-  _comment_plain = const "User interaction: Play count of an item, for example a video or a song."
-  _comment       = const "User interaction: Play count of an item, for example a video or a song."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UserPlays"

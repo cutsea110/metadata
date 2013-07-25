@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalProcedure where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques.
+-- | 
 --
 --   [@id@] MedicalProcedure
 --
 --   [@label@] Medical Procedure
 --
---   [@comment@] A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalProcedure = MedicalProcedure { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , alternateName :: AlternateName
                                          , code :: Code
@@ -43,6 +44,6 @@ data MedicalProcedure = MedicalProcedure { additionalType :: AdditionalType
 
 instance MetaData MedicalProcedure where
   _label         = const "Medical Procedure"
-  _comment_plain = const "A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques."
-  _comment       = const "A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalProcedure"

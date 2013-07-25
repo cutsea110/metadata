@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UnitPriceSpecification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The price asked for a given offer by the respective organization or person.
+-- | 
 --
 --   [@id@] UnitPriceSpecification
 --
 --   [@label@] Unit Price Specification
 --
---   [@comment@] The price asked for a given offer by the respective organization or person.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue','PriceSpecification'@
 --
@@ -26,6 +26,7 @@ data UnitPriceSpecification = UnitPriceSpecification { additionalType :: Additio
                                                      , description :: Description
                                                      , image :: Image
                                                      , name :: Name
+                                                     , sameAs :: SameAs
                                                      , url :: Url
                                                      , eligibleQuantity :: EligibleQuantity
                                                      , eligibleTransactionVolume :: EligibleTransactionVolume
@@ -44,6 +45,6 @@ data UnitPriceSpecification = UnitPriceSpecification { additionalType :: Additio
 
 instance MetaData UnitPriceSpecification where
   _label         = const "Unit Price Specification"
-  _comment_plain = const "The price asked for a given offer by the respective organization or person."
-  _comment       = const "The price asked for a given offer by the respective organization or person."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UnitPriceSpecification"

@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.UserLikes where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | User interaction: Like an item.
+-- | 
 
 data UserLikes
 

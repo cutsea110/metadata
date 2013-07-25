@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Article where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
+-- | 
 --
 --   [@id@] Article
 --
 --   [@label@] Article
 --
---   [@comment@] An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data Article = Article { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , about :: About
                        , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data Article = Article { additionalType :: AdditionalType
                        , author :: Author
                        , award :: Award
                        , awards :: Awards
+                       , citation :: Citation
                        , comment :: Comment
                        , contentLocation :: ContentLocation
                        , contentRating :: ContentRating
@@ -84,6 +86,6 @@ data Article = Article { additionalType :: AdditionalType
 
 instance MetaData Article where
   _label         = const "Article"
-  _comment_plain = const "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all."
-  _comment       = const "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Article"

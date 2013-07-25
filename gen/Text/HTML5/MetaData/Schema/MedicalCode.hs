@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalCode where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A code for a medical entity.
+-- | 
 --
 --   [@id@] MedicalCode
 --
 --   [@label@] Medical Code
 --
---   [@comment@] A code for a medical entity.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible'@
 --
@@ -26,6 +26,7 @@ data MedicalCode = MedicalCode { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , alternateName :: AlternateName
                                , code :: Code
@@ -41,6 +42,6 @@ data MedicalCode = MedicalCode { additionalType :: AdditionalType
 
 instance MetaData MedicalCode where
   _label         = const "Medical Code"
-  _comment_plain = const "A code for a medical entity."
-  _comment       = const "A code for a medical entity."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalCode"

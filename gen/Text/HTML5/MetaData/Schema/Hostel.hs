@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Hostel where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A hostel.
+-- | 
 --
 --   [@id@] Hostel
 --
 --   [@label@] Hostel
 --
---   [@comment@] A hostel.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','LodgingBusiness'@
 --
@@ -26,6 +26,7 @@ data Hostel = Hostel { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , address :: Address
                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Hostel = Hostel { additionalType :: AdditionalType
 
 instance MetaData Hostel where
   _label         = const "Hostel"
-  _comment_plain = const "A hostel."
-  _comment       = const "A hostel."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Hostel"

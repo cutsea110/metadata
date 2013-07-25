@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalImagingTechnique where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any medical imaging modality typically used for diagnostic purposes. Enumerated type.
+-- | 
 --
 --   [@id@] MedicalImagingTechnique
 --
 --   [@label@] Medical Imaging Technique
 --
---   [@comment@] Any medical imaging modality typically used for diagnostic purposes. Enumerated type.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
@@ -31,6 +31,6 @@ data MedicalImagingTechnique = CT
 
 instance MetaData MedicalImagingTechnique where
   _label         = const "Medical Imaging Technique"
-  _comment_plain = const "Any medical imaging modality typically used for diagnostic purposes. Enumerated type."
-  _comment       = const "Any medical imaging modality typically used for diagnostic purposes. Enumerated type."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalImagingTechnique"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PaymentChargeSpecification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The costs of settling the payment using a particular payment method.
+-- | 
 --
 --   [@id@] PaymentChargeSpecification
 --
 --   [@label@] Payment Charge Specification
 --
---   [@comment@] The costs of settling the payment using a particular payment method.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue','PriceSpecification'@
 --
@@ -26,6 +26,7 @@ data PaymentChargeSpecification = PaymentChargeSpecification { additionalType ::
                                                              , description :: Description
                                                              , image :: Image
                                                              , name :: Name
+                                                             , sameAs :: SameAs
                                                              , url :: Url
                                                              , eligibleQuantity :: EligibleQuantity
                                                              , eligibleTransactionVolume :: EligibleTransactionVolume
@@ -43,6 +44,6 @@ data PaymentChargeSpecification = PaymentChargeSpecification { additionalType ::
 
 instance MetaData PaymentChargeSpecification where
   _label         = const "Payment Charge Specification"
-  _comment_plain = const "The costs of settling the payment using a particular payment method."
-  _comment       = const "The costs of settling the payment using a particular payment method."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PaymentChargeSpecification"

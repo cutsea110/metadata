@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LakeBodyOfWater where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A lake (for example, Lake Pontrachain).
+-- | 
 --
 --   [@id@] LakeBodyOfWater
 --
 --   [@label@] Lake Body of Water
 --
---   [@comment@] A lake (for example, Lake Pontrachain).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
 --
@@ -26,6 +26,7 @@ data LakeBodyOfWater = LakeBodyOfWater { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , address :: Address
                                        , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data LakeBodyOfWater = LakeBodyOfWater { additionalType :: AdditionalType
 
 instance MetaData LakeBodyOfWater where
   _label         = const "Lake Body of Water"
-  _comment_plain = const "A lake (for example, Lake Pontrachain)."
-  _comment       = const "A lake (for example, Lake Pontrachain)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/LakeBodyOfWater"

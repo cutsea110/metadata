@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.InfectiousDisease where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease.
+-- | 
 --
 --   [@id@] InfectiousDisease
 --
 --   [@label@] Infectious Disease
 --
---   [@comment@] An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalCondition'@
 --
@@ -26,6 +26,7 @@ data InfectiousDisease = InfectiousDisease { additionalType :: AdditionalType
                                            , description :: Description
                                            , image :: Image
                                            , name :: Name
+                                           , sameAs :: SameAs
                                            , url :: Url
                                            , alternateName :: AlternateName
                                            , code :: Code
@@ -58,6 +59,6 @@ data InfectiousDisease = InfectiousDisease { additionalType :: AdditionalType
 
 instance MetaData InfectiousDisease where
   _label         = const "Infectious Disease"
-  _comment_plain = const "An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease."
-  _comment       = const "An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/InfectiousDisease"

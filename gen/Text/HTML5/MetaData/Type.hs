@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
@@ -2619,6 +2619,19 @@ type AddOn = Text.HTML5.MetaData.Schema.Offer.Offer
 --
 --   [@ranges@] @'DateTime'@
 type ValidFrom = DateTime
+
+-- | URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+--
+--   [@id@] sameAs
+--
+--   [@label@] Same As
+--
+--   [@comment@] URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+--
+--   [@domains@] @'Thing'@
+--
+--   [@ranges@] @'URL'@
+type SameAs = URL
 
 -- | Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
 --
@@ -6052,15 +6065,15 @@ type Value = Number
 --   [@ranges@] @'MediaObject'@
 type Encoding = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 
--- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+-- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
 --
 --   [@id@] citation
 --
 --   [@label@] Citation
 --
---   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+--   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
 --
---   [@domains@] @'MedicalScholarlyArticle'@
+--   [@domains@] @'CreativeWork'@
 --
 --   [@ranges@] @'CreativeWork','Text'@
 type Citation = Either Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork Text

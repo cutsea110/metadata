@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AutoWash where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A car wash business.
+-- | 
 --
 --   [@id@] AutoWash
 --
 --   [@label@] Auto Wash
 --
---   [@comment@] A car wash business.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','AutomotiveBusiness'@
 --
@@ -26,6 +26,7 @@ data AutoWash = AutoWash { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AutoWash = AutoWash { additionalType :: AdditionalType
 
 instance MetaData AutoWash where
   _label         = const "Auto Wash"
-  _comment_plain = const "A car wash business."
-  _comment       = const "A car wash business."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AutoWash"

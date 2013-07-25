@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalProcedureType where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An enumeration that describes different types of medical procedures.
+-- | 
 --
 --   [@id@] MedicalProcedureType
 --
 --   [@label@] Medical Procedure Type
 --
---   [@comment@] An enumeration that describes different types of medical procedures.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
@@ -29,6 +29,6 @@ data MedicalProcedureType = NoninvasiveProcedure
 
 instance MetaData MedicalProcedureType where
   _label         = const "Medical Procedure Type"
-  _comment_plain = const "An enumeration that describes different types of medical procedures."
-  _comment       = const "An enumeration that describes different types of medical procedures."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalProcedureType"

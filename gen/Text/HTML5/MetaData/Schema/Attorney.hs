@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Attorney where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Professional service: Attorney.
+-- | 
 --
 --   [@id@] Attorney
 --
 --   [@label@] Attorney
 --
---   [@comment@] Professional service: Attorney.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','ProfessionalService'@
 --
@@ -26,6 +26,7 @@ data Attorney = Attorney { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Attorney = Attorney { additionalType :: AdditionalType
 
 instance MetaData Attorney where
   _label         = const "Attorney"
-  _comment_plain = const "Professional service: Attorney."
-  _comment       = const "Professional service: Attorney."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Attorney"

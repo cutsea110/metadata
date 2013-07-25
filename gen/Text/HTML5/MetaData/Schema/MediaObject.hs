@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MediaObject where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An image, video, or audio object embedded in a web page. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).
+-- | 
 --
 --   [@id@] MediaObject
 --
 --   [@label@] Media Object
 --
---   [@comment@] An image, video, or audio object embedded in a web page. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data MediaObject = MediaObject { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , about :: About
                                , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data MediaObject = MediaObject { additionalType :: AdditionalType
                                , author :: Author
                                , award :: Award
                                , awards :: Awards
+                               , citation :: Citation
                                , comment :: Comment
                                , contentLocation :: ContentLocation
                                , contentRating :: ContentRating
@@ -96,6 +98,6 @@ data MediaObject = MediaObject { additionalType :: AdditionalType
 
 instance MetaData MediaObject where
   _label         = const "Media Object"
-  _comment_plain = const "An image, video, or audio object embedded in a web page. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's)."
-  _comment       = const "An image, video, or audio object embedded in a web page. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MediaObject"

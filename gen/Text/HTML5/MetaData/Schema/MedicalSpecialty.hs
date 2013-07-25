@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalSpecialty where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( MedicalSpecialty )
 import Data.Text
 
--- | Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type.
+-- | 
 --
 --   [@id@] MedicalSpecialty
 --
 --   [@label@] Medical Specialty
 --
---   [@comment@] Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
@@ -68,6 +68,6 @@ data MedicalSpecialty = Anesthesia
 
 instance MetaData MedicalSpecialty where
   _label         = const "Medical Specialty"
-  _comment_plain = const "Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type."
-  _comment       = const "Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalSpecialty"

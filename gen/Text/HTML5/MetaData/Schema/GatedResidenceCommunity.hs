@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GatedResidenceCommunity where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Residence type: Gated community.
+-- | 
 --
 --   [@id@] GatedResidenceCommunity
 --
 --   [@label@] Gated Residence Community
 --
---   [@comment@] Residence type: Gated community.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Residence'@
 --
@@ -26,6 +26,7 @@ data GatedResidenceCommunity = GatedResidenceCommunity { additionalType :: Addit
                                                        , description :: Description
                                                        , image :: Image
                                                        , name :: Name
+                                                       , sameAs :: SameAs
                                                        , url :: Url
                                                        , address :: Address
                                                        , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data GatedResidenceCommunity = GatedResidenceCommunity { additionalType :: Addit
 
 instance MetaData GatedResidenceCommunity where
   _label         = const "Gated Residence Community"
-  _comment_plain = const "Residence type: Gated community."
-  _comment       = const "Residence type: Gated community."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/GatedResidenceCommunity"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DefenceEstablishment where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A defence establishment, such as an army or navy base.
+-- | 
 --
 --   [@id@] DefenceEstablishment
 --
 --   [@label@] Defence Establishment
 --
---   [@comment@] A defence establishment, such as an army or navy base.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','GovernmentBuilding'@
 --
@@ -26,6 +26,7 @@ data DefenceEstablishment = DefenceEstablishment { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , address :: Address
                                                  , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data DefenceEstablishment = DefenceEstablishment { additionalType :: AdditionalT
 
 instance MetaData DefenceEstablishment where
   _label         = const "Defence Establishment"
-  _comment_plain = const "A defence establishment, such as an army or navy base."
-  _comment       = const "A defence establishment, such as an army or navy base."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DefenceEstablishment"

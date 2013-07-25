@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ImagingTest where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any medical imaging modality typically used for diagnostic purposes.
+-- | 
 --
 --   [@id@] ImagingTest
 --
 --   [@label@] Imaging Test
 --
---   [@comment@] Any medical imaging modality typically used for diagnostic purposes.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTest'@
 --
@@ -26,6 +26,7 @@ data ImagingTest = ImagingTest { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , alternateName :: AlternateName
                                , code :: Code
@@ -45,6 +46,6 @@ data ImagingTest = ImagingTest { additionalType :: AdditionalType
 
 instance MetaData ImagingTest where
   _label         = const "Imaging Test"
-  _comment_plain = const "Any medical imaging modality typically used for diagnostic purposes."
-  _comment       = const "Any medical imaging modality typically used for diagnostic purposes."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ImagingTest"

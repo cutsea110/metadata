@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.HighSchool where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A high school.
+-- | 
 --
 --   [@id@] HighSchool
 --
 --   [@label@] High School
 --
---   [@comment@] A high school.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
 --
@@ -26,6 +26,7 @@ data HighSchool = HighSchool { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -66,6 +67,6 @@ data HighSchool = HighSchool { additionalType :: AdditionalType
 
 instance MetaData HighSchool where
   _label         = const "High School"
-  _comment_plain = const "A high school."
-  _comment       = const "A high school."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/HighSchool"

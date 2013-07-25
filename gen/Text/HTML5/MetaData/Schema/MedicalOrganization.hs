@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalOrganization where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical organization, such as a doctor's office or clinic.
+-- | 
 --
 --   [@id@] MedicalOrganization
 --
 --   [@label@] Medical Organization
 --
---   [@comment@] A medical organization, such as a doctor's office or clinic.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data MedicalOrganization = MedicalOrganization { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , address :: Address
                                                , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data MedicalOrganization = MedicalOrganization { additionalType :: AdditionalTyp
 
 instance MetaData MedicalOrganization where
   _label         = const "Medical Organization"
-  _comment_plain = const "A medical organization, such as a doctor's office or clinic."
-  _comment       = const "A medical organization, such as a doctor's office or clinic."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalOrganization"

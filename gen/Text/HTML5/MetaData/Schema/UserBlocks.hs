@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserBlocks where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Block this content.
+-- | 
 --
 --   [@id@] UserBlocks
 --
 --   [@label@] User Blocks
 --
---   [@comment@] User interaction: Block this content.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
 --
@@ -26,6 +26,7 @@ data UserBlocks = UserBlocks { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , attendee :: Attendee
                              , attendees :: Attendees
@@ -44,6 +45,6 @@ data UserBlocks = UserBlocks { additionalType :: AdditionalType
 
 instance MetaData UserBlocks where
   _label         = const "User Blocks"
-  _comment_plain = const "User interaction: Block this content."
-  _comment       = const "User interaction: Block this content."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UserBlocks"

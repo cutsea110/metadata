@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ExercisePlan where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
+-- | 
 --
 --   [@id@] ExercisePlan
 --
 --   [@label@] Exercise Plan
 --
---   [@comment@] Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , alternateName :: AlternateName
                                  , code :: Code
@@ -53,6 +54,7 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
                                  , author :: Author
                                  , award :: Award
                                  , awards :: Awards
+                                 , citation :: Citation
                                  , comment :: Comment
                                  , contentLocation :: ContentLocation
                                  , contentRating :: ContentRating
@@ -105,6 +107,6 @@ data ExercisePlan = ExercisePlan { additionalType :: AdditionalType
 
 instance MetaData ExercisePlan where
   _label         = const "Exercise Plan"
-  _comment_plain = const "Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician."
-  _comment       = const "Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ExercisePlan"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LifestyleModification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.
+-- | 
 --
 --   [@id@] LifestyleModification
 --
 --   [@label@] Lifestyle Modification
 --
---   [@comment@] A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTherapy'@
 --
@@ -26,6 +26,7 @@ data LifestyleModification = LifestyleModification { additionalType :: Additiona
                                                    , description :: Description
                                                    , image :: Image
                                                    , name :: Name
+                                                   , sameAs :: SameAs
                                                    , url :: Url
                                                    , alternateName :: AlternateName
                                                    , code :: Code
@@ -44,6 +45,6 @@ data LifestyleModification = LifestyleModification { additionalType :: Additiona
 
 instance MetaData LifestyleModification where
   _label         = const "Lifestyle Modification"
-  _comment_plain = const "A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition."
-  _comment       = const "A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/LifestyleModification"

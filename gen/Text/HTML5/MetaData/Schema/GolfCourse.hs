@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GolfCourse where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A golf course.
+-- | 
 --
 --   [@id@] GolfCourse
 --
 --   [@label@] Golf Course
 --
---   [@comment@] A golf course.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
 --
@@ -26,6 +26,7 @@ data GolfCourse = GolfCourse { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data GolfCourse = GolfCourse { additionalType :: AdditionalType
 
 instance MetaData GolfCourse where
   _label         = const "Golf Course"
-  _comment_plain = const "A golf course."
-  _comment       = const "A golf course."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/GolfCourse"

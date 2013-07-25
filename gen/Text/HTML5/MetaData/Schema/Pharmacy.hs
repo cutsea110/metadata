@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Pharmacy where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A pharmacy or drugstore.
+-- | 
 --
 --   [@id@] Pharmacy
 --
 --   [@label@] Pharmacy
 --
---   [@comment@] A pharmacy or drugstore.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
 --
@@ -26,6 +26,7 @@ data Pharmacy = Pharmacy { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Pharmacy = Pharmacy { additionalType :: AdditionalType
 
 instance MetaData Pharmacy where
   _label         = const "Pharmacy"
-  _comment_plain = const "A pharmacy or drugstore."
-  _comment       = const "A pharmacy or drugstore."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Pharmacy"

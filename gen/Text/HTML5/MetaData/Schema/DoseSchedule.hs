@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DoseSchedule where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( DoseSchedule )
 import Data.Text
 
--- | A specific dosing schedule for a drug or supplement.
+-- | 
 --
 --   [@id@] DoseSchedule
 --
 --   [@label@] Dose Schedule
 --
---   [@comment@] A specific dosing schedule for a drug or supplement.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible'@
 --
@@ -26,6 +26,7 @@ data DoseSchedule = DoseSchedule { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , alternateName :: AlternateName
                                  , code :: Code
@@ -43,6 +44,6 @@ data DoseSchedule = DoseSchedule { additionalType :: AdditionalType
 
 instance MetaData DoseSchedule where
   _label         = const "Dose Schedule"
-  _comment_plain = const "A specific dosing schedule for a drug or supplement."
-  _comment       = const "A specific dosing schedule for a drug or supplement."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DoseSchedule"

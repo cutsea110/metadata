@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SomeProducts where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A placeholder for multiple similar products of the same kind.
+-- | 
 --
 --   [@id@] SomeProducts
 --
 --   [@label@] Some Products
 --
---   [@comment@] A placeholder for multiple similar products of the same kind.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Product'@
 --
@@ -26,6 +26,7 @@ data SomeProducts = SomeProducts { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , aggregateRating :: AggregateRating
                                  , audience :: Audience
@@ -59,6 +60,6 @@ data SomeProducts = SomeProducts { additionalType :: AdditionalType
 
 instance MetaData SomeProducts where
   _label         = const "Some Products"
-  _comment_plain = const "A placeholder for multiple similar products of the same kind."
-  _comment       = const "A placeholder for multiple similar products of the same kind."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SomeProducts"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Drug where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Drug )
 import Data.Text
 
--- | A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.
+-- | 
 --
 --   [@id@] Drug
 --
 --   [@label@] Drug
 --
---   [@comment@] A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTherapy'@
 --
@@ -26,6 +26,7 @@ data Drug = Drug { additionalType :: AdditionalType
                  , description :: Description
                  , image :: Image
                  , name :: Name
+                 , sameAs :: SameAs
                  , url :: Url
                  , alternateName :: AlternateName
                  , code :: Code
@@ -70,6 +71,6 @@ data Drug = Drug { additionalType :: AdditionalType
 
 instance MetaData Drug where
   _label         = const "Drug"
-  _comment_plain = const "A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism."
-  _comment       = const "A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Drug"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MusicGroup where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+-- | 
 --
 --   [@id@] MusicGroup
 --
 --   [@label@] Music Group
 --
---   [@comment@] A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','PerformingGroup'@
 --
@@ -26,6 +26,7 @@ data MusicGroup = MusicGroup { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -70,6 +71,6 @@ data MusicGroup = MusicGroup { additionalType :: AdditionalType
 
 instance MetaData MusicGroup where
   _label         = const "Music Group"
-  _comment_plain = const "A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician."
-  _comment       = const "A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MusicGroup"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ProfilePage where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Profile page.
+-- | 
 --
 --   [@id@] ProfilePage
 --
 --   [@label@] Profile Page
 --
---   [@comment@] Web page type: Profile page.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPage'@
 --
@@ -26,6 +26,7 @@ data ProfilePage = ProfilePage { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , about :: About
                                , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data ProfilePage = ProfilePage { additionalType :: AdditionalType
                                , author :: Author
                                , award :: Award
                                , awards :: Awards
+                               , citation :: Citation
                                , comment :: Comment
                                , contentLocation :: ContentLocation
                                , contentRating :: ContentRating
@@ -91,6 +93,6 @@ data ProfilePage = ProfilePage { additionalType :: AdditionalType
 
 instance MetaData ProfilePage where
   _label         = const "Profile Page"
-  _comment_plain = const "Web page type: Profile page."
-  _comment       = const "Web page type: Profile page."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ProfilePage"

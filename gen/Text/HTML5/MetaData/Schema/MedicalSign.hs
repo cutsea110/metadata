@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalSign where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
+-- | 
 --
 --   [@id@] MedicalSign
 --
 --   [@label@] Medical Sign
 --
---   [@comment@] Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalSignOrSymptom'@
 --
@@ -26,6 +26,7 @@ data MedicalSign = MedicalSign { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , alternateName :: AlternateName
                                , code :: Code
@@ -43,6 +44,6 @@ data MedicalSign = MedicalSign { additionalType :: AdditionalType
 
 instance MetaData MedicalSign where
   _label         = const "Medical Sign"
-  _comment_plain = const "Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination."
-  _comment       = const "Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalSign"

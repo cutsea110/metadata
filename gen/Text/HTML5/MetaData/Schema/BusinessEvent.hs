@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BusinessEvent where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Business event.
+-- | 
 --
 --   [@id@] BusinessEvent
 --
 --   [@label@] Business Event
 --
---   [@comment@] Event type: Business event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event'@
 --
@@ -26,6 +26,7 @@ data BusinessEvent = BusinessEvent { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , attendee :: Attendee
                                    , attendees :: Attendees
@@ -44,6 +45,6 @@ data BusinessEvent = BusinessEvent { additionalType :: AdditionalType
 
 instance MetaData BusinessEvent where
   _label         = const "Business Event"
-  _comment_plain = const "Event type: Business event."
-  _comment       = const "Event type: Business event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BusinessEvent"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BrainStructure where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any anatomical structure which pertains to the soft nervous tissue functioning as the coordinating center of sensation and intellectual and nervous activity.
+-- | 
 --
 --   [@id@] BrainStructure
 --
 --   [@label@] Brain Structure
 --
---   [@comment@] Any anatomical structure which pertains to the soft nervous tissue functioning as the coordinating center of sensation and intellectual and nervous activity.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure'@
 --
@@ -26,6 +26,7 @@ data BrainStructure = BrainStructure { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , alternateName :: AlternateName
                                      , code :: Code
@@ -48,6 +49,6 @@ data BrainStructure = BrainStructure { additionalType :: AdditionalType
 
 instance MetaData BrainStructure where
   _label         = const "Brain Structure"
-  _comment_plain = const "Any anatomical structure which pertains to the soft nervous tissue functioning as the coordinating center of sensation and intellectual and nervous activity."
-  _comment       = const "Any anatomical structure which pertains to the soft nervous tissue functioning as the coordinating center of sensation and intellectual and nervous activity."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BrainStructure"

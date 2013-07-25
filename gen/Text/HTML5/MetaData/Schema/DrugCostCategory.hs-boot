@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.DrugCostCategory where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Enumerated categories of medical drug costs.
+-- | 
 
 data DrugCostCategory
 

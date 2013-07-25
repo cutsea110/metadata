@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalTestPanel where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any collection of tests commonly ordered together.
+-- | 
 --
 --   [@id@] MedicalTestPanel
 --
 --   [@label@] Medical Test Panel
 --
---   [@comment@] Any collection of tests commonly ordered together.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTest'@
 --
@@ -26,6 +26,7 @@ data MedicalTestPanel = MedicalTestPanel { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , alternateName :: AlternateName
                                          , code :: Code
@@ -45,6 +46,6 @@ data MedicalTestPanel = MedicalTestPanel { additionalType :: AdditionalType
 
 instance MetaData MedicalTestPanel where
   _label         = const "Medical Test Panel"
-  _comment_plain = const "Any collection of tests commonly ordered together."
-  _comment       = const "Any collection of tests commonly ordered together."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalTestPanel"

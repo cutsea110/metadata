@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.InsuranceAgency where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Insurance agency.
+-- | 
 --
 --   [@id@] InsuranceAgency
 --
 --   [@label@] Insurance Agency
 --
---   [@comment@] Insurance agency.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FinancialService'@
 --
@@ -26,6 +26,7 @@ data InsuranceAgency = InsuranceAgency { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , address :: Address
                                        , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data InsuranceAgency = InsuranceAgency { additionalType :: AdditionalType
 
 instance MetaData InsuranceAgency where
   _label         = const "Insurance Agency"
-  _comment_plain = const "Insurance agency."
-  _comment       = const "Insurance agency."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/InsuranceAgency"

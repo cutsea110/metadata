@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.FinancialService where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Financial services business.
+-- | 
 --
 --   [@id@] FinancialService
 --
 --   [@label@] Financial Service
 --
---   [@comment@] Financial services business.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data FinancialService = FinancialService { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , address :: Address
                                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data FinancialService = FinancialService { additionalType :: AdditionalType
 
 instance MetaData FinancialService where
   _label         = const "Financial Service"
-  _comment_plain = const "Financial services business."
-  _comment       = const "Financial services business."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/FinancialService"

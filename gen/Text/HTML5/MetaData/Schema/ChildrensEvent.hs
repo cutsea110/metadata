@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ChildrensEvent where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Children's event.
+-- | 
 --
 --   [@id@] ChildrensEvent
 --
 --   [@label@] Childrens Event
 --
---   [@comment@] Event type: Children's event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event'@
 --
@@ -26,6 +26,7 @@ data ChildrensEvent = ChildrensEvent { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , attendee :: Attendee
                                      , attendees :: Attendees
@@ -44,6 +45,6 @@ data ChildrensEvent = ChildrensEvent { additionalType :: AdditionalType
 
 instance MetaData ChildrensEvent where
   _label         = const "Childrens Event"
-  _comment_plain = const "Event type: Children's event."
-  _comment       = const "Event type: Children's event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ChildrensEvent"

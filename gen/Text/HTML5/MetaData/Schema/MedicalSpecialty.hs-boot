@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.MedicalSpecialty where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Any specific branch of medical science or practice. Medical specialities include clinical specialties that pertain to particular organ systems and their respective disease states, as well as allied health specialties. Enumerated type.
+-- | 
 
 data MedicalSpecialty
 

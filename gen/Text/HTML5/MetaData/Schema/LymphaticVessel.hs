@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.LymphaticVessel where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart.
+-- | 
 --
 --   [@id@] LymphaticVessel
 --
 --   [@label@] Lymphatic Vessel
 --
---   [@comment@] A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure','Vessel'@
 --
@@ -26,6 +26,7 @@ data LymphaticVessel = LymphaticVessel { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , alternateName :: AlternateName
                                        , code :: Code
@@ -51,6 +52,6 @@ data LymphaticVessel = LymphaticVessel { additionalType :: AdditionalType
 
 instance MetaData LymphaticVessel where
   _label         = const "Lymphatic Vessel"
-  _comment_plain = const "A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart."
-  _comment       = const "A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/LymphaticVessel"

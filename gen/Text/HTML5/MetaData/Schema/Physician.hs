@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Physician where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A doctor's office.
+-- | 
 --
 --   [@id@] Physician
 --
 --   [@label@] Physician
 --
---   [@comment@] A doctor's office.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
 --
@@ -26,6 +26,7 @@ data Physician = Physician { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , address :: Address
                            , aggregateRating :: AggregateRating
@@ -80,6 +81,6 @@ data Physician = Physician { additionalType :: AdditionalType
 
 instance MetaData Physician where
   _label         = const "Physician"
-  _comment_plain = const "A doctor's office."
-  _comment       = const "A doctor's office."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Physician"

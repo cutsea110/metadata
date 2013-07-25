@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ProfessionalService where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Provider of professional services.
+-- | 
 --
 --   [@id@] ProfessionalService
 --
 --   [@label@] Professional Service
 --
---   [@comment@] Provider of professional services.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data ProfessionalService = ProfessionalService { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , address :: Address
                                                , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data ProfessionalService = ProfessionalService { additionalType :: AdditionalTyp
 
 instance MetaData ProfessionalService where
   _label         = const "Professional Service"
-  _comment_plain = const "Provider of professional services."
-  _comment       = const "Provider of professional services."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ProfessionalService"

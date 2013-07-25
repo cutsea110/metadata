@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalIntangible where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A utility class that serves as the umbrella for a number of 'intangible' things in the medical space.
+-- | 
 --
 --   [@id@] MedicalIntangible
 --
 --   [@label@] Medical Intangible
 --
---   [@comment@] A utility class that serves as the umbrella for a number of 'intangible' things in the medical space.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalIntangible = MedicalIntangible { additionalType :: AdditionalType
                                            , description :: Description
                                            , image :: Image
                                            , name :: Name
+                                           , sameAs :: SameAs
                                            , url :: Url
                                            , alternateName :: AlternateName
                                            , code :: Code
@@ -39,6 +40,6 @@ data MedicalIntangible = MedicalIntangible { additionalType :: AdditionalType
 
 instance MetaData MedicalIntangible where
   _label         = const "Medical Intangible"
-  _comment_plain = const "A utility class that serves as the umbrella for a number of 'intangible' things in the medical space."
-  _comment       = const "A utility class that serves as the umbrella for a number of 'intangible' things in the medical space."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalIntangible"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SportsTeam where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Organization: Sports team.
+-- | 
 --
 --   [@id@] SportsTeam
 --
 --   [@label@] Sports Team
 --
---   [@comment@] Organization: Sports team.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization'@
 --
@@ -26,6 +26,7 @@ data SportsTeam = SportsTeam { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -65,6 +66,6 @@ data SportsTeam = SportsTeam { additionalType :: AdditionalType
 
 instance MetaData SportsTeam where
   _label         = const "Sports Team"
-  _comment_plain = const "Organization: Sports team."
-  _comment       = const "Organization: Sports team."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SportsTeam"

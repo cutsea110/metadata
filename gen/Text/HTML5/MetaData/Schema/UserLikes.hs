@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserLikes where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Like an item.
+-- | 
 --
 --   [@id@] UserLikes
 --
 --   [@label@] User Likes
 --
---   [@comment@] User interaction: Like an item.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
 --
@@ -26,6 +26,7 @@ data UserLikes = UserLikes { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , attendee :: Attendee
                            , attendees :: Attendees
@@ -44,6 +45,6 @@ data UserLikes = UserLikes { additionalType :: AdditionalType
 
 instance MetaData UserLikes where
   _label         = const "User Likes"
-  _comment_plain = const "User interaction: Like an item."
-  _comment       = const "User interaction: Like an item."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UserLikes"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Offer where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+-- | 
 --
 --   [@id@] Offer
 --
 --   [@label@] Offer
 --
---   [@comment@] An offer to sell an item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible'@
 --
@@ -26,6 +26,7 @@ data Offer = Offer { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , acceptedPaymentMethod :: AcceptedPaymentMethod
                    , addOn :: AddOn
@@ -69,6 +70,6 @@ data Offer = Offer { additionalType :: AdditionalType
 
 instance MetaData Offer where
   _label         = const "Offer"
-  _comment_plain = const "An offer to sell an item\8212for example, an offer to sell a product, the DVD of a movie, or tickets to an event."
-  _comment       = const "An offer to sell an item\8212for example, an offer to sell a product, the DVD of a movie, or tickets to an event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Offer"

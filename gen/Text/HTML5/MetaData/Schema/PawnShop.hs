@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PawnShop where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A pawnstore.
+-- | 
 --
 --   [@id@] PawnShop
 --
 --   [@label@] Pawn Shop
 --
---   [@comment@] A pawnstore.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data PawnShop = PawnShop { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data PawnShop = PawnShop { additionalType :: AdditionalType
 
 instance MetaData PawnShop where
   _label         = const "Pawn Shop"
-  _comment_plain = const "A pawnstore."
-  _comment       = const "A pawnstore."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PawnShop"

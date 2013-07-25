@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.EmergencyService where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | An emergency service, such as a fire station or ER.
+-- | 
 
 data EmergencyService
 

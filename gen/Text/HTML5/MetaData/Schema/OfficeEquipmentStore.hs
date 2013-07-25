@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.OfficeEquipmentStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An office equipment store.
+-- | 
 --
 --   [@id@] OfficeEquipmentStore
 --
 --   [@label@] Office Equipment Store
 --
---   [@comment@] An office equipment store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data OfficeEquipmentStore = OfficeEquipmentStore { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , address :: Address
                                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data OfficeEquipmentStore = OfficeEquipmentStore { additionalType :: AdditionalT
 
 instance MetaData OfficeEquipmentStore where
   _label         = const "Office Equipment Store"
-  _comment_plain = const "An office equipment store."
-  _comment       = const "An office equipment store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/OfficeEquipmentStore"

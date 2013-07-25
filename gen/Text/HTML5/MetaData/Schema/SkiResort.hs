@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SkiResort where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A ski resort.
+-- | 
 --
 --   [@id@] SkiResort
 --
 --   [@label@] Ski Resort
 --
---   [@comment@] A ski resort.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
 --
@@ -26,6 +26,7 @@ data SkiResort = SkiResort { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , address :: Address
                            , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data SkiResort = SkiResort { additionalType :: AdditionalType
 
 instance MetaData SkiResort where
   _label         = const "Ski Resort"
-  _comment_plain = const "A ski resort."
-  _comment       = const "A ski resort."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SkiResort"

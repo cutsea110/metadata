@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TypeAndQuantityNode where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
+-- | 
 --
 --   [@id@] TypeAndQuantityNode
 --
 --   [@label@] Type And Quantity Node
 --
---   [@comment@] A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data TypeAndQuantityNode = TypeAndQuantityNode { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , amountOfThisGood :: AmountOfThisGood
                                                , businessFunction :: BusinessFunction
@@ -36,6 +37,6 @@ data TypeAndQuantityNode = TypeAndQuantityNode { additionalType :: AdditionalTyp
 
 instance MetaData TypeAndQuantityNode where
   _label         = const "Type And Quantity Node"
-  _comment_plain = const "A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer."
-  _comment       = const "A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TypeAndQuantityNode"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GovernmentOffice where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A government office—for example, an IRS or DMV office.
+-- | 
 --
 --   [@id@] GovernmentOffice
 --
 --   [@label@] Government Office
 --
---   [@comment@] A government office—for example, an IRS or DMV office.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data GovernmentOffice = GovernmentOffice { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , address :: Address
                                          , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data GovernmentOffice = GovernmentOffice { additionalType :: AdditionalType
 
 instance MetaData GovernmentOffice where
   _label         = const "Government Office"
-  _comment_plain = const "A government office\8212for example, an IRS or DMV office."
-  _comment       = const "A government office\8212for example, an IRS or DMV office."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/GovernmentOffice"

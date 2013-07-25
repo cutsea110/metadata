@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Mosque where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A mosque.
+-- | 
 --
 --   [@id@] Mosque
 --
 --   [@label@] Mosque
 --
---   [@comment@] A mosque.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure','PlaceOfWorship'@
 --
@@ -26,6 +26,7 @@ data Mosque = Mosque { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , address :: Address
                      , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Mosque = Mosque { additionalType :: AdditionalType
 
 instance MetaData Mosque where
   _label         = const "Mosque"
-  _comment_plain = const "A mosque."
-  _comment       = const "A mosque."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Mosque"

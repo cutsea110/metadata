@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.GroceryStore where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A grocery store.
+-- | 
 --
 --   [@id@] GroceryStore
 --
 --   [@label@] Grocery Store
 --
---   [@comment@] A grocery store.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','Store'@
 --
@@ -26,6 +26,7 @@ data GroceryStore = GroceryStore { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , address :: Address
                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data GroceryStore = GroceryStore { additionalType :: AdditionalType
 
 instance MetaData GroceryStore where
   _label         = const "Grocery Store"
-  _comment_plain = const "A grocery store."
-  _comment       = const "A grocery store."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/GroceryStore"

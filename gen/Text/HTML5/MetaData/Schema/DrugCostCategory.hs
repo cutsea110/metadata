@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DrugCostCategory where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Enumerated categories of medical drug costs.
+-- | 
 --
 --   [@id@] DrugCostCategory
 --
 --   [@label@] Drug Cost Category
 --
---   [@comment@] Enumerated categories of medical drug costs.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
@@ -29,6 +29,6 @@ data DrugCostCategory = ReimbursementCap
 
 instance MetaData DrugCostCategory where
   _label         = const "Drug Cost Category"
-  _comment_plain = const "Enumerated categories of medical drug costs."
-  _comment       = const "Enumerated categories of medical drug costs."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DrugCostCategory"

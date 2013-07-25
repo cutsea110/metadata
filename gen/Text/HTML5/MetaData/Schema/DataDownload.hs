@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DataDownload where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dataset in downloadable form.
+-- | 
 --
 --   [@id@] DataDownload
 --
 --   [@label@] Data Download
 --
---   [@comment@] A dataset in downloadable form.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','MediaObject'@
 --
@@ -26,6 +26,7 @@ data DataDownload = DataDownload { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , about :: About
                                  , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data DataDownload = DataDownload { additionalType :: AdditionalType
                                  , author :: Author
                                  , award :: Award
                                  , awards :: Awards
+                                 , citation :: Citation
                                  , comment :: Comment
                                  , contentLocation :: ContentLocation
                                  , contentRating :: ContentRating
@@ -96,6 +98,6 @@ data DataDownload = DataDownload { additionalType :: AdditionalType
 
 instance MetaData DataDownload where
   _label         = const "Data Download"
-  _comment_plain = const "A dataset in downloadable form."
-  _comment       = const "A dataset in downloadable form."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DataDownload"

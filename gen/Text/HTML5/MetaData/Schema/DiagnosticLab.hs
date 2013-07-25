@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DiagnosticLab where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical laboratory that offers on-site or off-site diagnostic services.
+-- | 
 --
 --   [@id@] DiagnosticLab
 --
 --   [@label@] Diagnostic Lab
 --
---   [@comment@] A medical laboratory that offers on-site or off-site diagnostic services.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
 --
@@ -26,6 +26,7 @@ data DiagnosticLab = DiagnosticLab { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -78,6 +79,6 @@ data DiagnosticLab = DiagnosticLab { additionalType :: AdditionalType
 
 instance MetaData DiagnosticLab where
   _label         = const "Diagnostic Lab"
-  _comment_plain = const "A medical laboratory that offers on-site or off-site diagnostic services."
-  _comment       = const "A medical laboratory that offers on-site or off-site diagnostic services."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DiagnosticLab"

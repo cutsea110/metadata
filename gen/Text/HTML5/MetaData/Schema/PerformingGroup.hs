@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PerformingGroup where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A performance group, such as a band, an orchestra, or a circus.
+-- | 
 --
 --   [@id@] PerformingGroup
 --
 --   [@label@] Performing Group
 --
---   [@comment@] A performance group, such as a band, an orchestra, or a circus.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization'@
 --
@@ -26,6 +26,7 @@ data PerformingGroup = PerformingGroup { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , address :: Address
                                        , aggregateRating :: AggregateRating
@@ -65,6 +66,6 @@ data PerformingGroup = PerformingGroup { additionalType :: AdditionalType
 
 instance MetaData PerformingGroup where
   _label         = const "Performing Group"
-  _comment_plain = const "A performance group, such as a band, an orchestra, or a circus."
-  _comment       = const "A performance group, such as a band, an orchestra, or a circus."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PerformingGroup"

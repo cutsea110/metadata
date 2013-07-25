@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.LodgingBusiness where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A lodging business, such as a motel, hotel, or inn.
+-- | 
 
 data LodgingBusiness
 

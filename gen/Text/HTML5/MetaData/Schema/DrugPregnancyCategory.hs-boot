@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.DrugPregnancyCategory where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Categories that represent an assessment of the risk of fetal injury due to a drug or pharmaceutical used as directed by the mother during pregnancy.
+-- | 
 
 data DrugPregnancyCategory
 

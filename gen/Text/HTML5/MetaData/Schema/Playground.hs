@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Playground where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A playground.
+-- | 
 --
 --   [@id@] Playground
 --
 --   [@label@] Playground
 --
---   [@comment@] A playground.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data Playground = Playground { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , address :: Address
                              , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Playground = Playground { additionalType :: AdditionalType
 
 instance MetaData Playground where
   _label         = const "Playground"
-  _comment_plain = const "A playground."
-  _comment       = const "A playground."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Playground"

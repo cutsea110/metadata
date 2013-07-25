@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ProductModel where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A datasheet or vendor specification of a product (in the sense of a prototypical description).
+-- | 
 --
 --   [@id@] ProductModel
 --
 --   [@label@] Product Model
 --
---   [@comment@] A datasheet or vendor specification of a product (in the sense of a prototypical description).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Product'@
 --
@@ -26,6 +26,7 @@ data ProductModel = ProductModel { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , aggregateRating :: AggregateRating
                                  , audience :: Audience
@@ -61,6 +62,6 @@ data ProductModel = ProductModel { additionalType :: AdditionalType
 
 instance MetaData ProductModel where
   _label         = const "Product Model"
-  _comment_plain = const "A datasheet or vendor specification of a product (in the sense of a prototypical description)."
-  _comment       = const "A datasheet or vendor specification of a product (in the sense of a prototypical description)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ProductModel"

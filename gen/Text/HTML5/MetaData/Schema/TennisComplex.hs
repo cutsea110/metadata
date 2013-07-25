@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TennisComplex where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A tennis complex.
+-- | 
 --
 --   [@id@] TennisComplex
 --
 --   [@label@] Tennis Complex
 --
---   [@comment@] A tennis complex.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
 --
@@ -26,6 +26,7 @@ data TennisComplex = TennisComplex { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data TennisComplex = TennisComplex { additionalType :: AdditionalType
 
 instance MetaData TennisComplex where
   _label         = const "Tennis Complex"
-  _comment_plain = const "A tennis complex."
-  _comment       = const "A tennis complex."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TennisComplex"

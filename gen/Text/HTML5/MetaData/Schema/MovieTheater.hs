@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MovieTheater where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A movie theater.
+-- | 
 --
 --   [@id@] MovieTheater
 --
 --   [@label@] Movie Theater
 --
---   [@comment@] A movie theater.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data MovieTheater = MovieTheater { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , address :: Address
                                  , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data MovieTheater = MovieTheater { additionalType :: AdditionalType
 
 instance MetaData MovieTheater where
   _label         = const "Movie Theater"
-  _comment_plain = const "A movie theater."
-  _comment       = const "A movie theater."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MovieTheater"

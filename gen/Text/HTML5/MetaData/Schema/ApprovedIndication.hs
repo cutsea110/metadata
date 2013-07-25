@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ApprovedIndication where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An indication for a medical therapy that has been formally specified or approved by a regulatory body that regulates use of the therapy; for example, the US FDA approves indications for most drugs in the US.
+-- | 
 --
 --   [@id@] ApprovedIndication
 --
 --   [@label@] Approved Indication
 --
---   [@comment@] An indication for a medical therapy that has been formally specified or approved by a regulatory body that regulates use of the therapy; for example, the US FDA approves indications for most drugs in the US.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIndication'@
 --
@@ -26,6 +26,7 @@ data ApprovedIndication = ApprovedIndication { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , alternateName :: AlternateName
                                              , code :: Code
@@ -39,6 +40,6 @@ data ApprovedIndication = ApprovedIndication { additionalType :: AdditionalType
 
 instance MetaData ApprovedIndication where
   _label         = const "Approved Indication"
-  _comment_plain = const "An indication for a medical therapy that has been formally specified or approved by a regulatory body that regulates use of the therapy; for example, the US FDA approves indications for most drugs in the US."
-  _comment       = const "An indication for a medical therapy that has been formally specified or approved by a regulatory body that regulates use of the therapy; for example, the US FDA approves indications for most drugs in the US."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ApprovedIndication"

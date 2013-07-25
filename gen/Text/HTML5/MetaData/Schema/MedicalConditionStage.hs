@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalConditionStage where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A stage of a medical condition, such as 'Stage IIIa'.
+-- | 
 --
 --   [@id@] MedicalConditionStage
 --
 --   [@label@] Medical Condition Stage
 --
---   [@comment@] A stage of a medical condition, such as 'Stage IIIa'.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible'@
 --
@@ -26,6 +26,7 @@ data MedicalConditionStage = MedicalConditionStage { additionalType :: Additiona
                                                    , description :: Description
                                                    , image :: Image
                                                    , name :: Name
+                                                   , sameAs :: SameAs
                                                    , url :: Url
                                                    , alternateName :: AlternateName
                                                    , code :: Code
@@ -41,6 +42,6 @@ data MedicalConditionStage = MedicalConditionStage { additionalType :: Additiona
 
 instance MetaData MedicalConditionStage where
   _label         = const "Medical Condition Stage"
-  _comment_plain = const "A stage of a medical condition, such as 'Stage IIIa'."
-  _comment       = const "A stage of a medical condition, such as 'Stage IIIa'."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalConditionStage"

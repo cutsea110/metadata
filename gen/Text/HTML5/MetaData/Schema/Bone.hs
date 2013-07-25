@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Bone where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Rigid connective tissue that comprises up the skeletal structure of the human body.
+-- | 
 --
 --   [@id@] Bone
 --
 --   [@label@] Bone
 --
---   [@comment@] Rigid connective tissue that comprises up the skeletal structure of the human body.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure'@
 --
@@ -26,6 +26,7 @@ data Bone = Bone { additionalType :: AdditionalType
                  , description :: Description
                  , image :: Image
                  , name :: Name
+                 , sameAs :: SameAs
                  , url :: Url
                  , alternateName :: AlternateName
                  , code :: Code
@@ -48,6 +49,6 @@ data Bone = Bone { additionalType :: AdditionalType
 
 instance MetaData Bone where
   _label         = const "Bone"
-  _comment_plain = const "Rigid connective tissue that comprises up the skeletal structure of the human body."
-  _comment       = const "Rigid connective tissue that comprises up the skeletal structure of the human body."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Bone"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WPAdBlock where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An advertising section of the page.
+-- | 
 --
 --   [@id@] WPAdBlock
 --
 --   [@label@] WP Ad Block
 --
---   [@comment@] An advertising section of the page.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPageElement'@
 --
@@ -26,6 +26,7 @@ data WPAdBlock = WPAdBlock { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , about :: About
                            , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data WPAdBlock = WPAdBlock { additionalType :: AdditionalType
                            , author :: Author
                            , award :: Award
                            , awards :: Awards
+                           , citation :: Citation
                            , comment :: Comment
                            , contentLocation :: ContentLocation
                            , contentRating :: ContentRating
@@ -81,6 +83,6 @@ data WPAdBlock = WPAdBlock { additionalType :: AdditionalType
 
 instance MetaData WPAdBlock where
   _label         = const "WP Ad Block"
-  _comment_plain = const "An advertising section of the page."
-  _comment       = const "An advertising section of the page."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/WPAdBlock"

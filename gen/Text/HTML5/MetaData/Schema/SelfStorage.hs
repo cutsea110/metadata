@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SelfStorage where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Self-storage facility.
+-- | 
 --
 --   [@id@] SelfStorage
 --
 --   [@label@] Self Storage
 --
---   [@comment@] Self-storage facility.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data SelfStorage = SelfStorage { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , address :: Address
                                , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data SelfStorage = SelfStorage { additionalType :: AdditionalType
 
 instance MetaData SelfStorage where
   _label         = const "Self Storage"
-  _comment_plain = const "Self-storage facility."
-  _comment       = const "Self-storage facility."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SelfStorage"

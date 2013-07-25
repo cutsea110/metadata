@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.FoodEvent where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Event type: Food event.
+-- | 
 --
 --   [@id@] FoodEvent
 --
 --   [@label@] Food Event
 --
---   [@comment@] Event type: Food event.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event'@
 --
@@ -26,6 +26,7 @@ data FoodEvent = FoodEvent { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , attendee :: Attendee
                            , attendees :: Attendees
@@ -44,6 +45,6 @@ data FoodEvent = FoodEvent { additionalType :: AdditionalType
 
 instance MetaData FoodEvent where
   _label         = const "Food Event"
-  _comment_plain = const "Event type: Food event."
-  _comment       = const "Event type: Food event."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/FoodEvent"

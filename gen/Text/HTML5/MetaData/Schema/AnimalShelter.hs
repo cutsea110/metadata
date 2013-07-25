@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AnimalShelter where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Animal shelter.
+-- | 
 --
 --   [@id@] AnimalShelter
 --
 --   [@label@] Animal Shelter
 --
---   [@comment@] Animal shelter.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data AnimalShelter = AnimalShelter { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , address :: Address
                                    , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data AnimalShelter = AnimalShelter { additionalType :: AdditionalType
 
 instance MetaData AnimalShelter where
   _label         = const "Animal Shelter"
-  _comment_plain = const "Animal shelter."
-  _comment       = const "Animal shelter."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AnimalShelter"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PriceSpecification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( PriceSpecification )
 import Data.Text
 
--- | A structured value representing a monetary amount. Typically, only the subclasses of this type are used for markup.
+-- | 
 --
 --   [@id@] PriceSpecification
 --
 --   [@label@] Price Specification
 --
---   [@comment@] A structured value representing a monetary amount. Typically, only the subclasses of this type are used for markup.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data PriceSpecification = PriceSpecification { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , eligibleQuantity :: EligibleQuantity
                                              , eligibleTransactionVolume :: EligibleTransactionVolume
@@ -41,6 +42,6 @@ data PriceSpecification = PriceSpecification { additionalType :: AdditionalType
 
 instance MetaData PriceSpecification where
   _label         = const "Price Specification"
-  _comment_plain = const "A structured value representing a monetary amount. Typically, only the subclasses of this type are used for markup."
-  _comment       = const "A structured value representing a monetary amount. Typically, only the subclasses of this type are used for markup."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PriceSpecification"

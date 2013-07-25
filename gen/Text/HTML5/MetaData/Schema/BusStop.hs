@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BusStop where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bus stop.
+-- | 
 --
 --   [@id@] BusStop
 --
 --   [@label@] Bus Stop
 --
---   [@comment@] A bus stop.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data BusStop = BusStop { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , address :: Address
                        , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data BusStop = BusStop { additionalType :: AdditionalType
 
 instance MetaData BusStop where
   _label         = const "Bus Stop"
-  _comment_plain = const "A bus stop."
-  _comment       = const "A bus stop."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BusStop"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVSeason where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A TV season.
+-- | 
 --
 --   [@id@] TVSeason
 --
 --   [@label@] TV Season
 --
---   [@comment@] A TV season.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data TVSeason = TVSeason { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , about :: About
                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data TVSeason = TVSeason { additionalType :: AdditionalType
                          , author :: Author
                          , award :: Award
                          , awards :: Awards
+                         , citation :: Citation
                          , comment :: Comment
                          , contentLocation :: ContentLocation
                          , contentRating :: ContentRating
@@ -89,6 +91,6 @@ data TVSeason = TVSeason { additionalType :: AdditionalType
 
 instance MetaData TVSeason where
   _label         = const "TV Season"
-  _comment_plain = const "A TV season."
-  _comment       = const "A TV season."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TVSeason"

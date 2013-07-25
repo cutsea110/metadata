@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Country where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A country.
+-- | 
 --
 --   [@id@] Country
 --
 --   [@label@] Country
 --
---   [@comment@] A country.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','AdministrativeArea'@
 --
@@ -26,6 +26,7 @@ data Country = Country { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , address :: Address
                        , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data Country = Country { additionalType :: AdditionalType
 
 instance MetaData Country where
   _label         = const "Country"
-  _comment_plain = const "A country."
-  _comment       = const "A country."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Country"

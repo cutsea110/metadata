@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.APIReference where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Reference documentation for application programming interfaces (APIs).
+-- | 
 --
 --   [@id@] APIReference
 --
 --   [@label@] API Reference
 --
---   [@comment@] Reference documentation for application programming interfaces (APIs).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','Article','TechArticle'@
 --
@@ -26,6 +26,7 @@ data APIReference = APIReference { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , about :: About
                                  , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data APIReference = APIReference { additionalType :: AdditionalType
                                  , author :: Author
                                  , award :: Award
                                  , awards :: Awards
+                                 , citation :: Citation
                                  , comment :: Comment
                                  , contentLocation :: ContentLocation
                                  , contentRating :: ContentRating
@@ -90,6 +92,6 @@ data APIReference = APIReference { additionalType :: AdditionalType
 
 instance MetaData APIReference where
   _label         = const "API Reference"
-  _comment_plain = const "Reference documentation for application programming interfaces (APIs)."
-  _comment       = const "Reference documentation for application programming interfaces (APIs)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/APIReference"

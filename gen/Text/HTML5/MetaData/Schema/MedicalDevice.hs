@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalDevice where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any object used in a medical capacity, such as to diagnose or treat a patient.
+-- | 
 --
 --   [@id@] MedicalDevice
 --
 --   [@label@] Medical Device
 --
---   [@comment@] Any object used in a medical capacity, such as to diagnose or treat a patient.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalDevice = MedicalDevice { additionalType :: AdditionalType
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
+                                   , sameAs :: SameAs
                                    , url :: Url
                                    , alternateName :: AlternateName
                                    , code :: Code
@@ -47,6 +48,6 @@ data MedicalDevice = MedicalDevice { additionalType :: AdditionalType
 
 instance MetaData MedicalDevice where
   _label         = const "Medical Device"
-  _comment_plain = const "Any object used in a medical capacity, such as to diagnose or treat a patient."
-  _comment       = const "Any object used in a medical capacity, such as to diagnose or treat a patient."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalDevice"

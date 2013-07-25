@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TouristAttraction where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A tourist attraction.
+-- | 
 --
 --   [@id@] TouristAttraction
 --
 --   [@label@] Tourist Attraction
 --
---   [@comment@] A tourist attraction.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place'@
 --
@@ -26,6 +26,7 @@ data TouristAttraction = TouristAttraction { additionalType :: AdditionalType
                                            , description :: Description
                                            , image :: Image
                                            , name :: Name
+                                           , sameAs :: SameAs
                                            , url :: Url
                                            , address :: Address
                                            , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data TouristAttraction = TouristAttraction { additionalType :: AdditionalType
 
 instance MetaData TouristAttraction where
   _label         = const "Tourist Attraction"
-  _comment_plain = const "A tourist attraction."
-  _comment       = const "A tourist attraction."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TouristAttraction"

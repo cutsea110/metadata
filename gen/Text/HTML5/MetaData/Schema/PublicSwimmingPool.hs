@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PublicSwimmingPool where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A public swimming pool.
+-- | 
 --
 --   [@id@] PublicSwimmingPool
 --
 --   [@label@] Public Swimming Pool
 --
---   [@comment@] A public swimming pool.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','SportsActivityLocation'@
 --
@@ -26,6 +26,7 @@ data PublicSwimmingPool = PublicSwimmingPool { additionalType :: AdditionalType
                                              , description :: Description
                                              , image :: Image
                                              , name :: Name
+                                             , sameAs :: SameAs
                                              , url :: Url
                                              , address :: Address
                                              , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data PublicSwimmingPool = PublicSwimmingPool { additionalType :: AdditionalType
 
 instance MetaData PublicSwimmingPool where
   _label         = const "Public Swimming Pool"
-  _comment_plain = const "A public swimming pool."
-  _comment       = const "A public swimming pool."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PublicSwimmingPool"

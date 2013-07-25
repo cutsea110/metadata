@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalTest where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any medical test, typically performed for diagnostic purposes.
+-- | 
 --
 --   [@id@] MedicalTest
 --
 --   [@label@] Medical Test
 --
---   [@comment@] Any medical test, typically performed for diagnostic purposes.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalTest = MedicalTest { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , alternateName :: AlternateName
                                , code :: Code
@@ -44,6 +45,6 @@ data MedicalTest = MedicalTest { additionalType :: AdditionalType
 
 instance MetaData MedicalTest where
   _label         = const "Medical Test"
-  _comment_plain = const "Any medical test, typically performed for diagnostic purposes."
-  _comment       = const "Any medical test, typically performed for diagnostic purposes."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalTest"

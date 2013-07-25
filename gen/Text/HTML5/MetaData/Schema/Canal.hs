@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Canal where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A canal, like the Panama Canal
+-- | 
 --
 --   [@id@] Canal
 --
 --   [@label@] Canal
 --
---   [@comment@] A canal, like the Panama Canal
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
 --
@@ -26,6 +26,7 @@ data Canal = Canal { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , address :: Address
                    , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data Canal = Canal { additionalType :: AdditionalType
 
 instance MetaData Canal where
   _label         = const "Canal"
-  _comment_plain = const "A canal, like the Panama Canal"
-  _comment       = const "A canal, like the Panama Canal"
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Canal"

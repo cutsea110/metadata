@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DrugLegalStatus where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | The legal availability status of a medical drug.
+-- | 
 --
 --   [@id@] DrugLegalStatus
 --
 --   [@label@] Drug Legal Status
 --
---   [@comment@] The legal availability status of a medical drug.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible'@
 --
@@ -26,6 +26,7 @@ data DrugLegalStatus = DrugLegalStatus { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , alternateName :: AlternateName
                                        , code :: Code
@@ -40,6 +41,6 @@ data DrugLegalStatus = DrugLegalStatus { additionalType :: AdditionalType
 
 instance MetaData DrugLegalStatus where
   _label         = const "Drug Legal Status"
-  _comment_plain = const "The legal availability status of a medical drug."
-  _comment       = const "The legal availability status of a medical drug."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DrugLegalStatus"

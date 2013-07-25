@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Person where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A person (alive, dead, undead, or fictional).
+-- | 
 --
 --   [@id@] Person
 --
 --   [@label@] Person
 --
---   [@comment@] A person (alive, dead, undead, or fictional).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing'@
 --
@@ -26,6 +26,7 @@ data Person = Person { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , additionalName :: AdditionalName
                      , address :: Address
@@ -80,6 +81,6 @@ data Person = Person { additionalType :: AdditionalType
 
 instance MetaData Person where
   _label         = const "Person"
-  _comment_plain = const "A person (alive, dead, undead, or fictional)."
-  _comment       = const "A person (alive, dead, undead, or fictional)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Person"

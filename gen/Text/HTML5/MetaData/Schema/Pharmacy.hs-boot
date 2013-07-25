@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.Pharmacy where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A pharmacy or drugstore.
+-- | 
 
 data Pharmacy
 

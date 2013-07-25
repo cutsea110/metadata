@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.ItemPage where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A page devoted to a single item, such as a particular product or hotel.
+-- | 
 
 data ItemPage
 

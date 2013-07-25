@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Vessel where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body.
+-- | 
 --
 --   [@id@] Vessel
 --
 --   [@label@] Vessel
 --
---   [@comment@] A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','AnatomicalStructure'@
 --
@@ -26,6 +26,7 @@ data Vessel = Vessel { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , alternateName :: AlternateName
                      , code :: Code
@@ -48,6 +49,6 @@ data Vessel = Vessel { additionalType :: AdditionalType
 
 instance MetaData Vessel where
   _label         = const "Vessel"
-  _comment_plain = const "A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body."
-  _comment       = const "A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Vessel"

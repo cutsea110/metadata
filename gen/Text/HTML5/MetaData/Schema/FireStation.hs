@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.FireStation where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A fire station. With firemen.
+-- | 
 --
 --   [@id@] FireStation
 --
 --   [@label@] Fire Station
 --
---   [@comment@] A fire station. With firemen.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data FireStation = FireStation { additionalType :: AdditionalType
                                , description :: Description
                                , image :: Image
                                , name :: Name
+                               , sameAs :: SameAs
                                , url :: Url
                                , address :: Address
                                , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data FireStation = FireStation { additionalType :: AdditionalType
 
 instance MetaData FireStation where
   _label         = const "Fire Station"
-  _comment_plain = const "A fire station. With firemen."
-  _comment       = const "A fire station. With firemen."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/FireStation"

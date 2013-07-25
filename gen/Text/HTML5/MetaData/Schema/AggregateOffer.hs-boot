@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.AggregateOffer where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | When a single product that has different offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
+-- | 
 
 data AggregateOffer
 

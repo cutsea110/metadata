@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.AggregateRating where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( AggregateRating )
 import Data.Text
 
--- | The average rating based on multiple ratings or reviews.
+-- | 
 --
 --   [@id@] AggregateRating
 --
 --   [@label@] Aggregate Rating
 --
---   [@comment@] The average rating based on multiple ratings or reviews.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Rating'@
 --
@@ -26,6 +26,7 @@ data AggregateRating = AggregateRating { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , bestRating :: BestRating
                                        , ratingValue :: RatingValue
@@ -38,6 +39,6 @@ data AggregateRating = AggregateRating { additionalType :: AdditionalType
 
 instance MetaData AggregateRating where
   _label         = const "Aggregate Rating"
-  _comment_plain = const "The average rating based on multiple ratings or reviews."
-  _comment       = const "The average rating based on multiple ratings or reviews."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/AggregateRating"

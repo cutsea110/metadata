@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.NutritionInformation where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Nutritional information about the recipe.
+-- | 
 --
 --   [@id@] NutritionInformation
 --
 --   [@label@] Nutrition Information
 --
---   [@comment@] Nutritional information about the recipe.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','StructuredValue'@
 --
@@ -26,6 +26,7 @@ data NutritionInformation = NutritionInformation { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , calories :: Calories
                                                  , carbohydrateContent :: CarbohydrateContent
@@ -44,6 +45,6 @@ data NutritionInformation = NutritionInformation { additionalType :: AdditionalT
 
 instance MetaData NutritionInformation where
   _label         = const "Nutrition Information"
-  _comment_plain = const "Nutritional information about the recipe."
-  _comment       = const "Nutritional information about the recipe."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/NutritionInformation"

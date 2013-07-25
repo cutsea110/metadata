@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.LifestyleModification where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.
+-- | 
 
 data LifestyleModification
 

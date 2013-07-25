@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ShoppingCenter where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A shopping center or mall.
+-- | 
 --
 --   [@id@] ShoppingCenter
 --
 --   [@label@] Shopping Center
 --
---   [@comment@] A shopping center or mall.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data ShoppingCenter = ShoppingCenter { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data ShoppingCenter = ShoppingCenter { additionalType :: AdditionalType
 
 instance MetaData ShoppingCenter where
   _label         = const "Shopping Center"
-  _comment_plain = const "A shopping center or mall."
-  _comment       = const "A shopping center or mall."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ShoppingCenter"

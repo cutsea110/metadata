@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.RecyclingCenter where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A recycling center.
+-- | 
 --
 --   [@id@] RecyclingCenter
 --
 --   [@label@] Recycling Center
 --
---   [@comment@] A recycling center.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness'@
 --
@@ -26,6 +26,7 @@ data RecyclingCenter = RecyclingCenter { additionalType :: AdditionalType
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
+                                       , sameAs :: SameAs
                                        , url :: Url
                                        , address :: Address
                                        , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data RecyclingCenter = RecyclingCenter { additionalType :: AdditionalType
 
 instance MetaData RecyclingCenter where
   _label         = const "Recycling Center"
-  _comment_plain = const "A recycling center."
-  _comment       = const "A recycling center."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/RecyclingCenter"

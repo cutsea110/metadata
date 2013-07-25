@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Zoo where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A zoo.
+-- | 
 --
 --   [@id@] Zoo
 --
 --   [@label@] Zoo
 --
---   [@comment@] A zoo.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data Zoo = Zoo { additionalType :: AdditionalType
                , description :: Description
                , image :: Image
                , name :: Name
+               , sameAs :: SameAs
                , url :: Url
                , address :: Address
                , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Zoo = Zoo { additionalType :: AdditionalType
 
 instance MetaData Zoo where
   _label         = const "Zoo"
-  _comment_plain = const "A zoo."
-  _comment       = const "A zoo."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Zoo"

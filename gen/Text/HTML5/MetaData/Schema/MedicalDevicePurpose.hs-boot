@@ -1,10 +1,10 @@
 module Text.HTML5.MetaData.Schema.MedicalDevicePurpose where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 
--- | Categories of medical devices, organized by the purpose or intended use of the device.
+-- | 
 
 data MedicalDevicePurpose
 

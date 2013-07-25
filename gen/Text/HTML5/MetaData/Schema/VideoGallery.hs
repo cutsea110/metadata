@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.VideoGallery where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Web page type: Video gallery page.
+-- | 
 --
 --   [@id@] VideoGallery
 --
 --   [@label@] Video Gallery
 --
---   [@comment@] Web page type: Video gallery page.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','WebPage','CollectionPage'@
 --
@@ -26,6 +26,7 @@ data VideoGallery = VideoGallery { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , about :: About
                                  , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data VideoGallery = VideoGallery { additionalType :: AdditionalType
                                  , author :: Author
                                  , award :: Award
                                  , awards :: Awards
+                                 , citation :: Citation
                                  , comment :: Comment
                                  , contentLocation :: ContentLocation
                                  , contentRating :: ContentRating
@@ -91,6 +93,6 @@ data VideoGallery = VideoGallery { additionalType :: AdditionalType
 
 instance MetaData VideoGallery where
   _label         = const "Video Gallery"
-  _comment_plain = const "Web page type: Video gallery page."
-  _comment       = const "Web page type: Video gallery page."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/VideoGallery"

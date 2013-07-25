@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Dentist where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A dentist.
+-- | 
 --
 --   [@id@] Dentist
 --
 --   [@label@] Dentist
 --
---   [@comment@] A dentist.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','MedicalOrganization'@
 --
@@ -26,6 +26,7 @@ data Dentist = Dentist { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , address :: Address
                        , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data Dentist = Dentist { additionalType :: AdditionalType
 
 instance MetaData Dentist where
   _label         = const "Dentist"
-  _comment_plain = const "A dentist."
-  _comment       = const "A dentist."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Dentist"

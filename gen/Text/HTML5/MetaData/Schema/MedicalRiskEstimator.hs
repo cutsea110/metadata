@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalRiskEstimator where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Any rule set or interactive tool for estimating the risk of developing a complication or condition.
+-- | 
 --
 --   [@id@] MedicalRiskEstimator
 --
 --   [@label@] Medical Risk Estimator
 --
---   [@comment@] Any rule set or interactive tool for estimating the risk of developing a complication or condition.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalRiskEstimator = MedicalRiskEstimator { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , alternateName :: AlternateName
                                                  , code :: Code
@@ -41,6 +42,6 @@ data MedicalRiskEstimator = MedicalRiskEstimator { additionalType :: AdditionalT
 
 instance MetaData MedicalRiskEstimator where
   _label         = const "Medical Risk Estimator"
-  _comment_plain = const "Any rule set or interactive tool for estimating the risk of developing a complication or condition."
-  _comment       = const "Any rule set or interactive tool for estimating the risk of developing a complication or condition."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalRiskEstimator"

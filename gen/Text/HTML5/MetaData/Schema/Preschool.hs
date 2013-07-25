@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Preschool where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A preschool.
+-- | 
 --
 --   [@id@] Preschool
 --
 --   [@label@] Preschool
 --
---   [@comment@] A preschool.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','EducationalOrganization'@
 --
@@ -26,6 +26,7 @@ data Preschool = Preschool { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , address :: Address
                            , aggregateRating :: AggregateRating
@@ -66,6 +67,6 @@ data Preschool = Preschool { additionalType :: AdditionalType
 
 instance MetaData Preschool where
   _label         = const "Preschool"
-  _comment_plain = const "A preschool."
-  _comment       = const "A preschool."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Preschool"

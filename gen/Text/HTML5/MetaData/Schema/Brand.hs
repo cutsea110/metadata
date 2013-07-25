@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Brand where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Brand )
 import Data.Text
 
--- | A brand is a name used by an organization or business person for labeling a product, product group, or similar.
+-- | 
 --
 --   [@id@] Brand
 --
 --   [@label@] Brand
 --
---   [@comment@] A brand is a name used by an organization or business person for labeling a product, product group, or similar.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible'@
 --
@@ -26,6 +26,7 @@ data Brand = Brand { additionalType :: AdditionalType
                    , description :: Description
                    , image :: Image
                    , name :: Name
+                   , sameAs :: SameAs
                    , url :: Url
                    , logo :: Logo
                    }
@@ -33,6 +34,6 @@ data Brand = Brand { additionalType :: AdditionalType
 
 instance MetaData Brand where
   _label         = const "Brand"
-  _comment_plain = const "A brand is a name used by an organization or business person for labeling a product, product group, or similar."
-  _comment       = const "A brand is a name used by an organization or business person for labeling a product, product group, or similar."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Brand"

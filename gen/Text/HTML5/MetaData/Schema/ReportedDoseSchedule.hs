@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ReportedDoseSchedule where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A patient-reported or observed dosing schedule for a drug or supplement.
+-- | 
 --
 --   [@id@] ReportedDoseSchedule
 --
 --   [@label@] Reported Dose Schedule
 --
---   [@comment@] A patient-reported or observed dosing schedule for a drug or supplement.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','DoseSchedule'@
 --
@@ -26,6 +26,7 @@ data ReportedDoseSchedule = ReportedDoseSchedule { additionalType :: AdditionalT
                                                  , description :: Description
                                                  , image :: Image
                                                  , name :: Name
+                                                 , sameAs :: SameAs
                                                  , url :: Url
                                                  , alternateName :: AlternateName
                                                  , code :: Code
@@ -43,6 +44,6 @@ data ReportedDoseSchedule = ReportedDoseSchedule { additionalType :: AdditionalT
 
 instance MetaData ReportedDoseSchedule where
   _label         = const "Reported Dose Schedule"
-  _comment_plain = const "A patient-reported or observed dosing schedule for a drug or supplement."
-  _comment       = const "A patient-reported or observed dosing schedule for a drug or supplement."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ReportedDoseSchedule"

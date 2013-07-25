@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ItemAvailability where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A list of possible product availablity options.
+-- | 
 --
 --   [@id@] ItemAvailability
 --
 --   [@label@] Item Availability
 --
---   [@comment@] A list of possible product availablity options.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
 --
@@ -32,6 +32,6 @@ data ItemAvailability = Discontinued
 
 instance MetaData ItemAvailability where
   _label         = const "Item Availability"
-  _comment_plain = const "A list of possible product availablity options."
-  _comment       = const "A list of possible product availablity options."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ItemAvailability"

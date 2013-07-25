@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.UserCheckins where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | User interaction: Check-in at a place.
+-- | 
 --
 --   [@id@] UserCheckins
 --
 --   [@label@] User Checkins
 --
---   [@comment@] User interaction: Check-in at a place.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Event','UserInteraction'@
 --
@@ -26,6 +26,7 @@ data UserCheckins = UserCheckins { additionalType :: AdditionalType
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
+                                 , sameAs :: SameAs
                                  , url :: Url
                                  , attendee :: Attendee
                                  , attendees :: Attendees
@@ -44,6 +45,6 @@ data UserCheckins = UserCheckins { additionalType :: AdditionalType
 
 instance MetaData UserCheckins where
   _label         = const "User Checkins"
-  _comment_plain = const "User interaction: Check-in at a place."
-  _comment       = const "User interaction: Check-in at a place."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/UserCheckins"

@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BarOrPub where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A bar or pub.
+-- | 
 --
 --   [@id@] BarOrPub
 --
 --   [@label@] Bar or Pub
 --
---   [@comment@] A bar or pub.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','FoodEstablishment'@
 --
@@ -26,6 +26,7 @@ data BarOrPub = BarOrPub { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , address :: Address
                          , aggregateRating :: AggregateRating
@@ -80,6 +81,6 @@ data BarOrPub = BarOrPub { additionalType :: AdditionalType
 
 instance MetaData BarOrPub where
   _label         = const "Bar or Pub"
-  _comment_plain = const "A bar or pub."
-  _comment       = const "A bar or pub."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BarOrPub"

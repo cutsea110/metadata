@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVSeries where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A television series.
+-- | 
 --
 --   [@id@] TVSeries
 --
 --   [@label@] TV Series
 --
---   [@comment@] A television series.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data TVSeries = TVSeries { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , about :: About
                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data TVSeries = TVSeries { additionalType :: AdditionalType
                          , author :: Author
                          , award :: Award
                          , awards :: Awards
+                         , citation :: Citation
                          , comment :: Comment
                          , contentLocation :: ContentLocation
                          , contentRating :: ContentRating
@@ -95,6 +97,6 @@ data TVSeries = TVSeries { additionalType :: AdditionalType
 
 instance MetaData TVSeries where
   _label         = const "TV Series"
-  _comment_plain = const "A television series."
-  _comment       = const "A television series."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TVSeries"

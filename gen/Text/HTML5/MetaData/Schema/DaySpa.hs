@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DaySpa where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A day spa.
+-- | 
 --
 --   [@id@] DaySpa
 --
 --   [@label@] Day Spa
 --
---   [@comment@] A day spa.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Organization','LocalBusiness','HealthAndBeautyBusiness'@
 --
@@ -26,6 +26,7 @@ data DaySpa = DaySpa { additionalType :: AdditionalType
                      , description :: Description
                      , image :: Image
                      , name :: Name
+                     , sameAs :: SameAs
                      , url :: Url
                      , address :: Address
                      , aggregateRating :: AggregateRating
@@ -77,6 +78,6 @@ data DaySpa = DaySpa { additionalType :: AdditionalType
 
 instance MetaData DaySpa where
   _label         = const "Day Spa"
-  _comment_plain = const "A day spa."
-  _comment       = const "A day spa."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/DaySpa"

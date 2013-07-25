@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVEpisode where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An episode of a TV series or season.
+-- | 
 --
 --   [@id@] TVEpisode
 --
 --   [@label@] TV Episode
 --
---   [@comment@] An episode of a TV series or season.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data TVEpisode = TVEpisode { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , about :: About
                            , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data TVEpisode = TVEpisode { additionalType :: AdditionalType
                            , author :: Author
                            , award :: Award
                            , awards :: Awards
+                           , citation :: Citation
                            , comment :: Comment
                            , contentLocation :: ContentLocation
                            , contentRating :: ContentRating
@@ -91,6 +93,6 @@ data TVEpisode = TVEpisode { additionalType :: AdditionalType
 
 instance MetaData TVEpisode where
   _label         = const "TV Episode"
-  _comment_plain = const "An episode of a TV series or season."
-  _comment       = const "An episode of a TV series or season."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/TVEpisode"

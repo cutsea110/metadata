@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PeopleAudience where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A set of characteristics belonging to people, e.g. who compose an item's target audience.
+-- | 
 --
 --   [@id@] PeopleAudience
 --
 --   [@label@] People Audience
 --
---   [@comment@] A set of characteristics belonging to people, e.g. who compose an item's target audience.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Audience'@
 --
@@ -26,6 +26,7 @@ data PeopleAudience = PeopleAudience { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , healthCondition :: HealthCondition
                                      , suggestedGender :: SuggestedGender
@@ -36,6 +37,6 @@ data PeopleAudience = PeopleAudience { additionalType :: AdditionalType
 
 instance MetaData PeopleAudience where
   _label         = const "People Audience"
-  _comment_plain = const "A set of characteristics belonging to people, e.g. who compose an item's target audience."
-  _comment       = const "A set of characteristics belonging to people, e.g. who compose an item's target audience."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/PeopleAudience"

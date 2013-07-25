@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.SeaBodyOfWater where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A sea (for example, the Caspian sea).
+-- | 
 --
 --   [@id@] SeaBodyOfWater
 --
 --   [@label@] Sea Body of Water
 --
---   [@comment@] A sea (for example, the Caspian sea).
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','Landform','BodyOfWater'@
 --
@@ -26,6 +26,7 @@ data SeaBodyOfWater = SeaBodyOfWater { additionalType :: AdditionalType
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
+                                     , sameAs :: SameAs
                                      , url :: Url
                                      , address :: Address
                                      , aggregateRating :: AggregateRating
@@ -51,6 +52,6 @@ data SeaBodyOfWater = SeaBodyOfWater { additionalType :: AdditionalType
 
 instance MetaData SeaBodyOfWater where
   _label         = const "Sea Body of Water"
-  _comment_plain = const "A sea (for example, the Caspian sea)."
-  _comment       = const "A sea (for example, the Caspian sea)."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/SeaBodyOfWater"

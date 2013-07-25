@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Painting where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A painting.
+-- | 
 --
 --   [@id@] Painting
 --
 --   [@label@] Painting
 --
---   [@comment@] A painting.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork'@
 --
@@ -26,6 +26,7 @@ data Painting = Painting { additionalType :: AdditionalType
                          , description :: Description
                          , image :: Image
                          , name :: Name
+                         , sameAs :: SameAs
                          , url :: Url
                          , about :: About
                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data Painting = Painting { additionalType :: AdditionalType
                          , author :: Author
                          , award :: Award
                          , awards :: Awards
+                         , citation :: Citation
                          , comment :: Comment
                          , contentLocation :: ContentLocation
                          , contentRating :: ContentRating
@@ -81,6 +83,6 @@ data Painting = Painting { additionalType :: AdditionalType
 
 instance MetaData Painting where
   _label         = const "Painting"
-  _comment_plain = const "A painting."
-  _comment       = const "A painting."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Painting"

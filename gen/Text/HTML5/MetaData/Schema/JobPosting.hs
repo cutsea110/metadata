@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.JobPosting where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A listing that describes a job opening in a certain organization.
+-- | 
 --
 --   [@id@] JobPosting
 --
 --   [@label@] Job Posting
 --
---   [@comment@] A listing that describes a job opening in a certain organization.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible'@
 --
@@ -26,6 +26,7 @@ data JobPosting = JobPosting { additionalType :: AdditionalType
                              , description :: Description
                              , image :: Image
                              , name :: Name
+                             , sameAs :: SameAs
                              , url :: Url
                              , baseSalary :: BaseSalary
                              , benefits :: Benefits
@@ -50,6 +51,6 @@ data JobPosting = JobPosting { additionalType :: AdditionalType
 
 instance MetaData JobPosting where
   _label         = const "Job Posting"
-  _comment_plain = const "A listing that describes a job opening in a certain organization."
-  _comment       = const "A listing that describes a job opening in a certain organization."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/JobPosting"

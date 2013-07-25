@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalTrialDesign where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | Design models for medical trials. Enumerated type.
+-- | 
 --
 --   [@id@] MedicalTrialDesign
 --
 --   [@label@] Medical Trial Design
 --
---   [@comment@] Design models for medical trials. Enumerated type.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalIntangible','MedicalEnumeration'@
 --
@@ -35,6 +35,6 @@ data MedicalTrialDesign = DoubleBlindedTrial
 
 instance MetaData MedicalTrialDesign where
   _label         = const "Medical Trial Design"
-  _comment_plain = const "Design models for medical trials. Enumerated type."
-  _comment       = const "Design models for medical trials. Enumerated type."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalTrialDesign"

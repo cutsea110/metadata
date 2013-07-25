@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.ScholarlyArticle where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A scholarly article.
+-- | 
 --
 --   [@id@] ScholarlyArticle
 --
 --   [@label@] Scholarly Article
 --
---   [@comment@] A scholarly article.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','CreativeWork','Article'@
 --
@@ -26,6 +26,7 @@ data ScholarlyArticle = ScholarlyArticle { additionalType :: AdditionalType
                                          , description :: Description
                                          , image :: Image
                                          , name :: Name
+                                         , sameAs :: SameAs
                                          , url :: Url
                                          , about :: About
                                          , accountablePerson :: AccountablePerson
@@ -37,6 +38,7 @@ data ScholarlyArticle = ScholarlyArticle { additionalType :: AdditionalType
                                          , author :: Author
                                          , award :: Award
                                          , awards :: Awards
+                                         , citation :: Citation
                                          , comment :: Comment
                                          , contentLocation :: ContentLocation
                                          , contentRating :: ContentRating
@@ -84,6 +86,6 @@ data ScholarlyArticle = ScholarlyArticle { additionalType :: AdditionalType
 
 instance MetaData ScholarlyArticle where
   _label         = const "Scholarly Article"
-  _comment_plain = const "A scholarly article."
-  _comment       = const "A scholarly article."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/ScholarlyArticle"

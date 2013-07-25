@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalRiskFactor where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.
+-- | 
 --
 --   [@id@] MedicalRiskFactor
 --
 --   [@label@] Medical Risk Factor
 --
---   [@comment@] A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity'@
 --
@@ -26,6 +26,7 @@ data MedicalRiskFactor = MedicalRiskFactor { additionalType :: AdditionalType
                                            , description :: Description
                                            , image :: Image
                                            , name :: Name
+                                           , sameAs :: SameAs
                                            , url :: Url
                                            , alternateName :: AlternateName
                                            , code :: Code
@@ -40,6 +41,6 @@ data MedicalRiskFactor = MedicalRiskFactor { additionalType :: AdditionalType
 
 instance MetaData MedicalRiskFactor where
   _label         = const "Medical Risk Factor"
-  _comment_plain = const "A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication."
-  _comment       = const "A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/MedicalRiskFactor"

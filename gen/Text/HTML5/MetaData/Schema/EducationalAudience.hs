@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.EducationalAudience where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An EducationalAudience
+-- | 
 --
 --   [@id@] EducationalAudience
 --
 --   [@label@] Educational Audience
 --
---   [@comment@] An EducationalAudience
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Intangible','Audience'@
 --
@@ -26,6 +26,7 @@ data EducationalAudience = EducationalAudience { additionalType :: AdditionalTyp
                                                , description :: Description
                                                , image :: Image
                                                , name :: Name
+                                               , sameAs :: SameAs
                                                , url :: Url
                                                , educationalRole :: EducationalRole
                                                }
@@ -33,6 +34,6 @@ data EducationalAudience = EducationalAudience { additionalType :: AdditionalTyp
 
 instance MetaData EducationalAudience where
   _label         = const "Educational Audience"
-  _comment_plain = const "An EducationalAudience"
-  _comment       = const "An EducationalAudience"
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/EducationalAudience"

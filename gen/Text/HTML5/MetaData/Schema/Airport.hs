@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Airport where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | An airport.
+-- | 
 --
 --   [@id@] Airport
 --
 --   [@label@] Airport
 --
---   [@comment@] An airport.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','Place','CivicStructure'@
 --
@@ -26,6 +26,7 @@ data Airport = Airport { additionalType :: AdditionalType
                        , description :: Description
                        , image :: Image
                        , name :: Name
+                       , sameAs :: SameAs
                        , url :: Url
                        , address :: Address
                        , aggregateRating :: AggregateRating
@@ -52,6 +53,6 @@ data Airport = Airport { additionalType :: AdditionalType
 
 instance MetaData Airport where
   _label         = const "Airport"
-  _comment_plain = const "An airport."
-  _comment       = const "An airport."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/Airport"

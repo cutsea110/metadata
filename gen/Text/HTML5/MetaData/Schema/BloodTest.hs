@@ -1,19 +1,19 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.BloodTest where
 
---  Valid: 2013-05-30 ( Schema.rdfs.org )
+--  Valid: 2013-07-25 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
 
--- | A medical test performed on a sample of a patient's blood.
+-- | 
 --
 --   [@id@] BloodTest
 --
 --   [@label@] Blood Test
 --
---   [@comment@] A medical test performed on a sample of a patient's blood.
+--   [@comment@] 
 --
 --   [@ancestors@] @'Thing','MedicalEntity','MedicalTest'@
 --
@@ -26,6 +26,7 @@ data BloodTest = BloodTest { additionalType :: AdditionalType
                            , description :: Description
                            , image :: Image
                            , name :: Name
+                           , sameAs :: SameAs
                            , url :: Url
                            , alternateName :: AlternateName
                            , code :: Code
@@ -44,6 +45,6 @@ data BloodTest = BloodTest { additionalType :: AdditionalType
 
 instance MetaData BloodTest where
   _label         = const "Blood Test"
-  _comment_plain = const "A medical test performed on a sample of a patient's blood."
-  _comment       = const "A medical test performed on a sample of a patient's blood."
+  _comment_plain = const ""
+  _comment       = const ""
   _url           = const "http://schema.org/BloodTest"
