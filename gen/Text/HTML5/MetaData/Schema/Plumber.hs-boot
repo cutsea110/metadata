@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Schema.Plumber where
 
---  Valid: 2013-07-25 ( Schema.rdfs.org )
+--  Valid: 2013-11-15 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 

@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.WarrantyPromise where
 
---  Valid: 2013-07-25 ( Schema.rdfs.org )
+--  Valid: 2013-11-15 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
-import Text.HTML5.MetaData.Type
+import Text.HTML5.MetaData.Type hiding ( WarrantyPromise )
 import Data.Text
 
 -- | 

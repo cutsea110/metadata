@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2013-07-25 ( Schema.rdfs.org )
+--  Valid: 2013-11-15 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
@@ -30,6 +30,7 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Dataset
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DayOfWeek
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DeliveryMethod
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Demand
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Diet
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Distance
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Drug
@@ -43,14 +44,19 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DrugStrength
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Duration
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EducationalOrganization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Energy
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EntertainmentBusiness
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Enumeration
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Event
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ExercisePlan
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.FoodEstablishment
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.FoodEvent
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoCoordinates
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.GeoShape
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Hospital
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ImageObject
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.InfectiousAgentClass
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ItemAvailability
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Language
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Mass
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MaximumDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.MediaObject
@@ -105,10 +111,15 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ProductModel
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QualitativeValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QuantitativeValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Rating
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RealEstateAgent
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Recipe
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RecommendedDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Review
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SoftwareApplication
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Specialty
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsActivityLocation
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsEvent
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsTeam
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.StructuredValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SuperficialAnatomy
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVEpisode
@@ -162,6 +173,19 @@ type Workload = Text.HTML5.MetaData.Schema.Energy.Energy
 --
 --   [@ranges@] @'Person'@
 type Parents = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.
+--
+--   [@id@] participant
+--
+--   [@label@] Participant
+--
+--   [@comment@] Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Participant = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | A music album.
 --
@@ -652,7 +676,7 @@ type RelatedCondition = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondi
 --
 --   [@comment@] The Dun & Bradstreet DUNS number for identifying an organization or business person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Duns = Text
@@ -670,6 +694,19 @@ type Duns = Text
 --   [@ranges@] @'NewsArticle'@
 type AssociatedArticle = Text.HTML5.MetaData.Schema.NewsArticle.NewsArticle
 
+-- | A sub property of participant. The seller.The participant/person/organization that sold the object.
+--
+--   [@id@] vendor
+--
+--   [@label@] Vendor
+--
+--   [@comment@] A sub property of participant. The seller.The participant/person/organization that sold the object.
+--
+--   [@domains@] @'BuyAction'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Vendor = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
 -- | A URL to a map of the place.
 --
 --   [@id@] map
@@ -683,6 +720,19 @@ type AssociatedArticle = Text.HTML5.MetaData.Schema.NewsArticle.NewsArticle
 --   [@ranges@] @'URL'@
 type Map = URL
 
+-- | A sub property of participant. The sports team that participated on this action.
+--
+--   [@id@] sportsTeam
+--
+--   [@label@] Sports Team
+--
+--   [@comment@] A sub property of participant. The sports team that participated on this action.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'SportsTeam'@
+type SportsTeam = Text.HTML5.MetaData.Schema.SportsTeam.SportsTeam
+
 -- | The payment method(s) to which the payment charge specification applies.
 --
 --   [@id@] appliesToPaymentMethod
@@ -695,6 +745,19 @@ type Map = URL
 --
 --   [@ranges@] @'PaymentMethod'@
 type AppliesToPaymentMethod = Text.HTML5.MetaData.Schema.PaymentMethod.PaymentMethod
+
+-- | A sub property of participant. The person that lends the object being borrowed.
+--
+--   [@id@] lender
+--
+--   [@label@] Lender
+--
+--   [@comment@] A sub property of participant. The person that lends the object being borrowed.
+--
+--   [@domains@] @'BorrowAction'@
+--
+--   [@ranges@] @'Person'@
+type Lender = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | A medical therapy related to this anatomy.
 --
@@ -899,7 +962,7 @@ type SecondaryPrevention = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTher
 --
 --   [@comment@] The intended audience of the item, i.e. the group for whom the item was created.
 --
---   [@domains@] @'Product','CreativeWork'@
+--   [@domains@] @'PlayAction','CreativeWork','Product'@
 --
 --   [@ranges@] @'Audience'@
 type Audience = Text.HTML5.MetaData.Schema.Audience.Audience
@@ -1120,7 +1183,7 @@ type MechanismOfAction = Text
 --
 --   [@comment@] The fax number.
 --
---   [@domains@] @'Organization','ContactPoint','Place','Person'@
+--   [@domains@] @'Person','ContactPoint','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type FaxNumber = Text
@@ -1159,7 +1222,7 @@ type IsVariantOf = Text.HTML5.MetaData.Schema.ProductModel.ProductModel
 --
 --   [@comment@] The telephone number.
 --
---   [@domains@] @'Organization','ContactPoint','Place','Person'@
+--   [@domains@] @'Person','ContactPoint','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Telephone = Text
@@ -1215,6 +1278,19 @@ type TransmissionMethod = Text
 --
 --   [@ranges@] @'Person'@
 type Employees = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | A sub property of participant. The real estate agent involved in the action.
+--
+--   [@id@] realEstateAgent
+--
+--   [@label@] Real Estate Agent
+--
+--   [@comment@] A sub property of participant. The real estate agent involved in the action.
+--
+--   [@domains@] @'RentAction'@
+--
+--   [@ranges@] @'RealEstateAgent'@
+type RealEstateAgent = Text.HTML5.MetaData.Schema.RealEstateAgent.RealEstateAgent
 
 -- | The neurological pathway extension that inputs and sends information to the brain or spinal cord.
 --
@@ -1281,6 +1357,19 @@ type SpecialCommitments = Text
 --   [@ranges@] @'AnatomicalSystem','AnatomicalStructure'@
 type RegionDrained = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
+-- | A sub property of participant. The participant/person/organization that bought the object.
+--
+--   [@id@] buyer
+--
+--   [@label@] Buyer
+--
+--   [@comment@] A sub property of participant. The participant/person/organization that bought the object.
+--
+--   [@domains@] @'SellAction'@
+--
+--   [@ranges@] @'Person'@
+type Buyer = Text.HTML5.MetaData.Schema.Person.Person
+
 -- | Drugs that affect the test's results.
 --
 --   [@id@] affectedBy
@@ -1345,6 +1434,19 @@ type ActiveIngredient = Text
 --
 --   [@ranges@] @'Number'@
 type BaseSalary = Number
+
+-- | A sub property of participant. The person/organization being supported.
+--
+--   [@id@] endorsee
+--
+--   [@label@] Endorsee
+--
+--   [@comment@] A sub property of participant. The person/organization being supported.
+--
+--   [@domains@] @'EndorseAction'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Endorsee = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the Name property.
 --
@@ -1463,6 +1565,32 @@ type Episode = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
 --   [@ranges@] @'URL'@
 type IsBasedOnUrl = URL
 
+-- | A sub property of object. The person or organization being followed.
+--
+--   [@id@] followee
+--
+--   [@label@] Followee
+--
+--   [@comment@] A sub property of object. The person or organization being followed.
+--
+--   [@domains@] @'FollowAction'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Followee = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | The result produced in the action. e.g. John wrote *a book*.
+--
+--   [@id@] result
+--
+--   [@label@] Result
+--
+--   [@comment@] The result produced in the action. e.g. John wrote *a book*.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'Thing'@
+type Result = Text.HTML5.MetaData.Schema.Thing.Thing
+
 -- | Recommended intake of this supplement for a given population as defined by a specific recommending authority.
 --
 --   [@id@] recommendedIntake
@@ -1567,6 +1695,19 @@ type WorksFor = Text.HTML5.MetaData.Schema.Organization.Organization
 --   [@ranges@] @'MedicalContraindication'@
 type Contraindication = Text.HTML5.MetaData.Schema.MedicalContraindication.MedicalContraindication
 
+-- | A sub property of location. The sports activity location where this action occurred.
+--
+--   [@id@] sportsActivityLocation
+--
+--   [@label@] Sports Activity Location
+--
+--   [@comment@] A sub property of location. The sports activity location where this action occurred.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'SportsActivityLocation'@
+type SportsActivityLocation = Text.HTML5.MetaData.Schema.SportsActivityLocation.SportsActivityLocation
+
 -- | Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
 --
 --   [@id@] valueAddedTaxIncluded
@@ -1592,6 +1733,19 @@ type ValueAddedTaxIncluded = Boolean
 --
 --   [@ranges@] @'URL'@
 type SignificantLinks = URL
+
+-- | A sub property of object. A question.
+--
+--   [@id@] question
+--
+--   [@label@] Question
+--
+--   [@comment@] A sub property of object. A question.
+--
+--   [@domains@] @'AskAction'@
+--
+--   [@ranges@] @'Text'@
+type Question = Text
 
 -- | The cuisine of the recipe (for example, French or Ethopian).
 --
@@ -1796,7 +1950,7 @@ type TargetName = Text
 --
 --   [@comment@] The Value-added Tax ID of the organisation or person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Text'@
 type VatID = Text
@@ -1866,18 +2020,18 @@ type IsAccessoryOrSparePartFor = Text.HTML5.MetaData.Schema.Product.Product
 --   [@ranges@] @'MedicalImagingTechnique'@
 type ImagingTechnique = Text.HTML5.MetaData.Schema.MedicalImagingTechnique.MedicalImagingTechnique
 
--- | The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.
+-- | A goal towards an action is taken. Can be concrete or abstract.
 --
 --   [@id@] purpose
 --
 --   [@label@] Purpose
 --
---   [@comment@] The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.
+--   [@comment@] A goal towards an action is taken. Can be concrete or abstract.
 --
---   [@domains@] @'MedicalDevice'@
+--   [@domains@] @'AllocateAction','MedicalDevice','PayAction'@
 --
---   [@ranges@] @'MedicalDevicePurpose'@
-type Purpose = Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurpose
+--   [@ranges@] @'Thing','MedicalDevicePurpose'@
+type Purpose = Either Text.HTML5.MetaData.Schema.Thing.Thing Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurpose
 
 -- | Points-of-Sales operated by the organization or person.
 --
@@ -1887,7 +2041,7 @@ type Purpose = Text.HTML5.MetaData.Schema.MedicalDevicePurpose.MedicalDevicePurp
 --
 --   [@comment@] Points-of-Sales operated by the organization or person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Place'@
 type HasPOS = Text.HTML5.MetaData.Schema.Place.Place
@@ -1917,6 +2071,19 @@ type CommentText = Text
 --
 --   [@ranges@] @'Text'@
 type TypicalAgeRange = Text
+
+-- | A sub property of location. The final location of the object or the agent after the action.
+--
+--   [@id@] toLocation
+--
+--   [@label@] To Location
+--
+--   [@comment@] A sub property of location. The final location of the object or the agent after the action.
+--
+--   [@domains@] @'InsertAction','TransferAction','ExerciseAction','MoveAction'@
+--
+--   [@ranges@] @'Place','Number'@
+type ToLocation = Either Text.HTML5.MetaData.Schema.Place.Place Number
 
 -- | Anatomical systems or structures that relate to the superficial anatomy.
 --
@@ -1965,7 +2132,7 @@ type Discusses = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 --
 --   [@comment@] Physical address of the item.
 --
---   [@domains@] @'Organization','Place','Person'@
+--   [@domains@] @'Person','Place','Organization'@
 --
 --   [@ranges@] @'PostalAddress'@
 type Address = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
@@ -2282,6 +2449,19 @@ type Breadcrumb = Text
 --   [@ranges@] @'Text'@
 type BreastfeedingWarning = Text
 
+-- | A sub property of asset. The distance travelled.
+--
+--   [@id@] distance
+--
+--   [@label@] Distance
+--
+--   [@comment@] A sub property of asset. The distance travelled.
+--
+--   [@domains@] @'TravelAction','ExerciseAction'@
+--
+--   [@ranges@] @'Distance'@
+type Distance = Text.HTML5.MetaData.Schema.Distance.Distance
+
 -- | Either the actual menu or a URL of the menu.
 --
 --   [@id@] menu
@@ -2399,6 +2579,19 @@ type RecipeInstructions = Text
 --   [@ranges@] @'Text'@
 type EducationalFramework = Text
 
+-- | A sub property of participant. The participant who is at the sending end of the action.
+--
+--   [@id@] sender
+--
+--   [@label@] Sender
+--
+--   [@comment@] A sub property of participant. The participant who is at the sending end of the action.
+--
+--   [@domains@] @'ReceiveAction'@
+--
+--   [@ranges@] @'Audience','Organization','Person'@
+type Sender = Either3 Text.HTML5.MetaData.Schema.Audience.Audience Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
 -- | Genre of the creative work
 --
 --   [@id@] genre
@@ -2515,6 +2708,19 @@ type RegionsAllowed = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@ranges@] @'Text'@
 type Overview = Text
+
+-- | A sub property of participant. The participant who is at the receiving end of the action.
+--
+--   [@id@] recipient
+--
+--   [@label@] Recipient
+--
+--   [@comment@] A sub property of participant. The participant who is at the receiving end of the action.
+--
+--   [@domains@] @'DonateAction','ReturnAction','GiveAction','CommunicateAction','PayAction','SendAction','TipAction','AuthorizeAction'@
+--
+--   [@ranges@] @'Organization','Audience','Person'@
+type Recipient = Either3 Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Audience.Audience Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The latitude of a location. For example 37.42242.
 --
@@ -2958,6 +3164,19 @@ type Aspect = Text
 --   [@ranges@] @'MedicalTrialDesign'@
 type TrialDesign = Text.HTML5.MetaData.Schema.MedicalTrialDesign.MedicalTrialDesign
 
+-- | A sub property of instrument. The recipe/instructions used to perform the action.
+--
+--   [@id@] recipe
+--
+--   [@label@] Recipe
+--
+--   [@comment@] A sub property of instrument. The recipe/instructions used to perform the action.
+--
+--   [@domains@] @'CookAction'@
+--
+--   [@ranges@] @'Recipe'@
+type Recipe = Text.HTML5.MetaData.Schema.Recipe.Recipe
+
 -- | The album to which this recording belongs.
 --
 --   [@id@] inAlbum
@@ -3075,6 +3294,19 @@ type Director = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'MedicalEntity'@
 type AdverseOutcome = Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity
 
+-- | When the Action was performed: start time. This is for actions that span a period of time. e.g. John wrote a book from *January* to December.
+--
+--   [@id@] startTime
+--
+--   [@label@] Start Time
+--
+--   [@comment@] When the Action was performed: start time. This is for actions that span a period of time. e.g. John wrote a book from *January* to December.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'DateTime'@
+type StartTime = DateTime
+
 -- | A person attending the event (legacy spelling; see singular form, attendee).
 --
 --   [@id@] attendees
@@ -3179,6 +3411,19 @@ type StudyDesign = Text.HTML5.MetaData.Schema.MedicalObservationalStudyDesign.Me
 --   [@ranges@] @'Text'@
 type NonProprietaryName = Text
 
+-- | A sub property of location. The course where this action was taken.
+--
+--   [@id@] course
+--
+--   [@label@] Course
+--
+--   [@comment@] A sub property of location. The course where this action was taken.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'Place'@
+type Course = Text.HTML5.MetaData.Schema.Place.Place
+
 -- | The anatomical or organ system that the artery originates from.
 --
 --   [@id@] source
@@ -3191,6 +3436,19 @@ type NonProprietaryName = Text
 --
 --   [@ranges@] @'AnatomicalStructure'@
 type Source = Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
+
+-- | A sub property of object. The candidate subject of this action.
+--
+--   [@id@] candidate
+--
+--   [@label@] Candidate
+--
+--   [@comment@] A sub property of object. The candidate subject of this action.
+--
+--   [@domains@] @'VoteAction'@
+--
+--   [@ranges@] @'Person'@
+type Candidate = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The condition, complication, etc. influenced by this factor.
 --
@@ -3478,6 +3736,19 @@ type ArticleSection = Text
 --   [@ranges@] @'Text','GeoShape'@
 type EligibleRegion = Either Text Text.HTML5.MetaData.Schema.GeoShape.GeoShape
 
+-- | A sub property of location. The sports event where this action occurred.
+--
+--   [@id@] sportsEvent
+--
+--   [@label@] Sports Event
+--
+--   [@comment@] A sub property of location. The sports event where this action occurred.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'SportsEvent'@
+type SportsEvent = Text.HTML5.MetaData.Schema.SportsEvent.SportsEvent
+
 -- | An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
 --
 --   [@id@] superEvent
@@ -3503,6 +3774,19 @@ type SuperEvent = Text.HTML5.MetaData.Schema.Event.Event
 --
 --   [@ranges@] @'ImageObject'@
 type Diagram = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+
+-- | The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.
+--
+--   [@id@] object
+--
+--   [@label@] Object
+--
+--   [@comment@] The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'Thing'@
+type Object = Text.HTML5.MetaData.Schema.Thing.Thing
 
 -- | Description of what changed in this version.
 --
@@ -3607,6 +3891,19 @@ type FoundingDate = Date
 --
 --   [@ranges@] @'MedicalTest'@
 type SubTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
+
+-- | A sub property of instrument. The query used on this action.
+--
+--   [@id@] query
+--
+--   [@label@] Query
+--
+--   [@comment@] A sub property of instrument. The query used on this action.
+--
+--   [@domains@] @'SearchAction'@
+--
+--   [@ranges@] @'Class','Text'@
+type Query = Either Text.HTML5.MetaData.Schema.Class.Class Text
 
 -- | The product that this structured value is referring to.
 --
@@ -3907,6 +4204,19 @@ type AppliesToDeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.Deliver
 --   [@ranges@] @'DataDownload'@
 type Distribution = Text.HTML5.MetaData.Schema.DataDownload.DataDownload
 
+-- | When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.
+--
+--   [@id@] endTime
+--
+--   [@label@] End Time
+--
+--   [@comment@] When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'DateTime'@
+type EndTime = DateTime
+
 -- | The opening hours of a certain place.
 --
 --   [@id@] openingHoursSpecification
@@ -4037,6 +4347,19 @@ type DifferentialDiagnosis = Text.HTML5.MetaData.Schema.DDxElement.DDxElement
 --   [@ranges@] @'Text'@
 type AlignmentType = Text
 
+-- | A sub property of location. The specific food establishment where the action occurreed.
+--
+--   [@id@] foodEstablishment
+--
+--   [@label@] Food Establishment
+--
+--   [@comment@] A sub property of location. The specific food establishment where the action occurreed.
+--
+--   [@domains@] @'CookAction'@
+--
+--   [@ranges@] @'FoodEstablishment','Place'@
+type FoodEstablishment = Either Text.HTML5.MetaData.Schema.FoodEstablishment.FoodEstablishment Text.HTML5.MetaData.Schema.Place.Place
+
 -- | True if this item's name is a proprietary/brand name (vs. generic name).
 --
 --   [@id@] isProprietary
@@ -4114,6 +4437,19 @@ type Image = URL
 --
 --   [@ranges@] @'Text'@
 type Significance = Text
+
+-- | A sub property of participant. The loser of the action.
+--
+--   [@id@] loser
+--
+--   [@label@] Loser
+--
+--   [@comment@] A sub property of participant. The loser of the action.
+--
+--   [@domains@] @'WinAction'@
+--
+--   [@ranges@] @'Person'@
+type Loser = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | A diagnostic test or procedure offered by this lab.
 --
@@ -4344,7 +4680,7 @@ type AlternateName = Text
 --
 --   [@comment@] A contact point for a person or organization (legacy spelling; see singular form, contactPoint).
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoints = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
@@ -4643,7 +4979,7 @@ type Sibling = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] Email address.
 --
---   [@domains@] @'Organization','ContactPoint','Person'@
+--   [@domains@] @'Person','ContactPoint','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Email = Text
@@ -4669,7 +5005,7 @@ type ContentLocation = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@comment@] Upcoming or past event associated with this place or organization.
 --
---   [@domains@] @'Organization','Place'@
+--   [@domains@] @'PlayAction','Place','JoinAction','InviteAction','Organization','InformAction','LeaveAction'@
 --
 --   [@ranges@] @'Event'@
 type Event = Text.HTML5.MetaData.Schema.Event.Event
@@ -4825,7 +5161,7 @@ type RelatedTo = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] A contact point for a person or organization.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'ContactPoint'@
 type ContactPoint = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
@@ -4855,6 +5191,19 @@ type AssociatedMedia = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 --
 --   [@ranges@] @'Mass'@
 type UnsaturatedFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
+
+-- | A sub property of instrument. The died used in this action.
+--
+--   [@id@] diet
+--
+--   [@label@] Diet
+--
+--   [@comment@] A sub property of instrument. The died used in this action.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'Diet'@
+type Diet = Text.HTML5.MetaData.Schema.Diet.Diet
 
 -- | File size in (mega/kilo) bytes.
 --
@@ -5103,6 +5452,19 @@ type Warranty = Text.HTML5.MetaData.Schema.WarrantyPromise.WarrantyPromise
 --   [@ranges@] @'ImageObject'@
 type Thumbnail = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
 
+-- | The time the object is scheduled to.
+--
+--   [@id@] scheduledTime
+--
+--   [@label@] Scheduled Time
+--
+--   [@comment@] The time the object is scheduled to.
+--
+--   [@domains@] @'PlanAction'@
+--
+--   [@ranges@] @'DateTime'@
+type ScheduledTime = DateTime
+
 -- | A possible treatment to address this condition, sign or symptom.
 --
 --   [@id@] possibleTreatment
@@ -5267,7 +5629,7 @@ type Reviews = Text.HTML5.MetaData.Schema.Review.Review
 --
 --   [@comment@] A pointer to products or services offered by the organization or person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Offer'@
 type MakesOffer = Text.HTML5.MetaData.Schema.Offer.Offer
@@ -5350,6 +5712,19 @@ type MemberOf = Text.HTML5.MetaData.Schema.Organization.Organization
 --   [@ranges@] @'AnatomicalSystem','SuperficialAnatomy','AnatomicalStructure'@
 type AssociatedAnatomy = Either3 Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.SuperficialAnatomy.SuperficialAnatomy Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
+-- | A sub property of object. The object that is being replaced.
+--
+--   [@id@] replacee
+--
+--   [@label@] Replacee
+--
+--   [@comment@] A sub property of object. The object that is being replaced.
+--
+--   [@domains@] @'ReplaceAction'@
+--
+--   [@ranges@] @'Thing'@
+type Replacee = Text.HTML5.MetaData.Schema.Thing.Thing
+
 -- | Specifies the Person or Organization that distributed the CreativeWork.
 --
 --   [@id@] provider
@@ -5397,7 +5772,7 @@ type ItemListOrder = Text
 --
 --   [@comment@] A count of a specific user interactions with this item—for example, <code>20 UserLikes</code>, <code>5 UserComments</code>, or <code>300 UserDownloads</code>. The user interaction type should be one of the sub types of <a href="http://schema.org/UserInteraction">UserInteraction</a>.
 --
---   [@domains@] @'Organization','CreativeWork','Place','Person'@
+--   [@domains@] @'Person','CreativeWork','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type InteractionCount = Text
@@ -5427,6 +5802,19 @@ type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
 --
 --   [@ranges@] @'PriceSpecification'@
 type EligibleTransactionVolume = Text.HTML5.MetaData.Schema.PriceSpecification.PriceSpecification
+
+-- | A sub property of participant. The winner of the action.
+--
+--   [@id@] winner
+--
+--   [@label@] Winner
+--
+--   [@comment@] A sub property of participant. The winner of the action.
+--
+--   [@domains@] @'LoseAction'@
+--
+--   [@ranges@] @'Person'@
+type Winner = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
 --
@@ -5480,6 +5868,19 @@ type RepresentativeOfPage = Boolean
 --   [@ranges@] @'Number'@
 type MaxPrice = Number
 
+-- | The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+--
+--   [@id@] agent
+--
+--   [@label@] Agent
+--
+--   [@comment@] The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Agent = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
 -- | The lower value of the product characteristic.
 --
 --   [@id@] minValue
@@ -5531,6 +5932,19 @@ type Gtin14 = Text
 --
 --   [@ranges@] @'Person'@
 type Editor = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | A sub property of participant. The oponent on this action.
+--
+--   [@id@] oponent
+--
+--   [@label@] Oponent
+--
+--   [@comment@] A sub property of participant. The oponent on this action.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'Person'@
+type Oponent = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
 --
@@ -5592,7 +6006,7 @@ type Lesser = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
 --
 --   [@comment@] Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
 --
---   [@domains@] @'ExercisePlan'@
+--   [@domains@] @'ExerciseAction','ExercisePlan'@
 --
 --   [@ranges@] @'Text'@
 type ExerciseType = Text
@@ -5674,6 +6088,19 @@ type IncludedRiskFactor = Text.HTML5.MetaData.Schema.MedicalRiskFactor.MedicalRi
 --
 --   [@ranges@] @'Organization'@
 type Publisher = Text.HTML5.MetaData.Schema.Organization.Organization
+
+-- | A sub property of object. The collection target of the action.
+--
+--   [@id@] collection
+--
+--   [@label@] Collection
+--
+--   [@comment@] A sub property of object. The collection target of the action.
+--
+--   [@domains@] @'UpdateAction'@
+--
+--   [@ranges@] @'Thing'@
+type Collection = Text.HTML5.MetaData.Schema.Thing.Thing
 
 -- | A line is a point-to-point path consisting of two or more points. A line is expressed as a series of two or more point objects separated by space.
 --
@@ -5779,6 +6206,32 @@ type AggregateRating = Text.HTML5.MetaData.Schema.AggregateRating.AggregateRatin
 --   [@ranges@] @'Integer'@
 type SeasonNumber = Integer
 
+-- | A sub property of location. The specific food event where the action occurred.
+--
+--   [@id@] foodEvent
+--
+--   [@label@] Food Event
+--
+--   [@comment@] A sub property of location. The specific food event where the action occurred.
+--
+--   [@domains@] @'CookAction'@
+--
+--   [@ranges@] @'FoodEvent'@
+type FoodEvent = Text.HTML5.MetaData.Schema.FoodEvent.FoodEvent
+
+-- | A sub property of object. The object that replaces.
+--
+--   [@id@] replacer
+--
+--   [@label@] Replacer
+--
+--   [@comment@] A sub property of object. The object that replaces.
+--
+--   [@domains@] @'ReplaceAction'@
+--
+--   [@ranges@] @'Thing'@
+type Replacer = Text.HTML5.MetaData.Schema.Thing.Thing
+
 -- | The scope of the warranty promise.
 --
 --   [@id@] warrantyScope
@@ -5818,6 +6271,19 @@ type SampleType = Text
 --   [@ranges@] @'Text','URL'@
 type FeatureList = Either Text URL
 
+-- | A sub property of location. The entertainment business where the action occurred.
+--
+--   [@id@] entertainmentBusiness
+--
+--   [@label@] Entertainment Business
+--
+--   [@comment@] A sub property of location. The entertainment business where the action occurred.
+--
+--   [@domains@] @'PerformAction'@
+--
+--   [@ranges@] @'EntertainmentBusiness'@
+type EntertainmentBusiness = Text.HTML5.MetaData.Schema.EntertainmentBusiness.EntertainmentBusiness
+
 -- | The North American Industry Classification System (NAICS) code for a particular organization or business person.
 --
 --   [@id@] naics
@@ -5826,7 +6292,7 @@ type FeatureList = Either Text URL
 --
 --   [@comment@] The North American Industry Classification System (NAICS) code for a particular organization or business person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Text'@
 type Naics = Text
@@ -6039,6 +6505,19 @@ type CodeValue = Text
 --   [@ranges@] @'Mass'@
 type SugarContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | A sub property of object. The options subject to this action.
+--
+--   [@id@] option
+--
+--   [@label@] Option
+--
+--   [@comment@] A sub property of object. The options subject to this action.
+--
+--   [@domains@] @'ChooseAction'@
+--
+--   [@ranges@] @'Text','Thing'@
+type Option = Either Text Text.HTML5.MetaData.Schema.Thing.Thing
+
 -- | The value of the product characteristic.
 --
 --   [@id@] value
@@ -6051,6 +6530,19 @@ type SugarContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --
 --   [@ranges@] @'Number'@
 type Value = Number
+
+-- | A sub property of location. The original location of the object or the agent before the action.
+--
+--   [@id@] fromLocation
+--
+--   [@label@] From Location
+--
+--   [@comment@] A sub property of location. The original location of the object or the agent before the action.
+--
+--   [@domains@] @'TransferAction','ExerciseAction','MoveAction'@
+--
+--   [@ranges@] @'Place','Number'@
+type FromLocation = Either Text.HTML5.MetaData.Schema.Place.Place Number
 
 -- | A media object that encode this CreativeWork.
 --
@@ -6065,13 +6557,13 @@ type Value = Number
 --   [@ranges@] @'MediaObject'@
 type Encoding = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 
--- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+-- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
 --
 --   [@id@] citation
 --
 --   [@label@] Citation
 --
---   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+--   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
 --
 --   [@domains@] @'CreativeWork'@
 --
@@ -6151,7 +6643,7 @@ type DurationOfWarranty = Text.HTML5.MetaData.Schema.QuantitativeValue.Quantitat
 --
 --   [@comment@] The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
 --
---   [@domains@] @'Organization','Product','Person'@
+--   [@domains@] @'Person','Product','Organization'@
 --
 --   [@ranges@] @'Organization','Brand'@
 type Brand = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Brand.Brand
@@ -6255,7 +6747,7 @@ type Epidemiology = Text
 --
 --   [@comment@] A pointer to products or services sought by the organization or person (demand).
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Demand'@
 type Seeks = Text.HTML5.MetaData.Schema.Demand.Demand
@@ -6285,6 +6777,19 @@ type PhysiologicalBenefits = Text
 --
 --   [@ranges@] @'URL'@
 type Url = URL
+
+-- | A sub property of instrument. The method of delivery
+--
+--   [@id@] deliveryMethod
+--
+--   [@label@] Delivery Method
+--
+--   [@comment@] A sub property of instrument. The method of delivery
+--
+--   [@domains@] @'ReceiveAction','TrackAction','SendAction'@
+--
+--   [@ranges@] @'DeliveryMethod'@
+type DeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.DeliveryMethod
 
 -- | The unit of measurement given using the UN/CEFACT Common Code (3 characters).
 --
@@ -6324,6 +6829,19 @@ type Logo = Either URL Text.HTML5.MetaData.Schema.ImageObject.ImageObject
 --
 --   [@ranges@] @'Drug'@
 type RelatedDrug = Text.HTML5.MetaData.Schema.Drug.Drug
+
+-- | A sub property of result. The review that resulted in the performing of the action.
+--
+--   [@id@] resultReview
+--
+--   [@label@] Result Review
+--
+--   [@comment@] A sub property of result. The review that resulted in the performing of the action.
+--
+--   [@domains@] @'ReviewAction'@
+--
+--   [@ranges@] @'Review'@
+type ResultReview = Text.HTML5.MetaData.Schema.Review.Review
 
 -- | A data catalog which contains a dataset.
 --
@@ -6376,6 +6894,19 @@ type Offers = Text.HTML5.MetaData.Schema.Offer.Offer
 --
 --   [@ranges@] @'Duration'@
 type ActivityDuration = Text.HTML5.MetaData.Schema.Duration.Duration
+
+-- | The warranty promise(s) included in the offer.
+--
+--   [@id@] warrantyPromise
+--
+--   [@label@] Warranty Promise
+--
+--   [@comment@] The warranty promise(s) included in the offer.
+--
+--   [@domains@] @'SellAction','BuyAction'@
+--
+--   [@ranges@] @'WarrantyPromise'@
+type WarrantyPromise = Text.HTML5.MetaData.Schema.WarrantyPromise.WarrantyPromise
 
 -- | The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
 --
@@ -6697,7 +7228,7 @@ type Expires = Date
 --
 --   [@comment@] The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'Text'@
 type TaxID = Text
@@ -6780,15 +7311,28 @@ type Bitrate = Text
 --   [@ranges@] @'Text'@
 type Procedure = Text
 
--- | The location of the event or organization.
+-- | The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.
+--
+--   [@id@] instrument
+--
+--   [@label@] Instrument
+--
+--   [@comment@] The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.
+--
+--   [@domains@] @'Action'@
+--
+--   [@ranges@] @'Thing'@
+type Instrument = Text.HTML5.MetaData.Schema.Thing.Thing
+
+-- | The location of the event, organization or action.
 --
 --   [@id@] location
 --
 --   [@label@] Location
 --
---   [@comment@] The location of the event or organization.
+--   [@comment@] The location of the event, organization or action.
 --
---   [@domains@] @'Organization','Event'@
+--   [@domains@] @'Action','Organization','Event'@
 --
 --   [@ranges@] @'PostalAddress','Place'@
 type Location = Either Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress Text.HTML5.MetaData.Schema.Place.Place
@@ -6892,7 +7436,7 @@ type ReleaseDate = Date
 --
 --   [@comment@] The subject matter of the content.
 --
---   [@domains@] @'CreativeWork'@
+--   [@domains@] @'CommunicateAction','CreativeWork'@
 --
 --   [@ranges@] @'Thing'@
 type About = Text.HTML5.MetaData.Schema.Thing.Thing
@@ -6988,6 +7532,19 @@ type FileFormat = Text
 --   [@ranges@] @'Text'@
 type CountriesNotSupported = Text
 
+-- | A sub property of instrument. The exercise plan used on this action.
+--
+--   [@id@] exercisePlan
+--
+--   [@label@] Exercise Plan
+--
+--   [@comment@] A sub property of instrument. The exercise plan used on this action.
+--
+--   [@domains@] @'ExerciseAction'@
+--
+--   [@ranges@] @'ExercisePlan'@
+type ExercisePlan = Text.HTML5.MetaData.Schema.ExercisePlan.ExercisePlan
+
 -- | The trailer of the movie or TV series, season, or episode.
 --
 --   [@id@] trailer
@@ -7061,7 +7618,7 @@ type Depth = Either Text.HTML5.MetaData.Schema.Distance.Distance Text.HTML5.Meta
 --
 --   [@comment@] Products owned by the organization or person.
 --
---   [@domains@] @'Organization','Person'@
+--   [@domains@] @'Person','Organization'@
 --
 --   [@ranges@] @'OwnershipInfo','Product'@
 type Owns = Either Text.HTML5.MetaData.Schema.OwnershipInfo.OwnershipInfo Text.HTML5.MetaData.Schema.Product.Product
@@ -7087,7 +7644,7 @@ type BookEdition = Text
 --
 --   [@comment@] The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
 --
---   [@domains@] @'PriceSpecification','Offer'@
+--   [@domains@] @'TradeAction','PriceSpecification','Offer'@
 --
 --   [@ranges@] @'Text','Number'@
 type Price = Either Text Number
@@ -7100,7 +7657,7 @@ type Price = Either Text Number
 --
 --   [@comment@] The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
 --
---   [@domains@] @'Organization','Place','Person'@
+--   [@domains@] @'Person','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type GlobalLocationNumber = Text
@@ -7144,6 +7701,32 @@ type BodyLocation = Text
 --   [@ranges@] @'Number'@
 type StageAsNumber = Number
 
+-- | A sub property of participant. The person that borrows the object being lent.
+--
+--   [@id@] borrower
+--
+--   [@label@] Borrower
+--
+--   [@comment@] A sub property of participant. The person that borrows the object being lent.
+--
+--   [@domains@] @'LendAction'@
+--
+--   [@ranges@] @'Person'@
+type Borrower = Text.HTML5.MetaData.Schema.Person.Person
+
+-- | A sub property of participant. The owner of the real estate property. Sub property of destination or participant?
+--
+--   [@id@] landlord
+--
+--   [@label@] Landlord
+--
+--   [@comment@] A sub property of participant. The owner of the real estate property. Sub property of destination or participant?
+--
+--   [@domains@] @'RentAction'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Landlord = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
 -- | If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).
 --
 --   [@id@] printPage
@@ -7156,6 +7739,19 @@ type StageAsNumber = Number
 --
 --   [@ranges@] @'Text'@
 type PrintPage = Text
+
+-- | A sub property of instrument. The languaged used on this action.
+--
+--   [@id@] language
+--
+--   [@label@] Language
+--
+--   [@comment@] A sub property of instrument. The languaged used on this action.
+--
+--   [@domains@] @'WriteAction','CommunicateAction'@
+--
+--   [@ranges@] @'Language'@
+type Language = Text.HTML5.MetaData.Schema.Language.Language
 
 -- | The length of time it takes to prepare the recipe, in ISO 8601 duration format.
 --
@@ -7386,7 +7982,7 @@ type Alumni = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
 --
---   [@domains@] @'Organization','Place','Person'@
+--   [@domains@] @'Person','Place','Organization'@
 --
 --   [@ranges@] @'Text'@
 type IsicV4 = Text
