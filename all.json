@@ -181,6 +181,7 @@
       "comment": "The subject matter of the content.", 
       "comment_plain": "The subject matter of the content.", 
       "domains": [
+        "CommunicateAction", 
         "CreativeWork"
       ], 
       "id": "about", 
@@ -370,9 +371,9 @@
       "comment": "Physical address of the item.", 
       "comment_plain": "Physical address of the item.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "address", 
       "label": "Address", 
@@ -476,6 +477,19 @@
       "label": "Affiliation", 
       "ranges": [
         "Organization"
+      ]
+    }, 
+    "agent": {
+      "comment": "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.", 
+      "comment_plain": "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "agent", 
+      "label": "Agent", 
+      "ranges": [
+        "Organization", 
+        "Person"
       ]
     }, 
     "aggregateRating": {
@@ -857,8 +871,9 @@
       "comment": "The intended audience of the item, i.e. the group for whom the item was created.", 
       "comment_plain": "The intended audience of the item, i.e. the group for whom the item was created.", 
       "domains": [
-        "Product", 
-        "CreativeWork"
+        "PlayAction", 
+        "CreativeWork", 
+        "Product"
       ], 
       "id": "audience", 
       "label": "Audience", 
@@ -1203,6 +1218,18 @@
         "BookFormatType"
       ]
     }, 
+    "borrower": {
+      "comment": "A sub property of participant. The person that borrows the object being lent.", 
+      "comment_plain": "A sub property of participant. The person that borrows the object being lent.", 
+      "domains": [
+        "LendAction"
+      ], 
+      "id": "borrower", 
+      "label": "Borrower", 
+      "ranges": [
+        "Person"
+      ]
+    }, 
     "box": {
       "comment": "A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more spacedelimited points where the first and final points are identical.", 
       "comment_plain": "A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more spacedelimited points where the first and final points are identical.", 
@@ -1244,9 +1271,9 @@
       "comment": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.", 
       "comment_plain": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "Product", 
-        "Person"
+        "Organization"
       ], 
       "id": "brand", 
       "label": "Brand", 
@@ -1305,6 +1332,18 @@
         "BusinessFunction"
       ]
     }, 
+    "buyer": {
+      "comment": "A sub property of participant. The participant/person/organization that bought the object.", 
+      "comment_plain": "A sub property of participant. The participant/person/organization that bought the object.", 
+      "domains": [
+        "SellAction"
+      ], 
+      "id": "buyer", 
+      "label": "Buyer", 
+      "ranges": [
+        "Person"
+      ]
+    }, 
     "byArtist": {
       "comment": "The artist that performed this album or recording.", 
       "comment_plain": "The artist that performed this album or recording.", 
@@ -1328,6 +1367,18 @@
       "label": "Calories", 
       "ranges": [
         "Energy"
+      ]
+    }, 
+    "candidate": {
+      "comment": "A sub property of object. The candidate subject of this action.", 
+      "comment_plain": "A sub property of object. The candidate subject of this action.", 
+      "domains": [
+        "VoteAction"
+      ], 
+      "id": "candidate", 
+      "label": "Candidate", 
+      "ranges": [
+        "Person"
       ]
     }, 
     "caption": {
@@ -1480,8 +1531,8 @@
       ]
     }, 
     "citation": {
-      "comment": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.", 
-      "comment_plain": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.", 
+      "comment": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.", 
+      "comment_plain": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.", 
       "domains": [
         "CreativeWork"
       ], 
@@ -1588,6 +1639,18 @@
         "Person"
       ]
     }, 
+    "collection": {
+      "comment": "A sub property of object. The collection target of the action.", 
+      "comment_plain": "A sub property of object. The collection target of the action.", 
+      "domains": [
+        "UpdateAction"
+      ], 
+      "id": "collection", 
+      "label": "Collection", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
     "color": {
       "comment": "The color of the product.", 
       "comment_plain": "The color of the product.", 
@@ -1665,8 +1728,8 @@
       "comment": "A contact point for a person or organization.", 
       "comment_plain": "A contact point for a person or organization.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "contactPoint", 
       "label": "Contact Point", 
@@ -1678,8 +1741,8 @@
       "comment": "A contact point for a person or organization (legacy spelling; see singular form, contactPoint).", 
       "comment_plain": "A contact point for a person or organization (legacy spelling; see singular form, contactPoint).", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "contactPoints", 
       "label": "Contact Points", 
@@ -1919,6 +1982,18 @@
         "Text"
       ]
     }, 
+    "course": {
+      "comment": "A sub property of location. The course where this action was taken.", 
+      "comment_plain": "A sub property of location. The course where this action was taken.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "course", 
+      "label": "Course", 
+      "ranges": [
+        "Place"
+      ]
+    }, 
     "creator": {
       "comment": "The creator/author of this CreativeWork or UserComments. This is the same as the Author property for CreativeWork.", 
       "comment_plain": "The creator/author of this CreativeWork or UserComments. This is the same as the Author property for CreativeWork.", 
@@ -2054,6 +2129,20 @@
         "QuantitativeValue"
       ]
     }, 
+    "deliveryMethod": {
+      "comment": "A sub property of instrument. The method of delivery", 
+      "comment_plain": "A sub property of instrument. The method of delivery", 
+      "domains": [
+        "ReceiveAction", 
+        "TrackAction", 
+        "SendAction"
+      ], 
+      "id": "deliveryMethod", 
+      "label": "Delivery Method", 
+      "ranges": [
+        "DeliveryMethod"
+      ]
+    }, 
     "dependencies": {
       "comment": "Prerequisites needed to fulfill steps in article.", 
       "comment_plain": "Prerequisites needed to fulfill steps in article.", 
@@ -2127,6 +2216,18 @@
         "ImageObject"
       ]
     }, 
+    "diet": {
+      "comment": "A sub property of instrument. The died used in this action.", 
+      "comment_plain": "A sub property of instrument. The died used in this action.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "diet", 
+      "label": "Diet", 
+      "ranges": [
+        "Diet"
+      ]
+    }, 
     "dietFeatures": {
       "comment": "Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines.", 
       "comment_plain": "Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines.", 
@@ -2187,6 +2288,19 @@
       "label": "Discussion Url", 
       "ranges": [
         "URL"
+      ]
+    }, 
+    "distance": {
+      "comment": "A sub property of asset. The distance travelled.", 
+      "comment_plain": "A sub property of asset. The distance travelled.", 
+      "domains": [
+        "TravelAction", 
+        "ExerciseAction"
+      ], 
+      "id": "distance", 
+      "label": "Distance", 
+      "ranges": [
+        "Distance"
       ]
     }, 
     "distinguishingSign": {
@@ -2338,8 +2452,8 @@
       "comment": "The Dun & Bradstreet DUNS number for identifying an organization or business person.", 
       "comment_plain": "The Dun & Bradstreet DUNS number for identifying an organization or business person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "duns", 
       "label": "Duns", 
@@ -2545,9 +2659,9 @@
       "comment": "Email address.", 
       "comment_plain": "Email address.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "ContactPoint", 
-        "Person"
+        "Organization"
       ], 
       "id": "email", 
       "label": "Email", 
@@ -2665,6 +2779,31 @@
         "Date"
       ]
     }, 
+    "endTime": {
+      "comment": "When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.", 
+      "comment_plain": "When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "endTime", 
+      "label": "End Time", 
+      "ranges": [
+        "DateTime"
+      ]
+    }, 
+    "endorsee": {
+      "comment": "A sub property of participant. The person/organization being supported.", 
+      "comment_plain": "A sub property of participant. The person/organization being supported.", 
+      "domains": [
+        "EndorseAction"
+      ], 
+      "id": "endorsee", 
+      "label": "Endorsee", 
+      "ranges": [
+        "Organization", 
+        "Person"
+      ]
+    }, 
     "endorsers": {
       "comment": "People or organizations that endorse the plan.", 
       "comment_plain": "People or organizations that endorse the plan.", 
@@ -2676,6 +2815,18 @@
       "ranges": [
         "Organization", 
         "Person"
+      ]
+    }, 
+    "entertainmentBusiness": {
+      "comment": "A sub property of location. The entertainment business where the action occurred.", 
+      "comment_plain": "A sub property of location. The entertainment business where the action occurred.", 
+      "domains": [
+        "PerformAction"
+      ], 
+      "id": "entertainmentBusiness", 
+      "label": "Entertainment Business", 
+      "ranges": [
+        "EntertainmentBusiness"
       ]
     }, 
     "epidemiology": {
@@ -2757,8 +2908,13 @@
       "comment": "Upcoming or past event associated with this place or organization.", 
       "comment_plain": "Upcoming or past event associated with this place or organization.", 
       "domains": [
+        "PlayAction", 
+        "Place", 
+        "JoinAction", 
+        "InviteAction", 
         "Organization", 
-        "Place"
+        "InformAction", 
+        "LeaveAction"
       ], 
       "id": "event", 
       "label": "Event", 
@@ -2803,10 +2959,23 @@
         "Text"
       ]
     }, 
+    "exercisePlan": {
+      "comment": "A sub property of instrument. The exercise plan used on this action.", 
+      "comment_plain": "A sub property of instrument. The exercise plan used on this action.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "exercisePlan", 
+      "label": "Exercise Plan", 
+      "ranges": [
+        "ExercisePlan"
+      ]
+    }, 
     "exerciseType": {
       "comment": "Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.", 
       "comment_plain": "Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.", 
       "domains": [
+        "ExerciseAction", 
         "ExercisePlan"
       ], 
       "id": "exerciseType", 
@@ -2903,10 +3072,10 @@
       "comment": "The fax number.", 
       "comment_plain": "The fax number.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "ContactPoint", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "faxNumber", 
       "label": "Fax Number", 
@@ -2963,6 +3132,19 @@
         "Integer"
       ]
     }, 
+    "followee": {
+      "comment": "A sub property of object. The person or organization being followed.", 
+      "comment_plain": "A sub property of object. The person or organization being followed.", 
+      "domains": [
+        "FollowAction"
+      ], 
+      "id": "followee", 
+      "label": "Followee", 
+      "ranges": [
+        "Organization", 
+        "Person"
+      ]
+    }, 
     "follows": {
       "comment": "The most generic uni-directional social relation.", 
       "comment_plain": "The most generic uni-directional social relation.", 
@@ -2985,6 +3167,31 @@
       "label": "Followup", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "foodEstablishment": {
+      "comment": "A sub property of location. The specific food establishment where the action occurreed.", 
+      "comment_plain": "A sub property of location. The specific food establishment where the action occurreed.", 
+      "domains": [
+        "CookAction"
+      ], 
+      "id": "foodEstablishment", 
+      "label": "Food Establishment", 
+      "ranges": [
+        "FoodEstablishment", 
+        "Place"
+      ]
+    }, 
+    "foodEvent": {
+      "comment": "A sub property of location. The specific food event where the action occurred.", 
+      "comment_plain": "A sub property of location. The specific food event where the action occurred.", 
+      "domains": [
+        "CookAction"
+      ], 
+      "id": "foodEvent", 
+      "label": "Food Event", 
+      "ranges": [
+        "FoodEvent"
       ]
     }, 
     "foodWarning": {
@@ -3045,6 +3252,21 @@
       "label": "Frequency", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "fromLocation": {
+      "comment": "A sub property of location. The original location of the object or the agent before the action.", 
+      "comment_plain": "A sub property of location. The original location of the object or the agent before the action.", 
+      "domains": [
+        "TransferAction", 
+        "ExerciseAction", 
+        "MoveAction"
+      ], 
+      "id": "fromLocation", 
+      "label": "From Location", 
+      "ranges": [
+        "Place", 
+        "Number"
       ]
     }, 
     "function": {
@@ -3124,9 +3346,9 @@
       "comment": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.", 
       "comment_plain": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "globalLocationNumber", 
       "label": "Global Location Number", 
@@ -3240,8 +3462,8 @@
       "comment": "Points-of-Sales operated by the organization or person.", 
       "comment_plain": "Points-of-Sales operated by the organization or person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "hasPOS", 
       "label": "Has POS", 
@@ -3603,6 +3825,18 @@
         "URL"
       ]
     }, 
+    "instrument": {
+      "comment": "The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.", 
+      "comment_plain": "The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "instrument", 
+      "label": "Instrument", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
     "intensity": {
       "comment": "Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.", 
       "comment_plain": "Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.", 
@@ -3631,10 +3865,10 @@
       "comment": "A count of a specific user interactions with this item\u2014for example, <code>20 UserLikes</code>, <code>5 UserComments</code>, or <code>300 UserDownloads</code>. The user interaction type should be one of the sub types of <a href=\"http://schema.org/UserInteraction\">UserInteraction</a>.", 
       "comment_plain": "A count of a specific user interactions with this item\u2014for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "CreativeWork", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "interactionCount", 
       "label": "Interaction Count", 
@@ -3805,9 +4039,9 @@
       "comment": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.", 
       "comment_plain": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "isicV4", 
       "label": "Isic V4", 
@@ -3939,6 +4173,32 @@
         "URL"
       ]
     }, 
+    "landlord": {
+      "comment": "A sub property of participant. The owner of the real estate property. Sub property of destination or participant?", 
+      "comment_plain": "A sub property of participant. The owner of the real estate property. Sub property of destination or participant?", 
+      "domains": [
+        "RentAction"
+      ], 
+      "id": "landlord", 
+      "label": "Landlord", 
+      "ranges": [
+        "Organization", 
+        "Person"
+      ]
+    }, 
+    "language": {
+      "comment": "A sub property of instrument. The languaged used on this action.", 
+      "comment_plain": "A sub property of instrument. The languaged used on this action.", 
+      "domains": [
+        "WriteAction", 
+        "CommunicateAction"
+      ], 
+      "id": "language", 
+      "label": "Language", 
+      "ranges": [
+        "Language"
+      ]
+    }, 
     "lastReviewed": {
       "comment": "Date on which the content on this web page was last reviewed for accuracy and/or completeness.", 
       "comment_plain": "Date on which the content on this web page was last reviewed for accuracy and/or completeness.", 
@@ -4001,6 +4261,18 @@
         "DrugLegalStatus"
       ]
     }, 
+    "lender": {
+      "comment": "A sub property of participant. The person that lends the object being borrowed.", 
+      "comment_plain": "A sub property of participant. The person that lends the object being borrowed.", 
+      "domains": [
+        "BorrowAction"
+      ], 
+      "id": "lender", 
+      "label": "Lender", 
+      "ranges": [
+        "Person"
+      ]
+    }, 
     "lesser": {
       "comment": "This ordering relation for qualitative values indicates that the subject is lesser than the object.", 
       "comment_plain": "This ordering relation for qualitative values indicates that the subject is lesser than the object.", 
@@ -4038,9 +4310,10 @@
       ]
     }, 
     "location": {
-      "comment": "The location of the event or organization.", 
-      "comment_plain": "The location of the event or organization.", 
+      "comment": "The location of the event, organization or action.", 
+      "comment_plain": "The location of the event, organization or action.", 
       "domains": [
+        "Action", 
         "Organization", 
         "Event"
       ], 
@@ -4080,6 +4353,18 @@
         "Text"
       ]
     }, 
+    "loser": {
+      "comment": "A sub property of participant. The loser of the action.", 
+      "comment_plain": "A sub property of participant. The loser of the action.", 
+      "domains": [
+        "WinAction"
+      ], 
+      "id": "loser", 
+      "label": "Loser", 
+      "ranges": [
+        "Person"
+      ]
+    }, 
     "lowPrice": {
       "comment": "The lowest price of all offers available.", 
       "comment_plain": "The lowest price of all offers available.", 
@@ -4109,8 +4394,8 @@
       "comment": "A pointer to products or services offered by the organization or person.", 
       "comment_plain": "A pointer to products or services offered by the organization or person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "makesOffer", 
       "label": "Makes Offer", 
@@ -4389,8 +4674,8 @@
       "comment": "The North American Industry Classification System (NAICS) code for a particular organization or business person.", 
       "comment_plain": "The North American Industry Classification System (NAICS) code for a particular organization or business person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "naics", 
       "label": "Naics", 
@@ -4544,6 +4829,18 @@
         "NutritionInformation"
       ]
     }, 
+    "object": {
+      "comment": "The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.", 
+      "comment_plain": "The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "object", 
+      "label": "Object", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
     "occupationalCategory": {
       "comment": "Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.", 
       "comment_plain": "Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.", 
@@ -4629,6 +4926,31 @@
       "label": "Operating System", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "oponent": {
+      "comment": "A sub property of participant. The oponent on this action.", 
+      "comment_plain": "A sub property of participant. The oponent on this action.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "oponent", 
+      "label": "Oponent", 
+      "ranges": [
+        "Person"
+      ]
+    }, 
+    "option": {
+      "comment": "A sub property of object. The options subject to this action.", 
+      "comment_plain": "A sub property of object. The options subject to this action.", 
+      "domains": [
+        "ChooseAction"
+      ], 
+      "id": "option", 
+      "label": "Option", 
+      "ranges": [
+        "Text", 
+        "Thing"
       ]
     }, 
     "origin": {
@@ -4719,8 +5041,8 @@
       "comment": "Products owned by the organization or person.", 
       "comment_plain": "Products owned by the organization or person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "owns", 
       "label": "Owns", 
@@ -4788,6 +5110,19 @@
       "label": "Part of TV Series", 
       "ranges": [
         "TVSeries"
+      ]
+    }, 
+    "participant": {
+      "comment": "Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.", 
+      "comment_plain": "Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "participant", 
+      "label": "Participant", 
+      "ranges": [
+        "Organization", 
+        "Person"
       ]
     }, 
     "pathophysiology": {
@@ -5112,6 +5447,7 @@
       "comment": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.", 
       "comment_plain": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.", 
       "domains": [
+        "TradeAction", 
         "PriceSpecification", 
         "Offer"
       ], 
@@ -5443,14 +5779,17 @@
       ]
     }, 
     "purpose": {
-      "comment": "The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.", 
-      "comment_plain": "The purpose or purposes of this device, for example whether it is intended for diagnostic or therapeutic use.", 
+      "comment": "A goal towards an action is taken. Can be concrete or abstract.", 
+      "comment_plain": "A goal towards an action is taken. Can be concrete or abstract.", 
       "domains": [
-        "MedicalDevice"
+        "AllocateAction", 
+        "MedicalDevice", 
+        "PayAction"
       ], 
       "id": "purpose", 
       "label": "Purpose", 
       "ranges": [
+        "Thing", 
         "MedicalDevicePurpose"
       ]
     }, 
@@ -5462,6 +5801,31 @@
       ], 
       "id": "qualifications", 
       "label": "Qualifications", 
+      "ranges": [
+        "Text"
+      ]
+    }, 
+    "query": {
+      "comment": "A sub property of instrument. The query used on this action.", 
+      "comment_plain": "A sub property of instrument. The query used on this action.", 
+      "domains": [
+        "SearchAction"
+      ], 
+      "id": "query", 
+      "label": "Query", 
+      "ranges": [
+        "Class", 
+        "Text"
+      ]
+    }, 
+    "question": {
+      "comment": "A sub property of object. A question.", 
+      "comment_plain": "A sub property of object. A question.", 
+      "domains": [
+        "AskAction"
+      ], 
+      "id": "question", 
+      "label": "Question", 
       "ranges": [
         "Text"
       ]
@@ -5500,6 +5864,30 @@
       "label": "Rating Value", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "realEstateAgent": {
+      "comment": "A sub property of participant. The real estate agent involved in the action.", 
+      "comment_plain": "A sub property of participant. The real estate agent involved in the action.", 
+      "domains": [
+        "RentAction"
+      ], 
+      "id": "realEstateAgent", 
+      "label": "Real Estate Agent", 
+      "ranges": [
+        "RealEstateAgent"
+      ]
+    }, 
+    "recipe": {
+      "comment": "A sub property of instrument. The recipe/instructions used to perform the action.", 
+      "comment_plain": "A sub property of instrument. The recipe/instructions used to perform the action.", 
+      "domains": [
+        "CookAction"
+      ], 
+      "id": "recipe", 
+      "label": "Recipe", 
+      "ranges": [
+        "Recipe"
       ]
     }, 
     "recipeCategory": {
@@ -5548,6 +5936,27 @@
       "label": "Recipe Yield", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "recipient": {
+      "comment": "A sub property of participant. The participant who is at the receiving end of the action.", 
+      "comment_plain": "A sub property of participant. The participant who is at the receiving end of the action.", 
+      "domains": [
+        "DonateAction", 
+        "ReturnAction", 
+        "GiveAction", 
+        "CommunicateAction", 
+        "PayAction", 
+        "SendAction", 
+        "TipAction", 
+        "AuthorizeAction"
+      ], 
+      "id": "recipient", 
+      "label": "Recipient", 
+      "ranges": [
+        "Organization", 
+        "Audience", 
+        "Person"
       ]
     }, 
     "recognizingAuthority": {
@@ -5750,6 +6159,30 @@
         "Number"
       ]
     }, 
+    "replacee": {
+      "comment": "A sub property of object. The object that is being replaced.", 
+      "comment_plain": "A sub property of object. The object that is being replaced.", 
+      "domains": [
+        "ReplaceAction"
+      ], 
+      "id": "replacee", 
+      "label": "Replacee", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
+    "replacer": {
+      "comment": "A sub property of object. The object that replaces.", 
+      "comment_plain": "A sub property of object. The object that replaces.", 
+      "domains": [
+        "ReplaceAction"
+      ], 
+      "id": "replacer", 
+      "label": "Replacer", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
     "replyToUrl": {
       "comment": "The URL at which a reply may be posted to the specified UserComment.", 
       "comment_plain": "The URL at which a reply may be posted to the specified UserComment.", 
@@ -5821,6 +6254,30 @@
       "label": "Rest Periods", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "result": {
+      "comment": "The result produced in the action. e.g. John wrote *a book*.", 
+      "comment_plain": "The result produced in the action. e.g. John wrote *a book*.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "result", 
+      "label": "Result", 
+      "ranges": [
+        "Thing"
+      ]
+    }, 
+    "resultReview": {
+      "comment": "A sub property of result. The review that resulted in the performing of the action.", 
+      "comment_plain": "A sub property of result. The review that resulted in the performing of the action.", 
+      "domains": [
+        "ReviewAction"
+      ], 
+      "id": "resultReview", 
+      "label": "Result Review", 
+      "ranges": [
+        "Review"
       ]
     }, 
     "review": {
@@ -6012,6 +6469,18 @@
         "Mass"
       ]
     }, 
+    "scheduledTime": {
+      "comment": "The time the object is scheduled to.", 
+      "comment_plain": "The time the object is scheduled to.", 
+      "domains": [
+        "PlanAction"
+      ], 
+      "id": "scheduledTime", 
+      "label": "Scheduled Time", 
+      "ranges": [
+        "DateTime"
+      ]
+    }, 
     "screenshot": {
       "comment": "A link to a screenshot image of the app.", 
       "comment_plain": "A link to a screenshot image of the app.", 
@@ -6077,8 +6546,8 @@
       "comment": "A pointer to products or services sought by the organization or person (demand).", 
       "comment_plain": "A pointer to products or services sought by the organization or person (demand).", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "seeks", 
       "label": "Seeks", 
@@ -6096,6 +6565,20 @@
       "id": "seller", 
       "label": "Seller", 
       "ranges": [
+        "Organization", 
+        "Person"
+      ]
+    }, 
+    "sender": {
+      "comment": "A sub property of participant. The participant who is at the sending end of the action.", 
+      "comment_plain": "A sub property of participant. The participant who is at the sending end of the action.", 
+      "domains": [
+        "ReceiveAction"
+      ], 
+      "id": "sender", 
+      "label": "Sender", 
+      "ranges": [
+        "Audience", 
         "Organization", 
         "Person"
       ]
@@ -6382,6 +6865,42 @@
         "Organization"
       ]
     }, 
+    "sportsActivityLocation": {
+      "comment": "A sub property of location. The sports activity location where this action occurred.", 
+      "comment_plain": "A sub property of location. The sports activity location where this action occurred.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "sportsActivityLocation", 
+      "label": "Sports Activity Location", 
+      "ranges": [
+        "SportsActivityLocation"
+      ]
+    }, 
+    "sportsEvent": {
+      "comment": "A sub property of location. The sports event where this action occurred.", 
+      "comment_plain": "A sub property of location. The sports event where this action occurred.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "sportsEvent", 
+      "label": "Sports Event", 
+      "ranges": [
+        "SportsEvent"
+      ]
+    }, 
+    "sportsTeam": {
+      "comment": "A sub property of participant. The sports team that participated on this action.", 
+      "comment_plain": "A sub property of participant. The sports team that participated on this action.", 
+      "domains": [
+        "ExerciseAction"
+      ], 
+      "id": "sportsTeam", 
+      "label": "Sports Team", 
+      "ranges": [
+        "SportsTeam"
+      ]
+    }, 
     "spouse": {
       "comment": "The person's spouse.", 
       "comment_plain": "The person's spouse.", 
@@ -6430,6 +6949,18 @@
       "label": "Start Date", 
       "ranges": [
         "Date"
+      ]
+    }, 
+    "startTime": {
+      "comment": "When the Action was performed: start time. This is for actions that span a period of time. e.g. John wrote a book from *January* to December.", 
+      "comment_plain": "When the Action was performed: start time. This is for actions that span a period of time. e.g. John wrote a book from *January* to December.", 
+      "domains": [
+        "Action"
+      ], 
+      "id": "startTime", 
+      "label": "Start Time", 
+      "ranges": [
+        "DateTime"
       ]
     }, 
     "status": {
@@ -6786,8 +7317,8 @@
       "comment": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.", 
       "comment_plain": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "taxID", 
       "label": "Tax ID", 
@@ -6799,10 +7330,10 @@
       "comment": "The telephone number.", 
       "comment_plain": "The telephone number.", 
       "domains": [
-        "Organization", 
+        "Person", 
         "ContactPoint", 
         "Place", 
-        "Person"
+        "Organization"
       ], 
       "id": "telephone", 
       "label": "Telephone", 
@@ -6905,6 +7436,22 @@
       "label": "Title", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "toLocation": {
+      "comment": "A sub property of location. The final location of the object or the agent after the action.", 
+      "comment_plain": "A sub property of location. The final location of the object or the agent after the action.", 
+      "domains": [
+        "InsertAction", 
+        "TransferAction", 
+        "ExerciseAction", 
+        "MoveAction"
+      ], 
+      "id": "toLocation", 
+      "label": "To Location", 
+      "ranges": [
+        "Place", 
+        "Number"
       ]
     }, 
     "totalTime": {
@@ -7204,13 +7751,26 @@
       "comment": "The Value-added Tax ID of the organisation or person.", 
       "comment_plain": "The Value-added Tax ID of the organisation or person.", 
       "domains": [
-        "Organization", 
-        "Person"
+        "Person", 
+        "Organization"
       ], 
       "id": "vatID", 
       "label": "Vat ID", 
       "ranges": [
         "Text"
+      ]
+    }, 
+    "vendor": {
+      "comment": "A sub property of participant. The seller.The participant/person/organization that sold the object.", 
+      "comment_plain": "A sub property of participant. The seller.The participant/person/organization that sold the object.", 
+      "domains": [
+        "BuyAction"
+      ], 
+      "id": "vendor", 
+      "label": "Vendor", 
+      "ranges": [
+        "Organization", 
+        "Person"
       ]
     }, 
     "version": {
@@ -7287,6 +7847,19 @@
         "WarrantyPromise"
       ]
     }, 
+    "warrantyPromise": {
+      "comment": "The warranty promise(s) included in the offer.", 
+      "comment_plain": "The warranty promise(s) included in the offer.", 
+      "domains": [
+        "SellAction", 
+        "BuyAction"
+      ], 
+      "id": "warrantyPromise", 
+      "label": "Warranty Promise", 
+      "ranges": [
+        "WarrantyPromise"
+      ]
+    }, 
     "warrantyScope": {
       "comment": "The scope of the warranty promise.", 
       "comment_plain": "The scope of the warranty promise.", 
@@ -7323,6 +7896,18 @@
       "ranges": [
         "Distance", 
         "QuantitativeValue"
+      ]
+    }, 
+    "winner": {
+      "comment": "A sub property of participant. The winner of the action.", 
+      "comment_plain": "A sub property of participant. The winner of the action.", 
+      "domains": [
+        "LoseAction"
+      ], 
+      "id": "winner", 
+      "label": "Winner", 
+      "ranges": [
+        "Person"
       ]
     }, 
     "wordCount": {
@@ -7576,6 +8161,41 @@
       ], 
       "url": "http://schema.org/AboutPage"
     }, 
+    "AcceptAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "AllocateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AcceptAction", 
+      "label": "Accept Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "purpose"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "AllocateAction"
+      ], 
+      "url": "http://schema.org/AcceptAction"
+    }, 
     "AccountingService": {
       "ancestors": [
         "Thing", 
@@ -7647,6 +8267,132 @@
         "FinancialService"
       ], 
       "url": "http://schema.org/AccountingService"
+    }, 
+    "AchieveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AchieveAction", 
+      "label": "Achieve Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "LoseAction", 
+        "TieAction", 
+        "WinAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/AchieveAction"
+    }, 
+    "Action": {
+      "ancestors": [
+        "Thing"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "Action", 
+      "label": "Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "subtypes": [
+        "AchieveAction", 
+        "AssessAction", 
+        "ConsumeAction", 
+        "CreateAction", 
+        "FindAction", 
+        "InteractAction", 
+        "MoveAction", 
+        "OrganizeAction", 
+        "PlayAction", 
+        "SearchAction", 
+        "TradeAction", 
+        "TransferAction", 
+        "UpdateAction"
+      ], 
+      "supertypes": [
+        "Thing"
+      ], 
+      "url": "http://schema.org/Action"
+    }, 
+    "AddAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AddAction", 
+      "label": "Add Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "InsertAction"
+      ], 
+      "supertypes": [
+        "UpdateAction"
+      ], 
+      "url": "http://schema.org/AddAction"
     }, 
     "AdministrativeArea": {
       "ancestors": [
@@ -7870,6 +8616,40 @@
       ], 
       "url": "http://schema.org/AggregateRating"
     }, 
+    "AgreeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AgreeAction", 
+      "label": "Agree Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/AgreeAction"
+    }, 
     "Airport": {
       "ancestors": [
         "Thing", 
@@ -7949,6 +8729,47 @@
         "Intangible"
       ], 
       "url": "http://schema.org/AlignmentObject"
+    }, 
+    "AllocateAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AllocateAction", 
+      "label": "Allocate Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "purpose"
+      ], 
+      "specific_properties": [
+        "purpose"
+      ], 
+      "subtypes": [
+        "AcceptAction", 
+        "AssignAction", 
+        "AuthorizeAction", 
+        "RejectAction"
+      ], 
+      "supertypes": [
+        "OrganizeAction"
+      ], 
+      "url": "http://schema.org/AllocateAction"
     }, 
     "AmusementPark": {
       "ancestors": [
@@ -8235,6 +9056,76 @@
       ], 
       "url": "http://schema.org/ApartmentComplex"
     }, 
+    "AppendAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction", 
+        "AddAction", 
+        "InsertAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AppendAction", 
+      "label": "Append Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InsertAction"
+      ], 
+      "url": "http://schema.org/AppendAction"
+    }, 
+    "ApplyAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ApplyAction", 
+      "label": "Apply Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "OrganizeAction"
+      ], 
+      "url": "http://schema.org/ApplyAction"
+    }, 
     "ApprovedIndication": {
       "ancestors": [
         "Thing", 
@@ -8311,6 +9202,41 @@
         "CivicStructure"
       ], 
       "url": "http://schema.org/Aquarium"
+    }, 
+    "ArriveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "MoveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ArriveAction", 
+      "label": "Arrive Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "MoveAction"
+      ], 
+      "url": "http://schema.org/ArriveAction"
     }, 
     "ArtGallery": {
       "ancestors": [
@@ -8518,6 +9444,118 @@
       ], 
       "url": "http://schema.org/Article"
     }, 
+    "AskAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AskAction", 
+      "label": "Ask Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient", 
+        "question"
+      ], 
+      "specific_properties": [
+        "question"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/AskAction"
+    }, 
+    "AssessAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AssessAction", 
+      "label": "Assess Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "ChooseAction", 
+        "IgnoreAction", 
+        "ReactAction", 
+        "ReviewAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/AssessAction"
+    }, 
+    "AssignAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "AllocateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AssignAction", 
+      "label": "Assign Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "purpose"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "AllocateAction"
+      ], 
+      "url": "http://schema.org/AssignAction"
+    }, 
     "Attorney": {
       "ancestors": [
         "Thing", 
@@ -8712,6 +9750,44 @@
         "MediaObject"
       ], 
       "url": "http://schema.org/AudioObject"
+    }, 
+    "AuthorizeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "AllocateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "AuthorizeAction", 
+      "label": "Authorize Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "purpose", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "AllocateAction"
+      ], 
+      "url": "http://schema.org/AuthorizeAction"
     }, 
     "AutoBodyShop": {
       "ancestors": [
@@ -9697,6 +10773,39 @@
       ], 
       "url": "http://schema.org/BedAndBreakfast"
     }, 
+    "BefriendAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "BefriendAction", 
+      "label": "Befriend Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/BefriendAction"
+    }, 
     "BikeStore": {
       "ancestors": [
         "Thing", 
@@ -10242,6 +11351,77 @@
       ], 
       "url": "http://schema.org/BookStore"
     }, 
+    "BookmarkAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "BookmarkAction", 
+      "label": "Bookmark Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "OrganizeAction"
+      ], 
+      "url": "http://schema.org/BookmarkAction"
+    }, 
+    "BorrowAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "BorrowAction", 
+      "label": "Borrow Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "lender"
+      ], 
+      "specific_properties": [
+        "lender"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/BorrowAction"
+    }, 
     "BowlingAlley": {
       "ancestors": [
         "Thing", 
@@ -10677,6 +11857,45 @@
       ], 
       "url": "http://schema.org/BusinessFunction"
     }, 
+    "BuyAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "BuyAction", 
+      "label": "Buy Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "vendor", 
+        "warrantyPromise"
+      ], 
+      "specific_properties": [
+        "vendor", 
+        "warrantyPromise"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/BuyAction"
+    }, 
     "CafeOrCoffeeShop": {
       "ancestors": [
         "Thing", 
@@ -10841,6 +12060,41 @@
       ], 
       "url": "http://schema.org/Canal"
     }, 
+    "CancelAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "PlanAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CancelAction", 
+      "label": "Cancel Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "scheduledTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "PlanAction"
+      ], 
+      "url": "http://schema.org/CancelAction"
+    }, 
     "Casino": {
       "ancestors": [
         "Thing", 
@@ -11002,6 +12256,113 @@
         "CivicStructure"
       ], 
       "url": "http://schema.org/Cemetery"
+    }, 
+    "CheckAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "FindAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CheckAction", 
+      "label": "Check Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "FindAction"
+      ], 
+      "url": "http://schema.org/CheckAction"
+    }, 
+    "CheckInAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CheckInAction", 
+      "label": "Check in Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/CheckInAction"
+    }, 
+    "CheckOutAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CheckOutAction", 
+      "label": "Check Out Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/CheckOutAction"
     }, 
     "CheckoutPage": {
       "ancestors": [
@@ -11193,6 +12554,44 @@
         "Event"
       ], 
       "url": "http://schema.org/ChildrensEvent"
+    }, 
+    "ChooseAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ChooseAction", 
+      "label": "Choose Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "option"
+      ], 
+      "specific_properties": [
+        "option"
+      ], 
+      "subtypes": [
+        "VoteAction"
+      ], 
+      "supertypes": [
+        "AssessAction"
+      ], 
+      "url": "http://schema.org/ChooseAction"
     }, 
     "Church": {
       "ancestors": [
@@ -11911,6 +13310,92 @@
       ], 
       "url": "http://schema.org/Comment"
     }, 
+    "CommentAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CommentAction", 
+      "label": "Comment Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/CommentAction"
+    }, 
+    "CommunicateAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CommunicateAction", 
+      "label": "Communicate Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "subtypes": [
+        "AskAction", 
+        "CheckInAction", 
+        "CheckOutAction", 
+        "CommentAction", 
+        "InformAction", 
+        "InviteAction", 
+        "ReplyAction", 
+        "ShareAction"
+      ], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/CommunicateAction"
+    }, 
     "ComputerStore": {
       "ancestors": [
         "Thing", 
@@ -11981,6 +13466,86 @@
         "Store"
       ], 
       "url": "http://schema.org/ComputerStore"
+    }, 
+    "ConfirmAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction", 
+        "InformAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ConfirmAction", 
+      "label": "Confirm Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient", 
+        "event"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InformAction"
+      ], 
+      "url": "http://schema.org/ConfirmAction"
+    }, 
+    "ConsumeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ConsumeAction", 
+      "label": "Consume Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "DrinkAction", 
+        "EatAction", 
+        "InstallAction", 
+        "ListenAction", 
+        "ReadAction", 
+        "UseAction", 
+        "ViewAction", 
+        "WatchAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/ConsumeAction"
     }, 
     "ContactPage": {
       "ancestors": [
@@ -12218,6 +13783,46 @@
       ], 
       "url": "http://schema.org/ConvenienceStore"
     }, 
+    "CookAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CookAction", 
+      "label": "Cook Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "foodEstablishment", 
+        "foodEvent", 
+        "recipe"
+      ], 
+      "specific_properties": [
+        "foodEstablishment", 
+        "foodEvent", 
+        "recipe"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/CookAction"
+    }, 
     "Corporation": {
       "ancestors": [
         "Thing", 
@@ -12367,6 +13972,45 @@
         "GovernmentBuilding"
       ], 
       "url": "http://schema.org/Courthouse"
+    }, 
+    "CreateAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "CreateAction", 
+      "label": "Create Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "CookAction", 
+        "DrawAction", 
+        "FilmAction", 
+        "PaintAction", 
+        "PhotographAction", 
+        "WriteAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/CreateAction"
     }, 
     "CreativeWork": {
       "ancestors": [
@@ -13113,6 +14757,40 @@
       ], 
       "url": "http://schema.org/DefenceEstablishment"
     }, 
+    "DeleteAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DeleteAction", 
+      "label": "Delete Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "UpdateAction"
+      ], 
+      "url": "http://schema.org/DeleteAction"
+    }, 
     "DeliveryChargeSpecification": {
       "ancestors": [
         "Thing", 
@@ -13334,6 +15012,41 @@
         "ProfessionalService"
       ], 
       "url": "http://schema.org/Dentist"
+    }, 
+    "DepartAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "MoveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DepartAction", 
+      "label": "Depart Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "MoveAction"
+      ], 
+      "url": "http://schema.org/DepartAction"
     }, 
     "DepartmentStore": {
       "ancestors": [
@@ -13686,6 +15399,107 @@
       ], 
       "url": "http://schema.org/DietarySupplement"
     }, 
+    "DisagreeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DisagreeAction", 
+      "label": "Disagree Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/DisagreeAction"
+    }, 
+    "DiscoverAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "FindAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DiscoverAction", 
+      "label": "Discover Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "FindAction"
+      ], 
+      "url": "http://schema.org/DiscoverAction"
+    }, 
+    "DislikeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DislikeAction", 
+      "label": "Dislike Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/DislikeAction"
+    }, 
     "Distance": {
       "ancestors": [
         "Thing", 
@@ -13710,6 +15524,43 @@
         "Quantity"
       ], 
       "url": "http://schema.org/Distance"
+    }, 
+    "DonateAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DonateAction", 
+      "label": "Donate Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/DonateAction"
     }, 
     "DoseSchedule": {
       "ancestors": [
@@ -13755,6 +15606,107 @@
         "MedicalIntangible"
       ], 
       "url": "http://schema.org/DoseSchedule"
+    }, 
+    "DownloadAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DownloadAction", 
+      "label": "Download Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/DownloadAction"
+    }, 
+    "DrawAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DrawAction", 
+      "label": "Draw Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/DrawAction"
+    }, 
+    "DrinkAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "DrinkAction", 
+      "label": "Drink Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/DrinkAction"
     }, 
     "Drug": {
       "ancestors": [
@@ -14210,6 +16162,39 @@
         "Quantity"
       ], 
       "url": "http://schema.org/Duration"
+    }, 
+    "EatAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "EatAction", 
+      "label": "Eat Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/EatAction"
     }, 
     "EducationEvent": {
       "ancestors": [
@@ -14734,6 +16719,43 @@
       ], 
       "url": "http://schema.org/EmploymentAgency"
     }, 
+    "EndorseAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "EndorseAction", 
+      "label": "Endorse Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "endorsee"
+      ], 
+      "specific_properties": [
+        "endorsee"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/EndorseAction"
+    }, 
     "Energy": {
       "ancestors": [
         "Thing", 
@@ -14981,6 +17003,64 @@
         "CivicStructure"
       ], 
       "url": "http://schema.org/EventVenue"
+    }, 
+    "ExerciseAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "PlayAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ExerciseAction", 
+      "label": "Exercise Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "audience", 
+        "event", 
+        "course", 
+        "diet", 
+        "distance", 
+        "exercisePlan", 
+        "exerciseType", 
+        "fromLocation", 
+        "oponent", 
+        "sportsActivityLocation", 
+        "sportsEvent", 
+        "sportsTeam", 
+        "toLocation"
+      ], 
+      "specific_properties": [
+        "course", 
+        "diet", 
+        "distance", 
+        "exercisePlan", 
+        "exerciseType", 
+        "fromLocation", 
+        "oponent", 
+        "sportsActivityLocation", 
+        "sportsEvent", 
+        "sportsTeam", 
+        "toLocation"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "PlayAction"
+      ], 
+      "url": "http://schema.org/ExerciseAction"
     }, 
     "ExerciseGym": {
       "ancestors": [
@@ -15271,6 +17351,39 @@
       ], 
       "url": "http://schema.org/Festival"
     }, 
+    "FilmAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "FilmAction", 
+      "label": "Film Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/FilmAction"
+    }, 
     "FinancialService": {
       "ancestors": [
         "Thing", 
@@ -15345,6 +17458,42 @@
         "LocalBusiness"
       ], 
       "url": "http://schema.org/FinancialService"
+    }, 
+    "FindAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "FindAction", 
+      "label": "Find Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "CheckAction", 
+        "DiscoverAction", 
+        "TrackAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/FindAction"
     }, 
     "FireStation": {
       "ancestors": [
@@ -15487,6 +17636,42 @@
         "Store"
       ], 
       "url": "http://schema.org/Florist"
+    }, 
+    "FollowAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "FollowAction", 
+      "label": "Follow Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "followee"
+      ], 
+      "specific_properties": [
+        "followee"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/FollowAction"
     }, 
     "FoodEstablishment": {
       "ancestors": [
@@ -16006,6 +18191,44 @@
         "StructuredValue"
       ], 
       "url": "http://schema.org/GeoShape"
+    }, 
+    "GiveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "GiveAction", 
+      "label": "Give Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/GiveAction"
     }, 
     "GolfCourse": {
       "ancestors": [
@@ -17382,6 +19605,39 @@
       ], 
       "url": "http://schema.org/IceCreamShop"
     }, 
+    "IgnoreAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "IgnoreAction", 
+      "label": "Ignore Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "AssessAction"
+      ], 
+      "url": "http://schema.org/IgnoreAction"
+    }, 
     "ImageGallery": {
       "ancestors": [
         "Thing", 
@@ -17756,6 +20012,123 @@
       ], 
       "url": "http://schema.org/InfectiousDisease"
     }, 
+    "InformAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "InformAction", 
+      "label": "Inform Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient", 
+        "event"
+      ], 
+      "specific_properties": [
+        "event"
+      ], 
+      "subtypes": [
+        "ConfirmAction", 
+        "RsvpAction"
+      ], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/InformAction"
+    }, 
+    "InsertAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction", 
+        "AddAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "InsertAction", 
+      "label": "Insert Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection", 
+        "toLocation"
+      ], 
+      "specific_properties": [
+        "toLocation"
+      ], 
+      "subtypes": [
+        "AppendAction", 
+        "PrependAction"
+      ], 
+      "supertypes": [
+        "AddAction"
+      ], 
+      "url": "http://schema.org/InsertAction"
+    }, 
+    "InstallAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "InstallAction", 
+      "label": "Install Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/InstallAction"
+    }, 
     "InsuranceAgency": {
       "ancestors": [
         "Thing", 
@@ -17862,6 +20235,48 @@
       ], 
       "url": "http://schema.org/Intangible"
     }, 
+    "InteractAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "InteractAction", 
+      "label": "Interact Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "BefriendAction", 
+        "CommunicateAction", 
+        "FollowAction", 
+        "JoinAction", 
+        "LeaveAction", 
+        "MarryAction", 
+        "RegisterAction", 
+        "SubscribeAction", 
+        "UnRegisterAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/InteractAction"
+    }, 
     "InternetCafe": {
       "ancestors": [
         "Thing", 
@@ -17931,6 +20346,46 @@
         "LocalBusiness"
       ], 
       "url": "http://schema.org/InternetCafe"
+    }, 
+    "InviteAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "InviteAction", 
+      "label": "Invite Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient", 
+        "event"
+      ], 
+      "specific_properties": [
+        "event"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/InviteAction"
     }, 
     "ItemAvailability": {
       "ancestors": [
@@ -18261,6 +20716,42 @@
       ], 
       "url": "http://schema.org/JobPosting"
     }, 
+    "JoinAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "JoinAction", 
+      "label": "Join Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "event"
+      ], 
+      "specific_properties": [
+        "event"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/JoinAction"
+    }, 
     "Joint": {
       "ancestors": [
         "Thing", 
@@ -18469,6 +20960,42 @@
       ], 
       "url": "http://schema.org/Language"
     }, 
+    "LeaveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "LeaveAction", 
+      "label": "Leave Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "event"
+      ], 
+      "specific_properties": [
+        "event"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/LeaveAction"
+    }, 
     "LegislativeBuilding": {
       "ancestors": [
         "Thing", 
@@ -18514,6 +21041,44 @@
         "GovernmentBuilding"
       ], 
       "url": "http://schema.org/LegislativeBuilding"
+    }, 
+    "LendAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "LendAction", 
+      "label": "Lend Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "borrower"
+      ], 
+      "specific_properties": [
+        "borrower"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/LendAction"
     }, 
     "Library": {
       "ancestors": [
@@ -18666,6 +21231,40 @@
       ], 
       "url": "http://schema.org/Ligament"
     }, 
+    "LikeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "LikeAction", 
+      "label": "Like Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/LikeAction"
+    }, 
     "LiquorStore": {
       "ancestors": [
         "Thing", 
@@ -18736,6 +21335,39 @@
         "Store"
       ], 
       "url": "http://schema.org/LiquorStore"
+    }, 
+    "ListenAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ListenAction", 
+      "label": "Listen Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/ListenAction"
     }, 
     "LiteraryEvent": {
       "ancestors": [
@@ -19024,6 +21656,42 @@
       ], 
       "url": "http://schema.org/LodgingBusiness"
     }, 
+    "LoseAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AchieveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "LoseAction", 
+      "label": "Lose Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "winner"
+      ], 
+      "specific_properties": [
+        "winner"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "AchieveAction"
+      ], 
+      "url": "http://schema.org/LoseAction"
+    }, 
     "LymphaticVessel": {
       "ancestors": [
         "Thing", 
@@ -19146,6 +21814,39 @@
         "CreativeWork"
       ], 
       "url": "http://schema.org/Map"
+    }, 
+    "MarryAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "MarryAction", 
+      "label": "Marry Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/MarryAction"
     }, 
     "Mass": {
       "ancestors": [
@@ -20725,8 +23426,8 @@
       "specific_properties": [], 
       "subtypes": [], 
       "supertypes": [
-        "Specialty", 
-        "MedicalEnumeration"
+        "MedicalEnumeration", 
+        "Specialty"
       ], 
       "url": "http://schema.org/MedicalSpecialty"
     }, 
@@ -21814,6 +24515,47 @@
       ], 
       "url": "http://schema.org/Mountain"
     }, 
+    "MoveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "MoveAction", 
+      "label": "Move Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "subtypes": [
+        "ArriveAction", 
+        "DepartAction", 
+        "TravelAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/MoveAction"
+    }, 
     "Movie": {
       "ancestors": [
         "Thing", 
@@ -22042,8 +24784,8 @@
       "specific_properties": [], 
       "subtypes": [], 
       "supertypes": [
-        "EntertainmentBusiness", 
-        "CivicStructure"
+        "CivicStructure", 
+        "EntertainmentBusiness"
       ], 
       "url": "http://schema.org/MovieTheater"
     }, 
@@ -23589,6 +26331,40 @@
       ], 
       "url": "http://schema.org/Optician"
     }, 
+    "OrderAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "OrderAction", 
+      "label": "Order Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/OrderAction"
+    }, 
     "Organization": {
       "ancestors": [
         "Thing"
@@ -23686,6 +26462,43 @@
         "Thing"
       ], 
       "url": "http://schema.org/Organization"
+    }, 
+    "OrganizeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "OrganizeAction", 
+      "label": "Organize Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "AllocateAction", 
+        "ApplyAction", 
+        "BookmarkAction", 
+        "PlanAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/OrganizeAction"
     }, 
     "OutletStore": {
       "ancestors": [
@@ -23791,6 +26604,39 @@
         "StructuredValue"
       ], 
       "url": "http://schema.org/OwnershipInfo"
+    }, 
+    "PaintAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PaintAction", 
+      "label": "Paint Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/PaintAction"
     }, 
     "Painting": {
       "ancestors": [
@@ -24170,6 +27016,45 @@
       ], 
       "url": "http://schema.org/PawnShop"
     }, 
+    "PayAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PayAction", 
+      "label": "Pay Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "purpose", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "purpose", 
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/PayAction"
+    }, 
     "PaymentChargeSpecification": {
       "ancestors": [
         "Thing", 
@@ -24273,6 +27158,44 @@
         "Audience"
       ], 
       "url": "http://schema.org/PeopleAudience"
+    }, 
+    "PerformAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "PlayAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PerformAction", 
+      "label": "Perform Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "audience", 
+        "event", 
+        "entertainmentBusiness"
+      ], 
+      "specific_properties": [
+        "entertainmentBusiness"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "PlayAction"
+      ], 
+      "url": "http://schema.org/PerformAction"
     }, 
     "PerformingArtsTheater": {
       "ancestors": [
@@ -24716,6 +27639,39 @@
       ], 
       "url": "http://schema.org/Photograph"
     }, 
+    "PhotographAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PhotographAction", 
+      "label": "Photograph Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/PhotographAction"
+    }, 
     "PhysicalActivity": {
       "ancestors": [
         "Thing", 
@@ -25094,6 +28050,86 @@
       ], 
       "url": "http://schema.org/PlaceOfWorship"
     }, 
+    "PlanAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PlanAction", 
+      "label": "Plan Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "scheduledTime"
+      ], 
+      "specific_properties": [
+        "scheduledTime"
+      ], 
+      "subtypes": [
+        "CancelAction", 
+        "ReserveAction", 
+        "ScheduleAction"
+      ], 
+      "supertypes": [
+        "OrganizeAction"
+      ], 
+      "url": "http://schema.org/PlanAction"
+    }, 
+    "PlayAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PlayAction", 
+      "label": "Play Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "audience", 
+        "event"
+      ], 
+      "specific_properties": [
+        "audience", 
+        "event"
+      ], 
+      "subtypes": [
+        "ExerciseAction", 
+        "PerformAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/PlayAction"
+    }, 
     "Playground": {
       "ancestors": [
         "Thing", 
@@ -25440,6 +28476,43 @@
         "ContactPoint"
       ], 
       "url": "http://schema.org/PostalAddress"
+    }, 
+    "PrependAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction", 
+        "AddAction", 
+        "InsertAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "PrependAction", 
+      "label": "Prepend Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InsertAction"
+      ], 
+      "url": "http://schema.org/PrependAction"
     }, 
     "Preschool": {
       "ancestors": [
@@ -26124,6 +29197,40 @@
       ], 
       "url": "http://schema.org/Quantity"
     }, 
+    "QuoteAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "QuoteAction", 
+      "label": "Quote Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/QuoteAction"
+    }, 
     "RVPark": {
       "ancestors": [
         "Thing", 
@@ -26309,6 +29416,79 @@
       ], 
       "url": "http://schema.org/Rating"
     }, 
+    "ReactAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReactAction", 
+      "label": "React Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "AgreeAction", 
+        "DisagreeAction", 
+        "DislikeAction", 
+        "EndorseAction", 
+        "LikeAction", 
+        "WantAction"
+      ], 
+      "supertypes": [
+        "AssessAction"
+      ], 
+      "url": "http://schema.org/ReactAction"
+    }, 
+    "ReadAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReadAction", 
+      "label": "Read Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/ReadAction"
+    }, 
     "RealEstateAgent": {
       "ancestors": [
         "Thing", 
@@ -26378,6 +29558,46 @@
         "LocalBusiness"
       ], 
       "url": "http://schema.org/RealEstateAgent"
+    }, 
+    "ReceiveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReceiveAction", 
+      "label": "Receive Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "deliveryMethod", 
+        "sender"
+      ], 
+      "specific_properties": [
+        "deliveryMethod", 
+        "sender"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/ReceiveAction"
     }, 
     "Recipe": {
       "ancestors": [
@@ -26581,6 +29801,189 @@
       ], 
       "url": "http://schema.org/RecyclingCenter"
     }, 
+    "RegisterAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "RegisterAction", 
+      "label": "Register Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/RegisterAction"
+    }, 
+    "RejectAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "AllocateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "RejectAction", 
+      "label": "Reject Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "purpose"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "AllocateAction"
+      ], 
+      "url": "http://schema.org/RejectAction"
+    }, 
+    "RentAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "RentAction", 
+      "label": "Rent Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "landlord", 
+        "realEstateAgent"
+      ], 
+      "specific_properties": [
+        "landlord", 
+        "realEstateAgent"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/RentAction"
+    }, 
+    "ReplaceAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "UpdateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReplaceAction", 
+      "label": "Replace Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection", 
+        "replacee", 
+        "replacer"
+      ], 
+      "specific_properties": [
+        "replacee", 
+        "replacer"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "UpdateAction"
+      ], 
+      "url": "http://schema.org/ReplaceAction"
+    }, 
+    "ReplyAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReplyAction", 
+      "label": "Reply Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/ReplyAction"
+    }, 
     "ReportedDoseSchedule": {
       "ancestors": [
         "Thing", 
@@ -26617,6 +30020,41 @@
         "DoseSchedule"
       ], 
       "url": "http://schema.org/ReportedDoseSchedule"
+    }, 
+    "ReserveAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "PlanAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReserveAction", 
+      "label": "Reserve Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "scheduledTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "PlanAction"
+      ], 
+      "url": "http://schema.org/ReserveAction"
     }, 
     "Reservoir": {
       "ancestors": [
@@ -26784,6 +30222,44 @@
       ], 
       "url": "http://schema.org/Restaurant"
     }, 
+    "ReturnAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReturnAction", 
+      "label": "Return Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/ReturnAction"
+    }, 
     "Review": {
       "ancestors": [
         "Thing", 
@@ -26864,6 +30340,42 @@
         "CreativeWork"
       ], 
       "url": "http://schema.org/Review"
+    }, 
+    "ReviewAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ReviewAction", 
+      "label": "Review Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "resultReview"
+      ], 
+      "specific_properties": [
+        "resultReview"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "AssessAction"
+      ], 
+      "url": "http://schema.org/ReviewAction"
     }, 
     "RiverBodyOfWater": {
       "ancestors": [
@@ -26982,6 +30494,45 @@
       ], 
       "url": "http://schema.org/RoofingContractor"
     }, 
+    "RsvpAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction", 
+        "InformAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "RsvpAction", 
+      "label": "Rsvp Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient", 
+        "event"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InformAction"
+      ], 
+      "url": "http://schema.org/RsvpAction"
+    }, 
     "SaleEvent": {
       "ancestors": [
         "Thing", 
@@ -27017,6 +30568,41 @@
         "Event"
       ], 
       "url": "http://schema.org/SaleEvent"
+    }, 
+    "ScheduleAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "OrganizeAction", 
+        "PlanAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ScheduleAction", 
+      "label": "Schedule Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "scheduledTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "PlanAction"
+      ], 
+      "url": "http://schema.org/ScheduleAction"
     }, 
     "ScholarlyArticle": {
       "ancestors": [
@@ -27276,6 +30862,41 @@
       ], 
       "url": "http://schema.org/SeaBodyOfWater"
     }, 
+    "SearchAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "SearchAction", 
+      "label": "Search Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "query"
+      ], 
+      "specific_properties": [
+        "query"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/SearchAction"
+    }, 
     "SearchResultsPage": {
       "ancestors": [
         "Thing", 
@@ -27430,6 +31051,122 @@
         "LocalBusiness"
       ], 
       "url": "http://schema.org/SelfStorage"
+    }, 
+    "SellAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "SellAction", 
+      "label": "Sell Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "buyer", 
+        "warrantyPromise"
+      ], 
+      "specific_properties": [
+        "buyer", 
+        "warrantyPromise"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/SellAction"
+    }, 
+    "SendAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "SendAction", 
+      "label": "Send Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "deliveryMethod", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "deliveryMethod", 
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/SendAction"
+    }, 
+    "ShareAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction", 
+        "CommunicateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ShareAction", 
+      "label": "Share Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "about", 
+        "language", 
+        "recipient"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "CommunicateAction"
+      ], 
+      "url": "http://schema.org/ShareAction"
     }, 
     "ShoeStore": {
       "ancestors": [
@@ -28562,6 +32299,39 @@
       ], 
       "url": "http://schema.org/StructuredValue"
     }, 
+    "SubscribeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "SubscribeAction", 
+      "label": "Subscribe Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/SubscribeAction"
+    }, 
     "SubwayStation": {
       "ancestors": [
         "Thing", 
@@ -29058,6 +32828,41 @@
         "WebPageElement"
       ], 
       "url": "http://schema.org/Table"
+    }, 
+    "TakeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TransferAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TakeAction", 
+      "label": "Take Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "TransferAction"
+      ], 
+      "url": "http://schema.org/TakeAction"
     }, 
     "TattooParlor": {
       "ancestors": [
@@ -29560,6 +33365,7 @@
         "url"
       ], 
       "subtypes": [
+        "Action", 
         "Class", 
         "CreativeWork", 
         "Event", 
@@ -29573,6 +33379,76 @@
       ], 
       "supertypes": [], 
       "url": "http://schema.org/Thing"
+    }, 
+    "TieAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AchieveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TieAction", 
+      "label": "Tie Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "AchieveAction"
+      ], 
+      "url": "http://schema.org/TieAction"
+    }, 
+    "TipAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "TradeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TipAction", 
+      "label": "Tip Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price", 
+        "recipient"
+      ], 
+      "specific_properties": [
+        "recipient"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "TradeAction"
+      ], 
+      "url": "http://schema.org/TipAction"
     }, 
     "TireShop": {
       "ancestors": [
@@ -29829,6 +33705,86 @@
       ], 
       "url": "http://schema.org/ToyStore"
     }, 
+    "TrackAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "FindAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TrackAction", 
+      "label": "Track Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "deliveryMethod"
+      ], 
+      "specific_properties": [
+        "deliveryMethod"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "FindAction"
+      ], 
+      "url": "http://schema.org/TrackAction"
+    }, 
+    "TradeAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TradeAction", 
+      "label": "Trade Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "price"
+      ], 
+      "specific_properties": [
+        "price"
+      ], 
+      "subtypes": [
+        "BuyAction", 
+        "DonateAction", 
+        "OrderAction", 
+        "PayAction", 
+        "QuoteAction", 
+        "RentAction", 
+        "SellAction", 
+        "TipAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/TradeAction"
+    }, 
     "TrainStation": {
       "ancestors": [
         "Thing", 
@@ -29873,6 +33829,90 @@
         "CivicStructure"
       ], 
       "url": "http://schema.org/TrainStation"
+    }, 
+    "TransferAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TransferAction", 
+      "label": "Transfer Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "specific_properties": [
+        "fromLocation", 
+        "toLocation"
+      ], 
+      "subtypes": [
+        "BorrowAction", 
+        "DownloadAction", 
+        "GiveAction", 
+        "LendAction", 
+        "ReceiveAction", 
+        "ReturnAction", 
+        "SendAction", 
+        "TakeAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/TransferAction"
+    }, 
+    "TravelAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "MoveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "TravelAction", 
+      "label": "Travel Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "fromLocation", 
+        "toLocation", 
+        "distance"
+      ], 
+      "specific_properties": [
+        "distance"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "MoveAction"
+      ], 
+      "url": "http://schema.org/TravelAction"
     }, 
     "TravelAgency": {
       "ancestors": [
@@ -30010,6 +34050,39 @@
       ], 
       "url": "http://schema.org/TypeAndQuantityNode"
     }, 
+    "UnRegisterAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "InteractAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "UnRegisterAction", 
+      "label": "Un Register Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "InteractAction"
+      ], 
+      "url": "http://schema.org/UnRegisterAction"
+    }, 
     "UnitPriceSpecification": {
       "ancestors": [
         "Thing", 
@@ -30051,6 +34124,80 @@
         "PriceSpecification"
       ], 
       "url": "http://schema.org/UnitPriceSpecification"
+    }, 
+    "UpdateAction": {
+      "ancestors": [
+        "Thing", 
+        "Action"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "UpdateAction", 
+      "label": "Update Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "collection"
+      ], 
+      "specific_properties": [
+        "collection"
+      ], 
+      "subtypes": [
+        "AddAction", 
+        "DeleteAction", 
+        "ReplaceAction"
+      ], 
+      "supertypes": [
+        "Action"
+      ], 
+      "url": "http://schema.org/UpdateAction"
+    }, 
+    "UseAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "UseAction", 
+      "label": "Use Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [
+        "WearAction"
+      ], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/UseAction"
     }, 
     "UserBlocks": {
       "ancestors": [
@@ -30796,6 +34943,39 @@
       ], 
       "url": "http://schema.org/VideoObject"
     }, 
+    "ViewAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "ViewAction", 
+      "label": "View Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/ViewAction"
+    }, 
     "VisualArtsEvent": {
       "ancestors": [
         "Thing", 
@@ -30875,6 +35055,44 @@
         "Landform"
       ], 
       "url": "http://schema.org/Volcano"
+    }, 
+    "VoteAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ChooseAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "VoteAction", 
+      "label": "Vote Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "option", 
+        "candidate"
+      ], 
+      "specific_properties": [
+        "candidate"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "ChooseAction"
+      ], 
+      "url": "http://schema.org/VoteAction"
     }, 
     "WPAdBlock": {
       "ancestors": [
@@ -31176,6 +35394,40 @@
       ], 
       "url": "http://schema.org/WPSideBar"
     }, 
+    "WantAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AssessAction", 
+        "ReactAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "WantAction", 
+      "label": "Want Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ReactAction"
+      ], 
+      "url": "http://schema.org/WantAction"
+    }, 
     "WarrantyPromise": {
       "ancestors": [
         "Thing", 
@@ -31231,6 +35483,39 @@
       ], 
       "url": "http://schema.org/WarrantyScope"
     }, 
+    "WatchAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "WatchAction", 
+      "label": "Watch Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "ConsumeAction"
+      ], 
+      "url": "http://schema.org/WatchAction"
+    }, 
     "Waterfall": {
       "ancestors": [
         "Thing", 
@@ -31275,6 +35560,40 @@
         "BodyOfWater"
       ], 
       "url": "http://schema.org/Waterfall"
+    }, 
+    "WearAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "ConsumeAction", 
+        "UseAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "WearAction", 
+      "label": "Wear Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime"
+      ], 
+      "specific_properties": [], 
+      "subtypes": [], 
+      "supertypes": [
+        "UseAction"
+      ], 
+      "url": "http://schema.org/WearAction"
     }, 
     "WebApplication": {
       "ancestors": [
@@ -31630,6 +35949,42 @@
       ], 
       "url": "http://schema.org/WholesaleStore"
     }, 
+    "WinAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "AchieveAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "WinAction", 
+      "label": "Win Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "loser"
+      ], 
+      "specific_properties": [
+        "loser"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "AchieveAction"
+      ], 
+      "url": "http://schema.org/WinAction"
+    }, 
     "Winery": {
       "ancestors": [
         "Thing", 
@@ -31704,6 +36059,42 @@
       ], 
       "url": "http://schema.org/Winery"
     }, 
+    "WriteAction": {
+      "ancestors": [
+        "Thing", 
+        "Action", 
+        "CreateAction"
+      ], 
+      "comment": "", 
+      "comment_plain": "", 
+      "id": "WriteAction", 
+      "label": "Write Action", 
+      "properties": [
+        "additionalType", 
+        "description", 
+        "image", 
+        "name", 
+        "sameAs", 
+        "url", 
+        "agent", 
+        "endTime", 
+        "instrument", 
+        "location", 
+        "object", 
+        "participant", 
+        "result", 
+        "startTime", 
+        "language"
+      ], 
+      "specific_properties": [
+        "language"
+      ], 
+      "subtypes": [], 
+      "supertypes": [
+        "CreateAction"
+      ], 
+      "url": "http://schema.org/WriteAction"
+    }, 
     "Zoo": {
       "ancestors": [
         "Thing", 
@@ -31750,5 +36141,5 @@
       "url": "http://schema.org/Zoo"
     }
   }, 
-  "valid": "2013-07-25"
+  "valid": "2013-11-15"
 }

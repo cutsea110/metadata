@@ -1,8 +1,12 @@
 This project can generate Text.HTML5.MetaData library.
 The library is all representations mapped from Schema.org's metadata.
 
+check first by wget http://schema.rdfs.org/all.json
+
 gen-metadata.hs is Main program and the execution generate metadata library(without cabal).
 
+$ cabal sandbox init
+$ cabal install --only-dependencies
 $ cabal configure --user
 $ cabal build
 $ cp dist/build/gen-metadata/gen-metadata .
