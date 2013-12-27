@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVSeries where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -19,16 +19,21 @@ import Data.Text
 --
 --   [@subtypes@]
 --
---   [@supertypes@] @'CreativeWork'@
+--   [@supertypes@] @'CreativeWork','Series'@
 --
 --   [@url@] <http://schema.org/TVSeries>
 data TVSeries = TVSeries { additionalType :: AdditionalType
+                         , alternateName :: AlternateName
                          , description :: Description
                          , image :: Image
                          , name :: Name
                          , sameAs :: SameAs
                          , url :: Url
                          , about :: About
+                         , accessibilityAPI :: AccessibilityAPI
+                         , accessibilityControl :: AccessibilityControl
+                         , accessibilityFeature :: AccessibilityFeature
+                         , accessibilityHazard :: AccessibilityHazard
                          , accountablePerson :: AccountablePerson
                          , aggregateRating :: AggregateRating
                          , alternativeHeadline :: AlternativeHeadline
@@ -81,11 +86,13 @@ data TVSeries = TVSeries { additionalType :: AdditionalType
                          , actor :: Actor
                          , actors :: Actors
                          , director :: Director
+                         , directors :: Directors
                          , endDate :: EndDate
                          , episode :: Episode
                          , episodes :: Episodes
                          , musicBy :: MusicBy
                          , numberOfEpisodes :: NumberOfEpisodes
+                         , numberOfSeasons :: NumberOfSeasons
                          , producer :: Producer
                          , productionCompany :: ProductionCompany
                          , season :: Season

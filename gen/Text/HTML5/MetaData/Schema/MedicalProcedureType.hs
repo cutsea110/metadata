@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalProcedureType where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.CreativeWork where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -17,18 +17,23 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing'@
 --
---   [@subtypes@] @'Article','Blog','Book','Code','Comment','DataCatalog','Dataset','Diet','ExercisePlan','ItemList','Map','MediaObject','Movie','MusicPlaylist','MusicRecording','Painting','Photograph','Recipe','Review','Sculpture','SoftwareApplication','TVEpisode','TVSeason','TVSeries','WebPage','WebPageElement'@
+--   [@subtypes@] @'Article','Blog','Book','Clip','Code','Comment','DataCatalog','Dataset','Diet','Episode','ExercisePlan','ItemList','Map','MediaObject','Movie','MusicPlaylist','MusicRecording','Painting','Photograph','Recipe','Review','Sculpture','Season','Series','SoftwareApplication','TVSeason','TVSeries','WebPage','WebPageElement'@
 --
 --   [@supertypes@] @'Thing'@
 --
 --   [@url@] <http://schema.org/CreativeWork>
 data CreativeWork = CreativeWork { additionalType :: AdditionalType
+                                 , alternateName :: AlternateName
                                  , description :: Description
                                  , image :: Image
                                  , name :: Name
                                  , sameAs :: SameAs
                                  , url :: Url
                                  , about :: About
+                                 , accessibilityAPI :: AccessibilityAPI
+                                 , accessibilityControl :: AccessibilityControl
+                                 , accessibilityFeature :: AccessibilityFeature
+                                 , accessibilityHazard :: AccessibilityHazard
                                  , accountablePerson :: AccountablePerson
                                  , aggregateRating :: AggregateRating
                                  , alternativeHeadline :: AlternativeHeadline

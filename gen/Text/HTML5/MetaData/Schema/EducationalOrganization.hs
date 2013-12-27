@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.EducationalOrganization where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -23,6 +23,7 @@ import Data.Text
 --
 --   [@url@] <http://schema.org/EducationalOrganization>
 data EducationalOrganization = EducationalOrganization { additionalType :: AdditionalType
+                                                       , alternateName :: AlternateName
                                                        , description :: Description
                                                        , image :: Image
                                                        , name :: Name
@@ -33,6 +34,7 @@ data EducationalOrganization = EducationalOrganization { additionalType :: Addit
                                                        , brand :: Brand
                                                        , contactPoint :: ContactPoint
                                                        , contactPoints :: ContactPoints
+                                                       , department :: Department
                                                        , duns :: Duns
                                                        , email :: Email
                                                        , employee :: Employee
@@ -58,6 +60,7 @@ data EducationalOrganization = EducationalOrganization { additionalType :: Addit
                                                        , review :: Review
                                                        , reviews :: Reviews
                                                        , seeks :: Seeks
+                                                       , subOrganization :: SubOrganization
                                                        , taxID :: TaxID
                                                        , telephone :: Telephone
                                                        , vatID :: VatID

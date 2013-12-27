@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Thing where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -17,12 +17,13 @@ import Data.Text
 --
 --   [@ancestors@]
 --
---   [@subtypes@] @'Action','Class','CreativeWork','Event','Intangible','MedicalEntity','Organization','Person','Place','Product','Property'@
+--   [@subtypes@] @'Action','BroadcastService','Class','CreativeWork','Event','Intangible','MedicalEntity','Organization','Person','Place','Product','Property'@
 --
 --   [@supertypes@]
 --
 --   [@url@] <http://schema.org/Thing>
 data Thing = Thing { additionalType :: AdditionalType
+                   , alternateName :: AlternateName
                    , description :: Description
                    , image :: Image
                    , name :: Name

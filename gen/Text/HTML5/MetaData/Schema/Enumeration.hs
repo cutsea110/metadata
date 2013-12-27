@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Enumeration where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -17,12 +17,13 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','Intangible'@
 --
---   [@subtypes@] @'BookFormatType','BusinessEntityType','BusinessFunction','DayOfWeek','DeliveryMethod','ItemAvailability','OfferItemCondition','PaymentMethod','QualitativeValue','Specialty','WarrantyScope'@
+--   [@subtypes@] @'BookFormatType','BusinessEntityType','BusinessFunction','ContactPointOption','DayOfWeek','DeliveryMethod','EventStatusType','ItemAvailability','OfferItemCondition','OrderStatus','PaymentMethod','QualitativeValue','Specialty','WarrantyScope'@
 --
 --   [@supertypes@] @'Intangible'@
 --
 --   [@url@] <http://schema.org/Enumeration>
 data Enumeration = Enumeration { additionalType :: AdditionalType
+                               , alternateName :: AlternateName
                                , description :: Description
                                , image :: Image
                                , name :: Name

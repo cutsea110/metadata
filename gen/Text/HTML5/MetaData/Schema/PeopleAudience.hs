@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PeopleAudience where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -23,12 +23,18 @@ import Data.Text
 --
 --   [@url@] <http://schema.org/PeopleAudience>
 data PeopleAudience = PeopleAudience { additionalType :: AdditionalType
+                                     , alternateName :: AlternateName
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name
                                      , sameAs :: SameAs
                                      , url :: Url
+                                     , audienceType :: AudienceType
+                                     , geographicArea :: GeographicArea
                                      , healthCondition :: HealthCondition
+                                     , requiredGender :: RequiredGender
+                                     , requiredMaxAge :: RequiredMaxAge
+                                     , requiredMinAge :: RequiredMinAge
                                      , suggestedGender :: SuggestedGender
                                      , suggestedMaxAge :: SuggestedMaxAge
                                      , suggestedMinAge :: SuggestedMinAge

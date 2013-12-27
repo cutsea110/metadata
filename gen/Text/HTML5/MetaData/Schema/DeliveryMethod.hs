@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.DeliveryMethod where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( DeliveryMethod )
@@ -17,12 +17,13 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing','Intangible','Enumeration'@
 --
---   [@subtypes@] @'ParcelService'@
+--   [@subtypes@] @'LockerDelivery','OnSitePickup','ParcelService'@
 --
 --   [@supertypes@] @'Enumeration'@
 --
 --   [@url@] <http://schema.org/DeliveryMethod>
 data DeliveryMethod = DeliveryMethod { additionalType :: AdditionalType
+                                     , alternateName :: AlternateName
                                      , description :: Description
                                      , image :: Image
                                      , name :: Name

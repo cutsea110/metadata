@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
@@ -16,11 +16,13 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BlogPosting
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BookFormatType
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BrainStructure
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Brand
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BroadcastService
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BusinessEntityType
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.BusinessFunction
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Class
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CollectionPage
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ContactPoint
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ContactPointOption
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Country
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.CreativeWork
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DDxElement
@@ -28,6 +30,7 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DataCatalog
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DataDownload
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Dataset
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DayOfWeek
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DeliveryEvent
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.DeliveryMethod
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Demand
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Diet
@@ -46,7 +49,9 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EducationalOrganization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Energy
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EntertainmentBusiness
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Enumeration
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Episode
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Event
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.EventStatusType
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ExercisePlan
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.FoodEstablishment
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.FoodEvent
@@ -96,6 +101,8 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.NutritionInformation
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Offer
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OfferItemCondition
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OpeningHoursSpecification
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Order
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OrderStatus
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Organization
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.OwnershipInfo
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PaymentMethod
@@ -108,6 +115,7 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PostalAddress
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PriceSpecification
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Product
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ProductModel
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.PublicationEvent
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QualitativeValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.QuantitativeValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Rating
@@ -115,6 +123,10 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RealEstateAgent
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Recipe
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.RecommendedDoseSchedule
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Review
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Season
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Series
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Service
+import {-# SOURCE #-} Text.HTML5.MetaData.Schema.ServiceChannel
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SoftwareApplication
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Specialty
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsActivityLocation
@@ -122,8 +134,6 @@ import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsEvent
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SportsTeam
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.StructuredValue
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.SuperficialAnatomy
-import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVEpisode
-import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeason
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TVSeries
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.Thing
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.TypeAndQuantityNode
@@ -291,6 +301,19 @@ type LesserOrEqual = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValu
 --   [@ranges@] @'Text'@
 type AddressLocality = Text
 
+-- | The episode to which this clip belongs.
+--
+--   [@id@] partOfEpisode
+--
+--   [@label@] Part of Episode
+--
+--   [@comment@] The episode to which this clip belongs.
+--
+--   [@domains@] @'Clip'@
+--
+--   [@ranges@] @'Episode'@
+type PartOfEpisode = Text.HTML5.MetaData.Schema.Episode.Episode
+
 -- | A thumbnail image relevant to the Thing.
 --
 --   [@id@] thumbnailUrl
@@ -329,6 +352,19 @@ type Spouse = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'URL'@
 type DownloadUrl = URL
+
+-- | A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+--
+--   [@id@] subOrganization
+--
+--   [@label@] Sub Organization
+--
+--   [@comment@] A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+--
+--   [@domains@] @'Organization'@
+--
+--   [@ranges@] @'Organization'@
+type SubOrganization = Text.HTML5.MetaData.Schema.Organization.Organization
 
 -- | The height of the item.
 --
@@ -394,6 +430,19 @@ type SuccessorOf = Text.HTML5.MetaData.Schema.ProductModel.ProductModel
 --
 --   [@ranges@] @'MedicalStudy'@
 type Study = Text.HTML5.MetaData.Schema.MedicalStudy.MedicalStudy
+
+-- | The area within which users can expect to reach the broadcast service.
+--
+--   [@id@] area
+--
+--   [@label@] Area
+--
+--   [@comment@] The area within which users can expect to reach the broadcast service.
+--
+--   [@domains@] @'BroadcastService'@
+--
+--   [@ranges@] @'Place'@
+type Area = Text.HTML5.MetaData.Schema.Place.Place
 
 -- | Date when this media object was uploaded to this site.
 --
@@ -603,6 +652,32 @@ type Sponsor = Text.HTML5.MetaData.Schema.Organization.Organization
 --   [@ranges@] @'MedicalTherapy'@
 type DuplicateTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
+-- | Shipper tracking number.
+--
+--   [@id@] trackingNumber
+--
+--   [@label@] Tracking Number
+--
+--   [@comment@] Shipper tracking number.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'Text'@
+type TrackingNumber = Text
+
+-- | The number of seasons in this series.
+--
+--   [@id@] numberOfSeasons
+--
+--   [@label@] Number of Seasons
+--
+--   [@comment@] The number of seasons in this series.
+--
+--   [@domains@] @'Series'@
+--
+--   [@ranges@] @'Number'@
+type NumberOfSeasons = Number
+
 -- | A parent of this person.
 --
 --   [@id@] parent
@@ -667,6 +742,19 @@ type Status = Text.HTML5.MetaData.Schema.MedicalStudyStatus.MedicalStudyStatus
 --
 --   [@ranges@] @'MedicalCondition'@
 type RelatedCondition = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition
+
+-- | A flag to signal that the publication is accessible for free.
+--
+--   [@id@] free
+--
+--   [@label@] Free
+--
+--   [@comment@] A flag to signal that the publication is accessible for free.
+--
+--   [@domains@] @'PublicationEvent'@
+--
+--   [@ranges@] @'Boolean'@
+type Free = Boolean
 
 -- | The Dun & Bradstreet DUNS number for identifying an organization or business person.
 --
@@ -772,6 +860,19 @@ type Lender = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'MedicalTherapy'@
 type RelatedTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 
+-- | A publication event associated with the episode, clip or media object.
+--
+--   [@id@] publication
+--
+--   [@label@] Publication
+--
+--   [@comment@] A publication event associated with the episode, clip or media object.
+--
+--   [@domains@] @'MediaObject','Episode','Clip'@
+--
+--   [@ranges@] @'PublicationEvent'@
+type Publication = Text.HTML5.MetaData.Schema.PublicationEvent.PublicationEvent
+
 -- | A hospital with which the physician or office is affiliated.
 --
 --   [@id@] hospitalAffiliation
@@ -784,6 +885,19 @@ type RelatedTherapy = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
 --
 --   [@ranges@] @'Hospital'@
 type HospitalAffiliation = Text.HTML5.MetaData.Schema.Hospital.Hospital
+
+-- | A number that confirms the given order.
+--
+--   [@id@] confirmationNumber
+--
+--   [@label@] Confirmation Number
+--
+--   [@comment@] A number that confirms the given order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Text'@
+type ConfirmationNumber = Text
 
 -- | A medical service available from this provider.
 --
@@ -1123,18 +1237,31 @@ type PublishingPrinciples = URL
 --   [@ranges@] @'Energy'@
 type Calories = Text.HTML5.MetaData.Schema.Energy.Energy
 
--- | The start date and time of the event (in ISO 8601 date format).
+-- | The start date and time of the event or item (in ISO 8601 date format).
 --
 --   [@id@] startDate
 --
 --   [@label@] Start Date
 --
---   [@comment@] The start date and time of the event (in <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 date format</a>).
+--   [@comment@] The start date and time of the event or item (in <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 date format</a>).
 --
---   [@domains@] @'TVSeason','Event','TVSeries'@
+--   [@domains@] @'Series','Event','Season'@
 --
 --   [@ranges@] @'Date'@
 type StartDate = Date
+
+-- | A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+--
+--   [@id@] department
+--
+--   [@label@] Department
+--
+--   [@comment@] A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+--
+--   [@domains@] @'Organization'@
+--
+--   [@ranges@] @'Organization'@
+type Department = Text.HTML5.MetaData.Schema.Organization.Organization
 
 -- | A music recording (track)—usually a single song (legacy spelling; see singular form, track).
 --
@@ -1239,6 +1366,19 @@ type Telephone = Text
 --
 --   [@ranges@] @'Text'@
 type VideoFrameSize = Text
+
+-- | The tangible thing generated by the service, e.g. a passport, permit, etc.
+--
+--   [@id@] produces
+--
+--   [@label@] Produces
+--
+--   [@comment@] The tangible thing generated by the service, e.g. a passport, permit, etc.
+--
+--   [@domains@] @'Service'@
+--
+--   [@ranges@] @'Thing'@
+type Produces = Text.HTML5.MetaData.Schema.Thing.Thing
 
 -- | The availability of this item—for example In stock, Out of stock, Pre-order, etc.
 --
@@ -1357,6 +1497,32 @@ type SpecialCommitments = Text
 --   [@ranges@] @'AnatomicalSystem','AnatomicalStructure'@
 type RegionDrained = Either Text.HTML5.MetaData.Schema.AnatomicalSystem.AnatomicalSystem Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure
 
+-- | Identifies input methods that are sufficient to fully control the described resource (WebSchemas wiki lists possible values).
+--
+--   [@id@] accessibilityControl
+--
+--   [@label@] Accessibility Control
+--
+--   [@comment@] Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type AccessibilityControl = Text
+
+-- | The geographic area where the permit is valid.
+--
+--   [@id@] validIn
+--
+--   [@label@] Valid in
+--
+--   [@comment@] The geographic area where the permit is valid.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type ValidIn = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
 -- | A sub property of participant. The participant/person/organization that bought the object.
 --
 --   [@id@] buyer
@@ -1395,6 +1561,19 @@ type AffectedBy = Text.HTML5.MetaData.Schema.Drug.Drug
 --
 --   [@ranges@] @'DateTime'@
 type OwnedFrom = DateTime
+
+-- | A broadcast service associated with the publication event
+--
+--   [@id@] publishedOn
+--
+--   [@label@] Published On
+--
+--   [@comment@] A broadcast service associated with the publication event
+--
+--   [@domains@] @'PublicationEvent'@
+--
+--   [@ranges@] @'BroadcastService'@
+type PublishedOn = Text.HTML5.MetaData.Schema.BroadcastService.BroadcastService
 
 -- | Event that this person is a performer or participant in.
 --
@@ -1460,6 +1639,19 @@ type Endorsee = Either Text.HTML5.MetaData.Schema.Organization.Organization Text
 --
 --   [@ranges@] @'Text'@
 type FamilyName = Text
+
+-- | The URL for sending a payment.
+--
+--   [@id@] paymentUrl
+--
+--   [@label@] Payment Url
+--
+--   [@comment@] The URL for sending a payment.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'URL'@
+type PaymentUrl = URL
 
 -- | Prerequisites needed to fulfill steps in article.
 --
@@ -1539,18 +1731,18 @@ type DayOfWeek = Text.HTML5.MetaData.Schema.DayOfWeek.DayOfWeek
 --   [@ranges@] @'Organization','Person'@
 type Seller = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
--- | An episode of a TV series or season.
+-- | An episode of a TV/radio series or season
 --
 --   [@id@] episode
 --
 --   [@label@] Episode
 --
---   [@comment@] An episode of a TV series or season.
+--   [@comment@] An episode of a TV/radio series or season
 --
---   [@domains@] @'TVSeason','TVSeries'@
+--   [@domains@] @'Series','Season'@
 --
---   [@ranges@] @'TVEpisode'@
-type Episode = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
+--   [@ranges@] @'Episode'@
+type Episode = Text.HTML5.MetaData.Schema.Episode.Episode
 
 -- | A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html
 --
@@ -1851,6 +2043,19 @@ type EligibleQuantity = Text.HTML5.MetaData.Schema.QuantitativeValue.Quantitativ
 --   [@ranges@] @'Text'@
 type Ingredients = Text
 
+-- | The address for accessing the service by mail.
+--
+--   [@id@] servicePostalAddress
+--
+--   [@label@] Service Postal Address
+--
+--   [@comment@] The address for accessing the service by mail.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'PostalAddress'@
+type ServicePostalAddress = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
+
 -- | A member of the music group—for example, John, Paul, George, or Ringo.
 --
 --   [@id@] musicGroupMember
@@ -1876,6 +2081,19 @@ type MusicGroupMember = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'Text','URL'@
 type ApplicationSubCategory = Either Text URL
+
+-- | The date that payment is due.
+--
+--   [@id@] paymentDue
+--
+--   [@label@] Payment Due
+--
+--   [@comment@] The date that payment is due.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'DateTime'@
+type PaymentDue = DateTime
 
 -- | Another drug that is known to interact with this drug in a way that impacts the effect of this drug or causes a risk to the patient. Note: disease interactions are typically captured as contraindications.
 --
@@ -1968,6 +2186,19 @@ type VatID = Text
 --   [@ranges@] @'Organization'@
 type SourceOrganization = Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | Was the offer accepted as a gift for someone other than the buyer.
+--
+--   [@id@] isGift
+--
+--   [@label@] Is Gift
+--
+--   [@comment@] Was the offer accepted as a gift for someone other than the buyer.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Boolean'@
+type IsGift = Boolean
+
 -- | Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
 --
 --   [@id@] background
@@ -1980,6 +2211,19 @@ type SourceOrganization = Text.HTML5.MetaData.Schema.Organization.Organization
 --
 --   [@ranges@] @'Text'@
 type Background = Text
+
+-- | Audiences defined by a person's maximum age.
+--
+--   [@id@] requiredMaxAge
+--
+--   [@label@] Required Max Age
+--
+--   [@comment@] Audiences defined by a person's maximum age.
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Integer'@
+type RequiredMaxAge = Integer
 
 -- | How often one should break from the activity.
 --
@@ -2059,15 +2303,15 @@ type HasPOS = Text.HTML5.MetaData.Schema.Place.Place
 --   [@ranges@] @'Text'@
 type CommentText = Text
 
--- | The typical range of ages the content's intendedEndUser, for example '7-9', '11-'.
+-- | The typical expected age range, e.g. '7-9', '11-'.
 --
 --   [@id@] typicalAgeRange
 --
 --   [@label@] Typical Age Range
 --
---   [@comment@] The typical range of ages the content's intendedEndUser, for example '7-9', '11-'.
+--   [@comment@] The typical expected age range, e.g. '7-9', '11-'.
 --
---   [@domains@] @'CreativeWork'@
+--   [@domains@] @'CreativeWork','Event'@
 --
 --   [@ranges@] @'Text'@
 type TypicalAgeRange = Text
@@ -2340,10 +2584,10 @@ type Children = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@comment@] The season to which this episode belongs.
 --
---   [@domains@] @'TVEpisode'@
+--   [@domains@] @'Episode','Clip'@
 --
---   [@ranges@] @'TVSeason'@
-type PartOfSeason = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
+--   [@ranges@] @'Season'@
+type PartOfSeason = Text.HTML5.MetaData.Schema.Season.Season
 
 -- | Cash, credit card, etc.
 --
@@ -2370,6 +2614,32 @@ type PaymentAccepted = Text
 --
 --   [@ranges@] @'Text'@
 type StructuralClass = Text
+
+-- | An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers.)
+--
+--   [@id@] contactOption
+--
+--   [@label@] Contact Option
+--
+--   [@comment@] An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers.)
+--
+--   [@domains@] @'ContactPoint'@
+--
+--   [@ranges@] @'ContactPointOption'@
+type ContactOption = Text.HTML5.MetaData.Schema.ContactPointOption.ContactPointOption
+
+-- | The director of the movie, tv/radio episode or series. (legacy spelling; see singular form, director)
+--
+--   [@id@] directors
+--
+--   [@label@] Directors
+--
+--   [@comment@] The director of the movie, tv/radio episode or series. (legacy spelling; see singular form, director)
+--
+--   [@domains@] @'Series','Episode','Movie'@
+--
+--   [@ranges@] @'Person'@
+type Directors = Text.HTML5.MetaData.Schema.Person.Person
 
 -- | The number of grams of carbohydrates.
 --
@@ -2756,7 +3026,7 @@ type BiomechnicalClass = Text
 --
 --   [@comment@] The number of episodes in this season or series.
 --
---   [@domains@] @'TVSeason','TVSeries'@
+--   [@domains@] @'Series','Season'@
 --
 --   [@ranges@] @'Number'@
 type NumberOfEpisodes = Number
@@ -2813,15 +3083,15 @@ type AmountOfThisGood = Number
 --   [@ranges@] @'Offer'@
 type AddOn = Text.HTML5.MetaData.Schema.Offer.Offer
 
--- | The beginning of the validity of offer, price specification, or opening hours data.
+-- | The date when the item becomes valid.
 --
 --   [@id@] validFrom
 --
 --   [@label@] Valid From
 --
---   [@comment@] The beginning of the validity of offer, price specification, or opening hours data.
+--   [@comment@] The date when the item becomes valid.
 --
---   [@domains@] @'OpeningHoursSpecification','Demand','PriceSpecification','Offer'@
+--   [@domains@] @'OpeningHoursSpecification','Offer','Demand','PriceSpecification','Permit'@
 --
 --   [@ranges@] @'DateTime'@
 type ValidFrom = DateTime
@@ -2930,15 +3200,15 @@ type CountriesSupported = Text
 --   [@ranges@] @'MedicalDevice'@
 type UsesDevice = Text.HTML5.MetaData.Schema.MedicalDevice.MedicalDevice
 
--- | A cast member of the movie, TV series, season, or episode, or video. (legacy spelling; see singular form, actor)
+-- | A cast member of the movie, tv/radio series, season, episode, or video. (legacy spelling; see singular form, actor)
 --
 --   [@id@] actors
 --
 --   [@label@] Actors
 --
---   [@comment@] A cast member of the movie, TV series, season, or episode, or video. (legacy spelling; see singular form, actor)
+--   [@comment@] A cast member of the movie, tv/radio series, season, episode, or video. (legacy spelling; see singular form, actor)
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries'@
+--   [@domains@] @'Series','Episode','Movie'@
 --
 --   [@ranges@] @'Person'@
 type Actors = Text.HTML5.MetaData.Schema.Person.Person
@@ -3073,15 +3343,15 @@ type ClincalPharmacology = Text
 --   [@ranges@] @'Date'@
 type GuidelineDate = Date
 
--- | The producer of the movie, TV series, season, or episode, or video.
+-- | The producer of the movie, tv/radio series, season, or episode, or video.
 --
 --   [@id@] producer
 --
 --   [@label@] Producer
 --
---   [@comment@] The producer of the movie, TV series, season, or episode, or video.
+--   [@comment@] The producer of the movie, tv/radio series, season, or episode, or video.
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries'@
+--   [@domains@] @'Movie','Season','Episode','Series'@
 --
 --   [@ranges@] @'Person'@
 type Producer = Text.HTML5.MetaData.Schema.Person.Person
@@ -3125,6 +3395,19 @@ type ReviewedBy = Either Text.HTML5.MetaData.Schema.Organization.Organization Te
 --   [@ranges@] @'Organization'@
 type Affiliation = Text.HTML5.MetaData.Schema.Organization.Organization
 
+-- | The size of the business in annual revenue.
+--
+--   [@id@] yearlyRevenue
+--
+--   [@label@] Yearly Revenue
+--
+--   [@comment@] The size of the business in annual revenue.
+--
+--   [@domains@] @'BusinessAudience'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type YearlyRevenue = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
 -- | Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).
 --
 --   [@id@] permissions
@@ -3163,6 +3446,19 @@ type Aspect = Text
 --
 --   [@ranges@] @'MedicalTrialDesign'@
 type TrialDesign = Text.HTML5.MetaData.Schema.MedicalTrialDesign.MedicalTrialDesign
+
+-- | The organization owning or operating the broadcast service.
+--
+--   [@id@] broadcaster
+--
+--   [@label@] Broadcaster
+--
+--   [@comment@] The organization owning or operating the broadcast service.
+--
+--   [@domains@] @'BroadcastService'@
+--
+--   [@ranges@] @'Organization'@
+type Broadcaster = Text.HTML5.MetaData.Schema.Organization.Organization
 
 -- | A sub property of instrument. The recipe/instructions used to perform the action.
 --
@@ -3242,6 +3538,19 @@ type Weight = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
 --   [@ranges@] @'Text'@
 type FoodWarning = Text
 
+-- | New entry added as the package passes through each leg of its journey (from shipment to final delivery).
+--
+--   [@id@] deliveryStatus
+--
+--   [@label@] Delivery Status
+--
+--   [@comment@] New entry added as the package passes through each leg of its journey (from shipment to final delivery).
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'DeliveryEvent'@
+type DeliveryStatus = Text.HTML5.MetaData.Schema.DeliveryEvent.DeliveryEvent
+
 -- | A condition the test is used to diagnose.
 --
 --   [@id@] usedToDiagnose
@@ -3268,15 +3577,15 @@ type UsedToDiagnose = Text.HTML5.MetaData.Schema.MedicalCondition.MedicalConditi
 --   [@ranges@] @'Event'@
 type SubEvent = Text.HTML5.MetaData.Schema.Event.Event
 
--- | The director of the movie, TV episode, or series.
+-- | The director of the movie, tv/radio episode or series.
 --
 --   [@id@] director
 --
 --   [@label@] Director
 --
---   [@comment@] The director of the movie, TV episode, or series.
+--   [@comment@] The director of the movie, tv/radio episode or series.
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries'@
+--   [@domains@] @'Series','Episode','Movie'@
 --
 --   [@ranges@] @'Person'@
 type Director = Text.HTML5.MetaData.Schema.Person.Person
@@ -3319,6 +3628,19 @@ type StartTime = DateTime
 --
 --   [@ranges@] @'Organization','Person'@
 type Attendees = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | Position of the clip within an ordered group of clips.
+--
+--   [@id@] clipNumber
+--
+--   [@label@] Clip Number
+--
+--   [@comment@] Position of the clip within an ordered group of clips.
+--
+--   [@domains@] @'Clip'@
+--
+--   [@ranges@] @'Integer'@
+type ClipNumber = Integer
 
 -- | One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.
 --
@@ -3411,6 +3733,19 @@ type StudyDesign = Text.HTML5.MetaData.Schema.MedicalObservationalStudyDesign.Me
 --   [@ranges@] @'Text'@
 type NonProprietaryName = Text
 
+-- | The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
+--
+--   [@id@] productSupported
+--
+--   [@label@] Product Supported
+--
+--   [@comment@] The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
+--
+--   [@domains@] @'ContactPoint'@
+--
+--   [@ranges@] @'Product','Text'@
+type ProductSupported = Either Text.HTML5.MetaData.Schema.Product.Product Text
+
 -- | A sub property of location. The course where this action was taken.
 --
 --   [@id@] course
@@ -3488,6 +3823,19 @@ type Author = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.H
 --
 --   [@ranges@] @'Rating'@
 type ReviewRating = Text.HTML5.MetaData.Schema.Rating.Rating
+
+-- | The time validity of the permit.
+--
+--   [@id@] validFor
+--
+--   [@label@] Valid for
+--
+--   [@comment@] The time validity of the permit.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'Duration'@
+type ValidFor = Text.HTML5.MetaData.Schema.Duration.Duration
 
 -- | The larger organization that this local business is a branch of, if any.
 --
@@ -3658,6 +4006,19 @@ type PriceType = Text
 --   [@ranges@] @'MedicalEvidenceLevel'@
 type EvidenceLevel = Text.HTML5.MetaData.Schema.MedicalEvidenceLevel.MedicalEvidenceLevel
 
+-- | The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
+--
+--   [@id@] serviceOperator
+--
+--   [@label@] Service Operator
+--
+--   [@comment@] The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
+--
+--   [@domains@] @'GovernmentService'@
+--
+--   [@ranges@] @'Organization'@
+type ServiceOperator = Text.HTML5.MetaData.Schema.Organization.Organization
+
 -- | Storage requirements (free space required).
 --
 --   [@id@] storageRequirements
@@ -3775,6 +4136,19 @@ type SuperEvent = Text.HTML5.MetaData.Schema.Event.Event
 --   [@ranges@] @'ImageObject'@
 type Diagram = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
 
+-- | The billing address for the order.
+--
+--   [@id@] billingAddress
+--
+--   [@label@] Billing Address
+--
+--   [@comment@] The billing address for the order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'PostalAddress'@
+type BillingAddress = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
+
 -- | The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.
 --
 --   [@id@] object
@@ -3827,6 +4201,19 @@ type StudyLocation = Text.HTML5.MetaData.Schema.AdministrativeArea.Administrativ
 --   [@ranges@] @'Muscle'@
 type Antagonist = Text.HTML5.MetaData.Schema.Muscle.Muscle
 
+-- | Shipper's address.
+--
+--   [@id@] originAddress
+--
+--   [@label@] Origin Address
+--
+--   [@comment@] Shipper's address.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'PostalAddress'@
+type OriginAddress = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
+
 -- | The underlying innervation associated with the muscle.
 --
 --   [@id@] nerve
@@ -3839,6 +4226,19 @@ type Antagonist = Text.HTML5.MetaData.Schema.Muscle.Muscle
 --
 --   [@ranges@] @'Nerve'@
 type Nerve = Text.HTML5.MetaData.Schema.Nerve.Nerve
+
+-- | A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3. (WebSchemas wiki lists possible values)
+--
+--   [@id@] accessibilityHazard
+--
+--   [@label@] Accessibility Hazard
+--
+--   [@comment@] A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3. (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>)
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type AccessibilityHazard = Text
 
 -- | A contact location for a person's residence.
 --
@@ -3878,6 +4278,19 @@ type DrugUnit = Text
 --
 --   [@ranges@] @'Date'@
 type FoundingDate = Date
+
+-- | Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (WebSchemas wiki lists possible values).
+--
+--   [@id@] accessibilityFeature
+--
+--   [@label@] Accessibility Feature
+--
+--   [@comment@] Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type AccessibilityFeature = Text
 
 -- | A component test of the panel.
 --
@@ -4048,6 +4461,19 @@ type Function = Text
 --   [@ranges@] @'Integer'@
 type NumTracks = Integer
 
+-- | After this date, the item will no longer be available for pickup.
+--
+--   [@id@] availableThrough
+--
+--   [@label@] Available Through
+--
+--   [@comment@] After this date, the item will no longer be available for pickup.
+--
+--   [@domains@] @'DeliveryEvent'@
+--
+--   [@ranges@] @'DateTime'@
+type AvailableThrough = DateTime
+
 -- | Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
 --
 --   [@id@] targetPopulation
@@ -4165,6 +4591,19 @@ type SuggestedMaxAge = Number
 --   [@ranges@] @'TypeAndQuantityNode'@
 type IncludesObject = Text.HTML5.MetaData.Schema.TypeAndQuantityNode.TypeAndQuantityNode
 
+-- | A means of accessing the service (e.g. a phone bank, a web site, a location, etc.)
+--
+--   [@id@] availableChannel
+--
+--   [@label@] Available Channel
+--
+--   [@comment@] A means of accessing the service (e.g. a phone bank, a web site, a location, etc.)
+--
+--   [@domains@] @'Service'@
+--
+--   [@ranges@] @'ServiceChannel'@
+type AvailableChannel = Text.HTML5.MetaData.Schema.ServiceChannel.ServiceChannel
+
 -- | A (typically single) geographic location associated with the job position.
 --
 --   [@id@] jobLocation
@@ -4203,6 +4642,19 @@ type AppliesToDeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.Deliver
 --
 --   [@ranges@] @'DataDownload'@
 type Distribution = Text.HTML5.MetaData.Schema.DataDownload.DataDownload
+
+-- | The hours during which this contact point is available.
+--
+--   [@id@] hoursAvailable
+--
+--   [@label@] Hours Available
+--
+--   [@comment@] The hours during which this contact point is available.
+--
+--   [@domains@] @'ContactPoint'@
+--
+--   [@ranges@] @'OpeningHoursSpecification'@
+type HoursAvailable = Text.HTML5.MetaData.Schema.OpeningHoursSpecification.OpeningHoursSpecification
 
 -- | When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.
 --
@@ -4269,6 +4721,19 @@ type TargetProduct = Text.HTML5.MetaData.Schema.SoftwareApplication.SoftwareAppl
 --   [@ranges@] @'Person'@
 type Employee = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Date order was placed.
+--
+--   [@id@] orderDate
+--
+--   [@label@] Order Date
+--
+--   [@comment@] Date order was placed.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'DateTime'@
+type OrderDate = DateTime
+
 -- | Any FDA or other warnings about the drug (text or URL).
 --
 --   [@id@] warning
@@ -4320,6 +4785,19 @@ type ProteinContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --
 --   [@ranges@] @'Text'@
 type Dateline = Text
+
+-- | Destination address.
+--
+--   [@id@] deliveryAddress
+--
+--   [@label@] Delivery Address
+--
+--   [@comment@] Destination address.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'PostalAddress'@
+type DeliveryAddress = Text.HTML5.MetaData.Schema.PostalAddress.PostalAddress
 
 -- | One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.
 --
@@ -4477,6 +4955,19 @@ type AvailableTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
 --   [@ranges@] @'BrainStructure'@
 type SourcedFrom = Text.HTML5.MetaData.Schema.BrainStructure.BrainStructure
 
+-- | The latest date the package may arrive.
+--
+--   [@id@] expectedArrivalUntil
+--
+--   [@label@] Expected Arrival Until
+--
+--   [@comment@] The latest date the package may arrive.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'DateTime'@
+type ExpectedArrivalUntil = DateTime
+
 -- | The number of grams of saturated fat.
 --
 --   [@id@] saturatedFatContent
@@ -4607,6 +5098,19 @@ type DomainIncludes = Text.HTML5.MetaData.Schema.Class.Class
 --   [@ranges@] @'URL'@
 type CodeRepository = URL
 
+-- | When the item is available for pickup from the store, locker, etc.
+--
+--   [@id@] availableFrom
+--
+--   [@label@] Available From
+--
+--   [@comment@] When the item is available for pickup from the store, locker, etc.
+--
+--   [@domains@] @'DeliveryEvent'@
+--
+--   [@ranges@] @'DateTime'@
+type AvailableFrom = DateTime
+
 -- | The description of a node in an established educational framework.
 --
 --   [@id@] targetDescription
@@ -4659,15 +5163,15 @@ type OpeningHours = Text.HTML5.MetaData.Schema.Duration.Duration
 --   [@ranges@] @'Text'@
 type ProficiencyLevel = Text
 
--- | Any alternate name for this medical entity.
+-- | An alias for the item.
 --
 --   [@id@] alternateName
 --
 --   [@label@] Alternate Name
 --
---   [@comment@] Any alternate name for this medical entity.
+--   [@comment@] An alias for the item.
 --
---   [@domains@] @'MedicalEntity'@
+--   [@domains@] @'Thing'@
 --
 --   [@ranges@] @'Text'@
 type AlternateName = Text
@@ -4802,15 +5306,15 @@ type CookingMethod = Text
 --   [@ranges@] @'CreativeWork'@
 type EncodesCreativeWork = Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork
 
--- | The TV series to which this episode or season belongs.
+-- | The TV series to which this episode or season belongs. (legacy form; partOfSeries is preferred)
 --
 --   [@id@] partOfTVSeries
 --
 --   [@label@] Part of TV Series
 --
---   [@comment@] The TV series to which this episode or season belongs.
+--   [@comment@] The TV series to which this episode or season belongs. (legacy form; partOfSeries is preferred)
 --
---   [@domains@] @'TVEpisode','TVSeason'@
+--   [@domains@] @'TVEpisode','TVSeason','TVClip'@
 --
 --   [@ranges@] @'TVSeries'@
 type PartOfTVSeries = Text.HTML5.MetaData.Schema.TVSeries.TVSeries
@@ -5036,15 +5540,15 @@ type TypicalTest = Text.HTML5.MetaData.Schema.MedicalTest.MedicalTest
 --   [@ranges@] @'MedicalGuideline'@
 type Guideline = Text.HTML5.MetaData.Schema.MedicalGuideline.MedicalGuideline
 
--- | The production company or studio that made the movie, TV series, season, or episode, or video.
+-- | The production company or studio that made the movie, tv/radio series, season, or episode, or media object.
 --
 --   [@id@] productionCompany
 --
 --   [@label@] Production Company
 --
---   [@comment@] The production company or studio that made the movie, TV series, season, or episode, or video.
+--   [@comment@] The production company or studio that made the movie, tv/radio series, season, or episode, or media object.
 --
---   [@domains@] @'TVEpisode','Movie','VideoObject','TVSeries'@
+--   [@domains@] @'Movie','MediaObject','Season','Episode','Series'@
 --
 --   [@ranges@] @'Organization'@
 type ProductionCompany = Text.HTML5.MetaData.Schema.Organization.Organization
@@ -5140,6 +5644,19 @@ type IsPartOf = Text.HTML5.MetaData.Schema.CollectionPage.CollectionPage
 --   [@ranges@] @'DateTime'@
 type Temporal = DateTime
 
+-- | Party placing the order.
+--
+--   [@id@] customer
+--
+--   [@label@] Customer
+--
+--   [@comment@] Party placing the order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Customer = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
 -- | The most generic familial relation.
 --
 --   [@id@] relatedTo
@@ -5179,6 +5696,19 @@ type ContactPoint = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
 --   [@ranges@] @'MediaObject'@
 type AssociatedMedia = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 
+-- | The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.)      domain: Audience      Range: Text    
+--
+--   [@id@] audienceType
+--
+--   [@label@] Audience Type
+--
+--   [@comment@] The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.)      domain: Audience      Range: Text    
+--
+--   [@domains@] @'Audience'@
+--
+--   [@ranges@] @'Text'@
+type AudienceType = Text
+
 -- | The number of grams of unsaturated fat.
 --
 --   [@id@] unsaturatedFatContent
@@ -5205,6 +5735,32 @@ type UnsaturatedFatContent = Text.HTML5.MetaData.Schema.Mass.Mass
 --   [@ranges@] @'Diet'@
 type Diet = Text.HTML5.MetaData.Schema.Diet.Diet
 
+-- | The location served by this contact point (e.g., a phone number intended for Europeans vs. North Americans or only within the United States.)
+--
+--   [@id@] areaServed
+--
+--   [@label@] Area Served
+--
+--   [@comment@] The location served by this contact point (e.g., a phone number intended for Europeans vs. North Americans or only within the United States.)
+--
+--   [@domains@] @'ContactPoint'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type AreaServed = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
+-- | The geographic area associated with the audience.
+--
+--   [@id@] geographicArea
+--
+--   [@label@] Geographic Area
+--
+--   [@comment@] The geographic area associated with the audience.
+--
+--   [@domains@] @'Audience'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type GeographicArea = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
 -- | File size in (mega/kilo) bytes.
 --
 --   [@id@] contentSize
@@ -5218,6 +5774,19 @@ type Diet = Text.HTML5.MetaData.Schema.Diet.Diet
 --   [@ranges@] @'Text'@
 type ContentSize = Text
 
+-- | The date when the item is no longer valid.
+--
+--   [@id@] validUntil
+--
+--   [@label@] Valid Until
+--
+--   [@comment@] The date when the item is no longer valid.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'Date'@
+type ValidUntil = Date
+
 -- | Typical or recommended followup care after the procedure is performed.
 --
 --   [@id@] followup
@@ -5230,6 +5799,19 @@ type ContentSize = Text
 --
 --   [@ranges@] @'Text'@
 type Followup = Text
+
+-- | The party responsible for the parcel delivery.
+--
+--   [@id@] carrier
+--
+--   [@label@] Carrier
+--
+--   [@comment@] The party responsible for the parcel delivery.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'Organization'@
+type Carrier = Text.HTML5.MetaData.Schema.Organization.Organization
 
 -- | The branches that delineate from the nerve bundle.
 --
@@ -5387,6 +5969,19 @@ type Runtime = Text
 --   [@ranges@] @'Text'@
 type PublicationType = Text
 
+-- | Tracking url for the parcel delivery.
+--
+--   [@id@] trackingUrl
+--
+--   [@label@] Tracking Url
+--
+--   [@comment@] Tracking url for the parcel delivery.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'URL'@
+type TrackingUrl = URL
+
 -- | The GTIN-8 code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN.
 --
 --   [@id@] gtin8
@@ -5490,6 +6085,19 @@ type PossibleTreatment = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherap
 --
 --   [@ranges@] @'ImageObject'@
 type PrimaryImageOfPage = Text.HTML5.MetaData.Schema.ImageObject.ImageObject
+
+-- | The phone number to use to access the service.
+--
+--   [@id@] servicePhone
+--
+--   [@label@] Service Phone
+--
+--   [@comment@] The phone number to use to access the service.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'ContactPoint'@
+type ServicePhone = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
 
 -- | How often one should engage in the activity.
 --
@@ -5686,6 +6294,19 @@ type LastReviewed = Date
 --   [@ranges@] @'Date'@
 type PriceValidUntil = Date
 
+-- | Password, PIN, or access code needed for delivery (e.g. from a locker).
+--
+--   [@id@] accessCode
+--
+--   [@label@] Access Code
+--
+--   [@comment@] Password, PIN, or access code needed for delivery (e.g. from a locker).
+--
+--   [@domains@] @'DeliveryEvent'@
+--
+--   [@ranges@] @'Text'@
+type AccessCode = Text
+
 -- | An organization to which the person belongs.
 --
 --   [@id@] memberOf
@@ -5725,18 +6346,44 @@ type AssociatedAnatomy = Either3 Text.HTML5.MetaData.Schema.AnatomicalSystem.Ana
 --   [@ranges@] @'Thing'@
 type Replacee = Text.HTML5.MetaData.Schema.Thing.Thing
 
--- | Specifies the Person or Organization that distributed the CreativeWork.
+-- | The organization or agency that is providing the service.
 --
 --   [@id@] provider
 --
 --   [@label@] Provider
 --
---   [@comment@] Specifies the Person or Organization that distributed the CreativeWork.
+--   [@comment@] The organization or agency that is providing the service.
 --
---   [@domains@] @'CreativeWork'@
+--   [@domains@] @'CreativeWork','Service'@
 --
 --   [@ranges@] @'Organization','Person'@
 type Provider = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
+
+-- | The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
+--
+--   [@id@] acceptedOffer
+--
+--   [@label@] Accepted Offer
+--
+--   [@comment@] The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Offer'@
+type AcceptedOffer = Text.HTML5.MetaData.Schema.Offer.Offer
+
+-- | Free text to define other than pure numerical ranking of an episode or a season in an ordered list of items (further formatting restrictions may apply within particular user groups).
+--
+--   [@id@] position
+--
+--   [@label@] Position
+--
+--   [@comment@] Free text to define other than pure numerical ranking of an episode or a season in an ordered list of items (further formatting restrictions may apply within particular user groups).
+--
+--   [@domains@] @'Season','Episode','Clip'@
+--
+--   [@ranges@] @'Text'@
+type Position = Text
 
 -- | The degree of mobility the joint allows.
 --
@@ -5750,6 +6397,19 @@ type Provider = Either Text.HTML5.MetaData.Schema.Organization.Organization Text
 --
 --   [@ranges@] @'Text'@
 type FunctionalClass = Text
+
+-- | A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+--
+--   [@id@] parentService
+--
+--   [@label@] Parent Service
+--
+--   [@comment@] A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+--
+--   [@domains@] @'BroadcastService'@
+--
+--   [@ranges@] @'BroadcastService'@
+type ParentService = Text.HTML5.MetaData.Schema.BroadcastService.BroadcastService
 
 -- | Type of ordering (e.g. Ascending, Descending, Unordered).
 --
@@ -5789,6 +6449,19 @@ type InteractionCount = Text
 --
 --   [@ranges@] @'Thing'@
 type Mentions = Text.HTML5.MetaData.Schema.Thing.Thing
+
+-- | The audience eligible for this service.
+--
+--   [@id@] serviceAudience
+--
+--   [@label@] Service Audience
+--
+--   [@comment@] The audience eligible for this service.
+--
+--   [@domains@] @'Service'@
+--
+--   [@ranges@] @'Audience'@
+type ServiceAudience = Text.HTML5.MetaData.Schema.Audience.Audience
 
 -- | The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
 --
@@ -5946,6 +6619,19 @@ type Editor = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Person'@
 type Oponent = Text.HTML5.MetaData.Schema.Person.Person
 
+-- | Method used for delivery or shipping.
+--
+--   [@id@] hasDeliveryMethod
+--
+--   [@label@] Has Delivery Method
+--
+--   [@comment@] Method used for delivery or shipping.
+--
+--   [@domains@] @'DeliveryEvent','ParcelDelivery'@
+--
+--   [@ranges@] @'DeliveryMethod'@
+type HasDeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.DeliveryMethod
+
 -- | An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
 --
 --   [@id@] cause
@@ -5958,6 +6644,32 @@ type Oponent = Text.HTML5.MetaData.Schema.Person.Person
 --
 --   [@ranges@] @'MedicalCause'@
 type Cause = Text.HTML5.MetaData.Schema.MedicalCause.MedicalCause
+
+-- | Audiences defined by a person's gender.
+--
+--   [@id@] requiredGender
+--
+--   [@label@] Required Gender
+--
+--   [@comment@] Audiences defined by a person's gender.
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Text'@
+type RequiredGender = Text
+
+-- | The service through with the permit was granted.
+--
+--   [@id@] issuedThrough
+--
+--   [@label@] Issued Through
+--
+--   [@comment@] The service through with the permit was granted.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'Service'@
+type IssuedThrough = Text.HTML5.MetaData.Schema.Service.Service
 
 -- | One of a set of signs and symptoms that can be used to distinguish this diagnosis from others in the differential diagnosis.
 --
@@ -5997,6 +6709,19 @@ type ContainedIn = Text.HTML5.MetaData.Schema.Place.Place
 --
 --   [@ranges@] @'QualitativeValue'@
 type Lesser = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
+
+-- | The organization issuing the permit.
+--
+--   [@id@] issuedBy
+--
+--   [@label@] Issued by
+--
+--   [@comment@] The organization issuing the permit.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'Organization'@
+type IssuedBy = Text.HTML5.MetaData.Schema.Organization.Organization
 
 -- | Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
 --
@@ -6128,6 +6853,19 @@ type Line = Text
 --   [@ranges@] @'AudioObject'@
 type Audio = Text.HTML5.MetaData.Schema.AudioObject.AudioObject
 
+-- | The website to access the service.
+--
+--   [@id@] serviceUrl
+--
+--   [@label@] Service Url
+--
+--   [@comment@] The website to access the service.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'URL'@
+type ServiceUrl = URL
+
 -- | Headline of the article
 --
 --   [@id@] headline
@@ -6180,6 +6918,19 @@ type AvailableIn = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeA
 --   [@ranges@] @'BlogPosting'@
 type BlogPost = Text.HTML5.MetaData.Schema.BlogPosting.BlogPosting
 
+-- | Estimated processing time for the service using this channel.
+--
+--   [@id@] processingTime
+--
+--   [@label@] Processing Time
+--
+--   [@comment@] Estimated processing time for the service using this channel.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'Duration'@
+type ProcessingTime = Text.HTML5.MetaData.Schema.Duration.Duration
+
 -- | The overall rating, based on a collection of reviews or ratings, of the item.
 --
 --   [@id@] aggregateRating
@@ -6193,15 +6944,15 @@ type BlogPost = Text.HTML5.MetaData.Schema.BlogPosting.BlogPosting
 --   [@ranges@] @'AggregateRating'@
 type AggregateRating = Text.HTML5.MetaData.Schema.AggregateRating.AggregateRating
 
--- | The season number.
+-- | Position of the season within an ordered group of seasons.
 --
 --   [@id@] seasonNumber
 --
 --   [@label@] Season Number
 --
---   [@comment@] The season number.
+--   [@comment@] Position of the season within an ordered group of seasons.
 --
---   [@domains@] @'TVSeason'@
+--   [@domains@] @'Season'@
 --
 --   [@ranges@] @'Integer'@
 type SeasonNumber = Integer
@@ -6218,6 +6969,19 @@ type SeasonNumber = Integer
 --
 --   [@ranges@] @'FoodEvent'@
 type FoodEvent = Text.HTML5.MetaData.Schema.FoodEvent.FoodEvent
+
+-- | Indicates that the resource is compatible with the referenced accessibility API (WebSchemas wiki lists possible values).     
+--
+--   [@id@] accessibilityAPI
+--
+--   [@label@] Accessibility API
+--
+--   [@comment@] Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).     
+--
+--   [@domains@] @'CreativeWork'@
+--
+--   [@ranges@] @'Text'@
+type AccessibilityAPI = Text
 
 -- | A sub property of object. The object that replaces.
 --
@@ -6297,6 +7061,19 @@ type EntertainmentBusiness = Text.HTML5.MetaData.Schema.EntertainmentBusiness.En
 --   [@ranges@] @'Text'@
 type Naics = Text
 
+-- | Item(s) being shipped.
+--
+--   [@id@] itemShipped
+--
+--   [@label@] Item Shipped
+--
+--   [@comment@] Item(s) being shipped.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'Product'@
+type ItemShipped = Text.HTML5.MetaData.Schema.Product.Product
+
 -- | The movement the muscle generates.
 --
 --   [@id@] action
@@ -6322,6 +7099,19 @@ type Action = Text
 --
 --   [@ranges@] @'Text'@
 type AdditionalName = Text
+
+-- | The age of the business.
+--
+--   [@id@] yearsInOperation
+--
+--   [@label@] Years in Operation
+--
+--   [@comment@] The age of the business.
+--
+--   [@domains@] @'BusinessAudience'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type YearsInOperation = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
 
 -- | Educational background needed for the position.
 --
@@ -6349,18 +7139,18 @@ type EducationRequirements = Text
 --   [@ranges@] @'Organization','Person'@
 type Performer = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
--- | The seasons of the TV series (legacy spelling; see singular form, season).
+-- | A season in a tv/radio series. (legacy spelling; see singular form, season)
 --
 --   [@id@] seasons
 --
 --   [@label@] Seasons
 --
---   [@comment@] The seasons of the TV series (legacy spelling; see singular form, season).
+--   [@comment@] A season in a tv/radio series. (legacy spelling; see singular form, season)
 --
---   [@domains@] @'TVSeries'@
+--   [@domains@] @'Series'@
 --
---   [@ranges@] @'TVSeason'@
-type Seasons = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
+--   [@ranges@] @'Season'@
+type Seasons = Text.HTML5.MetaData.Schema.Season.Season
 
 -- | Official rating of a piece of content—for example,'MPAA PG-13'.
 --
@@ -6505,6 +7295,19 @@ type CodeValue = Text
 --   [@ranges@] @'Mass'@
 type SugarContent = Text.HTML5.MetaData.Schema.Mass.Mass
 
+-- | A language someone may use with the item.
+--
+--   [@id@] availableLanguage
+--
+--   [@label@] Available Language
+--
+--   [@comment@] A language someone may use with the item.
+--
+--   [@domains@] @'ServiceChannel','ContactPoint'@
+--
+--   [@ranges@] @'Language'@
+type AvailableLanguage = Text.HTML5.MetaData.Schema.Language.Language
+
 -- | A sub property of object. The options subject to this action.
 --
 --   [@id@] option
@@ -6570,6 +7373,19 @@ type Encoding = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 --   [@ranges@] @'CreativeWork','Text'@
 type Citation = Either Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork Text
 
+-- | The number to access the service by text message.
+--
+--   [@id@] serviceSmsNumber
+--
+--   [@label@] Service Sms Number
+--
+--   [@comment@] The number to access the service by text message.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'ContactPoint'@
+type ServiceSmsNumber = Text.HTML5.MetaData.Schema.ContactPoint.ContactPoint
+
 -- | An educational organizations that the person is an alumni of.
 --
 --   [@id@] alumniOf
@@ -6596,28 +7412,41 @@ type AlumniOf = Text.HTML5.MetaData.Schema.EducationalOrganization.EducationalOr
 --   [@ranges@] @'Text'@
 type SalaryCurrency = Text
 
--- | A cast member of the movie, TV series, season, or episode, or video.
+-- | The size of business by number of employees.
+--
+--   [@id@] numberofEmployees
+--
+--   [@label@] Numberof Employees
+--
+--   [@comment@] The size of business by number of employees.
+--
+--   [@domains@] @'BusinessAudience'@
+--
+--   [@ranges@] @'QuantitativeValue'@
+type NumberofEmployees = Text.HTML5.MetaData.Schema.QuantitativeValue.QuantitativeValue
+
+-- | A cast member of the movie, tv/radio series, season, episode, or video.
 --
 --   [@id@] actor
 --
 --   [@label@] Actor
 --
---   [@comment@] A cast member of the movie, TV series, season, or episode, or video.
+--   [@comment@] A cast member of the movie, tv/radio series, season, episode, or video.
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries'@
+--   [@domains@] @'Series','Episode','Movie'@
 --
 --   [@ranges@] @'Person'@
 type Actor = Text.HTML5.MetaData.Schema.Person.Person
 
--- | The end date and time of the event (in ISO 8601 date format).
+-- | The end date and time of the event or item (in ISO 8601 date format).
 --
 --   [@id@] endDate
 --
 --   [@label@] End Date
 --
---   [@comment@] The end date and time of the event (in <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 date format</a>).
+--   [@comment@] The end date and time of the event or item (in <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 date format</a>).
 --
---   [@domains@] @'TVSeason','Event','TVSeries'@
+--   [@domains@] @'Series','Event','Season'@
 --
 --   [@ranges@] @'Date'@
 type EndDate = Date
@@ -6739,6 +7568,32 @@ type EducationalRole = Text
 --   [@ranges@] @'Text'@
 type Epidemiology = Text
 
+-- | The earliest date the package may arrive.
+--
+--   [@id@] expectedArrivalFrom
+--
+--   [@label@] Expected Arrival From
+--
+--   [@comment@] The earliest date the package may arrive.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'DateTime'@
+type ExpectedArrivalFrom = DateTime
+
+-- | The target audience for this permit.
+--
+--   [@id@] permitAudience
+--
+--   [@label@] Permit Audience
+--
+--   [@comment@] The target audience for this permit.
+--
+--   [@domains@] @'Permit'@
+--
+--   [@ranges@] @'Audience'@
+type PermitAudience = Text.HTML5.MetaData.Schema.Audience.Audience
+
 -- | A pointer to products or services sought by the organization or person (demand).
 --
 --   [@id@] seeks
@@ -6764,6 +7619,19 @@ type Seeks = Text.HTML5.MetaData.Schema.Demand.Demand
 --
 --   [@ranges@] @'Text'@
 type PhysiologicalBenefits = Text
+
+-- | The time admission will commence.
+--
+--   [@id@] doorTime
+--
+--   [@label@] Door Time
+--
+--   [@comment@] The time admission will commence.
+--
+--   [@domains@] @'Event'@
+--
+--   [@ranges@] @'DateTime'@
+type DoorTime = DateTime
 
 -- | URL of the item.
 --
@@ -6804,13 +7672,13 @@ type DeliveryMethod = Text.HTML5.MetaData.Schema.DeliveryMethod.DeliveryMethod
 --   [@ranges@] @'Text'@
 type UnitCode = Text
 
--- | URL of an image for the logo of the item.
+-- | A logo associated with an organization.
 --
 --   [@id@] logo
 --
 --   [@label@] Logo
 --
---   [@comment@] URL of an image for the logo of the item.
+--   [@comment@] A logo associated with an organization.
 --
 --   [@domains@] @'Organization','Brand','Place','Product'@
 --
@@ -6947,6 +7815,19 @@ type IsFamilyFriendly = Boolean
 --   [@ranges@] @'QualitativeValue'@
 type NonEqual = Text.HTML5.MetaData.Schema.QualitativeValue.QualitativeValue
 
+-- | An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
+--
+--   [@id@] eventStatus
+--
+--   [@label@] Event Status
+--
+--   [@comment@] An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
+--
+--   [@domains@] @'Event'@
+--
+--   [@ranges@] @'EventStatusType'@
+type EventStatus = Text.HTML5.MetaData.Schema.EventStatusType.EventStatusType
+
 -- | Link to prescribing information for the drug.
 --
 --   [@id@] prescribingInfo
@@ -7011,6 +7892,19 @@ type DoseSchedule = Text.HTML5.MetaData.Schema.DoseSchedule.DoseSchedule
 --
 --   [@ranges@] @'PriceSpecification'@
 type PriceSpecification = Text.HTML5.MetaData.Schema.PriceSpecification.PriceSpecification
+
+-- | The overall order the items in this delivery were included in.
+--
+--   [@id@] partOfOrder
+--
+--   [@label@] Part of Order
+--
+--   [@comment@] The overall order the items in this delivery were included in.
+--
+--   [@domains@] @'ParcelDelivery'@
+--
+--   [@ranges@] @'Order'@
+type PartOfOrder = Text.HTML5.MetaData.Schema.Order.Order
 
 -- | A URL pointing to a player for a specific video. In general, this is the information in the src element of an embed tag and should not be the same as the content of the loc tag. (previous spelling: embedURL)
 --
@@ -7220,6 +8114,19 @@ type ValueReference = Either Text.HTML5.MetaData.Schema.Enumeration.Enumeration 
 --   [@ranges@] @'Date'@
 type Expires = Date
 
+-- | Code used to redeem a discount.
+--
+--   [@id@] discountCode
+--
+--   [@label@] Discount Code
+--
+--   [@comment@] Code used to redeem a discount.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Text'@
+type DiscountCode = Text
+
 -- | The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
 --
 --   [@id@] taxID
@@ -7232,6 +8139,19 @@ type Expires = Date
 --
 --   [@ranges@] @'Text'@
 type TaxID = Text
+
+-- | The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
+--
+--   [@id@] serviceLocation
+--
+--   [@label@] Service Location
+--
+--   [@comment@] The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'Place'@
+type ServiceLocation = Text.HTML5.MetaData.Schema.Place.Place
 
 -- | Specifies browser requirements in human-readable text. For example,"requires HTML5 support".
 --
@@ -7272,6 +8192,32 @@ type Member = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.H
 --   [@ranges@] @'Class'@
 type RangeIncludes = Text.HTML5.MetaData.Schema.Class.Class
 
+-- | An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
+--
+--   [@id@] paymentMethodId
+--
+--   [@label@] Payment Method Id
+--
+--   [@comment@] An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Text'@
+type PaymentMethodId = Text
+
+-- | Audiences defined by a person's minimum age.
+--
+--   [@id@] requiredMinAge
+--
+--   [@label@] Required Min Age
+--
+--   [@comment@] Audiences defined by a person's minimum age.
+--
+--   [@domains@] @'PeopleAudience'@
+--
+--   [@ranges@] @'Integer'@
+type RequiredMinAge = Integer
+
 -- | An alignment to an established educational framework.
 --
 --   [@id@] educationalAlignment
@@ -7285,6 +8231,19 @@ type RangeIncludes = Text.HTML5.MetaData.Schema.Class.Class
 --   [@ranges@] @'AlignmentObject'@
 type EducationalAlignment = Text.HTML5.MetaData.Schema.AlignmentObject.AlignmentObject
 
+-- | Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
+--
+--   [@id@] previousStartDate
+--
+--   [@label@] Previous Start Date
+--
+--   [@comment@] Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
+--
+--   [@domains@] @'Event'@
+--
+--   [@ranges@] @'Date'@
+type PreviousStartDate = Date
+
 -- | The bitrate of the media object.
 --
 --   [@id@] bitrate
@@ -7297,6 +8256,19 @@ type EducationalAlignment = Text.HTML5.MetaData.Schema.AlignmentObject.Alignment
 --
 --   [@ranges@] @'Text'@
 type Bitrate = Text
+
+-- | The type of service being offered, e.g. veterans' benefits, emergency relief, etc.
+--
+--   [@id@] serviceType
+--
+--   [@label@] Service Type
+--
+--   [@comment@] The type of service being offered, e.g. veterans' benefits, emergency relief, etc.
+--
+--   [@domains@] @'Service'@
+--
+--   [@ranges@] @'Text'@
+type ServiceType = Text
 
 -- | A description of the procedure involved in setting up, using, and/or installing the device.
 --
@@ -7428,6 +8400,19 @@ type InLanguage = Text
 --   [@ranges@] @'Date'@
 type ReleaseDate = Date
 
+-- | Any discount applied (to an Order).
+--
+--   [@id@] discount
+--
+--   [@label@] Discount
+--
+--   [@comment@] Any discount applied (to an Order).
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Number','Text'@
+type Discount = Either Number Text
+
 -- | The subject matter of the content.
 --
 --   [@id@] about
@@ -7545,31 +8530,44 @@ type CountriesNotSupported = Text
 --   [@ranges@] @'ExercisePlan'@
 type ExercisePlan = Text.HTML5.MetaData.Schema.ExercisePlan.ExercisePlan
 
--- | The trailer of the movie or TV series, season, or episode.
+-- | The trailer of a movie or tv/radio series, season, or episode.
 --
 --   [@id@] trailer
 --
 --   [@label@] Trailer
 --
---   [@comment@] The trailer of the movie or TV series, season, or episode.
+--   [@comment@] The trailer of a movie or tv/radio series, season, or episode.
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries','TVSeason'@
+--   [@domains@] @'Movie','Season','Episode','Series'@
 --
 --   [@ranges@] @'VideoObject'@
 type Trailer = Text.HTML5.MetaData.Schema.VideoObject.VideoObject
 
--- | A season of a TV series.
+-- | A season in a tv/radio series.
 --
 --   [@id@] season
 --
 --   [@label@] Season
 --
---   [@comment@] A season of a TV series.
+--   [@comment@] A season in a tv/radio series.
 --
---   [@domains@] @'TVSeries'@
+--   [@domains@] @'Series'@
 --
---   [@ranges@] @'TVSeason'@
-type Season = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
+--   [@ranges@] @'Season'@
+type Season = Text.HTML5.MetaData.Schema.Season.Season
+
+-- | The series to which this episode or season belongs.
+--
+--   [@id@] partOfSeries
+--
+--   [@label@] Part of Series
+--
+--   [@comment@] The series to which this episode or season belongs.
+--
+--   [@domains@] @'Season','Episode','Clip'@
+--
+--   [@ranges@] @'Series'@
+type PartOfSeries = Text.HTML5.MetaData.Schema.Series.Series
 
 -- | A physical examination that can identify this sign.
 --
@@ -7583,6 +8581,19 @@ type Season = Text.HTML5.MetaData.Schema.TVSeason.TVSeason
 --
 --   [@ranges@] @'PhysicalExam'@
 type IdentifyingExam = Text.HTML5.MetaData.Schema.PhysicalExam.PhysicalExam
+
+-- | The service provided by this channel.
+--
+--   [@id@] providesService
+--
+--   [@label@] Provides Service
+--
+--   [@comment@] The service provided by this channel.
+--
+--   [@domains@] @'ServiceChannel'@
+--
+--   [@ranges@] @'Service'@
+type ProvidesService = Text.HTML5.MetaData.Schema.Service.Service
 
 -- | The quantity produced by the recipe (for example, number of people served, number of servings, etc).
 --
@@ -7622,6 +8633,19 @@ type Depth = Either Text.HTML5.MetaData.Schema.Distance.Distance Text.HTML5.Meta
 --
 --   [@ranges@] @'OwnershipInfo','Product'@
 type Owns = Either Text.HTML5.MetaData.Schema.OwnershipInfo.OwnershipInfo Text.HTML5.MetaData.Schema.Product.Product
+
+-- | The name of the credit card or other method of payment for the order.
+--
+--   [@id@] paymentMethod
+--
+--   [@label@] Payment Method
+--
+--   [@comment@] The name of the credit card or other method of payment for the order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'PaymentMethod'@
+type PaymentMethod = Text.HTML5.MetaData.Schema.PaymentMethod.PaymentMethod
 
 -- | The edition of the book.
 --
@@ -7674,6 +8698,19 @@ type GlobalLocationNumber = Text
 --
 --   [@ranges@] @'Text'@
 type CodingSystem = Text
+
+-- | The identifier of the transaction.
+--
+--   [@id@] orderNumber
+--
+--   [@label@] Order Number
+--
+--   [@comment@] The identifier of the transaction.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Text'@
+type OrderNumber = Text
 
 -- | Location in the body of the anatomical structure.
 --
@@ -7792,18 +8829,18 @@ type AcquiredFrom = Either Text.HTML5.MetaData.Schema.Organization.Organization 
 --   [@ranges@] @'Number'@
 type BillingIncrement = Number
 
--- | The episode of a TV series or season (legacy spelling; see singular form, episode).
+-- | An episode of a TV/radio series or season (legacy spelling; see singular form, episode)
 --
 --   [@id@] episodes
 --
 --   [@label@] Episodes
 --
---   [@comment@] The episode of a TV series or season (legacy spelling; see singular form, episode).
+--   [@comment@] An episode of a TV/radio series or season (legacy spelling; see singular form, episode)
 --
---   [@domains@] @'TVSeason','TVSeries'@
+--   [@domains@] @'Series','Season'@
 --
---   [@ranges@] @'TVEpisode'@
-type Episodes = Text.HTML5.MetaData.Schema.TVEpisode.TVEpisode
+--   [@ranges@] @'Episode'@
+type Episodes = Text.HTML5.MetaData.Schema.Episode.Episode
 
 -- | The keywords/tags used to describe this content.
 --
@@ -7831,18 +8868,31 @@ type Keywords = Text
 --   [@ranges@] @'Text'@
 type InfectiousAgent = Text
 
--- | The composer of the movie or TV soundtrack.
+-- | The composer of the movie or TV/radio soundtrack.
 --
 --   [@id@] musicBy
 --
 --   [@label@] Music by
 --
---   [@comment@] The composer of the movie or TV soundtrack.
+--   [@comment@] The composer of the movie or TV/radio soundtrack.
 --
---   [@domains@] @'TVEpisode','Movie','TVSeries'@
+--   [@domains@] @'Series','Episode','Movie'@
 --
 --   [@ranges@] @'Person','MusicGroup'@
 type MusicBy = Either Text.HTML5.MetaData.Schema.Person.Person Text.HTML5.MetaData.Schema.MusicGroup.MusicGroup
+
+-- | The currency (in 3-letter ISO 4217 format) of the discount.
+--
+--   [@id@] discountCurrency
+--
+--   [@label@] Discount Currency
+--
+--   [@comment@] The currency (in 3-letter ISO 4217 format) of the discount.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Text'@
+type DiscountCurrency = Text
 
 -- | A dataset contained in a catalog.
 --
@@ -7909,18 +8959,18 @@ type ApplicationCategory = Either Text URL
 --   [@ranges@] @'Text'@
 type SafetyConsideration = Text
 
--- | The episode number.
+-- | Position of the episode within an ordered group of episodes.
 --
 --   [@id@] episodeNumber
 --
 --   [@label@] Episode Number
 --
---   [@comment@] The episode number.
+--   [@comment@] Position of the episode within an ordered group of episodes.
 --
---   [@domains@] @'TVEpisode'@
+--   [@domains@] @'Episode'@
 --
---   [@ranges@] @'Number'@
-type EpisodeNumber = Number
+--   [@ranges@] @'Integer'@
+type EpisodeNumber = Integer
 
 -- | The artist that performed this album or recording.
 --
@@ -7987,6 +9037,19 @@ type Alumni = Text.HTML5.MetaData.Schema.Person.Person
 --   [@ranges@] @'Text'@
 type IsicV4 = Text
 
+-- | The geographic area where the service is provided.
+--
+--   [@id@] serviceArea
+--
+--   [@label@] Service Area
+--
+--   [@comment@] The geographic area where the service is provided.
+--
+--   [@domains@] @'Service'@
+--
+--   [@ranges@] @'AdministrativeArea'@
+type ServiceArea = Text.HTML5.MetaData.Schema.AdministrativeArea.AdministrativeArea
+
 -- | Actual bytes of the media object, for example the image file or video file. (previous spelling: contentURL)
 --
 --   [@id@] contentUrl
@@ -7999,6 +9062,19 @@ type IsicV4 = Text
 --
 --   [@ranges@] @'URL'@
 type ContentUrl = URL
+
+-- | The party taking the order (e.g. Amazon.com is a merchant for many sellers).
+--
+--   [@id@] merchant
+--
+--   [@label@] Merchant
+--
+--   [@comment@] The party taking the order (e.g. Amazon.com is a merchant for many sellers).
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Organization','Person'@
+type Merchant = Either Text.HTML5.MetaData.Schema.Organization.Organization Text.HTML5.MetaData.Schema.Person.Person
 
 -- | Nationality of the person.
 --
@@ -8273,6 +9349,19 @@ type Awards = Text
 --   [@ranges@] @'Text'@
 type ServesCuisine = Text
 
+-- | The item ordered.
+--
+--   [@id@] orderedItem
+--
+--   [@label@] Ordered Item
+--
+--   [@comment@] The item ordered.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'Product'@
+type OrderedItem = Text.HTML5.MetaData.Schema.Product.Product
+
 -- | A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.
 --
 --   [@id@] primaryPrevention
@@ -8285,6 +9374,19 @@ type ServesCuisine = Text
 --
 --   [@ranges@] @'MedicalTherapy'@
 type PrimaryPrevention = Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy
+
+-- | The current status of the order.
+--
+--   [@id@] orderStatus
+--
+--   [@label@] Order Status
+--
+--   [@comment@] The current status of the order.
+--
+--   [@domains@] @'Order'@
+--
+--   [@ranges@] @'OrderStatus'@
+type OrderStatus = Text.HTML5.MetaData.Schema.OrderStatus.OrderStatus
 
 -- | The URL at which a reply may be posted to the specified UserComment.
 --

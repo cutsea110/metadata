@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Schema.AutoBodyShop where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 

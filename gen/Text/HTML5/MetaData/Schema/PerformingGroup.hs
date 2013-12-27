@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.PerformingGroup where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -23,6 +23,7 @@ import Data.Text
 --
 --   [@url@] <http://schema.org/PerformingGroup>
 data PerformingGroup = PerformingGroup { additionalType :: AdditionalType
+                                       , alternateName :: AlternateName
                                        , description :: Description
                                        , image :: Image
                                        , name :: Name
@@ -33,6 +34,7 @@ data PerformingGroup = PerformingGroup { additionalType :: AdditionalType
                                        , brand :: Brand
                                        , contactPoint :: ContactPoint
                                        , contactPoints :: ContactPoints
+                                       , department :: Department
                                        , duns :: Duns
                                        , email :: Email
                                        , employee :: Employee
@@ -58,6 +60,7 @@ data PerformingGroup = PerformingGroup { additionalType :: AdditionalType
                                        , review :: Review
                                        , reviews :: Reviews
                                        , seeks :: Seeks
+                                       , subOrganization :: SubOrganization
                                        , taxID :: TaxID
                                        , telephone :: Telephone
                                        , vatID :: VatID

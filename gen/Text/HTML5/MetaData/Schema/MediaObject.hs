@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MediaObject where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -23,12 +23,17 @@ import Data.Text
 --
 --   [@url@] <http://schema.org/MediaObject>
 data MediaObject = MediaObject { additionalType :: AdditionalType
+                               , alternateName :: AlternateName
                                , description :: Description
                                , image :: Image
                                , name :: Name
                                , sameAs :: SameAs
                                , url :: Url
                                , about :: About
+                               , accessibilityAPI :: AccessibilityAPI
+                               , accessibilityControl :: AccessibilityControl
+                               , accessibilityFeature :: AccessibilityFeature
+                               , accessibilityHazard :: AccessibilityHazard
                                , accountablePerson :: AccountablePerson
                                , aggregateRating :: AggregateRating
                                , alternativeHeadline :: AlternativeHeadline
@@ -89,6 +94,8 @@ data MediaObject = MediaObject { additionalType :: AdditionalType
                                , expires :: Expires
                                , height :: Height
                                , playerType :: PlayerType
+                               , productionCompany :: ProductionCompany
+                               , publication :: Publication
                                , regionsAllowed :: RegionsAllowed
                                , requiresSubscription :: RequiresSubscription
                                , uploadDate :: UploadDate

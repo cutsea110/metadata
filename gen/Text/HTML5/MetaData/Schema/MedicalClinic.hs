@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.MedicalClinic where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -23,6 +23,7 @@ import Data.Text
 --
 --   [@url@] <http://schema.org/MedicalClinic>
 data MedicalClinic = MedicalClinic { additionalType :: AdditionalType
+                                   , alternateName :: AlternateName
                                    , description :: Description
                                    , image :: Image
                                    , name :: Name
@@ -50,6 +51,7 @@ data MedicalClinic = MedicalClinic { additionalType :: AdditionalType
                                    , brand :: Brand
                                    , contactPoint :: ContactPoint
                                    , contactPoints :: ContactPoints
+                                   , department :: Department
                                    , duns :: Duns
                                    , email :: Email
                                    , employee :: Employee
@@ -66,6 +68,7 @@ data MedicalClinic = MedicalClinic { additionalType :: AdditionalType
                                    , naics :: Naics
                                    , owns :: Owns
                                    , seeks :: Seeks
+                                   , subOrganization :: SubOrganization
                                    , taxID :: TaxID
                                    , vatID :: VatID
                                    , branchOf :: BranchOf

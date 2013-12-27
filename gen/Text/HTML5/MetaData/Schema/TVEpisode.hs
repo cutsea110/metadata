@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.TVEpisode where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -15,20 +15,25 @@ import Data.Text
 --
 --   [@comment@] 
 --
---   [@ancestors@] @'Thing','CreativeWork'@
+--   [@ancestors@] @'Thing','CreativeWork','Episode'@
 --
 --   [@subtypes@]
 --
---   [@supertypes@] @'CreativeWork'@
+--   [@supertypes@] @'Episode'@
 --
 --   [@url@] <http://schema.org/TVEpisode>
 data TVEpisode = TVEpisode { additionalType :: AdditionalType
+                           , alternateName :: AlternateName
                            , description :: Description
                            , image :: Image
                            , name :: Name
                            , sameAs :: SameAs
                            , url :: Url
                            , about :: About
+                           , accessibilityAPI :: AccessibilityAPI
+                           , accessibilityControl :: AccessibilityControl
+                           , accessibilityFeature :: AccessibilityFeature
+                           , accessibilityHazard :: AccessibilityHazard
                            , accountablePerson :: AccountablePerson
                            , aggregateRating :: AggregateRating
                            , alternativeHeadline :: AlternativeHeadline
@@ -81,13 +86,17 @@ data TVEpisode = TVEpisode { additionalType :: AdditionalType
                            , actor :: Actor
                            , actors :: Actors
                            , director :: Director
+                           , directors :: Directors
                            , episodeNumber :: EpisodeNumber
                            , musicBy :: MusicBy
                            , partOfSeason :: PartOfSeason
-                           , partOfTVSeries :: PartOfTVSeries
+                           , partOfSeries :: PartOfSeries
+                           , position :: Position
                            , producer :: Producer
                            , productionCompany :: ProductionCompany
+                           , publication :: Publication
                            , trailer :: Trailer
+                           , partOfTVSeries :: PartOfTVSeries
                            }
                  deriving (Show, Read, Eq)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Text.HTML5.MetaData.Schema.Intangible where
 
---  Valid: 2013-11-15 ( Schema.rdfs.org )
+--  Valid: 2013-12-27 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
@@ -17,12 +17,13 @@ import Data.Text
 --
 --   [@ancestors@] @'Thing'@
 --
---   [@subtypes@] @'AlignmentObject','Audience','Brand','Demand','Enumeration','JobPosting','Language','Offer','Quantity','Rating','StructuredValue'@
+--   [@subtypes@] @'AlignmentObject','Audience','Brand','Demand','Enumeration','JobPosting','Language','Offer','Order','ParcelDelivery','Permit','Quantity','Rating','Service','ServiceChannel','StructuredValue'@
 --
 --   [@supertypes@] @'Thing'@
 --
 --   [@url@] <http://schema.org/Intangible>
 data Intangible = Intangible { additionalType :: AdditionalType
+                             , alternateName :: AlternateName
                              , description :: Description
                              , image :: Image
                              , name :: Name
