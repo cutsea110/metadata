@@ -1,6 +1,6 @@
 module Text.HTML5.MetaData.Type where
 
---  Valid: 2013-12-27 ( Schema.rdfs.org )
+--  Valid: 2014-04-03 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
@@ -1315,13 +1315,13 @@ type MechanismOfAction = Text
 --   [@ranges@] @'Text'@
 type FaxNumber = Text
 
--- | The item being sold.
+-- | The item being offered.
 --
 --   [@id@] itemOffered
 --
 --   [@label@] Item Offered
 --
---   [@comment@] The item being sold.
+--   [@comment@] The item being offered.
 --
 --   [@domains@] @'Offer','Demand'@
 --
@@ -1718,13 +1718,13 @@ type AlternativeHeadline = Text
 --   [@ranges@] @'DayOfWeek'@
 type DayOfWeek = Text.HTML5.MetaData.Schema.DayOfWeek.DayOfWeek
 
--- | The seller.
+-- | The organization or person making the offer.
 --
 --   [@id@] seller
 --
 --   [@label@] Seller
 --
---   [@comment@] The seller.
+--   [@comment@] The organization or person making the offer.
 --
 --   [@domains@] @'Offer','Demand'@
 --
@@ -7360,13 +7360,13 @@ type FromLocation = Either Text.HTML5.MetaData.Schema.Place.Place Number
 --   [@ranges@] @'MediaObject'@
 type Encoding = Text.HTML5.MetaData.Schema.MediaObject.MediaObject
 
--- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+-- | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
 --
 --   [@id@] citation
 --
 --   [@label@] Citation
 --
---   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.
+--   [@comment@] A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
 --
 --   [@domains@] @'CreativeWork'@
 --
@@ -7737,13 +7737,13 @@ type Catalog = Text.HTML5.MetaData.Schema.DataCatalog.DataCatalog
 --   [@ranges@] @'Text'@
 type Population = Text
 
--- | An offer to sell this item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+-- | An offer to transfer some rights to an item or to provide a service—for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
 --
 --   [@id@] offers
 --
 --   [@label@] Offers
 --
---   [@comment@] An offer to sell this item—for example, an offer to sell a product, the DVD of a movie, or tickets to an event.
+--   [@comment@] An offer to transfer some rights to an item or to provide a service—for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
 --
 --   [@domains@] @'Product','CreativeWork','Event'@
 --
