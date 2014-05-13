@@ -23,6 +23,7 @@ import Data.Maybe
 import Data.List (nub)
 import Data.Text hiding (toUpper, concatMap, map)
 import Data.Attoparsec.Number
+import Data.Scientific
 
 import MetaData.SchemaOrg.Data.Internal
 
@@ -100,7 +101,7 @@ toArray :: Value -> Array
 toArray (Array a) = a
 toText :: Value -> Text
 toText (String t) = t
-toNumber :: Value -> Number
+toNumber :: Value -> Scientific
 toNumber (Number n) = n
 toBool :: Value -> Bool
 toBool (Bool b) = b
