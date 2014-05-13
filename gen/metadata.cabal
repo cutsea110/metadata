@@ -3,7 +3,7 @@
 
 name:                metadata
 version:             0.1.6.0
-synopsis:            metadata library for semantic web.
+synopsis:            metadata library for semantic web
 -- description:         
 homepage:            http://github.com/cutsea110/metadata
 license:             BSD3
