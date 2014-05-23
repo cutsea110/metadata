@@ -132,7 +132,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
         import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Typeable"]
         import_schema_modules = vsep $ map impdecl' refSchemas
         impdecl m = text "import" <+> text' m
-        impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text' m
+        impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text "qualified" <+> text' m
         hide t = hsep [text "hiding", lparen, text' t, rparen]
         refSchemas = map (T.append "Text.HTML5.MetaData.Schema." . symbol) types
           where
@@ -151,7 +151,10 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
               where
                 syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
-                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbol t])
+                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolFull t])
+                symbolFull t = "Text.HTML5.MetaData.Schema." `T.append` sym `T.append` "." `T.append` sym
+                  where
+                    sym = symbol t
 
 schemaBootDoc :: Valid -> DataType -> Doc
 schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
