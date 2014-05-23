@@ -68,7 +68,7 @@ fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derivingSRE]]
+    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derivingSRET]]
       where
         props = properties d
         record | V.null props = text' (symbol d)
@@ -76,7 +76,7 @@ fromDataType d = comms <$> data_decl
         fields = (fld_decl . V.toList . V.map field) props
         field p = hsep $ map text' [id p, "::", symbol p]
         fld_decl ps = align $ cat $ (zipWith (<+>) (lbrace:repeat comma) ps)++[rbrace]
-    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derivingSRE]]
+    data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derivingSRET]]
       where
         constructors = cnst_decl (V.toList $ V.map text' $ instances d)        
         cnst_decl cs = align $ cat $ zipWith (<+>) (map text' ("=":repeat "|")) cs
@@ -115,7 +115,7 @@ fromDataType' d = vcat' [com, data_decl]
 schemaDoc :: Valid -> Properties -> DataType -> Doc
 schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_decl]
   where
-    pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}"]
+    pragmas = vcat $ map text ["{-# LANGUAGE OverloadedStrings #-}", "{-# LANGUAGE DeriveDataTypeable #-}"]
     module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
         name = T.unpack $ symbol d
@@ -129,7 +129,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             props = properties d
             recursive = isJust $ V.find ((==symbol d).symbol) props
             export_from_type_module = isJust $ find (==symbol d) $ map symbol $ H.elems ps
-        import_external_modules = vsep $ map impdecl ["Data.Text"]
+        import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Typeable"]
         impdecl m = text "import" <+> text' m
         hide t = hsep [text "hiding", lparen, text' t, rparen]
     declares = fromDataType d
@@ -143,25 +143,27 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
 
 schemaBootDoc :: Valid -> DataType -> Doc
-schemaBootDoc v d = vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
+schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
   where
+    pragmas = vcat $ map text ["{-# LANGUAGE DeriveDataTypeable #-}"]
     module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
         name = T.unpack (symbol d)
-    import_list = vsep $ map impdecl [classModuleName]
+    import_list = vsep $ map impdecl [classModuleName, "Data.Typeable"]
       where
         impdecl m = hsep $ map text' ["import", m]
     declares = fromDataType' d
-    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", "MetaData"]
+    instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", "Typeable", "MetaData"]
       where
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
 typeDoc :: Valid -> Properties -> Doc
-typeDoc v ps = vcat' [module_header, valid_comment v, import_list, special_declares, declares]
+typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, special_declares, declares]
   where
+    pragmas = vcat $ map text ["{-# LANGUAGE DeriveDataTypeable #-}"]
     module_header = hsep $ map text' ["module", typeModuleName, "where"]
     import_list = vcat' [import_external_modules, import_schema_modules]
-    import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Time"]
+    import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Time", "Data.Typeable"]
       where 
         impdecl m = text "import" <+> text m
     import_schema_modules = vsep $ map (impdecl.(schemaModuleName'++)) schema_modules
@@ -223,14 +225,14 @@ special_datas = [either3]
     either3 = lhs <+> rhs
       where
         lhs = hsep (map text' ["data", "Either3", "a", "b", "c"])
-        rhs = align $ cat $ constructors ++ [derivingSRE]
+        rhs = align $ cat $ constructors ++ [derivingSRET]
         constructors = zipWith (<+>) (map text' ("=":repeat "|"))
                             (map (\(f,s)->text' f<+>text' s) [("Left3","a"),("Center3","b"),("Right3","c")])
 
-derivingSRE :: Doc
-derivingSRE = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq"]]
+derivingSRET :: Doc
+derivingSRET = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq", "Typeable"]]
   where
-    tpl cs = hcat [lparen, cat $ intersperse (comma <> space) cs, rparen]
+    tpl cs = hcat [lparen, hcat $ intersperse (comma <> space) cs, rparen]
 
 
 oneliner :: T.Text -> T.Text
