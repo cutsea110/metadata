@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                gen-metadata
-version:             0.1.4.0
+version:             0.2.0.0
 synopsis:            generate metadata package
 -- description:         
 homepage:            https://github.com/cutsea110/metadata
