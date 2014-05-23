@@ -119,7 +119,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
     module_header = hsep $ map text ["module", schemaModuleName'++name, "where"]
       where
         name = T.unpack $ symbol d
-    import_list = vcat [import_class_module, import_type_module, import_external_modules]
+    import_list = vcat [import_class_module, import_type_module, import_external_modules, import_schema_modules]
       where
         import_class_module = hsep $ map text' ["import", classModuleName]
         import_type_module = if recursive || export_from_type_module
@@ -130,8 +130,13 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             recursive = isJust $ V.find ((==symbol d).symbol) props
             export_from_type_module = isJust $ find (==symbol d) $ map symbol $ H.elems ps
         import_external_modules = vsep $ map impdecl ["Data.Text", "Data.Typeable"]
+        import_schema_modules = vsep $ map impdecl' refSchemas
         impdecl m = text "import" <+> text' m
+        impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text' m
         hide t = hsep [text "hiding", lparen, text' t, rparen]
+        refSchemas = map (T.append "Text.HTML5.MetaData.Schema." . symbol) types
+          where
+            types = nub $ V.toList $ ancestors d V.++ subtypes d V.++ supertypes d
     declares = fromDataType d
     instance_decl = nest 2 (ins_decl <$> fields)
       where
@@ -144,7 +149,9 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             fld2 (f, acc) = fillBreak flen (text' f)
                             <+> hsep ((map text $ ["=", "const"]) ++ [brackets $ hcat syms])
               where
-                syms = intersperse (comma <> space) $ V.toList $ V.map (text . T.unpack . symbol) $ acc d
+                syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
+                expr t = text "typeOf" <> space
+                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbol t])
 
 schemaBootDoc :: Valid -> DataType -> Doc
 schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
