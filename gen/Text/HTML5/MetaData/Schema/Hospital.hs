@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Hospital where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,12 @@ module Text.HTML5.MetaData.Schema.Hospital where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Place
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CivicStructure
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalOrganization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.EmergencyService
 
 -- | 
 --
@@ -79,10 +86,13 @@ data Hospital = Hospital { additionalType :: AdditionalType
                          , availableService :: AvailableService
                          , medicalSpecialty :: MedicalSpecialty
                          }
-                deriving (Show, Read, Eq)
+                deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Hospital where
   _label         = const "Hospital"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Hospital"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Place.Place), typeOf (undefined :: Text.HTML5.MetaData.Schema.CivicStructure.CivicStructure)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CivicStructure.CivicStructure), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalOrganization.MedicalOrganization), typeOf (undefined :: Text.HTML5.MetaData.Schema.EmergencyService.EmergencyService)]

@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MediaObject where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,14 @@ module Text.HTML5.MetaData.Schema.MediaObject where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AudioObject
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DataDownload
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ImageObject
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MusicVideoObject
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.VideoObject
 
 -- | 
 --
@@ -101,10 +110,13 @@ data MediaObject = MediaObject { additionalType :: AdditionalType
                                , uploadDate :: UploadDate
                                , width :: Width
                                }
-                   deriving (Show, Read, Eq)
+                   deriving (Show, Read, Eq, Typeable)
 
 instance MetaData MediaObject where
   _label         = const "Media Object"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/MediaObject"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AudioObject.AudioObject), typeOf (undefined :: Text.HTML5.MetaData.Schema.DataDownload.DataDownload), typeOf (undefined :: Text.HTML5.MetaData.Schema.ImageObject.ImageObject), typeOf (undefined :: Text.HTML5.MetaData.Schema.MusicVideoObject.MusicVideoObject), typeOf (undefined :: Text.HTML5.MetaData.Schema.VideoObject.VideoObject)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

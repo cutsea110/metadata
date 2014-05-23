@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.WebPageElement where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,15 @@ module Text.HTML5.MetaData.Schema.WebPageElement where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SiteNavigationElement
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Table
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.WPAdBlock
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.WPFooter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.WPHeader
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.WPSideBar
 
 -- | 
 --
@@ -84,10 +94,13 @@ data WebPageElement = WebPageElement { additionalType :: AdditionalType
                                      , version :: Version
                                      , video :: Video
                                      }
-                      deriving (Show, Read, Eq)
+                      deriving (Show, Read, Eq, Typeable)
 
 instance MetaData WebPageElement where
   _label         = const "Web Page Element"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/WebPageElement"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.SiteNavigationElement.SiteNavigationElement), typeOf (undefined :: Text.HTML5.MetaData.Schema.Table.Table), typeOf (undefined :: Text.HTML5.MetaData.Schema.WPAdBlock.WPAdBlock), typeOf (undefined :: Text.HTML5.MetaData.Schema.WPFooter.WPFooter), typeOf (undefined :: Text.HTML5.MetaData.Schema.WPHeader.WPHeader), typeOf (undefined :: Text.HTML5.MetaData.Schema.WPSideBar.WPSideBar)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

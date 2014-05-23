@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Product where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.Product where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.IndividualProduct
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ProductModel
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SomeProducts
 
 -- | 
 --
@@ -56,10 +62,13 @@ data Product = Product { additionalType :: AdditionalType
                        , weight :: Weight
                        , width :: Width
                        }
-               deriving (Show, Read, Eq)
+               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Product where
   _label         = const "Product"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Product"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.IndividualProduct.IndividualProduct), typeOf (undefined :: Text.HTML5.MetaData.Schema.ProductModel.ProductModel), typeOf (undefined :: Text.HTML5.MetaData.Schema.SomeProducts.SomeProducts)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing)]

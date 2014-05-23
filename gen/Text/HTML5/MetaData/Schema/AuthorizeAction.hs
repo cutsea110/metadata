@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.AuthorizeAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.AuthorizeAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.OrganizeAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AllocateAction
 
 -- | 
 --
@@ -40,10 +46,13 @@ data AuthorizeAction = AuthorizeAction { additionalType :: AdditionalType
                                        , purpose :: Purpose
                                        , recipient :: Recipient
                                        }
-                       deriving (Show, Read, Eq)
+                       deriving (Show, Read, Eq, Typeable)
 
 instance MetaData AuthorizeAction where
   _label         = const "Authorize Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/AuthorizeAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action), typeOf (undefined :: Text.HTML5.MetaData.Schema.OrganizeAction.OrganizeAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.AllocateAction.AllocateAction)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AllocateAction.AllocateAction)]

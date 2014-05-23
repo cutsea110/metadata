@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.RecyclingCenter where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.RecyclingCenter where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
 
 -- | 
 --
@@ -77,10 +82,13 @@ data RecyclingCenter = RecyclingCenter { additionalType :: AdditionalType
                                        , paymentAccepted :: PaymentAccepted
                                        , priceRange :: PriceRange
                                        }
-                       deriving (Show, Read, Eq)
+                       deriving (Show, Read, Eq, Typeable)
 
 instance MetaData RecyclingCenter where
   _label         = const "Recycling Center"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/RecyclingCenter"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

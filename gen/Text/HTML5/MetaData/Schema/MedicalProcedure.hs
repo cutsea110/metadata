@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MedicalProcedure where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,12 @@ module Text.HTML5.MetaData.Schema.MedicalProcedure where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DiagnosticProcedure
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PalliativeProcedure
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TherapeuticProcedure
 
 -- | 
 --
@@ -40,10 +47,13 @@ data MedicalProcedure = MedicalProcedure { additionalType :: AdditionalType
                                          , preparation :: Preparation
                                          , procedureType :: ProcedureType
                                          }
-                        deriving (Show, Read, Eq)
+                        deriving (Show, Read, Eq, Typeable)
 
 instance MetaData MedicalProcedure where
   _label         = const "Medical Procedure"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/MedicalProcedure"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.DiagnosticProcedure.DiagnosticProcedure), typeOf (undefined :: Text.HTML5.MetaData.Schema.PalliativeProcedure.PalliativeProcedure), typeOf (undefined :: Text.HTML5.MetaData.Schema.TherapeuticProcedure.TherapeuticProcedure)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity)]

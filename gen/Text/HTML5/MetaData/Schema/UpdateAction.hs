@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.UpdateAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,12 @@ module Text.HTML5.MetaData.Schema.UpdateAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AddAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DeleteAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ReplaceAction
 
 -- | 
 --
@@ -39,10 +46,13 @@ data UpdateAction = UpdateAction { additionalType :: AdditionalType
                                  , startTime :: StartTime
                                  , collection :: Collection
                                  }
-                    deriving (Show, Read, Eq)
+                    deriving (Show, Read, Eq, Typeable)
 
 instance MetaData UpdateAction where
   _label         = const "Update Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/UpdateAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AddAction.AddAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.DeleteAction.DeleteAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.ReplaceAction.ReplaceAction)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]

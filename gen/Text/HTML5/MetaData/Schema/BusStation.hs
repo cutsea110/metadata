@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.BusStation where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.BusStation where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Place
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CivicStructure
 
 -- | 
 --
@@ -50,10 +55,13 @@ data BusStation = BusStation { additionalType :: AdditionalType
                              , telephone :: Telephone
                              , openingHours :: OpeningHours
                              }
-                  deriving (Show, Read, Eq)
+                  deriving (Show, Read, Eq, Typeable)
 
 instance MetaData BusStation where
   _label         = const "Bus Station"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/BusStation"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Place.Place), typeOf (undefined :: Text.HTML5.MetaData.Schema.CivicStructure.CivicStructure)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CivicStructure.CivicStructure)]

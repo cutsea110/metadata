@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Muscle where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.Muscle where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AnatomicalStructure
 
 -- | 
 --
@@ -51,10 +56,13 @@ data Muscle = Muscle { additionalType :: AdditionalType
                      , nerve :: Nerve
                      , origin :: Origin
                      }
-              deriving (Show, Read, Eq)
+              deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Muscle where
   _label         = const "Muscle"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Muscle"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity), typeOf (undefined :: Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure)]

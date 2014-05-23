@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MedicalTest where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,14 @@ module Text.HTML5.MetaData.Schema.MedicalTest where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BloodTest
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DiagnosticProcedure
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ImagingTest
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalTestPanel
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PathologyTest
 
 -- | 
 --
@@ -41,10 +50,13 @@ data MedicalTest = MedicalTest { additionalType :: AdditionalType
                                , usedToDiagnose :: UsedToDiagnose
                                , usesDevice :: UsesDevice
                                }
-                   deriving (Show, Read, Eq)
+                   deriving (Show, Read, Eq, Typeable)
 
 instance MetaData MedicalTest where
   _label         = const "Medical Test"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/MedicalTest"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BloodTest.BloodTest), typeOf (undefined :: Text.HTML5.MetaData.Schema.DiagnosticProcedure.DiagnosticProcedure), typeOf (undefined :: Text.HTML5.MetaData.Schema.ImagingTest.ImagingTest), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalTestPanel.MedicalTestPanel), typeOf (undefined :: Text.HTML5.MetaData.Schema.PathologyTest.PathologyTest)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity)]

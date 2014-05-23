@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.AssignAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.AssignAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.OrganizeAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AllocateAction
 
 -- | 
 --
@@ -39,10 +45,13 @@ data AssignAction = AssignAction { additionalType :: AdditionalType
                                  , startTime :: StartTime
                                  , purpose :: Purpose
                                  }
-                    deriving (Show, Read, Eq)
+                    deriving (Show, Read, Eq, Typeable)
 
 instance MetaData AssignAction where
   _label         = const "Assign Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/AssignAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action), typeOf (undefined :: Text.HTML5.MetaData.Schema.OrganizeAction.OrganizeAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.AllocateAction.AllocateAction)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AllocateAction.AllocateAction)]

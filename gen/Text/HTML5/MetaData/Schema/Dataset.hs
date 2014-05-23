@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Dataset where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,9 @@ module Text.HTML5.MetaData.Schema.Dataset where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Dataset )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
 
 -- | 
 --
@@ -88,10 +92,13 @@ data Dataset = Dataset { additionalType :: AdditionalType
                        , spatial :: Spatial
                        , temporal :: Temporal
                        }
-               deriving (Show, Read, Eq)
+               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Dataset where
   _label         = const "Dataset"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Dataset"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

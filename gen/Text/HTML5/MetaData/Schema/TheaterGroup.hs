@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.TheaterGroup where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.TheaterGroup where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PerformingGroup
 
 -- | 
 --
@@ -65,10 +70,13 @@ data TheaterGroup = TheaterGroup { additionalType :: AdditionalType
                                  , telephone :: Telephone
                                  , vatID :: VatID
                                  }
-                    deriving (Show, Read, Eq)
+                    deriving (Show, Read, Eq, Typeable)
 
 instance MetaData TheaterGroup where
   _label         = const "Theater Group"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/TheaterGroup"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.PerformingGroup.PerformingGroup)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.PerformingGroup.PerformingGroup)]

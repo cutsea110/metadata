@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.InfectiousDisease where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.InfectiousDisease where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalCondition
 
 -- | 
 --
@@ -55,10 +60,13 @@ data InfectiousDisease = InfectiousDisease { additionalType :: AdditionalType
                                            , infectiousAgentClass :: InfectiousAgentClass
                                            , transmissionMethod :: TransmissionMethod
                                            }
-                         deriving (Show, Read, Eq)
+                         deriving (Show, Read, Eq, Typeable)
 
 instance MetaData InfectiousDisease where
   _label         = const "Infectious Disease"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/InfectiousDisease"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalCondition.MedicalCondition)]

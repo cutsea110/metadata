@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.EmergencyService where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,13 @@ module Text.HTML5.MetaData.Schema.EmergencyService where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.FireStation
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Hospital
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PoliceStation
 
 -- | 
 --
@@ -77,10 +85,13 @@ data EmergencyService = EmergencyService { additionalType :: AdditionalType
                                          , paymentAccepted :: PaymentAccepted
                                          , priceRange :: PriceRange
                                          }
-                        deriving (Show, Read, Eq)
+                        deriving (Show, Read, Eq, Typeable)
 
 instance MetaData EmergencyService where
   _label         = const "Emergency Service"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/EmergencyService"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.FireStation.FireStation), typeOf (undefined :: Text.HTML5.MetaData.Schema.Hospital.Hospital), typeOf (undefined :: Text.HTML5.MetaData.Schema.PoliceStation.PoliceStation)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

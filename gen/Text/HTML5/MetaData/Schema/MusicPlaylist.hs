@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MusicPlaylist where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.MusicPlaylist where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MusicAlbum
 
 -- | 
 --
@@ -87,10 +92,13 @@ data MusicPlaylist = MusicPlaylist { additionalType :: AdditionalType
                                    , track :: Track
                                    , tracks :: Tracks
                                    }
-                     deriving (Show, Read, Eq)
+                     deriving (Show, Read, Eq, Typeable)
 
 instance MetaData MusicPlaylist where
   _label         = const "Music Playlist"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/MusicPlaylist"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.MusicAlbum.MusicAlbum)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

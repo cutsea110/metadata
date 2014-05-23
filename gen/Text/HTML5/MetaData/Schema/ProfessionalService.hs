@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.ProfessionalService where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,20 @@ module Text.HTML5.MetaData.Schema.ProfessionalService where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AccountingService
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Attorney
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Dentist
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Electrician
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GeneralContractor
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HousePainter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Locksmith
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Notary
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Plumber
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RoofingContractor
 
 -- | 
 --
@@ -77,10 +92,13 @@ data ProfessionalService = ProfessionalService { additionalType :: AdditionalTyp
                                                , paymentAccepted :: PaymentAccepted
                                                , priceRange :: PriceRange
                                                }
-                           deriving (Show, Read, Eq)
+                           deriving (Show, Read, Eq, Typeable)
 
 instance MetaData ProfessionalService where
   _label         = const "Professional Service"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/ProfessionalService"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AccountingService.AccountingService), typeOf (undefined :: Text.HTML5.MetaData.Schema.Attorney.Attorney), typeOf (undefined :: Text.HTML5.MetaData.Schema.Dentist.Dentist), typeOf (undefined :: Text.HTML5.MetaData.Schema.Electrician.Electrician), typeOf (undefined :: Text.HTML5.MetaData.Schema.GeneralContractor.GeneralContractor), typeOf (undefined :: Text.HTML5.MetaData.Schema.HousePainter.HousePainter), typeOf (undefined :: Text.HTML5.MetaData.Schema.Locksmith.Locksmith), typeOf (undefined :: Text.HTML5.MetaData.Schema.Notary.Notary), typeOf (undefined :: Text.HTML5.MetaData.Schema.Plumber.Plumber), typeOf (undefined :: Text.HTML5.MetaData.Schema.RoofingContractor.RoofingContractor)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

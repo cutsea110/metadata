@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.BefriendAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.BefriendAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.InteractAction
 
 -- | 
 --
@@ -38,10 +43,13 @@ data BefriendAction = BefriendAction { additionalType :: AdditionalType
                                      , result :: Result
                                      , startTime :: StartTime
                                      }
-                      deriving (Show, Read, Eq)
+                      deriving (Show, Read, Eq, Typeable)
 
 instance MetaData BefriendAction where
   _label         = const "Befriend Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/BefriendAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action), typeOf (undefined :: Text.HTML5.MetaData.Schema.InteractAction.InteractAction)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.InteractAction.InteractAction)]

@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MedicalScholarlyArticle where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.MedicalScholarlyArticle where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Article
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ScholarlyArticle
 
 -- | 
 --
@@ -88,10 +94,13 @@ data MedicalScholarlyArticle = MedicalScholarlyArticle { additionalType :: Addit
                                                        , wordCount :: WordCount
                                                        , publicationType :: PublicationType
                                                        }
-                               deriving (Show, Read, Eq)
+                               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData MedicalScholarlyArticle where
   _label         = const "Medical Scholarly Article"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/MedicalScholarlyArticle"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork), typeOf (undefined :: Text.HTML5.MetaData.Schema.Article.Article), typeOf (undefined :: Text.HTML5.MetaData.Schema.ScholarlyArticle.ScholarlyArticle)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.ScholarlyArticle.ScholarlyArticle)]

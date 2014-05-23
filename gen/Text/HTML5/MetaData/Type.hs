@@ -1,9 +1,11 @@
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Type where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
 
 import Data.Text
 import Data.Time
+import Data.Typeable
 
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AdministrativeArea
 import {-# SOURCE #-} Text.HTML5.MetaData.Schema.AggregateRating
@@ -156,7 +158,7 @@ type Boolean = Bool
 data Either3 a b c = Left3 a
                    | Center3 b
                    | Right3 c
-                   deriving (Show, Read, Eq)
+                   deriving (Show, Read, Eq, Typeable)
 
 -- | Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
 --

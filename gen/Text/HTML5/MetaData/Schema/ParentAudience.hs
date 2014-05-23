@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.ParentAudience where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.ParentAudience where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Intangible
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Audience
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PeopleAudience
 
 -- | 
 --
@@ -41,10 +47,13 @@ data ParentAudience = ParentAudience { additionalType :: AdditionalType
                                      , childMaxAge :: ChildMaxAge
                                      , childMinAge :: ChildMinAge
                                      }
-                      deriving (Show, Read, Eq)
+                      deriving (Show, Read, Eq, Typeable)
 
 instance MetaData ParentAudience where
   _label         = const "Parent Audience"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/ParentAudience"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Intangible.Intangible), typeOf (undefined :: Text.HTML5.MetaData.Schema.Audience.Audience), typeOf (undefined :: Text.HTML5.MetaData.Schema.PeopleAudience.PeopleAudience)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.PeopleAudience.PeopleAudience)]

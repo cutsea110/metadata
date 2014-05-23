@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.HomeAndConstructionBusiness where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,18 @@ module Text.HTML5.MetaData.Schema.HomeAndConstructionBusiness where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Electrician
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GeneralContractor
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HVACBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HousePainter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Locksmith
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MovingCompany
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Plumber
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RoofingContractor
 
 -- | 
 --
@@ -77,10 +90,13 @@ data HomeAndConstructionBusiness = HomeAndConstructionBusiness { additionalType 
                                                                , paymentAccepted :: PaymentAccepted
                                                                , priceRange :: PriceRange
                                                                }
-                                   deriving (Show, Read, Eq)
+                                   deriving (Show, Read, Eq, Typeable)
 
 instance MetaData HomeAndConstructionBusiness where
   _label         = const "Home And Construction Business"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/HomeAndConstructionBusiness"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Electrician.Electrician), typeOf (undefined :: Text.HTML5.MetaData.Schema.GeneralContractor.GeneralContractor), typeOf (undefined :: Text.HTML5.MetaData.Schema.HVACBusiness.HVACBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.HousePainter.HousePainter), typeOf (undefined :: Text.HTML5.MetaData.Schema.Locksmith.Locksmith), typeOf (undefined :: Text.HTML5.MetaData.Schema.MovingCompany.MovingCompany), typeOf (undefined :: Text.HTML5.MetaData.Schema.Plumber.Plumber), typeOf (undefined :: Text.HTML5.MetaData.Schema.RoofingContractor.RoofingContractor)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

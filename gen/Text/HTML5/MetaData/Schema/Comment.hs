@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Comment where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,9 @@ module Text.HTML5.MetaData.Schema.Comment where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Comment )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
 
 -- | 
 --
@@ -84,10 +88,13 @@ data Comment = Comment { additionalType :: AdditionalType
                        , version :: Version
                        , video :: Video
                        }
-               deriving (Show, Read, Eq)
+               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Comment where
   _label         = const "Comment"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Comment"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

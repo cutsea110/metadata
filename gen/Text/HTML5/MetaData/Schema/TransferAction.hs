@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.TransferAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,17 @@ module Text.HTML5.MetaData.Schema.TransferAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BorrowAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DownloadAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GiveAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LendAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ReceiveAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ReturnAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SendAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TakeAction
 
 -- | 
 --
@@ -40,10 +52,13 @@ data TransferAction = TransferAction { additionalType :: AdditionalType
                                      , fromLocation :: FromLocation
                                      , toLocation :: ToLocation
                                      }
-                      deriving (Show, Read, Eq)
+                      deriving (Show, Read, Eq, Typeable)
 
 instance MetaData TransferAction where
   _label         = const "Transfer Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/TransferAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BorrowAction.BorrowAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.DownloadAction.DownloadAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.GiveAction.GiveAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.LendAction.LendAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.ReceiveAction.ReceiveAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.ReturnAction.ReturnAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.SendAction.SendAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.TakeAction.TakeAction)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]

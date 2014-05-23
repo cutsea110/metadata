@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.SomeProducts where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,9 @@ module Text.HTML5.MetaData.Schema.SomeProducts where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Product
 
 -- | 
 --
@@ -57,10 +61,13 @@ data SomeProducts = SomeProducts { additionalType :: AdditionalType
                                  , width :: Width
                                  , inventoryLevel :: InventoryLevel
                                  }
-                    deriving (Show, Read, Eq)
+                    deriving (Show, Read, Eq, Typeable)
 
 instance MetaData SomeProducts where
   _label         = const "Some Products"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/SomeProducts"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Product.Product)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Product.Product)]

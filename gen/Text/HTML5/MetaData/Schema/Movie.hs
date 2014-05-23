@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Movie where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,9 @@ module Text.HTML5.MetaData.Schema.Movie where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
 
 -- | 
 --
@@ -93,10 +97,13 @@ data Movie = Movie { additionalType :: AdditionalType
                    , productionCompany :: ProductionCompany
                    , trailer :: Trailer
                    }
-             deriving (Show, Read, Eq)
+             deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Movie where
   _label         = const "Movie"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Movie"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

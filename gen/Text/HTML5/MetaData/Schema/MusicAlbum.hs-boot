@@ -1,8 +1,10 @@
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.MusicAlbum where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
 
 import Text.HTML5.MetaData.Class
+import Data.Typeable
 
 -- | 
 
@@ -11,4 +13,5 @@ data MusicAlbum
 instance Show MusicAlbum
 instance Read MusicAlbum
 instance Eq MusicAlbum
+instance Typeable MusicAlbum
 instance MetaData MusicAlbum

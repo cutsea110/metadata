@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Corporation where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,9 @@ module Text.HTML5.MetaData.Schema.Corporation where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
 
 -- | 
 --
@@ -66,10 +70,13 @@ data Corporation = Corporation { additionalType :: AdditionalType
                                , vatID :: VatID
                                , tickerSymbol :: TickerSymbol
                                }
-                   deriving (Show, Read, Eq)
+                   deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Corporation where
   _label         = const "Corporation"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Corporation"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization)]

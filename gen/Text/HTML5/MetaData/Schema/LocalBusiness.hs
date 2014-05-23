@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.LocalBusiness where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,37 @@ module Text.HTML5.MetaData.Schema.LocalBusiness where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AnimalShelter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutomotiveBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ChildCare
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DryCleaningOrLaundry
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.EmergencyService
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.EmploymentAgency
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.EntertainmentBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.FinancialService
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.FoodEstablishment
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GovernmentOffice
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HealthAndBeautyBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HomeAndConstructionBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.InternetCafe
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Library
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LodgingBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalOrganization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ProfessionalService
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RadioStation
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RealEstateAgent
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RecyclingCenter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SelfStorage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ShoppingCenter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SportsActivityLocation
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Store
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TelevisionStation
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TouristInformationCenter
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TravelAgency
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Place
 
 -- | 
 --
@@ -77,10 +109,13 @@ data LocalBusiness = LocalBusiness { additionalType :: AdditionalType
                                    , paymentAccepted :: PaymentAccepted
                                    , priceRange :: PriceRange
                                    }
-                     deriving (Show, Read, Eq)
+                     deriving (Show, Read, Eq, Typeable)
 
 instance MetaData LocalBusiness where
   _label         = const "Local Business"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/LocalBusiness"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AnimalShelter.AnimalShelter), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutomotiveBusiness.AutomotiveBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.ChildCare.ChildCare), typeOf (undefined :: Text.HTML5.MetaData.Schema.DryCleaningOrLaundry.DryCleaningOrLaundry), typeOf (undefined :: Text.HTML5.MetaData.Schema.EmergencyService.EmergencyService), typeOf (undefined :: Text.HTML5.MetaData.Schema.EmploymentAgency.EmploymentAgency), typeOf (undefined :: Text.HTML5.MetaData.Schema.EntertainmentBusiness.EntertainmentBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.FinancialService.FinancialService), typeOf (undefined :: Text.HTML5.MetaData.Schema.FoodEstablishment.FoodEstablishment), typeOf (undefined :: Text.HTML5.MetaData.Schema.GovernmentOffice.GovernmentOffice), typeOf (undefined :: Text.HTML5.MetaData.Schema.HealthAndBeautyBusiness.HealthAndBeautyBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.HomeAndConstructionBusiness.HomeAndConstructionBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.InternetCafe.InternetCafe), typeOf (undefined :: Text.HTML5.MetaData.Schema.Library.Library), typeOf (undefined :: Text.HTML5.MetaData.Schema.LodgingBusiness.LodgingBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalOrganization.MedicalOrganization), typeOf (undefined :: Text.HTML5.MetaData.Schema.ProfessionalService.ProfessionalService), typeOf (undefined :: Text.HTML5.MetaData.Schema.RadioStation.RadioStation), typeOf (undefined :: Text.HTML5.MetaData.Schema.RealEstateAgent.RealEstateAgent), typeOf (undefined :: Text.HTML5.MetaData.Schema.RecyclingCenter.RecyclingCenter), typeOf (undefined :: Text.HTML5.MetaData.Schema.SelfStorage.SelfStorage), typeOf (undefined :: Text.HTML5.MetaData.Schema.ShoppingCenter.ShoppingCenter), typeOf (undefined :: Text.HTML5.MetaData.Schema.SportsActivityLocation.SportsActivityLocation), typeOf (undefined :: Text.HTML5.MetaData.Schema.Store.Store), typeOf (undefined :: Text.HTML5.MetaData.Schema.TelevisionStation.TelevisionStation), typeOf (undefined :: Text.HTML5.MetaData.Schema.TouristInformationCenter.TouristInformationCenter), typeOf (undefined :: Text.HTML5.MetaData.Schema.TravelAgency.TravelAgency)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.Place.Place)]

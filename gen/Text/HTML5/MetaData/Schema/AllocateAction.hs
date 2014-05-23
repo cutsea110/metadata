@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.AllocateAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,14 @@ module Text.HTML5.MetaData.Schema.AllocateAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.OrganizeAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AcceptAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AssignAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AuthorizeAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RejectAction
 
 -- | 
 --
@@ -39,10 +48,13 @@ data AllocateAction = AllocateAction { additionalType :: AdditionalType
                                      , startTime :: StartTime
                                      , purpose :: Purpose
                                      }
-                      deriving (Show, Read, Eq)
+                      deriving (Show, Read, Eq, Typeable)
 
 instance MetaData AllocateAction where
   _label         = const "Allocate Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/AllocateAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action), typeOf (undefined :: Text.HTML5.MetaData.Schema.OrganizeAction.OrganizeAction)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AcceptAction.AcceptAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.AssignAction.AssignAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.AuthorizeAction.AuthorizeAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.RejectAction.RejectAction)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.OrganizeAction.OrganizeAction)]

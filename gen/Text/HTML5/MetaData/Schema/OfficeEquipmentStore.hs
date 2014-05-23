@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.OfficeEquipmentStore where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.OfficeEquipmentStore where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Store
 
 -- | 
 --
@@ -77,10 +83,13 @@ data OfficeEquipmentStore = OfficeEquipmentStore { additionalType :: AdditionalT
                                                  , paymentAccepted :: PaymentAccepted
                                                  , priceRange :: PriceRange
                                                  }
-                            deriving (Show, Read, Eq)
+                            deriving (Show, Read, Eq, Typeable)
 
 instance MetaData OfficeEquipmentStore where
   _label         = const "Office Equipment Store"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/OfficeEquipmentStore"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness), typeOf (undefined :: Text.HTML5.MetaData.Schema.Store.Store)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Store.Store)]

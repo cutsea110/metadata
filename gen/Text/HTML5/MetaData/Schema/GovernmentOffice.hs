@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.GovernmentOffice where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.GovernmentOffice where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PostOffice
 
 -- | 
 --
@@ -77,10 +83,13 @@ data GovernmentOffice = GovernmentOffice { additionalType :: AdditionalType
                                          , paymentAccepted :: PaymentAccepted
                                          , priceRange :: PriceRange
                                          }
-                        deriving (Show, Read, Eq)
+                        deriving (Show, Read, Eq, Typeable)
 
 instance MetaData GovernmentOffice where
   _label         = const "Government Office"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/GovernmentOffice"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.PostOffice.PostOffice)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

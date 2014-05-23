@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.AutomotiveBusiness where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,19 @@ module Text.HTML5.MetaData.Schema.AutomotiveBusiness where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoBodyShop
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoDealer
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoPartsStore
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoRental
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoRepair
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AutoWash
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GasStation
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MotorcycleDealer
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MotorcycleRepair
 
 -- | 
 --
@@ -77,10 +91,13 @@ data AutomotiveBusiness = AutomotiveBusiness { additionalType :: AdditionalType
                                              , paymentAccepted :: PaymentAccepted
                                              , priceRange :: PriceRange
                                              }
-                          deriving (Show, Read, Eq)
+                          deriving (Show, Read, Eq, Typeable)
 
 instance MetaData AutomotiveBusiness where
   _label         = const "Automotive Business"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/AutomotiveBusiness"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoBodyShop.AutoBodyShop), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoDealer.AutoDealer), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoPartsStore.AutoPartsStore), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoRental.AutoRental), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoRepair.AutoRepair), typeOf (undefined :: Text.HTML5.MetaData.Schema.AutoWash.AutoWash), typeOf (undefined :: Text.HTML5.MetaData.Schema.GasStation.GasStation), typeOf (undefined :: Text.HTML5.MetaData.Schema.MotorcycleDealer.MotorcycleDealer), typeOf (undefined :: Text.HTML5.MetaData.Schema.MotorcycleRepair.MotorcycleRepair)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.WebPage where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,17 @@ module Text.HTML5.MetaData.Schema.WebPage where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AboutPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CheckoutPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CollectionPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ContactPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ItemPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalWebPage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ProfilePage
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SearchResultsPage
 
 -- | 
 --
@@ -94,10 +106,13 @@ data WebPage = WebPage { additionalType :: AdditionalType
                        , significantLinks :: SignificantLinks
                        , specialty :: Specialty
                        }
-               deriving (Show, Read, Eq)
+               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData WebPage where
   _label         = const "Web Page"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/WebPage"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AboutPage.AboutPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.CheckoutPage.CheckoutPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.CollectionPage.CollectionPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.ContactPage.ContactPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.ItemPage.ItemPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalWebPage.MedicalWebPage), typeOf (undefined :: Text.HTML5.MetaData.Schema.ProfilePage.ProfilePage), typeOf (undefined :: Text.HTML5.MetaData.Schema.SearchResultsPage.SearchResultsPage)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]

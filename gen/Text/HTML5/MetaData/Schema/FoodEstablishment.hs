@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.FoodEstablishment where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,18 @@ module Text.HTML5.MetaData.Schema.FoodEstablishment where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( FoodEstablishment )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Bakery
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BarOrPub
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Brewery
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CafeOrCoffeeShop
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.FastFoodRestaurant
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.IceCreamShop
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Restaurant
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Winery
 
 -- | 
 --
@@ -80,10 +93,13 @@ data FoodEstablishment = FoodEstablishment { additionalType :: AdditionalType
                                            , menu :: Menu
                                            , servesCuisine :: ServesCuisine
                                            }
-                         deriving (Show, Read, Eq)
+                         deriving (Show, Read, Eq, Typeable)
 
 instance MetaData FoodEstablishment where
   _label         = const "Food Establishment"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/FoodEstablishment"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Bakery.Bakery), typeOf (undefined :: Text.HTML5.MetaData.Schema.BarOrPub.BarOrPub), typeOf (undefined :: Text.HTML5.MetaData.Schema.Brewery.Brewery), typeOf (undefined :: Text.HTML5.MetaData.Schema.CafeOrCoffeeShop.CafeOrCoffeeShop), typeOf (undefined :: Text.HTML5.MetaData.Schema.FastFoodRestaurant.FastFoodRestaurant), typeOf (undefined :: Text.HTML5.MetaData.Schema.IceCreamShop.IceCreamShop), typeOf (undefined :: Text.HTML5.MetaData.Schema.Restaurant.Restaurant), typeOf (undefined :: Text.HTML5.MetaData.Schema.Winery.Winery)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

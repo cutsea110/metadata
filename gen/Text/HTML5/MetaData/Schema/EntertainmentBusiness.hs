@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.EntertainmentBusiness where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,17 @@ module Text.HTML5.MetaData.Schema.EntertainmentBusiness where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( EntertainmentBusiness )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AdultEntertainment
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AmusementPark
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ArtGallery
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Casino
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ComedyClub
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MovieTheater
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.NightClub
 
 -- | 
 --
@@ -77,10 +89,13 @@ data EntertainmentBusiness = EntertainmentBusiness { additionalType :: Additiona
                                                    , paymentAccepted :: PaymentAccepted
                                                    , priceRange :: PriceRange
                                                    }
-                             deriving (Show, Read, Eq)
+                             deriving (Show, Read, Eq, Typeable)
 
 instance MetaData EntertainmentBusiness where
   _label         = const "Entertainment Business"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/EntertainmentBusiness"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AdultEntertainment.AdultEntertainment), typeOf (undefined :: Text.HTML5.MetaData.Schema.AmusementPark.AmusementPark), typeOf (undefined :: Text.HTML5.MetaData.Schema.ArtGallery.ArtGallery), typeOf (undefined :: Text.HTML5.MetaData.Schema.Casino.Casino), typeOf (undefined :: Text.HTML5.MetaData.Schema.ComedyClub.ComedyClub), typeOf (undefined :: Text.HTML5.MetaData.Schema.MovieTheater.MovieTheater), typeOf (undefined :: Text.HTML5.MetaData.Schema.NightClub.NightClub)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

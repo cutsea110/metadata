@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.HealthAndBeautyBusiness where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,16 @@ module Text.HTML5.MetaData.Schema.HealthAndBeautyBusiness where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BeautySalon
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DaySpa
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HairSalon
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HealthClub
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.NailSalon
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TattooParlor
 
 -- | 
 --
@@ -77,10 +88,13 @@ data HealthAndBeautyBusiness = HealthAndBeautyBusiness { additionalType :: Addit
                                                        , paymentAccepted :: PaymentAccepted
                                                        , priceRange :: PriceRange
                                                        }
-                               deriving (Show, Read, Eq)
+                               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData HealthAndBeautyBusiness where
   _label         = const "Health And Beauty Business"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/HealthAndBeautyBusiness"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BeautySalon.BeautySalon), typeOf (undefined :: Text.HTML5.MetaData.Schema.DaySpa.DaySpa), typeOf (undefined :: Text.HTML5.MetaData.Schema.HairSalon.HairSalon), typeOf (undefined :: Text.HTML5.MetaData.Schema.HealthClub.HealthClub), typeOf (undefined :: Text.HTML5.MetaData.Schema.NailSalon.NailSalon), typeOf (undefined :: Text.HTML5.MetaData.Schema.TattooParlor.TattooParlor)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

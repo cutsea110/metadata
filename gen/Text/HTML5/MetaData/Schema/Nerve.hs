@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Nerve where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.Nerve where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Nerve )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.AnatomicalStructure
 
 -- | 
 --
@@ -49,10 +54,13 @@ data Nerve = Nerve { additionalType :: AdditionalType
                    , sensoryUnit :: SensoryUnit
                    , sourcedFrom :: SourcedFrom
                    }
-             deriving (Show, Read, Eq)
+             deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Nerve where
   _label         = const "Nerve"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Nerve"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity), typeOf (undefined :: Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.AnatomicalStructure.AnatomicalStructure)]

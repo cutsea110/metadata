@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.TradeAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,17 @@ module Text.HTML5.MetaData.Schema.TradeAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BuyAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.DonateAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.OrderAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PayAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.QuoteAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.RentAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SellAction
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TipAction
 
 -- | 
 --
@@ -39,10 +51,13 @@ data TradeAction = TradeAction { additionalType :: AdditionalType
                                , startTime :: StartTime
                                , price :: Price
                                }
-                   deriving (Show, Read, Eq)
+                   deriving (Show, Read, Eq, Typeable)
 
 instance MetaData TradeAction where
   _label         = const "Trade Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/TradeAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BuyAction.BuyAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.DonateAction.DonateAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.OrderAction.OrderAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.PayAction.PayAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.QuoteAction.QuoteAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.RentAction.RentAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.SellAction.SellAction), typeOf (undefined :: Text.HTML5.MetaData.Schema.TipAction.TipAction)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action)]

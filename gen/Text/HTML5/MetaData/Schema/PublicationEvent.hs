@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.PublicationEvent where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,11 @@ module Text.HTML5.MetaData.Schema.PublicationEvent where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Event
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BroadcastEvent
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.OnDemandEvent
 
 -- | 
 --
@@ -48,10 +54,13 @@ data PublicationEvent = PublicationEvent { additionalType :: AdditionalType
                                          , free :: Free
                                          , publishedOn :: PublishedOn
                                          }
-                        deriving (Show, Read, Eq)
+                        deriving (Show, Read, Eq, Typeable)
 
 instance MetaData PublicationEvent where
   _label         = const "Publication Event"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/PublicationEvent"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Event.Event)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BroadcastEvent.BroadcastEvent), typeOf (undefined :: Text.HTML5.MetaData.Schema.OnDemandEvent.OnDemandEvent)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Event.Event)]

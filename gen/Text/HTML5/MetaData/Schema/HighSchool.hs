@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.HighSchool where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.HighSchool where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.EducationalOrganization
 
 -- | 
 --
@@ -66,10 +71,13 @@ data HighSchool = HighSchool { additionalType :: AdditionalType
                              , vatID :: VatID
                              , alumni :: Alumni
                              }
-                  deriving (Show, Read, Eq)
+                  deriving (Show, Read, Eq, Typeable)
 
 instance MetaData HighSchool where
   _label         = const "High School"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/HighSchool"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.EducationalOrganization.EducationalOrganization)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.EducationalOrganization.EducationalOrganization)]

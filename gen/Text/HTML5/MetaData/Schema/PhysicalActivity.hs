@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.PhysicalActivity where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,12 @@ module Text.HTML5.MetaData.Schema.PhysicalActivity where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalEntity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MedicalTherapy
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LifestyleModification
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ExercisePlan
 
 -- | 
 --
@@ -45,10 +52,13 @@ data PhysicalActivity = PhysicalActivity { additionalType :: AdditionalType
                                          , epidemiology :: Epidemiology
                                          , pathophysiology :: Pathophysiology
                                          }
-                        deriving (Show, Read, Eq)
+                        deriving (Show, Read, Eq, Typeable)
 
 instance MetaData PhysicalActivity where
   _label         = const "Physical Activity"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/PhysicalActivity"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalEntity.MedicalEntity), typeOf (undefined :: Text.HTML5.MetaData.Schema.MedicalTherapy.MedicalTherapy), typeOf (undefined :: Text.HTML5.MetaData.Schema.LifestyleModification.LifestyleModification)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.ExercisePlan.ExercisePlan)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LifestyleModification.LifestyleModification)]

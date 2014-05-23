@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.PerformAction where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.PerformAction where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Action
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PlayAction
 
 -- | 
 --
@@ -41,10 +46,13 @@ data PerformAction = PerformAction { additionalType :: AdditionalType
                                    , event :: Event
                                    , entertainmentBusiness :: EntertainmentBusiness
                                    }
-                     deriving (Show, Read, Eq)
+                     deriving (Show, Read, Eq, Typeable)
 
 instance MetaData PerformAction where
   _label         = const "Perform Action"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/PerformAction"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Action.Action), typeOf (undefined :: Text.HTML5.MetaData.Schema.PlayAction.PlayAction)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.PlayAction.PlayAction)]

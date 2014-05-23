@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.TVEpisode where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.TVEpisode where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Episode
 
 -- | 
 --
@@ -98,10 +103,13 @@ data TVEpisode = TVEpisode { additionalType :: AdditionalType
                            , trailer :: Trailer
                            , partOfTVSeries :: PartOfTVSeries
                            }
-                 deriving (Show, Read, Eq)
+                 deriving (Show, Read, Eq, Typeable)
 
 instance MetaData TVEpisode where
   _label         = const "TV Episode"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/TVEpisode"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork), typeOf (undefined :: Text.HTML5.MetaData.Schema.Episode.Episode)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Episode.Episode)]

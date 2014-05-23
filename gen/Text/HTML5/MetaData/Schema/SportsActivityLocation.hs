@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.SportsActivityLocation where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,19 @@ module Text.HTML5.MetaData.Schema.SportsActivityLocation where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( SportsActivityLocation )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LocalBusiness
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.BowlingAlley
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ExerciseGym
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GolfCourse
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HealthClub
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.PublicSwimmingPool
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SkiResort
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.SportsClub
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.StadiumOrArena
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.TennisComplex
 
 -- | 
 --
@@ -77,10 +91,13 @@ data SportsActivityLocation = SportsActivityLocation { additionalType :: Additio
                                                      , paymentAccepted :: PaymentAccepted
                                                      , priceRange :: PriceRange
                                                      }
-                              deriving (Show, Read, Eq)
+                              deriving (Show, Read, Eq, Typeable)
 
 instance MetaData SportsActivityLocation where
   _label         = const "Sports Activity Location"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/SportsActivityLocation"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization), typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.BowlingAlley.BowlingAlley), typeOf (undefined :: Text.HTML5.MetaData.Schema.ExerciseGym.ExerciseGym), typeOf (undefined :: Text.HTML5.MetaData.Schema.GolfCourse.GolfCourse), typeOf (undefined :: Text.HTML5.MetaData.Schema.HealthClub.HealthClub), typeOf (undefined :: Text.HTML5.MetaData.Schema.PublicSwimmingPool.PublicSwimmingPool), typeOf (undefined :: Text.HTML5.MetaData.Schema.SkiResort.SkiResort), typeOf (undefined :: Text.HTML5.MetaData.Schema.SportsClub.SportsClub), typeOf (undefined :: Text.HTML5.MetaData.Schema.StadiumOrArena.StadiumOrArena), typeOf (undefined :: Text.HTML5.MetaData.Schema.TennisComplex.TennisComplex)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.LocalBusiness.LocalBusiness)]

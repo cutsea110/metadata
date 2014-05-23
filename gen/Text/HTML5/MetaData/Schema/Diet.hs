@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Diet where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.Diet where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type hiding ( Diet )
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CreativeWork
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.LifestyleModification
 
 -- | 
 --
@@ -102,10 +107,13 @@ data Diet = Diet { additionalType :: AdditionalType
                  , proprietaryName :: ProprietaryName
                  , risks :: Risks
                  }
-            deriving (Show, Read, Eq)
+            deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Diet where
   _label         = const "Diet"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Diet"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork)]
+  _subtypes      = const []
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CreativeWork.CreativeWork), typeOf (undefined :: Text.HTML5.MetaData.Schema.LifestyleModification.LifestyleModification)]

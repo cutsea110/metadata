@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.EducationalOrganization where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,15 @@ module Text.HTML5.MetaData.Schema.EducationalOrganization where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Organization
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.CollegeOrUniversity
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.ElementarySchool
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.HighSchool
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.MiddleSchool
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Preschool
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.School
 
 -- | 
 --
@@ -66,10 +76,13 @@ data EducationalOrganization = EducationalOrganization { additionalType :: Addit
                                                        , vatID :: VatID
                                                        , alumni :: Alumni
                                                        }
-                               deriving (Show, Read, Eq)
+                               deriving (Show, Read, Eq, Typeable)
 
 instance MetaData EducationalOrganization where
   _label         = const "Educational Organization"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/EducationalOrganization"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.CollegeOrUniversity.CollegeOrUniversity), typeOf (undefined :: Text.HTML5.MetaData.Schema.ElementarySchool.ElementarySchool), typeOf (undefined :: Text.HTML5.MetaData.Schema.HighSchool.HighSchool), typeOf (undefined :: Text.HTML5.MetaData.Schema.MiddleSchool.MiddleSchool), typeOf (undefined :: Text.HTML5.MetaData.Schema.Preschool.Preschool), typeOf (undefined :: Text.HTML5.MetaData.Schema.School.School)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Organization.Organization)]

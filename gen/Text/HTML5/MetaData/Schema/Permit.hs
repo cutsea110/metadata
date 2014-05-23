@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module Text.HTML5.MetaData.Schema.Permit where
 
 --  Valid: 2014-04-03 ( Schema.rdfs.org )
@@ -6,6 +7,10 @@ module Text.HTML5.MetaData.Schema.Permit where
 import Text.HTML5.MetaData.Class
 import Text.HTML5.MetaData.Type
 import Data.Text
+import Data.Typeable
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Thing
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.Intangible
+import {-# SOURCE #-} qualified Text.HTML5.MetaData.Schema.GovernmentPermit
 
 -- | 
 --
@@ -37,10 +42,13 @@ data Permit = Permit { additionalType :: AdditionalType
                      , validIn :: ValidIn
                      , validUntil :: ValidUntil
                      }
-              deriving (Show, Read, Eq)
+              deriving (Show, Read, Eq, Typeable)
 
 instance MetaData Permit where
   _label         = const "Permit"
   _comment_plain = const ""
   _comment       = const ""
   _url           = const "http://schema.org/Permit"
+  _ancestors     = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Thing.Thing), typeOf (undefined :: Text.HTML5.MetaData.Schema.Intangible.Intangible)]
+  _subtypes      = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.GovernmentPermit.GovernmentPermit)]
+  _supertypes    = const [typeOf (undefined :: Text.HTML5.MetaData.Schema.Intangible.Intangible)]
