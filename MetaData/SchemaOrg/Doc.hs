@@ -136,11 +136,15 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
     instance_decl = nest 2 (ins_decl <$> fields)
       where
         ins_decl = hsep $ map text ["instance", "MetaData", T.unpack $ symbol d, "where"]
-        fields = align $ vcat $ map fld metaDataProperties
+        fields = align $ vcat $ map fld metaDataProperties ++ map fld2 metaDataProperties2
           where
             flen = foldl max 0 $ map (T.length.fst) metaDataProperties
             fld (f, acc) = fillBreak flen (text' f) 
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
+            fld2 (f, acc) = fillBreak flen (text' f)
+                            <+> hsep ((map text $ ["=", "const"]) ++ [brackets $ hcat syms])
+              where
+                syms = intersperse (comma <> space) $ V.toList $ V.map (text . T.unpack . symbol) $ acc d
 
 schemaBootDoc :: Valid -> DataType -> Doc
 schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
