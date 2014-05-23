@@ -18,6 +18,8 @@ import MetaData.SchemaOrg.Data
 
 schemaModuleName' :: String
 schemaModuleName' = "Text.HTML5.MetaData.Schema."
+schemaModuleName :: T.Text
+schemaModuleName = "Text.HTML5.MetaData.Schema."
 typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
 classModuleName :: T.Text
@@ -134,7 +136,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
         impdecl m = text "import" <+> text' m
         impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text "qualified" <+> text' m
         hide t = hsep [text "hiding", lparen, text' t, rparen]
-        refSchemas = map (T.append "Text.HTML5.MetaData.Schema." . symbol) types
+        refSchemas = map (T.append schemaModuleName . symbol) types
           where
             types = nub $ V.toList $ ancestors d V.++ subtypes d V.++ supertypes d
     declares = fromDataType d
@@ -152,7 +154,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
                 syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
                          <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolFull t])
-                symbolFull t = "Text.HTML5.MetaData.Schema." `T.append` sym `T.append` "." `T.append` sym
+                symbolFull t = schemaModuleName `T.append` sym `T.append` "." `T.append` sym
                   where
                     sym = symbol t
 
