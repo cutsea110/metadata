@@ -180,17 +180,19 @@ classDoc :: Valid -> Doc
 classDoc v = vcat' [module_header, valid_comment v, import_list, class_declares]
   where
     module_header = hsep $ map text' ["module", classModuleName, "where"]
-    import_list = vsep $ map impdecl ["Data.Text"]
+    import_list = vsep $ map impdecl ["Data.Text", "Data.Typeable"]
       where
         impdecl m = hsep $ map text ["import", m]
     class_declares = nest 2 (cls_decl <$> fields)
       where
         cls_decl = hsep $ map text ["class", "MetaData", "a", "where"]
-        fields = align $ vcat $ map fld fs
+        fields = align $ vcat $ map fld fs ++ map fld2 fs2
           where
             flen = foldl max 0 $ map T.length fs
             fld f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "Text"])
             fs = map fst metaDataProperties
+            fld2 f = fillBreak flen (text' f) <+> hsep (map text' ["::", "a", "->", "[TypeRep]"])
+            fs2 = map fst metaDataProperties2
 
 referedThings :: Properties -> V.Vector DataType
 referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
@@ -200,10 +202,17 @@ referedThingSymbols = V.map (T.unpack . symbol) . referedThings
             
 metaDataProperties :: [(T.Text, DataType -> T.Text)]
 metaDataProperties = 
-  [ ("_label",label)
+  [ ("_label", label)
   , ("_comment_plain", oneliner . comment_plain)
   , ("_comment", oneliner . comment)
   , ("_url", url)
+  ]
+
+metaDataProperties2 :: [(T.Text, DataType -> V.Vector DataType)]
+metaDataProperties2 =
+  [ ("_ancestors", ancestors)
+  , ("_subtypes", subtypes)
+  , ("_supertypes", supertypes)
   ]
 
 special_types :: [(T.Text, Maybe Doc)]
