@@ -25,6 +25,10 @@ typeModuleName = "Text.HTML5.MetaData.Type"
 classModuleName :: T.Text
 classModuleName = "Text.HTML5.MetaData.Class"
 
+symbolQualifiedName :: SchemaMeta a => a -> T.Text
+symbolQualifiedName t = let sym = symbol t
+                        in schemaModuleName `T.append` sym `T.append` "." `T.append` sym
+
 text' :: T.Text -> Doc
 text' = text . T.unpack
 
@@ -153,10 +157,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
               where
                 syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
-                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolFull t])
-                symbolFull t = schemaModuleName `T.append` sym `T.append` "." `T.append` sym
-                  where
-                    sym = symbol t
+                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolQualifiedName t])
 
 schemaBootDoc :: Valid -> DataType -> Doc
 schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
