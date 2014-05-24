@@ -37,6 +37,9 @@ text' = text . T.unpack
 vcat' :: [Doc] -> Doc
 vcat' = foldr1 (<%>)
 
+record :: [Doc] -> Doc
+record = encloseSep (lbrace <> space) (linebreak <> rbrace) (comma <> space)
+
 fromProperty :: Property -> Doc
 fromProperty p =
   maybe (vcat [comms, type_decl']) (const $ vcat [comms, hsep [text "--", type_decl']]) $ lookup (symbol p) primitive_types
@@ -66,14 +69,13 @@ fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derivingSRET]]
+    data_decl_record = hsep (map text' ["data", symbol d, "="]) <+> align (rec <$> derivingSRET)
       where
         props = properties d
-        record | V.null props = text' (symbol d)
-               | otherwise = text' (symbol d) <+> fields
-        fields = (fld_decl . V.toList . V.map field) props
+        rec | V.null props = text' (symbol d)
+            | otherwise = text' (symbol d) <+> fields
+        fields = (record . V.toList . V.map field) props
         field p = hsep $ map text' [id p, "::", symbol p]
-        fld_decl ps = align $ cat $ (zipWith (<+>) (lbrace:repeat comma) ps)++[rbrace]
     data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derivingSRET]]
       where
         constructors = cnst_decl (V.toList $ V.map text' $ instances d)        
@@ -147,7 +149,6 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             fld2 (f, acc) = fillBreak flen (text' f)
                             <+> hsep (map text $ ["=", "const"]) <+> list exprs
               where
-                list = encloseSep (lbracket <> space) rbracket (comma <> space)
                 exprs = V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
                          <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolQualifiedName t])
