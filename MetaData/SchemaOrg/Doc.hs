@@ -38,14 +38,11 @@ vcat' :: [Doc] -> Doc
 vcat' = foldr1 (<%>)
 
 fromProperty :: Property -> Doc
-fromProperty p = case lookup (symbol p) special_types of
-  Nothing -> type_decl True
-  Just _ -> type_decl False
+fromProperty p =
+  maybe (vcat [comms, type_decl']) (const $ vcat [comms, hsep [text "--", type_decl']]) $ lookup (symbol p) primitive_types
   where
     (rng, rlen, t1, t2, t3) = (ranges p, V.length rng, rng V.! 0, rng V.! 1, rng V.! 2)
     (qnT1, qnT2, qnT3) = (qualified_name (id t1), qualified_name (id t2), qualified_name (id t3))
-    type_decl True  = vcat [comms, type_decl']
-    type_decl False = vcat [comms, hsep [text "--", type_decl']]
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | rlen==3 = either3_types_decl
@@ -53,9 +50,7 @@ fromProperty p = case lookup (symbol p) special_types of
     single_type_decl   = hsep $ map text' ["type", symbol p, "=", qnT1]
     either_type_decl   = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
     either3_types_decl = hsep $ map text' ["type", symbol p, "=", "Either3", qnT1, qnT2, qnT3]
-    qualified_name s = case lookup s special_types of 
-      Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
-      Just _ -> s
+    qualified_name s = maybe (foldl1 T.append [schemaModuleName, s, ".", s]) (const s) $ lookup s primitive_types
     comms = vcat $ intersperse nulline [common_comms p, c_domains, c_ranges]
       where
         nulline = hsep $ map text ["--"]
@@ -172,7 +167,7 @@ schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_li
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
 typeDoc :: Valid -> Properties -> Doc
-typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, special_declares, declares]
+typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, primitive_declares, declares]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE DeriveDataTypeable #-}"]
     module_header = hsep $ map text' ["module", typeModuleName, "where"]
@@ -184,10 +179,10 @@ typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, s
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    special_declares = vcat $ map sp_decl special_types ++ special_datas
+    primitive_declares = vcat $ map prim_decl primitive_types ++ primitive_datas
       where
-        sp_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
-        sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
+        prim_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
+        prim_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
 
 classDoc :: Valid -> Doc
@@ -229,8 +224,8 @@ metaDataProperties2 =
   , ("_supertypes", supertypes)
   ]
 
-special_types :: [(T.Text, Maybe Doc)]
-special_types = 
+primitive_types :: [(T.Text, Maybe Doc)]
+primitive_types =
   [ ("Text", Nothing)
   , ("URL", Just $ text "Text")
   , ("Date", Just $ text "Day")
@@ -242,8 +237,8 @@ special_types =
   , ("Boolean", Just $ text "Bool")
   ]
 
-special_datas :: [Doc]
-special_datas = [either3]
+primitive_datas :: [Doc]
+primitive_datas = [either3]
   where
     either3 = lhs <+> rhs
       where
