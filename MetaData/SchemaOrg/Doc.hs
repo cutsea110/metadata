@@ -16,14 +16,18 @@ import Text.PrettyPrint.Leijen
 
 import MetaData.SchemaOrg.Data
 
-schemaModuleName' :: String
-schemaModuleName' = "Text.HTML5.MetaData.Schema."
 schemaModuleName :: T.Text
 schemaModuleName = "Text.HTML5.MetaData.Schema."
+schemaModuleName' :: String
+schemaModuleName' = T.unpack schemaModuleName
 typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
 classModuleName :: T.Text
 classModuleName = "Text.HTML5.MetaData.Class"
+
+symbolQualifiedName :: SchemaMeta a => a -> T.Text
+symbolQualifiedName t = let sym = symbol t
+                        in schemaModuleName `T.append` sym `T.append` "." `T.append` sym
 
 text' :: T.Text -> Doc
 text' = text . T.unpack
@@ -31,20 +35,17 @@ text' = text . T.unpack
 (<%>) :: Doc -> Doc -> Doc
 (<%>) = (<>).(<$> linebreak)
 vcat' :: [Doc] -> Doc
-vcat' = fold (<%>)
-  where
-    fold _ [] = empty
-    fold f ds = foldr1 f ds
+vcat' = foldr1 (<%>)
+
+record :: [Doc] -> Doc
+record = encloseSep (lbrace <> space) (linebreak <> rbrace) (comma <> space)
 
 fromProperty :: Property -> Doc
-fromProperty p = case lookup (symbol p) special_types of
-  Nothing -> type_decl True
-  Just _ -> type_decl False
+fromProperty p =
+  maybe (vcat [comms, type_decl']) (const $ vcat [comms, hsep [text "--", type_decl']]) $ lookup (symbol p) primitive_types
   where
     (rng, rlen, t1, t2, t3) = (ranges p, V.length rng, rng V.! 0, rng V.! 1, rng V.! 2)
     (qnT1, qnT2, qnT3) = (qualified_name (id t1), qualified_name (id t2), qualified_name (id t3))
-    type_decl True  = vcat [comms, type_decl']
-    type_decl False = vcat [comms, hsep [text "--", type_decl']]
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | rlen==3 = either3_types_decl
@@ -52,9 +53,7 @@ fromProperty p = case lookup (symbol p) special_types of
     single_type_decl   = hsep $ map text' ["type", symbol p, "=", qnT1]
     either_type_decl   = hsep $ map text' ["type", symbol p, "=", "Either", qnT1, qnT2]
     either3_types_decl = hsep $ map text' ["type", symbol p, "=", "Either3", qnT1, qnT2, qnT3]
-    qualified_name s = case lookup s special_types of 
-      Nothing -> foldl1 T.append [T.pack schemaModuleName', s, ".", s]
-      Just _ -> s
+    qualified_name s = maybe (foldl1 T.append [schemaModuleName, s, ".", s]) (const s) $ lookup s primitive_types
     comms = vcat $ intersperse nulline [common_comms p, c_domains, c_ranges]
       where
         nulline = hsep $ map text ["--"]
@@ -70,14 +69,13 @@ fromDataType d = comms <$> data_decl
   where
     data_decl | V.null (instances d) = data_decl_record
               | otherwise = data_decl_constructors
-    data_decl_record = hsep $ map text' ["data", symbol d, "="]++[align $ cat [record, derivingSRET]]
+    data_decl_record = hsep (map text' ["data", symbol d, "="]) <+> align (rec <$> derivingSRET)
       where
         props = properties d
-        record | V.null props = text' (symbol d)
-               | otherwise = text' (symbol d) <+> fields
-        fields = (fld_decl . V.toList . V.map field) props
+        rec | V.null props = text' (symbol d)
+            | otherwise = text' (symbol d) <+> fields
+        fields = (record . V.toList . V.map field) props
         field p = hsep $ map text' [id p, "::", symbol p]
-        fld_decl ps = align $ cat $ (zipWith (<+>) (lbrace:repeat comma) ps)++[rbrace]
     data_decl_constructors = hsep $ map text' ["data", symbol d]++[align $ cat [constructors, derivingSRET]]
       where
         constructors = cnst_decl (V.toList $ V.map text' $ instances d)        
@@ -106,7 +104,7 @@ common_comms md = vcat $ intersperse nulline [c_comment_plain, c_id, c_label, c_
     c_comment = hsep $ map text' ["--  ", "[@comment@]", oneliner $ comment md]
 
 valid_comment :: T.Text -> Doc
-valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [lparen, text "Schema.rdfs.org", rparen]
+valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [parens $ text "Schema.rdfs.org"]
 
 fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
@@ -135,7 +133,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
         import_schema_modules = vsep $ map impdecl' refSchemas
         impdecl m = text "import" <+> text' m
         impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text "qualified" <+> text' m
-        hide t = hsep [text "hiding", lparen, text' t, rparen]
+        hide t = hsep [text "hiding", parens $ text' t]
         refSchemas = map (T.append schemaModuleName . symbol) types
           where
             types = nub $ V.toList $ ancestors d V.++ subtypes d V.++ supertypes d
@@ -149,14 +147,11 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             fld (f, acc) = fillBreak flen (text' f) 
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
             fld2 (f, acc) = fillBreak flen (text' f)
-                            <+> hsep ((map text $ ["=", "const"]) ++ [brackets $ hcat syms])
+                            <+> hsep (map text $ ["=", "const"]) <+> list exprs
               where
-                syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
+                exprs = V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
-                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolFull t])
-                symbolFull t = schemaModuleName `T.append` sym `T.append` "." `T.append` sym
-                  where
-                    sym = symbol t
+                         <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolQualifiedName t])
 
 schemaBootDoc :: Valid -> DataType -> Doc
 schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_declares]
@@ -174,7 +169,7 @@ schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_li
         instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
 
 typeDoc :: Valid -> Properties -> Doc
-typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, special_declares, declares]
+typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, primitive_declares, declares]
   where
     pragmas = vcat $ map text ["{-# LANGUAGE DeriveDataTypeable #-}"]
     module_header = hsep $ map text' ["module", typeModuleName, "where"]
@@ -186,10 +181,10 @@ typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, s
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    special_declares = vcat $ map sp_decl special_types ++ special_datas
+    primitive_declares = vcat $ map prim_decl primitive_types ++ additional_primitives
       where
-        sp_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
-        sp_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
+        prim_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
+        prim_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
     declares = vcat' $ map (fromProperty.snd) $ H.toList ps
 
 classDoc :: Valid -> Doc
@@ -211,7 +206,7 @@ classDoc v = vcat' [module_header, valid_comment v, import_list, class_declares]
             fs2 = map fst metaDataProperties2
 
 referedThings :: Properties -> V.Vector DataType
-referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
+referedThings ps = V.filter (descendantOf "Thing") $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
 
 referedThingSymbols :: Properties -> V.Vector String
 referedThingSymbols = V.map (T.unpack . symbol) . referedThings
@@ -231,8 +226,8 @@ metaDataProperties2 =
   , ("_supertypes", supertypes)
   ]
 
-special_types :: [(T.Text, Maybe Doc)]
-special_types = 
+primitive_types :: [(T.Text, Maybe Doc)]
+primitive_types =
   [ ("Text", Nothing)
   , ("URL", Just $ text "Text")
   , ("Date", Just $ text "Day")
@@ -244,8 +239,8 @@ special_types =
   , ("Boolean", Just $ text "Bool")
   ]
 
-special_datas :: [Doc]
-special_datas = [either3]
+additional_primitives :: [Doc]
+additional_primitives = [either3]
   where
     either3 = lhs <+> rhs
       where
@@ -257,8 +252,7 @@ special_datas = [either3]
 derivingSRET :: Doc
 derivingSRET = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq", "Typeable"]]
   where
-    tpl cs = hcat [lparen, hcat $ intersperse (comma <> space) cs, rparen]
-
+    tpl cs = parens $ hcat $ intersperse (comma <> space) cs
 
 oneliner :: T.Text -> T.Text
 oneliner = T.concat . T.lines
