@@ -102,7 +102,7 @@ common_comms md = vcat $ intersperse nulline [c_comment_plain, c_id, c_label, c_
     c_comment = hsep $ map text' ["--  ", "[@comment@]", oneliner $ comment md]
 
 valid_comment :: T.Text -> Doc
-valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [lparen, text "Schema.rdfs.org", rparen]
+valid_comment v = hsep $ (map text' ["-- ", "Valid:", v]) ++ [parens $ text "Schema.rdfs.org"]
 
 fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
