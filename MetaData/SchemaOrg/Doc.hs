@@ -35,10 +35,7 @@ text' = text . T.unpack
 (<%>) :: Doc -> Doc -> Doc
 (<%>) = (<>).(<$> linebreak)
 vcat' :: [Doc] -> Doc
-vcat' = fold (<%>)
-  where
-    fold _ [] = empty
-    fold f ds = foldr1 f ds
+vcat' = foldr1 (<%>)
 
 fromProperty :: Property -> Doc
 fromProperty p = case lookup (symbol p) special_types of
