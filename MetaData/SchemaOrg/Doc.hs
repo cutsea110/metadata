@@ -166,7 +166,7 @@ schemaBootDoc v d = pragmas <$> vcat' [module_header, valid_comment v, import_li
     declares = fromDataType' d
     instance_declares = vcat $ map instance_decl ["Show", "Read", "Eq", "Typeable", "MetaData"]
       where
-        instance_decl cls = hsep $ map text ["instance", cls, T.unpack $ symbol d]
+        instance_decl cls = hsep $ map text' ["instance", cls, symbol d]
 
 typeDoc :: Valid -> Properties -> Doc
 typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, primitive_declares, declares]
