@@ -250,8 +250,7 @@ additional_primitives = [either3]
 derivingSRET :: Doc
 derivingSRET = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq", "Typeable"]]
   where
-    tpl cs = hcat [lparen, hcat $ intersperse (comma <> space) cs, rparen]
-
+    tpl cs = parens $ hcat $ intersperse (comma <> space) cs
 
 oneliner :: T.Text -> T.Text
 oneliner = T.concat . T.lines
