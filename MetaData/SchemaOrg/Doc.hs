@@ -16,10 +16,10 @@ import Text.PrettyPrint.Leijen
 
 import MetaData.SchemaOrg.Data
 
-schemaModuleName' :: String
-schemaModuleName' = "Text.HTML5.MetaData.Schema."
 schemaModuleName :: T.Text
 schemaModuleName = "Text.HTML5.MetaData.Schema."
+schemaModuleName' :: String
+schemaModuleName' = T.unpack schemaModuleName
 typeModuleName :: T.Text
 typeModuleName = "Text.HTML5.MetaData.Type"
 classModuleName :: T.Text
