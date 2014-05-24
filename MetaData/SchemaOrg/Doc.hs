@@ -145,9 +145,10 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
             fld (f, acc) = fillBreak flen (text' f) 
                            <+> hsep (map text ["=", "const", show $ T.unpack $ acc d])
             fld2 (f, acc) = fillBreak flen (text' f)
-                            <+> hsep ((map text $ ["=", "const"]) ++ [brackets $ hcat syms])
+                            <+> hsep (map text $ ["=", "const"]) <+> list exprs
               where
-                syms = intersperse (comma <> space) $ V.toList $ V.map expr $ acc d
+                list = encloseSep (lbracket <> space) rbracket (comma <> space)
+                exprs = V.toList $ V.map expr $ acc d
                 expr t = text "typeOf" <> space
                          <> (parens $ hcat $ intersperse space $ map text ["undefined", "::", T.unpack $ symbolQualifiedName t])
 
