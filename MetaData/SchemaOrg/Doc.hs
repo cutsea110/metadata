@@ -131,7 +131,7 @@ schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_lis
         import_schema_modules = vsep $ map impdecl' refSchemas
         impdecl m = text "import" <+> text' m
         impdecl' m = text "import" <+> text "{-# SOURCE #-}" <+> text "qualified" <+> text' m
-        hide t = hsep [text "hiding", lparen, text' t, rparen]
+        hide t = hsep [text "hiding", parens $ text' t]
         refSchemas = map (T.append schemaModuleName . symbol) types
           where
             types = nub $ V.toList $ ancestors d V.++ subtypes d V.++ supertypes d
