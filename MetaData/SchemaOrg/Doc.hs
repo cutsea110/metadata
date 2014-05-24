@@ -179,7 +179,7 @@ typeDoc v ps = pragmas <$> vcat' [module_header, valid_comment v, import_list, p
       where 
         impdecl m = text "import" <+> text "{-# SOURCE #-}" <+> text m
         schema_modules = sort $ nub $ V.toList $ referedThingSymbols ps
-    primitive_declares = vcat $ map prim_decl primitive_types ++ primitive_datas
+    primitive_declares = vcat $ map prim_decl primitive_types ++ additional_primitives
       where
         prim_decl (t, Nothing) = hsep $ map text' ["--", "use type", t, "from Haskell primitive"]
         prim_decl (t, Just d) = hsep $ map text' ["type", t, "="] ++ [d]
@@ -204,7 +204,7 @@ classDoc v = vcat' [module_header, valid_comment v, import_list, class_declares]
             fs2 = map fst metaDataProperties2
 
 referedThings :: Properties -> V.Vector DataType
-referedThings ps = V.filter descendantOfThing $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
+referedThings ps = V.filter (descendantOf "Thing") $ H.foldr (\v d -> ranges v V.++ d) V.empty ps
 
 referedThingSymbols :: Properties -> V.Vector String
 referedThingSymbols = V.map (T.unpack . symbol) . referedThings
@@ -237,8 +237,8 @@ primitive_types =
   , ("Boolean", Just $ text "Bool")
   ]
 
-primitive_datas :: [Doc]
-primitive_datas = [either3]
+additional_primitives :: [Doc]
+additional_primitives = [either3]
   where
     either3 = lhs <+> rhs
       where

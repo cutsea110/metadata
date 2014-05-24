@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module MetaData.SchemaOrg 
        ( createSchema
        ) where
@@ -18,7 +19,7 @@ createSchema = do
   gen (genMetaDataDir ++ "Type.hs") $ typeDoc v ps
   gen (genMetaDataDir ++ "Class.hs") $ classDoc v
 
-  forM_ (H.toList $ H.filter descendantOfThing ts) 
+  forM_ (H.toList $ H.filter (descendantOf "Thing") ts)
     (\(_, d) -> do
         gen (bootPath d) $ schemaBootDoc v d
         gen (path d) $ schemaDoc v ps d

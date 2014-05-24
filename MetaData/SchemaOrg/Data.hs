@@ -9,8 +9,7 @@ module MetaData.SchemaOrg.Data
        , Properties
        , SchemaMeta(..)
        , topOf
-       , descendantOfThing
-       , descendantOfDataType
+       , descendantOf
        ) where
 
 import Prelude hiding (id, head, tail)
@@ -135,8 +134,5 @@ topOf :: DataType -> [DataType]
 topOf x@DataType { supertypes = ds } | V.null ds = return x
                                      | otherwise = nub $ concatMap topOf $ V.toList ds
 
-descendantOfThing :: DataType -> Bool
-descendantOfThing = elem "Thing" . map id . topOf
-
-descendantOfDataType :: DataType -> Bool
-descendantOfDataType = elem "DataType" . map id . topOf
+descendantOf :: Text -> DataType -> Bool
+descendantOf t = elem t . map id . topOf
