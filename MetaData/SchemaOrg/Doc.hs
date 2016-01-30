@@ -6,7 +6,7 @@ module MetaData.SchemaOrg.Doc ( getSchema
                               , classDoc
                               ) where
 
-import Prelude hiding (id)
+import Prelude hiding (id, (<$>))
 import Data.List (nub, sort, intersperse, find)
 import Data.Maybe (isJust)
 import qualified Data.Text as T hiding (intersperse)
