@@ -1,7 +1,13 @@
 This project can generate Text.HTML5.MetaData library.
 The library is all representations mapped from Schema.org's metadata.
 
-check first by wget http://schema.rdfs.org/all.json
+outdated: => check first by wget http://schema.rdfs.org/all.json
+see https://github.com/mhausenblas/schema-org-rdf/tree/master/scrapers
+  But, I do git clone https://github.com/link-fish/schema-org-rdf, because this works rather than original.
+
+$ cd schema-org-rdf/scrapers
+$ python scrape_all.py output.ttl output.json classes.csv properties.csv
+$ cp output.json ../../all.json
 
 gen-metadata.hs is Main program and the execution generate metadata library(without cabal).
 
@@ -11,4 +17,11 @@ $ cabal configure --user
 $ cabal build
 $ cp dist/build/gen-metadata/gen-metadata .
 $ ./gen-metadata
+
+and then, build metadata
+
+$ cd gen
+$ cabal sandbox init sandbox=../.cabal-sandbox
+$ cabal configure --user
+$ cabal build
 
