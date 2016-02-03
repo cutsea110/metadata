@@ -21,7 +21,7 @@ $ ./gen-metadata
 and then, build metadata
 
 $ cd gen
-$ cabal sandbox init sandbox=../.cabal-sandbox
+$ cabal sandbox init --sandbox=../.cabal-sandbox
 $ cabal configure --user
 $ cabal build
 
