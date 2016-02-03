@@ -9,7 +9,7 @@ module MetaData.SchemaOrg.Data.Internal
 
 import Data.Aeson
 import Data.Attoparsec
-import Data.ByteString hiding (unpack)
+import Data.ByteString as BS hiding (unpack)
 import Data.HashMap.Strict
 import Data.Maybe
 import Data.Text
@@ -17,16 +17,8 @@ import Data.Vector hiding ((++))
 import Network.HTTP
 import Network.URI
 
-allJsonURI :: URI
-allJsonURI = fromJust $ parseURI allJsonURL
-  where
-    allJsonURL = "http://schema.rdfs.org/all.json"
-
-resAllJson :: IO ByteString
-resAllJson = getResponseBody =<< simpleHTTP (mkRequest GET allJsonURI)
-
 allJson :: IO (Maybe Value)
-allJson = return . maybeResult . parse json =<< resAllJson
+allJson = return . maybeResult . parse json =<< BS.readFile "./all.json"
 
 type DataTypes = HashMap Text DataType
 data DataType = DataType { d_label :: Text

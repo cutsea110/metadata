@@ -45,15 +45,19 @@ fromProperty :: Property -> Doc
 fromProperty p =
   maybe (vcat [comms, type_decl']) (const $ vcat [comms, hsep [text "--", type_decl']]) $ lookup (symbol p) primitive_types
   where
-    (rng, rlen, t1, t2, t3) = (ranges p, V.length rng, rng V.! 0, rng V.! 1, rng V.! 2)
-    (qnT1, qnT2, qnT3) = (qualified_name (id t1), qualified_name (id t2), qualified_name (id t3))
+    (rng, rlen, t1, t2, t3, t4, t5) = (ranges p, V.length rng, rng V.! 0, rng V.! 1, rng V.! 2, rng V.! 3, rng V.! 4)
+    (qnT1, qnT2, qnT3, qnT4, qnT5) = (qualified_name (id t1), qualified_name (id t2), qualified_name (id t3), qualified_name (id t4), qualified_name (id t5))
     type_decl' | rlen==1 = single_type_decl
                | rlen==2 = either_type_decl
                | rlen==3 = either3_types_decl
-               | otherwise = error $ "Found a property which has more than 4 types. This has "++show rlen++" types."
+               | rlen==4 = either4_types_decl
+               | rlen==5 = either5_types_decl
+               | otherwise = error $ "Found a property which has more than 6 types. This has "++show rlen++" types."
     single_type_decl   = hsep $ map text ["type", symbol p, "=", qnT1]
     either_type_decl   = hsep $ map text ["type", symbol p, "=", "Either", qnT1, qnT2]
     either3_types_decl = hsep $ map text ["type", symbol p, "=", "Either3", qnT1, qnT2, qnT3]
+    either4_types_decl = hsep $ map text ["type", symbol p, "=", "Either4", qnT1, qnT2, qnT3, qnT4]
+    either5_types_decl = hsep $ map text ["type", symbol p, "=", "Either5", qnT1, qnT2, qnT3, qnT4, qnT5]
     qualified_name s = maybe (foldl1 T.append [schemaModuleName, s, ".", s]) (const s) $ lookup s primitive_types
     comms = vcat $ intersperse nulline [common_comms p, c_domains, c_ranges]
       where
@@ -66,10 +70,8 @@ fromProperty p =
         syms f = map symbol $ V.toList $ f p
 
 fromDataType :: DataType -> Doc
-fromDataType d = comms <$> data_decl
+fromDataType d = comms <$> data_decl_record
   where
-    data_decl | V.null (instances d) = data_decl_record
-              | otherwise = data_decl_constructors
     data_decl_record = hsep (map text ["data", symbol d, "="]) <+> align (rec <$> derivingSRET)
       where
         props = properties d
@@ -77,10 +79,6 @@ fromDataType d = comms <$> data_decl
             | otherwise = text (symbol d) <+> fields
         fields = (record . V.toList . V.map field) props
         field p = hsep $ map text [id p, "::", symbol p]
-    data_decl_constructors = hsep $ map text ["data", symbol d]++[align $ cat [constructors, derivingSRET]]
-      where
-        constructors = cnst_decl (V.toList $ V.map text $ instances d)
-        cnst_decl cs = align $ cat $ zipWith (<+>) (map text ("=":repeat "|")) cs
     comms = vcat $ intersperse nulline [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
       where
         nulline = hsep $ map text ["--"]
@@ -241,7 +239,7 @@ primitive_types =
   ]
 
 additional_primitives :: [Doc]
-additional_primitives = [either3]
+additional_primitives = [either3, either4, either5]
   where
     either3 = lhs <+> rhs
       where
@@ -249,6 +247,20 @@ additional_primitives = [either3]
         rhs = align $ cat $ constructors ++ [derivingSRET]
         constructors = zipWith (<+>) (map text ("=":repeat "|"))
                             (map (\(f,s)->text f<+>text s) [("Left3","a"),("Center3","b"),("Right3","c")])
+    either4 = lhs <+> rhs
+      where
+        lhs = hsep (map text ["data", "Either4", "a", "b", "c", "d"])
+        rhs = align $ cat $ constructors ++ [derivingSRET]
+        constructors = zipWith (<+>) (map text ("=":repeat "|"))
+                            (map (\(f,s)->text f<+>text s) [("North","a"),("East","b"),("South","c"),("West","d")])
+    either5 = lhs <+> rhs
+      where
+        lhs = hsep (map text ["data", "Either5", "a", "b", "c", "d", "e"])
+        rhs = align $ cat $ constructors ++ [derivingSRET]
+        constructors = zipWith (<+>) (map text ("=":repeat "|"))
+                            (map (\(f,s)->text f<+>text s) [("Earth","a"),("Water","b"),("Fire","c"),("Wind","d"),("Void","e")])
+
+          
 
 derivingSRET :: Doc
 derivingSRET = hsep [text "deriving", tpl $ map text ["Show", "Read", "Eq", "Typeable"]]
