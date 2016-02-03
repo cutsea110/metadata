@@ -70,10 +70,8 @@ fromProperty p =
         syms f = map symbol $ V.toList $ f p
 
 fromDataType :: DataType -> Doc
-fromDataType d = comms <$> data_decl
+fromDataType d = comms <$> data_decl_record
   where
-    data_decl | V.null (instances d) = data_decl_record
-              | otherwise = data_decl_constructors
     data_decl_record = hsep (map text ["data", symbol d, "="]) <+> align (rec <$> derivingSRET)
       where
         props = properties d
@@ -81,10 +79,6 @@ fromDataType d = comms <$> data_decl
             | otherwise = text (symbol d) <+> fields
         fields = (record . V.toList . V.map field) props
         field p = hsep $ map text [id p, "::", symbol p]
-    data_decl_constructors = hsep $ map text ["data", symbol d]++[align $ cat [constructors, derivingSRET]]
-      where
-        constructors = cnst_decl (V.toList $ V.map text $ instances d)
-        cnst_decl cs = align $ cat $ zipWith (<+>) (map text ("=":repeat "|")) cs
     comms = vcat $ intersperse nulline [common_comms d, c_ancestors, c_subtypes, c_supertypes, c_url]
       where
         nulline = hsep $ map text ["--"]
