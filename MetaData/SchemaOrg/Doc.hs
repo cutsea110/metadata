@@ -37,6 +37,8 @@ text = PP.text . T.unpack
 (<%>) = (<>).(<$> linebreak)
 vcat' :: [Doc] -> Doc
 vcat' = foldr1 (<%>)
+escape :: T.Text -> T.Text
+escape = T.replace "\"" "\\\""
 
 record :: [Doc] -> Doc
 record = encloseSep (lbrace <> space) (linebreak <> rbrace) (comma <> space)
@@ -97,10 +99,10 @@ common_comms :: SchemaMeta a => a -> Doc
 common_comms md = vcat $ intersperse nulline [c_comment_plain, c_id, c_label, c_comment]
   where
     nulline = hsep $ map text ["--"]
-    c_comment_plain = hsep $ map text ["-- |", oneliner $ comment_plain md]
+    c_comment_plain = hsep $ map text ["-- |", oneliner $ escape $ comment_plain md]
     c_id = hsep $ map text ["--  ", "[@id@]", id md]
     c_label = hsep $ map text ["--  ", "[@label@]", label md]
-    c_comment = hsep $ map text ["--  ", "[@comment@]", oneliner $ comment md]
+    c_comment = hsep $ map text ["--  ", "[@comment@]", oneliner $ escape $ comment md]
 
 valid_comment :: T.Text -> Doc
 valid_comment v = hsep $ (map text ["-- ", "Valid:", v]) ++ [parens $ text "Schema.rdfs.org"]
@@ -109,7 +111,7 @@ fromDataType' :: DataType -> Doc
 fromDataType' d = vcat' [com, data_decl]
   where
     data_decl = hsep $ map text ["data", symbol d]
-    com = hsep $ map text ["-- |", oneliner $ comment d]
+    com = hsep $ map text ["-- |", oneliner $ escape $ comment d]
 
 schemaDoc :: Valid -> Properties -> DataType -> Doc
 schemaDoc v ps d = pragmas <$> vcat' [module_header, valid_comment v, import_list, declares, instance_decl]
@@ -213,8 +215,8 @@ referedThingSymbols = V.map symbol . referedThings
 metaDataProperties :: [(T.Text, DataType -> T.Text)]
 metaDataProperties = 
   [ ("_label", label)
-  , ("_comment_plain", oneliner . comment_plain)
-  , ("_comment", oneliner . comment)
+  , ("_comment_plain", oneliner . escape . comment_plain)
+  , ("_comment", oneliner . escape . comment)
   , ("_url", url)
   ]
 
