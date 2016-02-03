@@ -7,7 +7,8 @@ module MetaData.SchemaOrg.Doc ( getSchema
                               ) where
 
 import Prelude hiding (id, (<$>))
-import Data.List (nub, sort, intersperse, find)
+import Data.Function (on)
+import Data.List (nub, sort, intersperse, find, nubBy)
 import Data.Maybe (isJust)
 import qualified Data.Text as T hiding (intersperse)
 import qualified Data.HashMap.Strict as H
@@ -76,7 +77,7 @@ fromDataType d = comms <$> data_decl_record
   where
     data_decl_record = hsep (map text ["data", symbol d, "="]) <+> align (rec <$> derivingSRET)
       where
-        props = properties d
+        props = V.fromList $ nubBy ((==) `on` p_id) $ V.toList $ properties d
         rec | V.null props = text (symbol d)
             | otherwise = text (symbol d) <+> fields
         fields = (record . V.toList . V.map field) props
