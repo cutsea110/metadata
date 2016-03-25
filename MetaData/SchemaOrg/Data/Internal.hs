@@ -8,7 +8,7 @@ module MetaData.SchemaOrg.Data.Internal
        ) where
 
 import Data.Aeson
-import Data.Attoparsec
+import Data.Attoparsec.ByteString
 import Data.ByteString as BS hiding (unpack)
 import Data.HashMap.Strict
 import Data.Maybe

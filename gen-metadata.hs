@@ -1,7 +1,9 @@
 module Main where
 
 import Control.Monad
+import Data.List
 import System.Directory
+import System.FilePath (dropExtensions)
 
 import MetaData.SchemaOrg
 
@@ -12,6 +14,7 @@ main = do
   createSchema
   putStrLn "copy files for cabalize..."
   copyTemplates
+  updateCabal
   putStrLn "done."
   return ()
 
@@ -22,3 +25,14 @@ copyTemplates = do
     where 
       (src, dst) = ("templates/", "gen/")
       dir = (`elem` [".",".."])
+
+updateCabal :: IO ()
+updateCabal = do
+  modules <- moduleList
+  appendFile "gen/metadata.cabal" $ concat modules
+  
+moduleList :: IO [String]
+moduleList = return . sort . nub . fmap conv . filter (isSuffixOf ".hs") =<< getDirectoryContents "gen/Text/HTML5/MetaData/Schema"
+  where
+    conv :: String -> String
+    conv = ("\n                     , Text.HTML5.MetaData.Schema." ++) . dropExtensions

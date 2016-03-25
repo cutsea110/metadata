@@ -21,7 +21,6 @@ import qualified Data.Vector as V
 import Data.Maybe
 import Data.List (nub)
 import Data.Text hiding (toUpper, concatMap, map)
-import Data.Attoparsec.Number
 import Data.Scientific
 
 import MetaData.SchemaOrg.Data.Internal
